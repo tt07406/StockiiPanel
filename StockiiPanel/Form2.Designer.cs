@@ -31,23 +31,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.stockInfoList = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.selectedList = new System.Windows.Forms.ListView();
+            this.stockID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stockName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addButton = new System.Windows.Forms.Button();
             this.allAddButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.selectedList = new System.Windows.Forms.ListView();
-            this.seqNo1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.stockID1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.stockName1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.stockInfoList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,15 +73,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "可选列表";
             // 
+            // stockInfoList
+            // 
+            this.stockInfoList.AllowUserToAddRows = false;
+            this.stockInfoList.AllowUserToDeleteRows = false;
+            this.stockInfoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.stockInfoList.Location = new System.Drawing.Point(6, 21);
+            this.stockInfoList.Name = "stockInfoList";
+            this.stockInfoList.ReadOnly = true;
+            this.stockInfoList.RowHeadersWidth = 58;
+            this.stockInfoList.RowTemplate.Height = 23;
+            this.stockInfoList.Size = new System.Drawing.Size(256, 358);
+            this.stockInfoList.TabIndex = 0;
+            this.stockInfoList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.stockInfoList_DataBindingComplete);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.selectedList);
             this.groupBox2.Location = new System.Drawing.Point(281, 46);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(262, 387);
+            this.groupBox2.Size = new System.Drawing.Size(261, 387);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "已选列表";
+            // 
+            // selectedList
+            // 
+            this.selectedList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.stockID,
+            this.stockName});
+            this.selectedList.GridLines = true;
+            this.selectedList.Location = new System.Drawing.Point(19, 22);
+            this.selectedList.Name = "selectedList";
+            this.selectedList.Size = new System.Drawing.Size(221, 359);
+            this.selectedList.TabIndex = 0;
+            this.selectedList.UseCompatibleStateImageBehavior = false;
+            this.selectedList.View = System.Windows.Forms.View.Details;
+            // 
+            // stockID
+            // 
+            this.stockID.Text = "代码";
+            this.stockID.Width = 65;
+            // 
+            // stockName
+            // 
+            this.stockName.Text = "名称";
+            this.stockName.Width = 150;
             // 
             // addButton
             // 
@@ -94,6 +128,7 @@
             this.addButton.TabIndex = 4;
             this.addButton.Text = "添加";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // allAddButton
             // 
@@ -140,64 +175,6 @@
             this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // selectedList
-            // 
-            this.selectedList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.seqNo1,
-            this.stockID1,
-            this.stockName1});
-            this.selectedList.GridLines = true;
-            this.selectedList.Location = new System.Drawing.Point(7, 22);
-            this.selectedList.Name = "selectedList";
-            this.selectedList.Size = new System.Drawing.Size(249, 359);
-            this.selectedList.TabIndex = 0;
-            this.selectedList.UseCompatibleStateImageBehavior = false;
-            this.selectedList.View = System.Windows.Forms.View.Details;
-            // 
-            // seqNo1
-            // 
-            this.seqNo1.Text = "序列号";
-            this.seqNo1.Width = 49;
-            // 
-            // stockID1
-            // 
-            this.stockID1.Text = "代码";
-            this.stockID1.Width = 57;
-            // 
-            // stockName1
-            // 
-            this.stockName1.Text = "名称";
-            this.stockName1.Width = 138;
-            // 
-            // stockInfoList
-            // 
-            this.stockInfoList.AllowUserToAddRows = false;
-            this.stockInfoList.AllowUserToDeleteRows = false;
-            this.stockInfoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.stockInfoList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.stockInfoList.Location = new System.Drawing.Point(6, 21);
-            this.stockInfoList.Name = "stockInfoList";
-            this.stockInfoList.ReadOnly = true;
-            this.stockInfoList.RowTemplate.Height = 23;
-            this.stockInfoList.Size = new System.Drawing.Size(256, 358);
-            this.stockInfoList.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "代码";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 60;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "名称";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
             // SNListDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -216,8 +193,8 @@
             this.Name = "SNListDialog";
             this.Text = "添加分组对话框";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,11 +213,8 @@
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ListView selectedList;
-        private System.Windows.Forms.ColumnHeader seqNo1;
-        private System.Windows.Forms.ColumnHeader stockID1;
-        private System.Windows.Forms.ColumnHeader stockName1;
+        private System.Windows.Forms.ColumnHeader stockID;
+        private System.Windows.Forms.ColumnHeader stockName;
         private System.Windows.Forms.DataGridView stockInfoList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
