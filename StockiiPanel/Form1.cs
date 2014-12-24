@@ -7,15 +7,79 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
+using MySql.Data.MySqlClient;
 
 namespace StockiiPanel
 {
     public partial class Form1 : Form
     {
+        private MySqlConnection conn;
+        private DataTable dt;
+        private DataSet ds;
+
         public Form1()
         {
             InitializeComponent();
             pList = new Dictionary<string, ArrayList>();
+            InitialCombo();
+        }
+
+        private void InitialCombo()
+        {
+            indexCombo.Items.Add("均价");
+            indexCombo.Items.Add("振幅");
+            indexCombo.Items.Add("换手");
+            indexCombo.Items.Add("量比");
+            indexCombo.Items.Add("总金额");
+            indexCombo.Items.Add("涨幅");
+
+            indexCombo.SelectedIndex = 0;
+
+            for (int i = 3; i <= 30; ++i)
+            {
+                intervalCombo.Items.Add(i + "");
+            }
+
+            intervalCombo.SelectedIndex = 0;
+
+            typeCombo.Items.Add("负和");
+            typeCombo.Items.Add("所有和");
+            typeCombo.Items.Add("正和");
+
+            typeCombo.SelectedIndex = 0;
+
+            compareCombo.Items.Add("指定两天减");
+            compareCombo.Items.Add("指定时间段内的和");
+            compareCombo.Items.Add("指定时间段内最小值");
+            compareCombo.Items.Add("指定两天加");
+            compareCombo.Items.Add("指定时间段内最大值");
+            compareCombo.Items.Add("两个时间段时涨幅依据分段");
+            compareCombo.Items.Add("指定两天比值");
+
+            compareCombo.SelectedIndex = 0;
+
+            compareIndexCombo.Items.Add("振幅");
+            compareIndexCombo.Items.Add("流通股本");
+            compareIndexCombo.Items.Add("均价流通值");
+            compareIndexCombo.Items.Add("总股本");
+            compareIndexCombo.Items.Add("均价");
+            compareIndexCombo.Items.Add("现价");
+            compareIndexCombo.Items.Add("总市值");
+            compareIndexCombo.Items.Add("换手");
+            compareIndexCombo.Items.Add("量比");
+            compareIndexCombo.Items.Add("总金额");
+            compareIndexCombo.Items.Add("涨幅");
+
+            compareIndexCombo.SelectedIndex = 0;
+
+            indexCombox1.Items.Add("均价");
+            indexCombox1.Items.Add("总市值");
+            indexCombox1.Items.Add("昨收");
+            indexCombox1.Items.Add("流通股本");
+            indexCombox1.Items.Add("均价流通市值");
+            indexCombox1.Items.Add("总股本");
+
+            indexCombox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +98,71 @@ namespace StockiiPanel
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
 
+            //初始化版块菜单
+            try
+            {
+                conn = new MySqlConnection(strConn);
+                String sqlId = "select * from area_info";
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds, "area_info");
+
+                DataView dvMenuOptions = new DataView(ds.Tables["area_info"]);
+
+                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+                {
+                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
+
+                    tsItemParent.Text = rvMain["area_name"].ToString();
+                    tsItemParent.Name = rvMain["area_id"].ToString();
+                    sectionToolStripMenuItem.DropDownItems.Add(tsItemParent);
+                }
+
+                sqlId = "select * from industry_info";
+                cmd = new MySqlCommand(sqlId, conn);
+                da = new MySqlDataAdapter(cmd);
+
+                da.Fill(ds, "industry_info");
+
+                dvMenuOptions = new DataView(ds.Tables["industry_info"]);
+
+                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+                {
+                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
+
+                    tsItemParent.Text = rvMain["industry_name"].ToString();
+                    tsItemParent.Name = rvMain["industry_id"].ToString();
+                    industryToolStripMenuItem.DropDownItems.Add(tsItemParent);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("不能连接到数据库");
+                        break;
+                    case 1045:
+                        MessageBox.Show("无效的用户名密码");
+                        break;
+                    case 1049:
+                        MessageBox.Show("数据库不存在");
+                        break;
+                    default:
+                        MessageBox.Show(ex.Message);
+                        break;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -111,6 +239,36 @@ namespace StockiiPanel
             pList.Remove(selectedName);
             groupList.Items.Remove(selectedName);
         }
+
+        private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (compareCombo.SelectedIndex == 5)
+            {
+                compareIndexCombo.Enabled = false;
+            }
+            else
+            {
+                compareIndexCombo.Enabled = true;
+            }
+        }
+
+        /// <summary>
+
+        /// 判断一个数是否是奇数
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public bool IsOdd(int n)
+        {
+            if (n % 2 != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }   
     }
 
      /// 说明: 使用此Button时要设置ContextMenuStrip属性值  
@@ -216,11 +374,11 @@ namespace StockiiPanel
 　　            base.OnMouseDown(mevent);  
 　　             if (mevent.Button.ToString() != "Right")  
 　　             {  
-　　            }  
+　　             }  
 　　         }
-
            
 　　     } 
 
-   
+        
+
 }

@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设置列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setColToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boardMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.一地ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.行业版块ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.向上版块ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.向下版愉ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.industryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.rawDataTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -122,6 +122,67 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupList = new System.Windows.Forms.ListBox();
             this.boardButton = new StockiiPanel.DropButton();
+            this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amplitudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.riseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amp2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amp0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rise49ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decrease49ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount09999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount119999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount49999ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount5ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount9ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount15ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount20ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount25ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount40ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover09999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover129999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover349999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover569999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover7ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover10ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover15ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover20ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover25ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover35ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover40ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover45ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover50ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover60ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -148,33 +209,33 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件ToolStripMenuItem,
-            this.显示ToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.showToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1265, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1282, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 文件ToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.文件ToolStripMenuItem.Text = "文件";
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.fileToolStripMenuItem.Text = "文件";
             // 
-            // 显示ToolStripMenuItem
+            // showToolStripMenuItem
             // 
-            this.显示ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.设置列ToolStripMenuItem});
-            this.显示ToolStripMenuItem.Name = "显示ToolStripMenuItem";
-            this.显示ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.显示ToolStripMenuItem.Text = "显示";
+            this.showToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setColToolStripMenuItem});
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.showToolStripMenuItem.Text = "显示";
             // 
-            // 设置列ToolStripMenuItem
+            // setColToolStripMenuItem
             // 
-            this.设置列ToolStripMenuItem.Name = "设置列ToolStripMenuItem";
-            this.设置列ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.设置列ToolStripMenuItem.Text = "设置列";
+            this.setColToolStripMenuItem.Name = "setColToolStripMenuItem";
+            this.setColToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setColToolStripMenuItem.Text = "设置列";
             // 
             // button1
             // 
@@ -221,36 +282,44 @@
             // boardMenuStrip
             // 
             this.boardMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.一地ToolStripMenuItem,
-            this.行业版块ToolStripMenuItem,
-            this.向上版块ToolStripMenuItem,
-            this.向下版愉ToolStripMenuItem});
+            this.sectionToolStripMenuItem,
+            this.industryToolStripMenuItem,
+            this.upToolStripMenuItem,
+            this.downToolStripMenuItem});
             this.boardMenuStrip.Name = "boardMenuStrip";
-            this.boardMenuStrip.Size = new System.Drawing.Size(125, 92);
+            this.boardMenuStrip.Size = new System.Drawing.Size(153, 114);
             // 
-            // 一地ToolStripMenuItem
+            // sectionToolStripMenuItem
             // 
-            this.一地ToolStripMenuItem.Name = "一地ToolStripMenuItem";
-            this.一地ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.一地ToolStripMenuItem.Text = "地区版块";
+            this.sectionToolStripMenuItem.Name = "sectionToolStripMenuItem";
+            this.sectionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sectionToolStripMenuItem.Text = "地区版块";
             // 
-            // 行业版块ToolStripMenuItem
+            // industryToolStripMenuItem
             // 
-            this.行业版块ToolStripMenuItem.Name = "行业版块ToolStripMenuItem";
-            this.行业版块ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.行业版块ToolStripMenuItem.Text = "行业版块";
+            this.industryToolStripMenuItem.Name = "industryToolStripMenuItem";
+            this.industryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.industryToolStripMenuItem.Text = "行业版块";
             // 
-            // 向上版块ToolStripMenuItem
+            // upToolStripMenuItem
             // 
-            this.向上版块ToolStripMenuItem.Name = "向上版块ToolStripMenuItem";
-            this.向上版块ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.向上版块ToolStripMenuItem.Text = "向上版块";
+            this.upToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allToolStripMenuItem,
+            this.equalToolStripMenuItem,
+            this.amplitudeToolStripMenuItem,
+            this.riseToolStripMenuItem,
+            this.amountToolStripMenuItem,
+            this.turnoverToolStripMenuItem,
+            this.timeToolStripMenuItem});
+            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
+            this.upToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.upToolStripMenuItem.Text = "向上版块";
             // 
-            // 向下版愉ToolStripMenuItem
+            // downToolStripMenuItem
             // 
-            this.向下版愉ToolStripMenuItem.Name = "向下版愉ToolStripMenuItem";
-            this.向下版愉ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.向下版愉ToolStripMenuItem.Text = "向下版块";
+            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
+            this.downToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downToolStripMenuItem.Text = "向下版块";
             // 
             // tabControl
             // 
@@ -265,7 +334,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(848, 556);
+            this.tabControl.Size = new System.Drawing.Size(865, 556);
             this.tabControl.TabIndex = 5;
             // 
             // rawDataTab
@@ -275,7 +344,7 @@
             this.rawDataTab.Location = new System.Drawing.Point(4, 22);
             this.rawDataTab.Name = "rawDataTab";
             this.rawDataTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rawDataTab.Size = new System.Drawing.Size(840, 530);
+            this.rawDataTab.Size = new System.Drawing.Size(857, 530);
             this.rawDataTab.TabIndex = 0;
             this.rawDataTab.Text = "原始数据";
             this.rawDataTab.UseVisualStyleBackColor = true;
@@ -471,7 +540,7 @@
             this.nsumTab.Location = new System.Drawing.Point(4, 22);
             this.nsumTab.Name = "nsumTab";
             this.nsumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.nsumTab.Size = new System.Drawing.Size(840, 530);
+            this.nsumTab.Size = new System.Drawing.Size(857, 530);
             this.nsumTab.TabIndex = 1;
             this.nsumTab.Text = "n日和";
             this.nsumTab.UseVisualStyleBackColor = true;
@@ -487,7 +556,7 @@
             this.groupBox5.Controls.Add(this.ndayGrid);
             this.groupBox5.Location = new System.Drawing.Point(13, 129);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(817, 395);
+            this.groupBox5.Size = new System.Drawing.Size(834, 395);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "n日数据";
@@ -496,7 +565,7 @@
             // 
             this.pageLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel1.AutoSize = true;
-            this.pageLabel1.Location = new System.Drawing.Point(393, 370);
+            this.pageLabel1.Location = new System.Drawing.Point(402, 370);
             this.pageLabel1.Name = "pageLabel1";
             this.pageLabel1.Size = new System.Drawing.Size(23, 12);
             this.pageLabel1.TabIndex = 6;
@@ -505,7 +574,7 @@
             // allButton1
             // 
             this.allButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton1.Location = new System.Drawing.Point(434, 364);
+            this.allButton1.Location = new System.Drawing.Point(443, 364);
             this.allButton1.Name = "allButton1";
             this.allButton1.Size = new System.Drawing.Size(62, 25);
             this.allButton1.TabIndex = 5;
@@ -515,7 +584,7 @@
             // moreButton1
             // 
             this.moreButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton1.Location = new System.Drawing.Point(316, 364);
+            this.moreButton1.Location = new System.Drawing.Point(325, 364);
             this.moreButton1.Name = "moreButton1";
             this.moreButton1.Size = new System.Drawing.Size(61, 25);
             this.moreButton1.TabIndex = 4;
@@ -531,7 +600,7 @@
             this.ndayGrid.Location = new System.Drawing.Point(7, 20);
             this.ndayGrid.Name = "ndayGrid";
             this.ndayGrid.RowTemplate.Height = 23;
-            this.ndayGrid.Size = new System.Drawing.Size(804, 338);
+            this.ndayGrid.Size = new System.Drawing.Size(821, 338);
             this.ndayGrid.TabIndex = 0;
             // 
             // groupBox4
@@ -551,14 +620,14 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(12, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(818, 109);
+            this.groupBox4.Size = new System.Drawing.Size(835, 109);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "n日和筛选";
             // 
             // searchButton1
             // 
-            this.searchButton1.Location = new System.Drawing.Point(616, 48);
+            this.searchButton1.Location = new System.Drawing.Point(638, 49);
             this.searchButton1.Name = "searchButton1";
             this.searchButton1.Size = new System.Drawing.Size(75, 23);
             this.searchButton1.TabIndex = 12;
@@ -568,30 +637,27 @@
             // typeCombo
             // 
             this.typeCombo.FormattingEnabled = true;
-            this.typeCombo.Location = new System.Drawing.Point(535, 50);
+            this.typeCombo.Location = new System.Drawing.Point(551, 51);
             this.typeCombo.Name = "typeCombo";
-            this.typeCombo.Size = new System.Drawing.Size(63, 20);
+            this.typeCombo.Size = new System.Drawing.Size(81, 20);
             this.typeCombo.TabIndex = 11;
-            this.typeCombo.Text = "负和";
             this.typeCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // intervalCombo
             // 
             this.intervalCombo.FormattingEnabled = true;
-            this.intervalCombo.Location = new System.Drawing.Point(477, 51);
+            this.intervalCombo.Location = new System.Drawing.Point(493, 51);
             this.intervalCombo.Name = "intervalCombo";
             this.intervalCombo.Size = new System.Drawing.Size(52, 20);
             this.intervalCombo.TabIndex = 10;
-            this.intervalCombo.Text = "3";
             // 
             // indexCombo
             // 
             this.indexCombo.FormattingEnabled = true;
             this.indexCombo.Location = new System.Drawing.Point(409, 51);
             this.indexCombo.Name = "indexCombo";
-            this.indexCombo.Size = new System.Drawing.Size(62, 20);
+            this.indexCombo.Size = new System.Drawing.Size(78, 20);
             this.indexCombo.TabIndex = 9;
-            this.indexCombo.Text = "均价";
             // 
             // monthSumButton
             // 
@@ -600,7 +666,6 @@
             this.monthSumButton.Name = "monthSumButton";
             this.monthSumButton.Size = new System.Drawing.Size(47, 16);
             this.monthSumButton.TabIndex = 8;
-            this.monthSumButton.TabStop = true;
             this.monthSumButton.Text = "月和";
             this.monthSumButton.UseVisualStyleBackColor = true;
             // 
@@ -611,13 +676,13 @@
             this.weekSumButton.Name = "weekSumButton";
             this.weekSumButton.Size = new System.Drawing.Size(47, 16);
             this.weekSumButton.TabIndex = 7;
-            this.weekSumButton.TabStop = true;
             this.weekSumButton.Text = "周和";
             this.weekSumButton.UseVisualStyleBackColor = true;
             // 
             // daySumButton
             // 
             this.daySumButton.AutoSize = true;
+            this.daySumButton.Checked = true;
             this.daySumButton.Location = new System.Drawing.Point(356, 20);
             this.daySumButton.Name = "daySumButton";
             this.daySumButton.Size = new System.Drawing.Size(47, 16);
@@ -665,7 +730,7 @@
             this.customCalTab.Location = new System.Drawing.Point(4, 22);
             this.customCalTab.Name = "customCalTab";
             this.customCalTab.Padding = new System.Windows.Forms.Padding(3);
-            this.customCalTab.Size = new System.Drawing.Size(840, 530);
+            this.customCalTab.Size = new System.Drawing.Size(857, 530);
             this.customCalTab.TabIndex = 2;
             this.customCalTab.Text = "自定义计算";
             this.customCalTab.UseVisualStyleBackColor = true;
@@ -678,7 +743,7 @@
             this.groupBox7.Controls.Add(this.calResultGrid);
             this.groupBox7.Location = new System.Drawing.Point(7, 135);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(827, 395);
+            this.groupBox7.Size = new System.Drawing.Size(844, 395);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "计算结果";
@@ -692,7 +757,7 @@
             this.calResultGrid.Location = new System.Drawing.Point(7, 20);
             this.calResultGrid.Name = "calResultGrid";
             this.calResultGrid.RowTemplate.Height = 23;
-            this.calResultGrid.Size = new System.Drawing.Size(814, 357);
+            this.calResultGrid.Size = new System.Drawing.Size(831, 357);
             this.calResultGrid.TabIndex = 0;
             // 
             // groupBox6
@@ -715,21 +780,21 @@
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Location = new System.Drawing.Point(6, 15);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(828, 109);
+            this.groupBox6.Size = new System.Drawing.Size(845, 109);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "比较筛选";
             // 
             // smallBox
             // 
-            this.smallBox.Location = new System.Drawing.Point(672, 76);
+            this.smallBox.Location = new System.Drawing.Point(699, 76);
             this.smallBox.Name = "smallBox";
             this.smallBox.Size = new System.Drawing.Size(86, 21);
             this.smallBox.TabIndex = 19;
             // 
             // bigBox
             // 
-            this.bigBox.Location = new System.Drawing.Point(672, 29);
+            this.bigBox.Location = new System.Drawing.Point(699, 29);
             this.bigBox.Name = "bigBox";
             this.bigBox.Size = new System.Drawing.Size(86, 21);
             this.bigBox.TabIndex = 18;
@@ -737,7 +802,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(649, 79);
+            this.label11.Location = new System.Drawing.Point(670, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(17, 12);
             this.label11.TabIndex = 17;
@@ -746,7 +811,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(649, 32);
+            this.label10.Location = new System.Drawing.Point(670, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 12);
             this.label10.TabIndex = 16;
@@ -755,7 +820,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(589, 53);
+            this.label9.Location = new System.Drawing.Point(608, 55);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 15;
@@ -782,7 +847,7 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(764, 47);
+            this.calculateButton.Location = new System.Drawing.Point(791, 46);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(48, 23);
             this.calculateButton.TabIndex = 12;
@@ -794,9 +859,8 @@
             this.compareIndexCombo.FormattingEnabled = true;
             this.compareIndexCombo.Location = new System.Drawing.Point(529, 50);
             this.compareIndexCombo.Name = "compareIndexCombo";
-            this.compareIndexCombo.Size = new System.Drawing.Size(54, 20);
+            this.compareIndexCombo.Size = new System.Drawing.Size(73, 20);
             this.compareIndexCombo.TabIndex = 11;
-            this.compareIndexCombo.Text = "振幅";
             // 
             // compareCombo
             // 
@@ -805,7 +869,7 @@
             this.compareCombo.Name = "compareCombo";
             this.compareCombo.Size = new System.Drawing.Size(93, 20);
             this.compareCombo.TabIndex = 9;
-            this.compareCombo.Text = "指定两天减";
+            this.compareCombo.SelectedIndexChanged += new System.EventHandler(this.compareCombo_SelectedIndexChanged);
             // 
             // endDatePicker2
             // 
@@ -847,7 +911,7 @@
             this.crossSectionTab.Location = new System.Drawing.Point(4, 22);
             this.crossSectionTab.Name = "crossSectionTab";
             this.crossSectionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.crossSectionTab.Size = new System.Drawing.Size(840, 530);
+            this.crossSectionTab.Size = new System.Drawing.Size(857, 530);
             this.crossSectionTab.TabIndex = 3;
             this.crossSectionTab.Text = "跨区";
             this.crossSectionTab.UseVisualStyleBackColor = true;
@@ -863,7 +927,7 @@
             this.groupBox9.Controls.Add(this.sectionResultGrid);
             this.groupBox9.Location = new System.Drawing.Point(6, 77);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(830, 447);
+            this.groupBox9.Size = new System.Drawing.Size(847, 447);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "跨区结果";
@@ -872,7 +936,7 @@
             // 
             this.pageLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel3.AutoSize = true;
-            this.pageLabel3.Location = new System.Drawing.Point(411, 422);
+            this.pageLabel3.Location = new System.Drawing.Point(419, 422);
             this.pageLabel3.Name = "pageLabel3";
             this.pageLabel3.Size = new System.Drawing.Size(23, 12);
             this.pageLabel3.TabIndex = 3;
@@ -881,7 +945,7 @@
             // allButton3
             // 
             this.allButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton3.Location = new System.Drawing.Point(451, 416);
+            this.allButton3.Location = new System.Drawing.Point(459, 416);
             this.allButton3.Name = "allButton3";
             this.allButton3.Size = new System.Drawing.Size(62, 25);
             this.allButton3.TabIndex = 2;
@@ -891,7 +955,7 @@
             // moreButton3
             // 
             this.moreButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton3.Location = new System.Drawing.Point(334, 416);
+            this.moreButton3.Location = new System.Drawing.Point(342, 416);
             this.moreButton3.Name = "moreButton3";
             this.moreButton3.Size = new System.Drawing.Size(61, 25);
             this.moreButton3.TabIndex = 1;
@@ -907,7 +971,7 @@
             this.sectionResultGrid.Location = new System.Drawing.Point(16, 21);
             this.sectionResultGrid.Name = "sectionResultGrid";
             this.sectionResultGrid.RowTemplate.Height = 23;
-            this.sectionResultGrid.Size = new System.Drawing.Size(798, 386);
+            this.sectionResultGrid.Size = new System.Drawing.Size(815, 386);
             this.sectionResultGrid.TabIndex = 0;
             // 
             // groupBox8
@@ -925,7 +989,7 @@
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(828, 65);
+            this.groupBox8.Size = new System.Drawing.Size(845, 65);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "跨区筛选";
@@ -971,7 +1035,6 @@
             this.indexCombox1.Name = "indexCombox1";
             this.indexCombox1.Size = new System.Drawing.Size(107, 20);
             this.indexCombox1.TabIndex = 11;
-            this.indexCombox1.Text = "均价";
             // 
             // endDatePicker3
             // 
@@ -1012,7 +1075,7 @@
             this.groupBox2.Controls.Add(this.clearButton);
             this.groupBox2.Controls.Add(this.cancelButton);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Location = new System.Drawing.Point(1011, 34);
+            this.groupBox2.Location = new System.Drawing.Point(1028, 34);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(242, 556);
             this.groupBox2.TabIndex = 7;
@@ -1074,14 +1137,442 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -2915;
+            this.boardButton.WorkSizeY = -3575;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
+            // 
+            // allToolStripMenuItem
+            // 
+            this.allToolStripMenuItem.Name = "allToolStripMenuItem";
+            this.allToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.allToolStripMenuItem.Text = "全部";
+            // 
+            // equalToolStripMenuItem
+            // 
+            this.equalToolStripMenuItem.Name = "equalToolStripMenuItem";
+            this.equalToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.equalToolStripMenuItem.Text = "开盘＝收盘＝最高＝最低";
+            // 
+            // amplitudeToolStripMenuItem
+            // 
+            this.amplitudeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.amp2ToolStripMenuItem,
+            this.amp0ToolStripMenuItem});
+            this.amplitudeToolStripMenuItem.Name = "amplitudeToolStripMenuItem";
+            this.amplitudeToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.amplitudeToolStripMenuItem.Text = "振幅分档";
+            // 
+            // riseToolStripMenuItem
+            // 
+            this.riseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rise49ToolStripMenuItem,
+            this.decrease49ToolStripMenuItem});
+            this.riseToolStripMenuItem.Name = "riseToolStripMenuItem";
+            this.riseToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.riseToolStripMenuItem.Text = "涨幅分档";
+            // 
+            // amountToolStripMenuItem
+            // 
+            this.amountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.amount09999ToolStripMenuItem,
+            this.amount119999ToolStripMenuItem,
+            this.amount49999ToolStripMenuItem1,
+            this.amount5ToolStripMenuItem2,
+            this.amount9ToolStripMenuItem3,
+            this.amount15ToolStripMenuItem4,
+            this.amount20ToolStripMenuItem,
+            this.amount25ToolStripMenuItem,
+            this.amount30ToolStripMenuItem,
+            this.amount40ToolStripMenuItem});
+            this.amountToolStripMenuItem.Name = "amountToolStripMenuItem";
+            this.amountToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.amountToolStripMenuItem.Text = "总金额分档";
+            // 
+            // turnoverToolStripMenuItem
+            // 
+            this.turnoverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.turnover09999ToolStripMenuItem,
+            this.turnover129999ToolStripMenuItem,
+            this.turnover349999ToolStripMenuItem,
+            this.turnover569999ToolStripMenuItem,
+            this.turnover7ToolStripMenuItem,
+            this.turnover10ToolStripMenuItem1,
+            this.turnover15ToolStripMenuItem,
+            this.turnover20ToolStripMenuItem,
+            this.turnover25ToolStripMenuItem,
+            this.turnover30ToolStripMenuItem,
+            this.turnover35ToolStripMenuItem,
+            this.turnover40ToolStripMenuItem,
+            this.turnover45ToolStripMenuItem,
+            this.turnover50ToolStripMenuItem,
+            this.turnover60ToolStripMenuItem});
+            this.turnoverToolStripMenuItem.Name = "turnoverToolStripMenuItem";
+            this.turnoverToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.turnoverToolStripMenuItem.Text = "换手率分档";
+            // 
+            // timeToolStripMenuItem
+            // 
+            this.timeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2008,
+            this.toolStripMenuItem2009,
+            this.toolStripMenuItem2010,
+            this.toolStripMenuItem2011,
+            this.toolStripMenuItem2012,
+            this.toolStripMenuItem2013,
+            this.toolStripMenuItem2014});
+            this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.timeToolStripMenuItem.Text = "时间分档";
+            // 
+            // amp2ToolStripMenuItem
+            // 
+            this.amp2ToolStripMenuItem.Name = "amp2ToolStripMenuItem";
+            this.amp2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.amp2ToolStripMenuItem.Text = "振幅<2%";
+            // 
+            // amp0ToolStripMenuItem
+            // 
+            this.amp0ToolStripMenuItem.Name = "amp0ToolStripMenuItem";
+            this.amp0ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.amp0ToolStripMenuItem.Text = "振幅=0";
+            // 
+            // rise49ToolStripMenuItem
+            // 
+            this.rise49ToolStripMenuItem.Name = "rise49ToolStripMenuItem";
+            this.rise49ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.rise49ToolStripMenuItem.Text = "卖价=0,涨幅>4.9%";
+            // 
+            // decrease49ToolStripMenuItem
+            // 
+            this.decrease49ToolStripMenuItem.Name = "decrease49ToolStripMenuItem";
+            this.decrease49ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.decrease49ToolStripMenuItem.Text = "买价＝0,涨幅<-4.9%";
+            // 
+            // amount09999ToolStripMenuItem
+            // 
+            this.amount09999ToolStripMenuItem.Name = "amount09999ToolStripMenuItem";
+            this.amount09999ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount09999ToolStripMenuItem.Text = "总金额<0.9999亿";
+            // 
+            // amount119999ToolStripMenuItem
+            // 
+            this.amount119999ToolStripMenuItem.Name = "amount119999ToolStripMenuItem";
+            this.amount119999ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount119999ToolStripMenuItem.Text = "总金额1~1.9999亿";
+            // 
+            // amount49999ToolStripMenuItem1
+            // 
+            this.amount49999ToolStripMenuItem1.Name = "amount49999ToolStripMenuItem1";
+            this.amount49999ToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
+            this.amount49999ToolStripMenuItem1.Text = "总金额2~4.9999亿";
+            // 
+            // amount5ToolStripMenuItem2
+            // 
+            this.amount5ToolStripMenuItem2.Name = "amount5ToolStripMenuItem2";
+            this.amount5ToolStripMenuItem2.Size = new System.Drawing.Size(178, 22);
+            this.amount5ToolStripMenuItem2.Text = "总金额>=5亿";
+            // 
+            // amount9ToolStripMenuItem3
+            // 
+            this.amount9ToolStripMenuItem3.Name = "amount9ToolStripMenuItem3";
+            this.amount9ToolStripMenuItem3.Size = new System.Drawing.Size(178, 22);
+            this.amount9ToolStripMenuItem3.Text = "总金额>9亿";
+            // 
+            // amount15ToolStripMenuItem4
+            // 
+            this.amount15ToolStripMenuItem4.Name = "amount15ToolStripMenuItem4";
+            this.amount15ToolStripMenuItem4.Size = new System.Drawing.Size(178, 22);
+            this.amount15ToolStripMenuItem4.Text = "总金额>15亿";
+            // 
+            // amount20ToolStripMenuItem
+            // 
+            this.amount20ToolStripMenuItem.Name = "amount20ToolStripMenuItem";
+            this.amount20ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount20ToolStripMenuItem.Text = "总金额>20亿";
+            // 
+            // amount25ToolStripMenuItem
+            // 
+            this.amount25ToolStripMenuItem.Name = "amount25ToolStripMenuItem";
+            this.amount25ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount25ToolStripMenuItem.Text = "总金额>25亿";
+            // 
+            // amount30ToolStripMenuItem
+            // 
+            this.amount30ToolStripMenuItem.Name = "amount30ToolStripMenuItem";
+            this.amount30ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount30ToolStripMenuItem.Text = "总金额>30亿";
+            // 
+            // amount40ToolStripMenuItem
+            // 
+            this.amount40ToolStripMenuItem.Name = "amount40ToolStripMenuItem";
+            this.amount40ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount40ToolStripMenuItem.Text = "总金额>40亿";
+            // 
+            // turnover09999ToolStripMenuItem
+            // 
+            this.turnover09999ToolStripMenuItem.Name = "turnover09999ToolStripMenuItem";
+            this.turnover09999ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover09999ToolStripMenuItem.Text = "换手率<0.9999%";
+            // 
+            // turnover129999ToolStripMenuItem
+            // 
+            this.turnover129999ToolStripMenuItem.Name = "turnover129999ToolStripMenuItem";
+            this.turnover129999ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover129999ToolStripMenuItem.Text = "换手率1%~2.9999%";
+            // 
+            // turnover349999ToolStripMenuItem
+            // 
+            this.turnover349999ToolStripMenuItem.Name = "turnover349999ToolStripMenuItem";
+            this.turnover349999ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover349999ToolStripMenuItem.Text = "换手率3%~4.9999%";
+            // 
+            // turnover569999ToolStripMenuItem
+            // 
+            this.turnover569999ToolStripMenuItem.Name = "turnover569999ToolStripMenuItem";
+            this.turnover569999ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover569999ToolStripMenuItem.Text = "换手率5%~6.9999%";
+            // 
+            // turnover7ToolStripMenuItem
+            // 
+            this.turnover7ToolStripMenuItem.Name = "turnover7ToolStripMenuItem";
+            this.turnover7ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover7ToolStripMenuItem.Text = "换手率7%~9.9999%";
+            // 
+            // turnover10ToolStripMenuItem1
+            // 
+            this.turnover10ToolStripMenuItem1.Name = "turnover10ToolStripMenuItem1";
+            this.turnover10ToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.turnover10ToolStripMenuItem1.Text = "换手率>=10%";
+            // 
+            // turnover15ToolStripMenuItem
+            // 
+            this.turnover15ToolStripMenuItem.Name = "turnover15ToolStripMenuItem";
+            this.turnover15ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover15ToolStripMenuItem.Text = "换手率>15%";
+            // 
+            // turnover20ToolStripMenuItem
+            // 
+            this.turnover20ToolStripMenuItem.Name = "turnover20ToolStripMenuItem";
+            this.turnover20ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover20ToolStripMenuItem.Text = "换手率>20%";
+            // 
+            // turnover25ToolStripMenuItem
+            // 
+            this.turnover25ToolStripMenuItem.Name = "turnover25ToolStripMenuItem";
+            this.turnover25ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover25ToolStripMenuItem.Text = "换手率>25%";
+            // 
+            // turnover30ToolStripMenuItem
+            // 
+            this.turnover30ToolStripMenuItem.Name = "turnover30ToolStripMenuItem";
+            this.turnover30ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover30ToolStripMenuItem.Text = "换手率>30%";
+            // 
+            // turnover35ToolStripMenuItem
+            // 
+            this.turnover35ToolStripMenuItem.Name = "turnover35ToolStripMenuItem";
+            this.turnover35ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover35ToolStripMenuItem.Text = "换手率>35%";
+            // 
+            // turnover40ToolStripMenuItem
+            // 
+            this.turnover40ToolStripMenuItem.Name = "turnover40ToolStripMenuItem";
+            this.turnover40ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover40ToolStripMenuItem.Text = "换手率>40%";
+            // 
+            // turnover45ToolStripMenuItem
+            // 
+            this.turnover45ToolStripMenuItem.Name = "turnover45ToolStripMenuItem";
+            this.turnover45ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover45ToolStripMenuItem.Text = "换手率>45%";
+            // 
+            // turnover50ToolStripMenuItem
+            // 
+            this.turnover50ToolStripMenuItem.Name = "turnover50ToolStripMenuItem";
+            this.turnover50ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover50ToolStripMenuItem.Text = "换手率>50%";
+            // 
+            // turnover60ToolStripMenuItem
+            // 
+            this.turnover60ToolStripMenuItem.Name = "turnover60ToolStripMenuItem";
+            this.turnover60ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover60ToolStripMenuItem.Text = "换手率>60%";
+            // 
+            // toolStripMenuItem2008
+            // 
+            this.toolStripMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripMenuItem2008,
+            this.monthToolStripMenuItem2008});
+            this.toolStripMenuItem2008.Name = "toolStripMenuItem2008";
+            this.toolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2008.Text = "2008";
+            // 
+            // toolStripMenuItem2009
+            // 
+            this.toolStripMenuItem2009.Name = "toolStripMenuItem2009";
+            this.toolStripMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2009.Text = "2009";
+            // 
+            // toolStripMenuItem2010
+            // 
+            this.toolStripMenuItem2010.Name = "toolStripMenuItem2010";
+            this.toolStripMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2010.Text = "2010";
+            // 
+            // toolStripMenuItem2011
+            // 
+            this.toolStripMenuItem2011.Name = "toolStripMenuItem2011";
+            this.toolStripMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2011.Text = "2011";
+            // 
+            // toolStripMenuItem2012
+            // 
+            this.toolStripMenuItem2012.Name = "toolStripMenuItem2012";
+            this.toolStripMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2012.Text = "2012";
+            // 
+            // toolStripMenuItem2013
+            // 
+            this.toolStripMenuItem2013.Name = "toolStripMenuItem2013";
+            this.toolStripMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2013.Text = "2013";
+            // 
+            // toolStripMenuItem2014
+            // 
+            this.toolStripMenuItem2014.Name = "toolStripMenuItem2014";
+            this.toolStripMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2014.Text = "2014";
+            // 
+            // seasonToolStripMenuItem2008
+            // 
+            this.seasonToolStripMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripMenuItem2008,
+            this.season2ToolStripMenuItem2008,
+            this.season3ToolStripMenuItem2008,
+            this.season4ToolStripMenuItem2008});
+            this.seasonToolStripMenuItem2008.Name = "seasonToolStripMenuItem2008";
+            this.seasonToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripMenuItem2008.Text = "季度分档";
+            // 
+            // monthToolStripMenuItem2008
+            // 
+            this.monthToolStripMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripMenuItem2008,
+            this.month2ToolStripMenuItem2008,
+            this.month3ToolStripMenuItem2008,
+            this.month4ToolStripMenuItem2008,
+            this.month5ToolStripMenuItem2008,
+            this.month6ToolStripMenuItem2008,
+            this.month7ToolStripMenuItem2008,
+            this.month8ToolStripMenuItem2008,
+            this.month9ToolStripMenuItem2008,
+            this.month10ToolStripMenuItem2008,
+            this.month11ToolStripMenuItem2008,
+            this.month12ToolStripMenuItem2008});
+            this.monthToolStripMenuItem2008.Name = "monthToolStripMenuItem2008";
+            this.monthToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem2008.Text = "月份分档";
+            // 
+            // season1ToolStripMenuItem2008
+            // 
+            this.season1ToolStripMenuItem2008.Name = "season1ToolStripMenuItem2008";
+            this.season1ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripMenuItem2008.Text = "第1季度";
+            // 
+            // season2ToolStripMenuItem2008
+            // 
+            this.season2ToolStripMenuItem2008.Name = "season2ToolStripMenuItem2008";
+            this.season2ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripMenuItem2008.Text = "第2季度";
+            // 
+            // season3ToolStripMenuItem2008
+            // 
+            this.season3ToolStripMenuItem2008.Name = "season3ToolStripMenuItem2008";
+            this.season3ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripMenuItem2008.Text = "第3季度";
+            // 
+            // season4ToolStripMenuItem2008
+            // 
+            this.season4ToolStripMenuItem2008.Name = "season4ToolStripMenuItem2008";
+            this.season4ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripMenuItem2008.Text = "第4季度";
+            // 
+            // month1ToolStripMenuItem2008
+            // 
+            this.month1ToolStripMenuItem2008.Name = "month1ToolStripMenuItem2008";
+            this.month1ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripMenuItem2008.Text = "1月";
+            // 
+            // month2ToolStripMenuItem2008
+            // 
+            this.month2ToolStripMenuItem2008.Name = "month2ToolStripMenuItem2008";
+            this.month2ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripMenuItem2008.Text = "2月";
+            // 
+            // month3ToolStripMenuItem2008
+            // 
+            this.month3ToolStripMenuItem2008.Name = "month3ToolStripMenuItem2008";
+            this.month3ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripMenuItem2008.Text = "3月";
+            // 
+            // month4ToolStripMenuItem2008
+            // 
+            this.month4ToolStripMenuItem2008.Name = "month4ToolStripMenuItem2008";
+            this.month4ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripMenuItem2008.Text = "4月";
+            // 
+            // month5ToolStripMenuItem2008
+            // 
+            this.month5ToolStripMenuItem2008.Name = "month5ToolStripMenuItem2008";
+            this.month5ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripMenuItem2008.Text = "5月";
+            // 
+            // month6ToolStripMenuItem2008
+            // 
+            this.month6ToolStripMenuItem2008.Name = "month6ToolStripMenuItem2008";
+            this.month6ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripMenuItem2008.Text = "6月";
+            // 
+            // month7ToolStripMenuItem2008
+            // 
+            this.month7ToolStripMenuItem2008.Name = "month7ToolStripMenuItem2008";
+            this.month7ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripMenuItem2008.Text = "7月";
+            // 
+            // month8ToolStripMenuItem2008
+            // 
+            this.month8ToolStripMenuItem2008.Name = "month8ToolStripMenuItem2008";
+            this.month8ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripMenuItem2008.Text = "8月";
+            // 
+            // month9ToolStripMenuItem2008
+            // 
+            this.month9ToolStripMenuItem2008.Name = "month9ToolStripMenuItem2008";
+            this.month9ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripMenuItem2008.Text = "9月";
+            // 
+            // month10ToolStripMenuItem2008
+            // 
+            this.month10ToolStripMenuItem2008.Name = "month10ToolStripMenuItem2008";
+            this.month10ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripMenuItem2008.Text = "10月";
+            // 
+            // month11ToolStripMenuItem2008
+            // 
+            this.month11ToolStripMenuItem2008.Name = "month11ToolStripMenuItem2008";
+            this.month11ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripMenuItem2008.Text = "11月";
+            // 
+            // month12ToolStripMenuItem2008
+            // 
+            this.month12ToolStripMenuItem2008.Name = "month12ToolStripMenuItem2008";
+            this.month12ToolStripMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripMenuItem2008.Text = "12月";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 625);
+            this.ClientSize = new System.Drawing.Size(1282, 625);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.boardButton);
@@ -1130,18 +1621,18 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 显示ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设置列ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setColToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private DropButton boardButton;
         private System.Windows.Forms.ContextMenuStrip boardMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem 一地ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 行业版块ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 向上版块ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 向下版愉ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem industryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage rawDataTab;
         private System.Windows.Forms.TabPage nsumTab;
@@ -1222,6 +1713,67 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem equalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amplitudeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem riseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnoverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amp2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amp0ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rise49ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decrease49ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount09999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount119999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount49999ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem amount5ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem amount9ToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem amount15ToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem amount20ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount25ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount30ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount40ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover09999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover129999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover349999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover569999ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover7ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover10ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem turnover15ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover20ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover25ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover30ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover35ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover40ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover45ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover50ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover60ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripMenuItem2008;
     }
 }
 
