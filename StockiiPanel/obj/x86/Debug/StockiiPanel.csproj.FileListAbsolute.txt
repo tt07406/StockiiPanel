@@ -15,3 +15,4 @@ E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Properties.R
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache
 E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe
 E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.pdb
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache

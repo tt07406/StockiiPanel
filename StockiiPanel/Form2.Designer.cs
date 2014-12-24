@@ -1,4 +1,6 @@
-﻿namespace StockiiPanel
+﻿using System.Collections;//在C#中使用ArrayList必须引用Collections类
+
+namespace StockiiPanel
 {
     partial class SNListDialog 
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupNameBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.stockInfoList = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -56,12 +58,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "组名：";
             // 
-            // textBox1
+            // groupNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(569, 21);
-            this.textBox1.TabIndex = 1;
+            this.groupNameBox.Location = new System.Drawing.Point(60, 9);
+            this.groupNameBox.Name = "groupNameBox";
+            this.groupNameBox.Size = new System.Drawing.Size(569, 21);
+            this.groupNameBox.TabIndex = 1;
+            this.groupNameBox.Text = "新建分组1";
             // 
             // groupBox1
             // 
@@ -99,16 +102,20 @@
             // 
             // selectedList
             // 
+            this.selectedList.CheckBoxes = true;
             this.selectedList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.stockID,
             this.stockName});
+            this.selectedList.FullRowSelect = true;
             this.selectedList.GridLines = true;
             this.selectedList.Location = new System.Drawing.Point(19, 22);
             this.selectedList.Name = "selectedList";
-            this.selectedList.Size = new System.Drawing.Size(221, 359);
+            this.selectedList.Size = new System.Drawing.Size(227, 359);
             this.selectedList.TabIndex = 0;
             this.selectedList.UseCompatibleStateImageBehavior = false;
             this.selectedList.View = System.Windows.Forms.View.Details;
+            this.selectedList.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.selectedList_ItemChecked);
+            this.selectedList.SelectedIndexChanged += new System.EventHandler(this.selectedList_SelectedIndexChanged);
             // 
             // stockID
             // 
@@ -138,24 +145,29 @@
             this.allAddButton.TabIndex = 5;
             this.allAddButton.Text = "全部添加";
             this.allAddButton.UseVisualStyleBackColor = true;
+            this.allAddButton.Click += new System.EventHandler(this.allAddButton_Click);
             // 
             // deleteButton
             // 
+            this.deleteButton.Enabled = false;
             this.deleteButton.Location = new System.Drawing.Point(549, 203);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "删除";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // clearButton
             // 
+            this.clearButton.Enabled = false;
             this.clearButton.Location = new System.Drawing.Point(548, 274);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 7;
             this.clearButton.Text = "清空";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // confirmButton
             // 
@@ -165,6 +177,7 @@
             this.confirmButton.TabIndex = 8;
             this.confirmButton.Text = "确定";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // cancelButton
             // 
@@ -174,6 +187,7 @@
             this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // SNListDialog
             // 
@@ -188,7 +202,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.groupNameBox);
             this.Controls.Add(this.label1);
             this.Name = "SNListDialog";
             this.Text = "添加分组对话框";
@@ -203,7 +217,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox groupNameBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button addButton;
@@ -216,5 +230,20 @@
         private System.Windows.Forms.ColumnHeader stockID;
         private System.Windows.Forms.ColumnHeader stockName;
         private System.Windows.Forms.DataGridView stockInfoList;
+        private ArrayList selectStocks;
+
+        public ArrayList SelectStocks
+        {
+            get { return selectStocks; }
+            set { selectStocks = value; }
+        }
+        private string groupName;
+
+        public string GroupName
+        {
+            get { return groupName; }
+            set { groupName = value; }
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;//在C#中使用ArrayList必须引用Collections类
 
 namespace StockiiPanel
 {
@@ -14,7 +15,7 @@ namespace StockiiPanel
         public Form1()
         {
             InitializeComponent();
-           
+            pList = new Dictionary<string, ArrayList>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,8 +59,57 @@ namespace StockiiPanel
 
         private void 添加分组ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SNListDialog dialog = new SNListDialog();
+            SNListDialog dialog = new SNListDialog(pList,"");
             dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                return;
+            }
+
+            string name = dialog.GroupName;
+            ArrayList stocks = dialog.SelectStocks;
+            pList.Add(name, stocks);
+            groupList.Items.Add(name);
+        }
+
+        private Dictionary<String, ArrayList> pList;
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (groupList.SelectedItems.Count == 0)
+            {
+                editToolStripMenuItem.Visible = false;
+                deleteToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                editToolStripMenuItem.Visible = true;
+                deleteToolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedName = groupList.SelectedItem.ToString();
+            SNListDialog dialog = new SNListDialog(pList, selectedName);
+            dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                return;
+            }
+
+            string name = dialog.GroupName;
+            ArrayList stocks = dialog.SelectStocks;
+            pList[name] = stocks;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedName = groupList.SelectedItem.ToString();
+            pList.Remove(selectedName);
+            groupList.Items.Remove(selectedName);
         }
     }
 
@@ -167,6 +217,10 @@ namespace StockiiPanel
 　　             if (mevent.Button.ToString() != "Right")  
 　　             {  
 　　            }  
-　　         }  
+　　         }
+
+           
 　　     } 
+
+   
 }
