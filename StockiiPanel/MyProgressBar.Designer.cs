@@ -35,7 +35,7 @@
             // 
             this.circularProgressBarEx1.BackColor = System.Drawing.Color.White;
             this.circularProgressBarEx1.Location = new System.Drawing.Point(-1, -1);
-            this.circularProgressBarEx1.MainColor = System.Drawing.Color.LimeGreen;
+            this.circularProgressBarEx1.MainColor = System.Drawing.Color.DeepSkyBlue;
             this.circularProgressBarEx1.Name = "circularProgressBarEx1";
             this.circularProgressBarEx1.Size = new System.Drawing.Size(163, 163);
             this.circularProgressBarEx1.TabIndex = 0;

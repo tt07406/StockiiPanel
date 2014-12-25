@@ -452,6 +452,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupList = new System.Windows.Forms.ListBox();
             this.boardButton = new StockiiPanel.DropButton();
+            this.bkWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -3755,8 +3756,14 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -3905;
+            this.boardButton.WorkSizeY = -4125;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
+            // 
+            // bkWorker
+            // 
+            this.bkWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorker_DoWork);
+            this.bkWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorker_ProgressChanged);
+            this.bkWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkWorker_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -4233,6 +4240,7 @@
         private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2014;
         private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2014;
         private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2014;
+        private System.ComponentModel.BackgroundWorker bkWorker;
     }
 }
 

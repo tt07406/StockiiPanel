@@ -19,8 +19,8 @@ namespace StockiiPanel
         public void SetProgressValue(int nValue)
         {
             circularProgressBarEx1.Value = nValue;
-            if (nValue == 99)
-                circularProgressBarEx1.Value = 1;  
+            if (nValue == 100)
+                circularProgressBarEx1.Value = 0;  
         }
     }
 }

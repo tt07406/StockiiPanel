@@ -10,7 +10,7 @@ namespace StockiiPanel
 {
     public class CircularProgressBar : Control
     {
-        private Color mainColor = Color.LimeGreen;
+        private Color mainColor = Color.Blue;
 
         public Color MainColor
         {
@@ -132,13 +132,13 @@ namespace StockiiPanel
                 {
                     SizeF size = e.Graphics.MeasureString(this.value.ToString(), new Font("黑体", 15F, System.Drawing.FontStyle.Bold));
                     //e.Graphics.DrawString(this.value.ToString(), new Font("黑体", 15F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.White), new Point(this.Width / 2 - (int)size.Width / 2 - 1, this.Height / 2 - (int)size.Height / 2 + 2));
-                    e.Graphics.DrawString("Loading", new Font("华文新魏", 12F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.White), new Point(this.Width / 2 - (int)size.Width / 2 - 1, this.Height / 2 - (int)size.Height / 2 + 2));
+                    e.Graphics.DrawString("Loading", new Font("华文新魏", 12F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.White), new Point(this.Width / 2 - (int)size.Width - 1, this.Height / 2 - (int)size.Height / 2 + 2));
                 }
                 else
                 {
                     SizeF size = e.Graphics.MeasureString(this.value.ToString(), new Font("黑体", 15F, System.Drawing.FontStyle.Bold));
                     //e.Graphics.DrawString(this.value.ToString(), new Font("黑体", 15F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.DimGray), new Point(this.Width / 2 - (int)size.Width / 2 - 1, this.Height / 2 - (int)size.Height / 2 + 2));
-                    e.Graphics.DrawString("Loading", new Font("华文新魏", 12F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.DimGray), new Point(this.Width / 2 - (int)size.Width / 2 - 1, this.Height / 2 - (int)size.Height / 2 + 2));
+                    e.Graphics.DrawString("Loading", new Font("华文新魏", 12F, System.Drawing.FontStyle.Bold), new SolidBrush(Color.DimGray), new Point(this.Width / 2 - (int)size.Width  - 1, this.Height / 2 - (int)size.Height / 2 + 2));
                 }
             }
             catch { }

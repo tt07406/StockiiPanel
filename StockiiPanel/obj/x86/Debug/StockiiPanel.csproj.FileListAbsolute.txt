@@ -17,3 +17,4 @@ E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe
 E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.pdb
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.MyProgressBar.resources
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.MyProgressBar.resources

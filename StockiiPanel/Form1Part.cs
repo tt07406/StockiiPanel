@@ -21,6 +21,8 @@ namespace StockiiPanel
         private void ShowProgressBar()
         {
             myHandle = new funHandle(myBar.SetProgressValue);
+          //  myBar.MdiParent = this;
+            myBar.StartPosition = FormStartPosition.CenterScreen;
             myBar.ShowDialog();
         }
 
@@ -32,7 +34,7 @@ namespace StockiiPanel
             MethodInvoker mi = new MethodInvoker(ShowProgressBar);
             this.BeginInvoke(mi);
 
-            System.Threading.Thread.Sleep(1000); // sleep to show window
+            System.Threading.Thread.Sleep(500); // sleep to show window
 
             int i = 0;
             while(!stop)
@@ -40,14 +42,10 @@ namespace StockiiPanel
                 ++i;
                 System.Threading.Thread.Sleep(100);
                 // 这里直接调用代理
-                this.Invoke(this.myHandle, new object[] { (i % 100) });
+                this.Invoke(this.myHandle, new object[] { (i % 101) });
                 if (i > 100)
                     i = 0; 
             }
-
-            stop = false;
-
-            myBar.Close();
         }
 
         private bool stop = false;
