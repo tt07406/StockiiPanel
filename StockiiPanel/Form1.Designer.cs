@@ -212,6 +212,175 @@
             this.month11ToolStripMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
             this.month12ToolStripMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
             this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equalToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amplitudeToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amp2ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amp0ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.riseToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rise49ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decrease49ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amountToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount09999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount119999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount49999ToolStripDownMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount5ToolStripDownMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount9ToolStripDownMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount15ToolStripDownMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount20ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount25ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount30ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amount40ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnoverToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover09999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover129999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover349999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover569999ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover7ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover10ToolStripDownMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover15ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover20ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover25ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover30ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover35ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover40ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover45ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover50ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnover60ToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeToolStripDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2008 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2009 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2011 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2012 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seasonToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season1ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season2ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season3ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.season4ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month1ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month2ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month3ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month4ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month5ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month6ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month7ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month8ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month9ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month10ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month11ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
+            this.month12ToolStripDownMenuItem2014 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.rawDataTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -1619,9 +1788,1219 @@
             // 
             // downToolStripMenuItem
             // 
+            this.downToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allToolStripDownMenuItem,
+            this.equalToolStripDownMenuItem,
+            this.amplitudeToolStripDownMenuItem,
+            this.riseToolStripDownMenuItem,
+            this.amountToolStripDownMenuItem,
+            this.turnoverToolStripDownMenuItem,
+            this.timeToolStripDownMenuItem});
             this.downToolStripMenuItem.Name = "downToolStripMenuItem";
             this.downToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.downToolStripMenuItem.Text = "向下版块";
+            // 
+            // allToolStripDownMenuItem
+            // 
+            this.allToolStripDownMenuItem.Name = "allToolStripDownMenuItem";
+            this.allToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.allToolStripDownMenuItem.Text = "全部";
+            // 
+            // equalToolStripDownMenuItem
+            // 
+            this.equalToolStripDownMenuItem.Name = "equalToolStripDownMenuItem";
+            this.equalToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.equalToolStripDownMenuItem.Text = "开盘＝收盘＝最高＝最低";
+            // 
+            // amplitudeToolStripDownMenuItem
+            // 
+            this.amplitudeToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.amp2ToolStripDownMenuItem,
+            this.amp0ToolStripDownMenuItem});
+            this.amplitudeToolStripDownMenuItem.Name = "amplitudeToolStripDownMenuItem";
+            this.amplitudeToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.amplitudeToolStripDownMenuItem.Text = "振幅分档";
+            // 
+            // amp2ToolStripDownMenuItem
+            // 
+            this.amp2ToolStripDownMenuItem.Name = "amp2ToolStripDownMenuItem";
+            this.amp2ToolStripDownMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.amp2ToolStripDownMenuItem.Text = "振幅<2%";
+            // 
+            // amp0ToolStripDownMenuItem
+            // 
+            this.amp0ToolStripDownMenuItem.Name = "amp0ToolStripDownMenuItem";
+            this.amp0ToolStripDownMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.amp0ToolStripDownMenuItem.Text = "振幅=0";
+            // 
+            // riseToolStripDownMenuItem
+            // 
+            this.riseToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rise49ToolStripDownMenuItem,
+            this.decrease49ToolStripDownMenuItem});
+            this.riseToolStripDownMenuItem.Name = "riseToolStripDownMenuItem";
+            this.riseToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.riseToolStripDownMenuItem.Text = "涨幅分档";
+            // 
+            // rise49ToolStripDownMenuItem
+            // 
+            this.rise49ToolStripDownMenuItem.Name = "rise49ToolStripDownMenuItem";
+            this.rise49ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.rise49ToolStripDownMenuItem.Text = "卖价=0,涨幅>4.9%";
+            // 
+            // decrease49ToolStripDownMenuItem
+            // 
+            this.decrease49ToolStripDownMenuItem.Name = "decrease49ToolStripDownMenuItem";
+            this.decrease49ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.decrease49ToolStripDownMenuItem.Text = "买价＝0,涨幅<-4.9%";
+            // 
+            // amountToolStripDownMenuItem
+            // 
+            this.amountToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.amount09999ToolStripDownMenuItem,
+            this.amount119999ToolStripDownMenuItem,
+            this.amount49999ToolStripDownMenuItem1,
+            this.amount5ToolStripDownMenuItem2,
+            this.amount9ToolStripDownMenuItem3,
+            this.amount15ToolStripDownMenuItem4,
+            this.amount20ToolStripDownMenuItem,
+            this.amount25ToolStripDownMenuItem,
+            this.amount30ToolStripDownMenuItem,
+            this.amount40ToolStripDownMenuItem});
+            this.amountToolStripDownMenuItem.Name = "amountToolStripDownMenuItem";
+            this.amountToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.amountToolStripDownMenuItem.Text = "总金额分档";
+            // 
+            // amount09999ToolStripDownMenuItem
+            // 
+            this.amount09999ToolStripDownMenuItem.Name = "amount09999ToolStripDownMenuItem";
+            this.amount09999ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount09999ToolStripDownMenuItem.Text = "总金额<0.9999亿";
+            // 
+            // amount119999ToolStripDownMenuItem
+            // 
+            this.amount119999ToolStripDownMenuItem.Name = "amount119999ToolStripDownMenuItem";
+            this.amount119999ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount119999ToolStripDownMenuItem.Text = "总金额1~1.9999亿";
+            // 
+            // amount49999ToolStripDownMenuItem1
+            // 
+            this.amount49999ToolStripDownMenuItem1.Name = "amount49999ToolStripDownMenuItem1";
+            this.amount49999ToolStripDownMenuItem1.Size = new System.Drawing.Size(178, 22);
+            this.amount49999ToolStripDownMenuItem1.Text = "总金额2~4.9999亿";
+            // 
+            // amount5ToolStripDownMenuItem2
+            // 
+            this.amount5ToolStripDownMenuItem2.Name = "amount5ToolStripDownMenuItem2";
+            this.amount5ToolStripDownMenuItem2.Size = new System.Drawing.Size(178, 22);
+            this.amount5ToolStripDownMenuItem2.Text = "总金额>=5亿";
+            // 
+            // amount9ToolStripDownMenuItem3
+            // 
+            this.amount9ToolStripDownMenuItem3.Name = "amount9ToolStripDownMenuItem3";
+            this.amount9ToolStripDownMenuItem3.Size = new System.Drawing.Size(178, 22);
+            this.amount9ToolStripDownMenuItem3.Text = "总金额>9亿";
+            // 
+            // amount15ToolStripDownMenuItem4
+            // 
+            this.amount15ToolStripDownMenuItem4.Name = "amount15ToolStripDownMenuItem4";
+            this.amount15ToolStripDownMenuItem4.Size = new System.Drawing.Size(178, 22);
+            this.amount15ToolStripDownMenuItem4.Text = "总金额>15亿";
+            // 
+            // amount20ToolStripDownMenuItem
+            // 
+            this.amount20ToolStripDownMenuItem.Name = "amount20ToolStripDownMenuItem";
+            this.amount20ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount20ToolStripDownMenuItem.Text = "总金额>20亿";
+            // 
+            // amount25ToolStripDownMenuItem
+            // 
+            this.amount25ToolStripDownMenuItem.Name = "amount25ToolStripDownMenuItem";
+            this.amount25ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount25ToolStripDownMenuItem.Text = "总金额>25亿";
+            // 
+            // amount30ToolStripDownMenuItem
+            // 
+            this.amount30ToolStripDownMenuItem.Name = "amount30ToolStripDownMenuItem";
+            this.amount30ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount30ToolStripDownMenuItem.Text = "总金额>30亿";
+            // 
+            // amount40ToolStripDownMenuItem
+            // 
+            this.amount40ToolStripDownMenuItem.Name = "amount40ToolStripDownMenuItem";
+            this.amount40ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.amount40ToolStripDownMenuItem.Text = "总金额>40亿";
+            // 
+            // turnoverToolStripDownMenuItem
+            // 
+            this.turnoverToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.turnover09999ToolStripDownMenuItem,
+            this.turnover129999ToolStripDownMenuItem,
+            this.turnover349999ToolStripDownMenuItem,
+            this.turnover569999ToolStripDownMenuItem,
+            this.turnover7ToolStripDownMenuItem,
+            this.turnover10ToolStripDownMenuItem1,
+            this.turnover15ToolStripDownMenuItem,
+            this.turnover20ToolStripDownMenuItem,
+            this.turnover25ToolStripDownMenuItem,
+            this.turnover30ToolStripDownMenuItem,
+            this.turnover35ToolStripDownMenuItem,
+            this.turnover40ToolStripDownMenuItem,
+            this.turnover45ToolStripDownMenuItem,
+            this.turnover50ToolStripDownMenuItem,
+            this.turnover60ToolStripDownMenuItem});
+            this.turnoverToolStripDownMenuItem.Name = "turnoverToolStripDownMenuItem";
+            this.turnoverToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.turnoverToolStripDownMenuItem.Text = "换手率分档";
+            // 
+            // turnover09999ToolStripDownMenuItem
+            // 
+            this.turnover09999ToolStripDownMenuItem.Name = "turnover09999ToolStripDownMenuItem";
+            this.turnover09999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover09999ToolStripDownMenuItem.Text = "换手率<0.9999%";
+            // 
+            // turnover129999ToolStripDownMenuItem
+            // 
+            this.turnover129999ToolStripDownMenuItem.Name = "turnover129999ToolStripDownMenuItem";
+            this.turnover129999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover129999ToolStripDownMenuItem.Text = "换手率1%~2.9999%";
+            // 
+            // turnover349999ToolStripDownMenuItem
+            // 
+            this.turnover349999ToolStripDownMenuItem.Name = "turnover349999ToolStripDownMenuItem";
+            this.turnover349999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover349999ToolStripDownMenuItem.Text = "换手率3%~4.9999%";
+            // 
+            // turnover569999ToolStripDownMenuItem
+            // 
+            this.turnover569999ToolStripDownMenuItem.Name = "turnover569999ToolStripDownMenuItem";
+            this.turnover569999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover569999ToolStripDownMenuItem.Text = "换手率5%~6.9999%";
+            // 
+            // turnover7ToolStripDownMenuItem
+            // 
+            this.turnover7ToolStripDownMenuItem.Name = "turnover7ToolStripDownMenuItem";
+            this.turnover7ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover7ToolStripDownMenuItem.Text = "换手率7%~9.9999%";
+            // 
+            // turnover10ToolStripDownMenuItem1
+            // 
+            this.turnover10ToolStripDownMenuItem1.Name = "turnover10ToolStripDownMenuItem1";
+            this.turnover10ToolStripDownMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.turnover10ToolStripDownMenuItem1.Text = "换手率>=10%";
+            // 
+            // turnover15ToolStripDownMenuItem
+            // 
+            this.turnover15ToolStripDownMenuItem.Name = "turnover15ToolStripDownMenuItem";
+            this.turnover15ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover15ToolStripDownMenuItem.Text = "换手率>15%";
+            // 
+            // turnover20ToolStripDownMenuItem
+            // 
+            this.turnover20ToolStripDownMenuItem.Name = "turnover20ToolStripDownMenuItem";
+            this.turnover20ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover20ToolStripDownMenuItem.Text = "换手率>20%";
+            // 
+            // turnover25ToolStripDownMenuItem
+            // 
+            this.turnover25ToolStripDownMenuItem.Name = "turnover25ToolStripDownMenuItem";
+            this.turnover25ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover25ToolStripDownMenuItem.Text = "换手率>25%";
+            // 
+            // turnover30ToolStripDownMenuItem
+            // 
+            this.turnover30ToolStripDownMenuItem.Name = "turnover30ToolStripDownMenuItem";
+            this.turnover30ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover30ToolStripDownMenuItem.Text = "换手率>30%";
+            // 
+            // turnover35ToolStripDownMenuItem
+            // 
+            this.turnover35ToolStripDownMenuItem.Name = "turnover35ToolStripDownMenuItem";
+            this.turnover35ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover35ToolStripDownMenuItem.Text = "换手率>35%";
+            // 
+            // turnover40ToolStripDownMenuItem
+            // 
+            this.turnover40ToolStripDownMenuItem.Name = "turnover40ToolStripDownMenuItem";
+            this.turnover40ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover40ToolStripDownMenuItem.Text = "换手率>40%";
+            // 
+            // turnover45ToolStripDownMenuItem
+            // 
+            this.turnover45ToolStripDownMenuItem.Name = "turnover45ToolStripDownMenuItem";
+            this.turnover45ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover45ToolStripDownMenuItem.Text = "换手率>45%";
+            // 
+            // turnover50ToolStripDownMenuItem
+            // 
+            this.turnover50ToolStripDownMenuItem.Name = "turnover50ToolStripDownMenuItem";
+            this.turnover50ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover50ToolStripDownMenuItem.Text = "换手率>50%";
+            // 
+            // turnover60ToolStripDownMenuItem
+            // 
+            this.turnover60ToolStripDownMenuItem.Name = "turnover60ToolStripDownMenuItem";
+            this.turnover60ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.turnover60ToolStripDownMenuItem.Text = "换手率>60%";
+            // 
+            // timeToolStripDownMenuItem
+            // 
+            this.timeToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripDownMenuItem2008,
+            this.ToolStripDownMenuItem2009,
+            this.ToolStripDownMenuItem2010,
+            this.ToolStripDownMenuItem2011,
+            this.ToolStripDownMenuItem2012,
+            this.ToolStripDownMenuItem2013,
+            this.ToolStripDownMenuItem2014});
+            this.timeToolStripDownMenuItem.Name = "timeToolStripDownMenuItem";
+            this.timeToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.timeToolStripDownMenuItem.Text = "时间分档";
+            // 
+            // ToolStripDownMenuItem2008
+            // 
+            this.ToolStripDownMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2008,
+            this.monthToolStripDownMenuItem2008});
+            this.ToolStripDownMenuItem2008.Name = "ToolStripDownMenuItem2008";
+            this.ToolStripDownMenuItem2008.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2008.Text = "2008";
+            // 
+            // seasonToolStripDownMenuItem2008
+            // 
+            this.seasonToolStripDownMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2008,
+            this.season2ToolStripDownMenuItem2008,
+            this.season3ToolStripDownMenuItem2008,
+            this.season4ToolStripDownMenuItem2008});
+            this.seasonToolStripDownMenuItem2008.Name = "seasonToolStripDownMenuItem2008";
+            this.seasonToolStripDownMenuItem2008.Size = new System.Drawing.Size(124, 22);
+            this.seasonToolStripDownMenuItem2008.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2008
+            // 
+            this.season1ToolStripDownMenuItem2008.Name = "season1ToolStripDownMenuItem2008";
+            this.season1ToolStripDownMenuItem2008.Size = new System.Drawing.Size(119, 22);
+            this.season1ToolStripDownMenuItem2008.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2008
+            // 
+            this.season2ToolStripDownMenuItem2008.Name = "season2ToolStripDownMenuItem2008";
+            this.season2ToolStripDownMenuItem2008.Size = new System.Drawing.Size(119, 22);
+            this.season2ToolStripDownMenuItem2008.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2008
+            // 
+            this.season3ToolStripDownMenuItem2008.Name = "season3ToolStripDownMenuItem2008";
+            this.season3ToolStripDownMenuItem2008.Size = new System.Drawing.Size(119, 22);
+            this.season3ToolStripDownMenuItem2008.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2008
+            // 
+            this.season4ToolStripDownMenuItem2008.Name = "season4ToolStripDownMenuItem2008";
+            this.season4ToolStripDownMenuItem2008.Size = new System.Drawing.Size(119, 22);
+            this.season4ToolStripDownMenuItem2008.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2008
+            // 
+            this.monthToolStripDownMenuItem2008.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2008,
+            this.month2ToolStripDownMenuItem2008,
+            this.month3ToolStripDownMenuItem2008,
+            this.month4ToolStripDownMenuItem2008,
+            this.month5ToolStripDownMenuItem2008,
+            this.month6ToolStripDownMenuItem2008,
+            this.month7ToolStripDownMenuItem2008,
+            this.month8ToolStripDownMenuItem2008,
+            this.month9ToolStripDownMenuItem2008,
+            this.month10ToolStripDownMenuItem2008,
+            this.month11ToolStripDownMenuItem2008,
+            this.month12ToolStripDownMenuItem2008});
+            this.monthToolStripDownMenuItem2008.Name = "monthToolStripDownMenuItem2008";
+            this.monthToolStripDownMenuItem2008.Size = new System.Drawing.Size(124, 22);
+            this.monthToolStripDownMenuItem2008.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2008
+            // 
+            this.month1ToolStripDownMenuItem2008.Name = "month1ToolStripDownMenuItem2008";
+            this.month1ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month1ToolStripDownMenuItem2008.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2008
+            // 
+            this.month2ToolStripDownMenuItem2008.Name = "month2ToolStripDownMenuItem2008";
+            this.month2ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month2ToolStripDownMenuItem2008.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2008
+            // 
+            this.month3ToolStripDownMenuItem2008.Name = "month3ToolStripDownMenuItem2008";
+            this.month3ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month3ToolStripDownMenuItem2008.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2008
+            // 
+            this.month4ToolStripDownMenuItem2008.Name = "month4ToolStripDownMenuItem2008";
+            this.month4ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month4ToolStripDownMenuItem2008.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2008
+            // 
+            this.month5ToolStripDownMenuItem2008.Name = "month5ToolStripDownMenuItem2008";
+            this.month5ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month5ToolStripDownMenuItem2008.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2008
+            // 
+            this.month6ToolStripDownMenuItem2008.Name = "month6ToolStripDownMenuItem2008";
+            this.month6ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month6ToolStripDownMenuItem2008.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2008
+            // 
+            this.month7ToolStripDownMenuItem2008.Name = "month7ToolStripDownMenuItem2008";
+            this.month7ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month7ToolStripDownMenuItem2008.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2008
+            // 
+            this.month8ToolStripDownMenuItem2008.Name = "month8ToolStripDownMenuItem2008";
+            this.month8ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month8ToolStripDownMenuItem2008.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2008
+            // 
+            this.month9ToolStripDownMenuItem2008.Name = "month9ToolStripDownMenuItem2008";
+            this.month9ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month9ToolStripDownMenuItem2008.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2008
+            // 
+            this.month10ToolStripDownMenuItem2008.Name = "month10ToolStripDownMenuItem2008";
+            this.month10ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month10ToolStripDownMenuItem2008.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2008
+            // 
+            this.month11ToolStripDownMenuItem2008.Name = "month11ToolStripDownMenuItem2008";
+            this.month11ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month11ToolStripDownMenuItem2008.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2008
+            // 
+            this.month12ToolStripDownMenuItem2008.Name = "month12ToolStripDownMenuItem2008";
+            this.month12ToolStripDownMenuItem2008.Size = new System.Drawing.Size(102, 22);
+            this.month12ToolStripDownMenuItem2008.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2009
+            // 
+            this.ToolStripDownMenuItem2009.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2009,
+            this.monthToolStripDownMenuItem2009});
+            this.ToolStripDownMenuItem2009.Name = "ToolStripDownMenuItem2009";
+            this.ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2009.Text = "2009";
+            // 
+            // seasonToolStripDownMenuItem2009
+            // 
+            this.seasonToolStripDownMenuItem2009.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2009,
+            this.season2ToolStripDownMenuItem2009,
+            this.season3ToolStripDownMenuItem2009,
+            this.season4ToolStripDownMenuItem2009});
+            this.seasonToolStripDownMenuItem2009.Name = "seasonToolStripDownMenuItem2009";
+            this.seasonToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2009.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2009
+            // 
+            this.season1ToolStripDownMenuItem2009.Name = "season1ToolStripDownMenuItem2009";
+            this.season1ToolStripDownMenuItem2009.Size = new System.Drawing.Size(119, 22);
+            this.season1ToolStripDownMenuItem2009.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2009
+            // 
+            this.season2ToolStripDownMenuItem2009.Name = "season2ToolStripDownMenuItem2009";
+            this.season2ToolStripDownMenuItem2009.Size = new System.Drawing.Size(119, 22);
+            this.season2ToolStripDownMenuItem2009.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2009
+            // 
+            this.season3ToolStripDownMenuItem2009.Name = "season3ToolStripDownMenuItem2009";
+            this.season3ToolStripDownMenuItem2009.Size = new System.Drawing.Size(119, 22);
+            this.season3ToolStripDownMenuItem2009.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2009
+            // 
+            this.season4ToolStripDownMenuItem2009.Name = "season4ToolStripDownMenuItem2009";
+            this.season4ToolStripDownMenuItem2009.Size = new System.Drawing.Size(119, 22);
+            this.season4ToolStripDownMenuItem2009.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2009
+            // 
+            this.monthToolStripDownMenuItem2009.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2009,
+            this.month2ToolStripDownMenuItem2009,
+            this.month3ToolStripDownMenuItem2009,
+            this.month4ToolStripDownMenuItem2009,
+            this.month5ToolStripDownMenuItem2009,
+            this.month6ToolStripDownMenuItem2009,
+            this.month7ToolStripDownMenuItem2009,
+            this.month8ToolStripDownMenuItem2009,
+            this.month9ToolStripDownMenuItem2009,
+            this.month10ToolStripDownMenuItem2009,
+            this.month11ToolStripDownMenuItem2009,
+            this.month12ToolStripDownMenuItem2009});
+            this.monthToolStripDownMenuItem2009.Name = "monthToolStripDownMenuItem2009";
+            this.monthToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2009.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2009
+            // 
+            this.month1ToolStripDownMenuItem2009.Name = "month1ToolStripDownMenuItem2009";
+            this.month1ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2009.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2009
+            // 
+            this.month2ToolStripDownMenuItem2009.Name = "month2ToolStripDownMenuItem2009";
+            this.month2ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2009.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2009
+            // 
+            this.month3ToolStripDownMenuItem2009.Name = "month3ToolStripDownMenuItem2009";
+            this.month3ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2009.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2009
+            // 
+            this.month4ToolStripDownMenuItem2009.Name = "month4ToolStripDownMenuItem2009";
+            this.month4ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2009.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2009
+            // 
+            this.month5ToolStripDownMenuItem2009.Name = "month5ToolStripDownMenuItem2009";
+            this.month5ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2009.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2009
+            // 
+            this.month6ToolStripDownMenuItem2009.Name = "month6ToolStripDownMenuItem2009";
+            this.month6ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2009.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2009
+            // 
+            this.month7ToolStripDownMenuItem2009.Name = "month7ToolStripDownMenuItem2009";
+            this.month7ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2009.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2009
+            // 
+            this.month8ToolStripDownMenuItem2009.Name = "month8ToolStripDownMenuItem2009";
+            this.month8ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2009.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2009
+            // 
+            this.month9ToolStripDownMenuItem2009.Name = "month9ToolStripDownMenuItem2009";
+            this.month9ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2009.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2009
+            // 
+            this.month10ToolStripDownMenuItem2009.Name = "month10ToolStripDownMenuItem2009";
+            this.month10ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2009.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2009
+            // 
+            this.month11ToolStripDownMenuItem2009.Name = "month11ToolStripDownMenuItem2009";
+            this.month11ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2009.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2009
+            // 
+            this.month12ToolStripDownMenuItem2009.Name = "month12ToolStripDownMenuItem2009";
+            this.month12ToolStripDownMenuItem2009.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2009.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2010
+            // 
+            this.ToolStripDownMenuItem2010.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2010,
+            this.monthToolStripDownMenuItem2010});
+            this.ToolStripDownMenuItem2010.Name = "ToolStripDownMenuItem2010";
+            this.ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2010.Text = "2010";
+            // 
+            // seasonToolStripDownMenuItem2010
+            // 
+            this.seasonToolStripDownMenuItem2010.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2010,
+            this.season2ToolStripDownMenuItem2010,
+            this.season3ToolStripDownMenuItem2010,
+            this.season4ToolStripDownMenuItem2010});
+            this.seasonToolStripDownMenuItem2010.Name = "seasonToolStripDownMenuItem2010";
+            this.seasonToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2010.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2010
+            // 
+            this.season1ToolStripDownMenuItem2010.Name = "season1ToolStripDownMenuItem2010";
+            this.season1ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripDownMenuItem2010.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2010
+            // 
+            this.season2ToolStripDownMenuItem2010.Name = "season2ToolStripDownMenuItem2010";
+            this.season2ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripDownMenuItem2010.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2010
+            // 
+            this.season3ToolStripDownMenuItem2010.Name = "season3ToolStripDownMenuItem2010";
+            this.season3ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripDownMenuItem2010.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2010
+            // 
+            this.season4ToolStripDownMenuItem2010.Name = "season4ToolStripDownMenuItem2010";
+            this.season4ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripDownMenuItem2010.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2010
+            // 
+            this.monthToolStripDownMenuItem2010.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2010,
+            this.month2ToolStripDownMenuItem2010,
+            this.month3ToolStripDownMenuItem2010,
+            this.month4ToolStripDownMenuItem2010,
+            this.month5ToolStripDownMenuItem2010,
+            this.month6ToolStripDownMenuItem2010,
+            this.month7ToolStripDownMenuItem2010,
+            this.month8ToolStripDownMenuItem2010,
+            this.month9ToolStripDownMenuItem2010,
+            this.month10ToolStripDownMenuItem2010,
+            this.month11ToolStripDownMenuItem2010,
+            this.month12ToolStripDownMenuItem2010});
+            this.monthToolStripDownMenuItem2010.Name = "monthToolStripDownMenuItem2010";
+            this.monthToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2010.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2010
+            // 
+            this.month1ToolStripDownMenuItem2010.Name = "month1ToolStripDownMenuItem2010";
+            this.month1ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2010.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2010
+            // 
+            this.month2ToolStripDownMenuItem2010.Name = "month2ToolStripDownMenuItem2010";
+            this.month2ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2010.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2010
+            // 
+            this.month3ToolStripDownMenuItem2010.Name = "month3ToolStripDownMenuItem2010";
+            this.month3ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2010.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2010
+            // 
+            this.month4ToolStripDownMenuItem2010.Name = "month4ToolStripDownMenuItem2010";
+            this.month4ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2010.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2010
+            // 
+            this.month5ToolStripDownMenuItem2010.Name = "month5ToolStripDownMenuItem2010";
+            this.month5ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2010.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2010
+            // 
+            this.month6ToolStripDownMenuItem2010.Name = "month6ToolStripDownMenuItem2010";
+            this.month6ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2010.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2010
+            // 
+            this.month7ToolStripDownMenuItem2010.Name = "month7ToolStripDownMenuItem2010";
+            this.month7ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2010.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2010
+            // 
+            this.month8ToolStripDownMenuItem2010.Name = "month8ToolStripDownMenuItem2010";
+            this.month8ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2010.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2010
+            // 
+            this.month9ToolStripDownMenuItem2010.Name = "month9ToolStripDownMenuItem2010";
+            this.month9ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2010.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2010
+            // 
+            this.month10ToolStripDownMenuItem2010.Name = "month10ToolStripDownMenuItem2010";
+            this.month10ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2010.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2010
+            // 
+            this.month11ToolStripDownMenuItem2010.Name = "month11ToolStripDownMenuItem2010";
+            this.month11ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2010.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2010
+            // 
+            this.month12ToolStripDownMenuItem2010.Name = "month12ToolStripDownMenuItem2010";
+            this.month12ToolStripDownMenuItem2010.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2010.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2011
+            // 
+            this.ToolStripDownMenuItem2011.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2011,
+            this.monthToolStripDownMenuItem2011});
+            this.ToolStripDownMenuItem2011.Name = "ToolStripDownMenuItem2011";
+            this.ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2011.Text = "2011";
+            // 
+            // seasonToolStripDownMenuItem2011
+            // 
+            this.seasonToolStripDownMenuItem2011.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2011,
+            this.season2ToolStripDownMenuItem2011,
+            this.season3ToolStripDownMenuItem2011,
+            this.season4ToolStripDownMenuItem2011});
+            this.seasonToolStripDownMenuItem2011.Name = "seasonToolStripDownMenuItem2011";
+            this.seasonToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2011.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2011
+            // 
+            this.season1ToolStripDownMenuItem2011.Name = "season1ToolStripDownMenuItem2011";
+            this.season1ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripDownMenuItem2011.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2011
+            // 
+            this.season2ToolStripDownMenuItem2011.Name = "season2ToolStripDownMenuItem2011";
+            this.season2ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripDownMenuItem2011.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2011
+            // 
+            this.season3ToolStripDownMenuItem2011.Name = "season3ToolStripDownMenuItem2011";
+            this.season3ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripDownMenuItem2011.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2011
+            // 
+            this.season4ToolStripDownMenuItem2011.Name = "season4ToolStripDownMenuItem2011";
+            this.season4ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripDownMenuItem2011.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2011
+            // 
+            this.monthToolStripDownMenuItem2011.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2011,
+            this.month2ToolStripDownMenuItem2011,
+            this.month3ToolStripDownMenuItem2011,
+            this.month4ToolStripDownMenuItem2011,
+            this.month5ToolStripDownMenuItem2011,
+            this.month6ToolStripDownMenuItem2011,
+            this.month7ToolStripDownMenuItem2011,
+            this.month8ToolStripDownMenuItem2011,
+            this.month9ToolStripDownMenuItem2011,
+            this.month10ToolStripDownMenuItem2011,
+            this.month11ToolStripDownMenuItem2011,
+            this.month12ToolStripDownMenuItem2011});
+            this.monthToolStripDownMenuItem2011.Name = "monthToolStripDownMenuItem2011";
+            this.monthToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2011.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2011
+            // 
+            this.month1ToolStripDownMenuItem2011.Name = "month1ToolStripDownMenuItem2011";
+            this.month1ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2011.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2011
+            // 
+            this.month2ToolStripDownMenuItem2011.Name = "month2ToolStripDownMenuItem2011";
+            this.month2ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2011.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2011
+            // 
+            this.month3ToolStripDownMenuItem2011.Name = "month3ToolStripDownMenuItem2011";
+            this.month3ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2011.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2011
+            // 
+            this.month4ToolStripDownMenuItem2011.Name = "month4ToolStripDownMenuItem2011";
+            this.month4ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2011.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2011
+            // 
+            this.month5ToolStripDownMenuItem2011.Name = "month5ToolStripDownMenuItem2011";
+            this.month5ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2011.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2011
+            // 
+            this.month6ToolStripDownMenuItem2011.Name = "month6ToolStripDownMenuItem2011";
+            this.month6ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2011.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2011
+            // 
+            this.month7ToolStripDownMenuItem2011.Name = "month7ToolStripDownMenuItem2011";
+            this.month7ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2011.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2011
+            // 
+            this.month8ToolStripDownMenuItem2011.Name = "month8ToolStripDownMenuItem2011";
+            this.month8ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2011.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2011
+            // 
+            this.month9ToolStripDownMenuItem2011.Name = "month9ToolStripDownMenuItem2011";
+            this.month9ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2011.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2011
+            // 
+            this.month10ToolStripDownMenuItem2011.Name = "month10ToolStripDownMenuItem2011";
+            this.month10ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2011.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2011
+            // 
+            this.month11ToolStripDownMenuItem2011.Name = "month11ToolStripDownMenuItem2011";
+            this.month11ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2011.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2011
+            // 
+            this.month12ToolStripDownMenuItem2011.Name = "month12ToolStripDownMenuItem2011";
+            this.month12ToolStripDownMenuItem2011.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2011.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2012
+            // 
+            this.ToolStripDownMenuItem2012.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2012,
+            this.monthToolStripDownMenuItem2012});
+            this.ToolStripDownMenuItem2012.Name = "ToolStripDownMenuItem2012";
+            this.ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2012.Text = "2012";
+            // 
+            // seasonToolStripDownMenuItem2012
+            // 
+            this.seasonToolStripDownMenuItem2012.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2012,
+            this.season2ToolStripDownMenuItem2012,
+            this.season3ToolStripDownMenuItem2012,
+            this.season4ToolStripDownMenuItem2012});
+            this.seasonToolStripDownMenuItem2012.Name = "seasonToolStripDownMenuItem2012";
+            this.seasonToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2012.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2012
+            // 
+            this.season1ToolStripDownMenuItem2012.Name = "season1ToolStripDownMenuItem2012";
+            this.season1ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripDownMenuItem2012.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2012
+            // 
+            this.season2ToolStripDownMenuItem2012.Name = "season2ToolStripDownMenuItem2012";
+            this.season2ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripDownMenuItem2012.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2012
+            // 
+            this.season3ToolStripDownMenuItem2012.Name = "season3ToolStripDownMenuItem2012";
+            this.season3ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripDownMenuItem2012.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2012
+            // 
+            this.season4ToolStripDownMenuItem2012.Name = "season4ToolStripDownMenuItem2012";
+            this.season4ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripDownMenuItem2012.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2012
+            // 
+            this.monthToolStripDownMenuItem2012.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2012,
+            this.month2ToolStripDownMenuItem2012,
+            this.month3ToolStripDownMenuItem2012,
+            this.month4ToolStripDownMenuItem2012,
+            this.month5ToolStripDownMenuItem2012,
+            this.month6ToolStripDownMenuItem2012,
+            this.month7ToolStripDownMenuItem2012,
+            this.month8ToolStripDownMenuItem2012,
+            this.month9ToolStripDownMenuItem2012,
+            this.month10ToolStripDownMenuItem2012,
+            this.month11ToolStripDownMenuItem2012,
+            this.month12ToolStripDownMenuItem2012});
+            this.monthToolStripDownMenuItem2012.Name = "monthToolStripDownMenuItem2012";
+            this.monthToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2012.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2012
+            // 
+            this.month1ToolStripDownMenuItem2012.Name = "month1ToolStripDownMenuItem2012";
+            this.month1ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2012.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2012
+            // 
+            this.month2ToolStripDownMenuItem2012.Name = "month2ToolStripDownMenuItem2012";
+            this.month2ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2012.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2012
+            // 
+            this.month3ToolStripDownMenuItem2012.Name = "month3ToolStripDownMenuItem2012";
+            this.month3ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2012.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2012
+            // 
+            this.month4ToolStripDownMenuItem2012.Name = "month4ToolStripDownMenuItem2012";
+            this.month4ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2012.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2012
+            // 
+            this.month5ToolStripDownMenuItem2012.Name = "month5ToolStripDownMenuItem2012";
+            this.month5ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2012.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2012
+            // 
+            this.month6ToolStripDownMenuItem2012.Name = "month6ToolStripDownMenuItem2012";
+            this.month6ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2012.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2012
+            // 
+            this.month7ToolStripDownMenuItem2012.Name = "month7ToolStripDownMenuItem2012";
+            this.month7ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2012.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2012
+            // 
+            this.month8ToolStripDownMenuItem2012.Name = "month8ToolStripDownMenuItem2012";
+            this.month8ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2012.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2012
+            // 
+            this.month9ToolStripDownMenuItem2012.Name = "month9ToolStripDownMenuItem2012";
+            this.month9ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2012.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2012
+            // 
+            this.month10ToolStripDownMenuItem2012.Name = "month10ToolStripDownMenuItem2012";
+            this.month10ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2012.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2012
+            // 
+            this.month11ToolStripDownMenuItem2012.Name = "month11ToolStripDownMenuItem2012";
+            this.month11ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2012.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2012
+            // 
+            this.month12ToolStripDownMenuItem2012.Name = "month12ToolStripDownMenuItem2012";
+            this.month12ToolStripDownMenuItem2012.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2012.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2013
+            // 
+            this.ToolStripDownMenuItem2013.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2013,
+            this.monthToolStripDownMenuItem2013});
+            this.ToolStripDownMenuItem2013.Name = "ToolStripDownMenuItem2013";
+            this.ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2013.Text = "2013";
+            // 
+            // seasonToolStripDownMenuItem2013
+            // 
+            this.seasonToolStripDownMenuItem2013.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2013,
+            this.season2ToolStripDownMenuItem2013,
+            this.season3ToolStripDownMenuItem2013,
+            this.season4ToolStripDownMenuItem2013});
+            this.seasonToolStripDownMenuItem2013.Name = "seasonToolStripDownMenuItem2013";
+            this.seasonToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2013.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2013
+            // 
+            this.season1ToolStripDownMenuItem2013.Name = "season1ToolStripDownMenuItem2013";
+            this.season1ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripDownMenuItem2013.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2013
+            // 
+            this.season2ToolStripDownMenuItem2013.Name = "season2ToolStripDownMenuItem2013";
+            this.season2ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripDownMenuItem2013.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2013
+            // 
+            this.season3ToolStripDownMenuItem2013.Name = "season3ToolStripDownMenuItem2013";
+            this.season3ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripDownMenuItem2013.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2013
+            // 
+            this.season4ToolStripDownMenuItem2013.Name = "season4ToolStripDownMenuItem2013";
+            this.season4ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripDownMenuItem2013.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2013
+            // 
+            this.monthToolStripDownMenuItem2013.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2013,
+            this.month2ToolStripDownMenuItem2013,
+            this.month3ToolStripDownMenuItem2013,
+            this.month4ToolStripDownMenuItem2013,
+            this.month5ToolStripDownMenuItem2013,
+            this.month6ToolStripDownMenuItem2013,
+            this.month7ToolStripDownMenuItem2013,
+            this.month8ToolStripDownMenuItem2013,
+            this.month9ToolStripDownMenuItem2013,
+            this.month10ToolStripDownMenuItem2013,
+            this.month11ToolStripDownMenuItem2013,
+            this.month12ToolStripDownMenuItem2013});
+            this.monthToolStripDownMenuItem2013.Name = "monthToolStripDownMenuItem2013";
+            this.monthToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2013.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2013
+            // 
+            this.month1ToolStripDownMenuItem2013.Name = "month1ToolStripDownMenuItem2013";
+            this.month1ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2013.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2013
+            // 
+            this.month2ToolStripDownMenuItem2013.Name = "month2ToolStripDownMenuItem2013";
+            this.month2ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2013.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2013
+            // 
+            this.month3ToolStripDownMenuItem2013.Name = "month3ToolStripDownMenuItem2013";
+            this.month3ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2013.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2013
+            // 
+            this.month4ToolStripDownMenuItem2013.Name = "month4ToolStripDownMenuItem2013";
+            this.month4ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2013.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2013
+            // 
+            this.month5ToolStripDownMenuItem2013.Name = "month5ToolStripDownMenuItem2013";
+            this.month5ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2013.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2013
+            // 
+            this.month6ToolStripDownMenuItem2013.Name = "month6ToolStripDownMenuItem2013";
+            this.month6ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2013.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2013
+            // 
+            this.month7ToolStripDownMenuItem2013.Name = "month7ToolStripDownMenuItem2013";
+            this.month7ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2013.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2013
+            // 
+            this.month8ToolStripDownMenuItem2013.Name = "month8ToolStripDownMenuItem2013";
+            this.month8ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2013.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2013
+            // 
+            this.month9ToolStripDownMenuItem2013.Name = "month9ToolStripDownMenuItem2013";
+            this.month9ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2013.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2013
+            // 
+            this.month10ToolStripDownMenuItem2013.Name = "month10ToolStripDownMenuItem2013";
+            this.month10ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2013.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2013
+            // 
+            this.month11ToolStripDownMenuItem2013.Name = "month11ToolStripDownMenuItem2013";
+            this.month11ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2013.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2013
+            // 
+            this.month12ToolStripDownMenuItem2013.Name = "month12ToolStripDownMenuItem2013";
+            this.month12ToolStripDownMenuItem2013.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2013.Text = "12月";
+            // 
+            // ToolStripDownMenuItem2014
+            // 
+            this.ToolStripDownMenuItem2014.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seasonToolStripDownMenuItem2014,
+            this.monthToolStripDownMenuItem2014});
+            this.ToolStripDownMenuItem2014.Name = "ToolStripDownMenuItem2014";
+            this.ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripDownMenuItem2014.Text = "2014";
+            // 
+            // seasonToolStripDownMenuItem2014
+            // 
+            this.seasonToolStripDownMenuItem2014.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.season1ToolStripDownMenuItem2014,
+            this.season2ToolStripDownMenuItem2014,
+            this.season3ToolStripDownMenuItem2014,
+            this.season4ToolStripDownMenuItem2014});
+            this.seasonToolStripDownMenuItem2014.Name = "seasonToolStripDownMenuItem2014";
+            this.seasonToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.seasonToolStripDownMenuItem2014.Text = "季度分档";
+            // 
+            // season1ToolStripDownMenuItem2014
+            // 
+            this.season1ToolStripDownMenuItem2014.Name = "season1ToolStripDownMenuItem2014";
+            this.season1ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.season1ToolStripDownMenuItem2014.Text = "第1季度";
+            // 
+            // season2ToolStripDownMenuItem2014
+            // 
+            this.season2ToolStripDownMenuItem2014.Name = "season2ToolStripDownMenuItem2014";
+            this.season2ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.season2ToolStripDownMenuItem2014.Text = "第2季度";
+            // 
+            // season3ToolStripDownMenuItem2014
+            // 
+            this.season3ToolStripDownMenuItem2014.Name = "season3ToolStripDownMenuItem2014";
+            this.season3ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.season3ToolStripDownMenuItem2014.Text = "第3季度";
+            // 
+            // season4ToolStripDownMenuItem2014
+            // 
+            this.season4ToolStripDownMenuItem2014.Name = "season4ToolStripDownMenuItem2014";
+            this.season4ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.season4ToolStripDownMenuItem2014.Text = "第4季度";
+            // 
+            // monthToolStripDownMenuItem2014
+            // 
+            this.monthToolStripDownMenuItem2014.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.month1ToolStripDownMenuItem2014,
+            this.month2ToolStripDownMenuItem2014,
+            this.month3ToolStripDownMenuItem2014,
+            this.month4ToolStripDownMenuItem2014,
+            this.month5ToolStripDownMenuItem2014,
+            this.month6ToolStripDownMenuItem2014,
+            this.month7ToolStripDownMenuItem2014,
+            this.month8ToolStripDownMenuItem2014,
+            this.month9ToolStripDownMenuItem2014,
+            this.month10ToolStripDownMenuItem2014,
+            this.month11ToolStripDownMenuItem2014,
+            this.month12ToolStripDownMenuItem2014});
+            this.monthToolStripDownMenuItem2014.Name = "monthToolStripDownMenuItem2014";
+            this.monthToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripDownMenuItem2014.Text = "月份分档";
+            // 
+            // month1ToolStripDownMenuItem2014
+            // 
+            this.month1ToolStripDownMenuItem2014.Name = "month1ToolStripDownMenuItem2014";
+            this.month1ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month1ToolStripDownMenuItem2014.Text = "1月";
+            // 
+            // month2ToolStripDownMenuItem2014
+            // 
+            this.month2ToolStripDownMenuItem2014.Name = "month2ToolStripDownMenuItem2014";
+            this.month2ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month2ToolStripDownMenuItem2014.Text = "2月";
+            // 
+            // month3ToolStripDownMenuItem2014
+            // 
+            this.month3ToolStripDownMenuItem2014.Name = "month3ToolStripDownMenuItem2014";
+            this.month3ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month3ToolStripDownMenuItem2014.Text = "3月";
+            // 
+            // month4ToolStripDownMenuItem2014
+            // 
+            this.month4ToolStripDownMenuItem2014.Name = "month4ToolStripDownMenuItem2014";
+            this.month4ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month4ToolStripDownMenuItem2014.Text = "4月";
+            // 
+            // month5ToolStripDownMenuItem2014
+            // 
+            this.month5ToolStripDownMenuItem2014.Name = "month5ToolStripDownMenuItem2014";
+            this.month5ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month5ToolStripDownMenuItem2014.Text = "5月";
+            // 
+            // month6ToolStripDownMenuItem2014
+            // 
+            this.month6ToolStripDownMenuItem2014.Name = "month6ToolStripDownMenuItem2014";
+            this.month6ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month6ToolStripDownMenuItem2014.Text = "6月";
+            // 
+            // month7ToolStripDownMenuItem2014
+            // 
+            this.month7ToolStripDownMenuItem2014.Name = "month7ToolStripDownMenuItem2014";
+            this.month7ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month7ToolStripDownMenuItem2014.Text = "7月";
+            // 
+            // month8ToolStripDownMenuItem2014
+            // 
+            this.month8ToolStripDownMenuItem2014.Name = "month8ToolStripDownMenuItem2014";
+            this.month8ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month8ToolStripDownMenuItem2014.Text = "8月";
+            // 
+            // month9ToolStripDownMenuItem2014
+            // 
+            this.month9ToolStripDownMenuItem2014.Name = "month9ToolStripDownMenuItem2014";
+            this.month9ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month9ToolStripDownMenuItem2014.Text = "9月";
+            // 
+            // month10ToolStripDownMenuItem2014
+            // 
+            this.month10ToolStripDownMenuItem2014.Name = "month10ToolStripDownMenuItem2014";
+            this.month10ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month10ToolStripDownMenuItem2014.Text = "10月";
+            // 
+            // month11ToolStripDownMenuItem2014
+            // 
+            this.month11ToolStripDownMenuItem2014.Name = "month11ToolStripDownMenuItem2014";
+            this.month11ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month11ToolStripDownMenuItem2014.Text = "11月";
+            // 
+            // month12ToolStripDownMenuItem2014
+            // 
+            this.month12ToolStripDownMenuItem2014.Name = "month12ToolStripDownMenuItem2014";
+            this.month12ToolStripDownMenuItem2014.Size = new System.Drawing.Size(152, 22);
+            this.month12ToolStripDownMenuItem2014.Text = "12月";
             // 
             // tabControl
             // 
@@ -2683,6 +4062,175 @@
         private System.Windows.Forms.ToolStripMenuItem month10ToolStripMenuItem2014;
         private System.Windows.Forms.ToolStripMenuItem month11ToolStripMenuItem2014;
         private System.Windows.Forms.ToolStripMenuItem month12ToolStripMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem allToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem equalToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amplitudeToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem riseToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amountToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnoverToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timeToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amp2ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amp0ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rise49ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decrease49ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount09999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount119999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount49999ToolStripDownMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem amount5ToolStripDownMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem amount9ToolStripDownMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem amount15ToolStripDownMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem amount20ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount25ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount30ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amount40ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover09999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover129999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover349999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover569999ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover7ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover10ToolStripDownMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem turnover15ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover20ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover25ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover30ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover35ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover40ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover45ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover50ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnover60ToolStripDownMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2008;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2009;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2010;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2011;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2012;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2013;
+        private System.Windows.Forms.ToolStripMenuItem seasonToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem season1ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem season2ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem season3ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem season4ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month1ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month2ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month3ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month4ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month5ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month6ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month7ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month8ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month9ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month10ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month11ToolStripDownMenuItem2014;
+        private System.Windows.Forms.ToolStripMenuItem month12ToolStripDownMenuItem2014;
     }
 }
 
