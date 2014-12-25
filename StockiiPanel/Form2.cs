@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace StockiiPanel
 {
@@ -17,60 +16,24 @@ namespace StockiiPanel
         /// </summary>
         /// <param name="list">已有的分组</param>
         /// <param name="name">空表示添加分组，否则为要编辑分组的名字</param>
-        public SNListDialog(Dictionary<String, System.Collections.ArrayList> list,string name)
+        /// <param name="ds">股票信息</param>
+        public SNListDialog(Dictionary<String, System.Collections.ArrayList> list,string name,DataSet ds)
         {
             pList = list;
             InitializeComponent();
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
 
-            try
-            {
-                conn = new MySqlConnection(strConn);
-                String sqlId = "select stock_id,stock_name from stock_basic_info order by stock_id";
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            stockInfoList.DataSource = ds;
+            stockInfoList.DataMember = "stock_basic_info";
 
-                DataSet ds = new DataSet();
-                da.Fill(ds, "stock_basic_info");
+            dt = (DataTable)ds.Tables["stock_basic_info"];
 
-                stockInfoList.DataSource = ds;
-                stockInfoList.DataMember = "stock_basic_info";
+            //改变DataGridView的表头
+            stockInfoList.Columns[0].HeaderText = "代码";
+            //设置该列宽度
+            stockInfoList.Columns[0].Width = 50;
 
-                dt = (DataTable)ds.Tables["stock_basic_info"];
-                
-                //改变DataGridView的表头
-                stockInfoList.Columns[0].HeaderText = "代码";
-                //设置该列宽度
-                stockInfoList.Columns[0].Width = 50;
-
-                stockInfoList.Columns[1].HeaderText = "名称";
-                stockInfoList.Columns[1].Width = 128;
-
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("不能连接到数据库");
-                        break;
-                    case 1045:
-                        MessageBox.Show("无效的用户名密码");
-                        break;
-                    case 1049:
-                        MessageBox.Show("数据库不存在");
-                        break;
-                    default:
-                        MessageBox.Show(ex.Message);
-                        break;
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-
+            stockInfoList.Columns[1].HeaderText = "名称";
+            stockInfoList.Columns[1].Width = 128;
 
 
             if (name.Equals(""))
@@ -109,7 +72,6 @@ namespace StockiiPanel
             }
         }
 
-        private MySqlConnection conn;
         private DataTable dt;
 
         private void stockInfoList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
