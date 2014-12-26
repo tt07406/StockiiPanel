@@ -45,7 +45,7 @@ namespace StockiiPanel
             {
                 groupNameBox.Text = name;
                 groupName = name;
-                selectStocks = pList[name];
+                selectStocks = new System.Collections.ArrayList(pList[name]);//传引用
                 int k = selectStocks.Count;
 
                 selectedList.BeginUpdate();

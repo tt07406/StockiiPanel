@@ -18,6 +18,7 @@ namespace StockiiPanel
         private DataTable dt;
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
+        private int errorNo = -1;
 
         public Form1()
         {
@@ -190,14 +191,16 @@ namespace StockiiPanel
             if (groupList.SelectedItems.Count > 0)
             {
                 String name = groupList.SelectedItem.ToString();//取选中的分组
-                ArrayList stocks = pList[name];
+                ArrayList stocks = new ArrayList(pList[name]);
 
-                sqlId += " and B.stock_id ='" + stocks[0].ToString() + "'";
+                sqlId += " and ( B.stock_id ='" + stocks[0].ToString() + "'";
                 stocks.RemoveAt(0);
                 foreach (string stockId in stocks)
                 {
                     sqlId += " or B.stock_id ='" + stockId + "'";
                 }
+                sqlId += ")";
+                //MessageBox.Show(sqlId);
             }
             else
             {
@@ -241,7 +244,7 @@ namespace StockiiPanel
             }
 
             string name = dialog.GroupName;
-            ArrayList stocks = dialog.SelectStocks;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
             pList.Add(name, stocks);
             groupList.Items.Add(name);
         }
@@ -274,7 +277,7 @@ namespace StockiiPanel
             }
 
             string name = dialog.GroupName;
-            ArrayList stocks = dialog.SelectStocks;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
             pList[name] = stocks;
         }
 
@@ -359,13 +362,13 @@ namespace StockiiPanel
             }
             catch (MySqlException ex)
             {
-                e.Result = ex.Number;
+                errorNo = ex.Number;
                 stop = true;
                 e.Cancel = true;  
             }
             catch (Exception )
             {
-                e.Result = 24;
+                errorNo = 24;
                 stop = true;
                 e.Cancel = true;  
             }
@@ -380,7 +383,7 @@ namespace StockiiPanel
             myBar.Close();
             if (stop)//因异常停止
             {
-                switch ((int)e.Result)
+                switch (errorNo)
                 {
                     case 0:
                         MessageBox.Show("超时，不能连接到数据库");
@@ -435,7 +438,7 @@ namespace StockiiPanel
             rawDataGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["bbi_balance"].ToString();
 
             rawDataGrid.Columns[5].HeaderText = "卖价二（元）";
-            rawDataGrid.Columns[5].Width = 100;
+            rawDataGrid.Columns[5].Width = 110;
             rawDataGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["num2_sell_price"].ToString();
 
             rawDataGrid.Columns[6].HeaderText = "现量";
@@ -512,7 +515,7 @@ namespace StockiiPanel
             rawDataGrid.Columns[23].DataPropertyName = ds.Tables[0].Columns["today_begin_price"].ToString();
 
             rawDataGrid.Columns[24].HeaderText = "买入价（元）";
-            rawDataGrid.Columns[24].Width = 100;
+            rawDataGrid.Columns[24].Width = 110;
             rawDataGrid.Columns[24].DataPropertyName = ds.Tables[0].Columns["bought_price"].ToString();
 
             rawDataGrid.Columns[25].HeaderText = "笔涨跌";
