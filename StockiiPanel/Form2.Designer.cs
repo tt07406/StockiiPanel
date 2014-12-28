@@ -86,6 +86,7 @@ namespace StockiiPanel
             this.stockInfoList.ReadOnly = true;
             this.stockInfoList.RowHeadersWidth = 58;
             this.stockInfoList.RowTemplate.Height = 23;
+            this.stockInfoList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.stockInfoList.Size = new System.Drawing.Size(256, 358);
             this.stockInfoList.TabIndex = 0;
             this.stockInfoList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.stockInfoList_DataBindingComplete);
@@ -205,7 +206,7 @@ namespace StockiiPanel
             this.Controls.Add(this.groupNameBox);
             this.Controls.Add(this.label1);
             this.Name = "SNListDialog";
-            this.Text = "添加分组对话框";
+            this.Text = "分组对话框";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).EndInit();
             this.groupBox2.ResumeLayout(false);

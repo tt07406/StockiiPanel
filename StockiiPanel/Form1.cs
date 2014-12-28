@@ -20,6 +20,8 @@ namespace StockiiPanel
         private DataSet ds;
         private int errorNo = -1;
 
+        private CustomDialog customDialog = new CustomDialog();
+
         public Form1()
         {
             InitializeComponent();
@@ -327,7 +329,6 @@ namespace StockiiPanel
             {
                 int j = i + 1;
                 rawDataGrid.Rows[i].HeaderCell.Value = j.ToString();
-
                 
                 //隔行显示不同的颜色
                 if (IsOdd(i))
@@ -408,6 +409,16 @@ namespace StockiiPanel
 
             dt = (DataTable)ds.Tables["stock_day_info"];
 
+            dt.Columns.Add("cir_of_cap_stock_tmp", typeof(decimal));
+            dt.Columns.Add("total_money_tmp", typeof(decimal));
+            foreach (DataRow Row in dt.Rows)
+            {
+                Row["cir_of_cap_stock_tmp"] = Math.Round(Convert.ToDouble(Row["cir_of_cap_stock"].ToString()) / 10000, 4);
+                Row["total_money_tmp"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
+                Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
+            }
+
+
             rawDataGrid.AllowUserToAddRows = false;//不显示最后空白行
             rawDataGrid.EnableHeadersVisualStyles = false;
 
@@ -474,9 +485,10 @@ namespace StockiiPanel
             rawDataGrid.Columns[13].Width = 90;
             rawDataGrid.Columns[13].DataPropertyName = ds.Tables[0].Columns["num2_buy"].ToString();
 
-            rawDataGrid.Columns[14].HeaderText = "流通股本（万股）";
+            rawDataGrid.Columns[14].HeaderText = "流通股本（亿股）";
             rawDataGrid.Columns[14].Width = 130;
-            rawDataGrid.Columns[14].DataPropertyName = ds.Tables[0].Columns["cir_of_cap_stock"].ToString();
+            rawDataGrid.Columns[14].DataPropertyName = ds.Tables[0].Columns["cir_of_cap_stock_tmp"].ToString();
+
 
             rawDataGrid.Columns[15].HeaderText = "内盘";
             rawDataGrid.Columns[15].Width = 80;
@@ -567,7 +579,7 @@ namespace StockiiPanel
             rawDataGrid.Columns[36].Width = 100;
             rawDataGrid.Columns[36].DataPropertyName = ds.Tables[0].Columns["num_per_deal"].ToString();
 
-            rawDataGrid.Columns[37].HeaderText = "总市值（万元）";
+            rawDataGrid.Columns[37].HeaderText = "总市值（亿元）";
             rawDataGrid.Columns[37].Width = 120;
             rawDataGrid.Columns[37].DataPropertyName = ds.Tables[0].Columns["total_value"].ToString();
 
@@ -596,60 +608,60 @@ namespace StockiiPanel
             rawDataGrid.Columns[43].HeaderText = "总金额（亿元）";
             rawDataGrid.Columns[43].HeaderCell.Style.ForeColor = Color.Red;
             rawDataGrid.Columns[43].Width = 120;
-            rawDataGrid.Columns[43].DataPropertyName = ds.Tables[0].Columns["total_money"].ToString();
+            rawDataGrid.Columns[43].DataPropertyName = ds.Tables[0].Columns["total_money_tmp"].ToString();
 
             rawDataGrid.Columns[44].HeaderText = "买价二（元）";
             rawDataGrid.Columns[44].Width = 110;
             rawDataGrid.Columns[44].DataPropertyName = ds.Tables[0].Columns["num2_buy_price"].ToString();
 
-            rawDataGrid.Columns[43].HeaderText = "振幅";
-            rawDataGrid.Columns[43].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[43].Width = 80;
-            rawDataGrid.Columns[43].DataPropertyName = ds.Tables[0].Columns["amplitude_ratio"].ToString();
+            rawDataGrid.Columns[45].HeaderText = "振幅";
+            rawDataGrid.Columns[45].HeaderCell.Style.ForeColor = Color.Red;
+            rawDataGrid.Columns[45].Width = 80;
+            rawDataGrid.Columns[45].DataPropertyName = ds.Tables[0].Columns["amplitude_ratio"].ToString();
 
-            rawDataGrid.Columns[44].HeaderText = "总量";
-            rawDataGrid.Columns[44].Width = 80;
-            rawDataGrid.Columns[44].DataPropertyName = ds.Tables[0].Columns["total_deal_amount"].ToString();
+            rawDataGrid.Columns[46].HeaderText = "总量";
+            rawDataGrid.Columns[46].Width = 80;
+            rawDataGrid.Columns[46].DataPropertyName = ds.Tables[0].Columns["total_deal_amount"].ToString();
 
-            rawDataGrid.Columns[45].HeaderText = "现价流通市值（亿元）";
-            rawDataGrid.Columns[45].Width = 200;
-            rawDataGrid.Columns[45].DataPropertyName = ds.Tables[0].Columns["current_circulation_value"].ToString();
-
-            rawDataGrid.Columns[46].HeaderText = "总股本（万股）";
-            rawDataGrid.Columns[46].Width = 120;
-            rawDataGrid.Columns[46].DataPropertyName = ds.Tables[0].Columns["total_stock"].ToString();
-
-            rawDataGrid.Columns[47].HeaderText = "均价流通市值（亿元）";
+            rawDataGrid.Columns[47].HeaderText = "现价流通市值（亿元）";
             rawDataGrid.Columns[47].Width = 200;
-            rawDataGrid.Columns[47].DataPropertyName = ds.Tables[0].Columns["avg_circulation_value"].ToString();
+            rawDataGrid.Columns[47].DataPropertyName = ds.Tables[0].Columns["current_circulation_value"].ToString();
 
-            rawDataGrid.Columns[48].HeaderText = "多头止损（元）";
+            rawDataGrid.Columns[48].HeaderText = "总股本（亿股）";
             rawDataGrid.Columns[48].Width = 120;
-            rawDataGrid.Columns[48].DataPropertyName = ds.Tables[0].Columns["bull_stop_losses"].ToString();
+            rawDataGrid.Columns[48].DataPropertyName = ds.Tables[0].Columns["total_stock"].ToString();
 
-            rawDataGrid.Columns[49].HeaderText = "卖价一（元）";
-            rawDataGrid.Columns[49].Width = 110;
-            rawDataGrid.Columns[49].DataPropertyName = ds.Tables[0].Columns["num1_sell_price"].ToString();
+            rawDataGrid.Columns[49].HeaderText = "均价流通市值（亿元）";
+            rawDataGrid.Columns[49].Width = 200;
+            rawDataGrid.Columns[49].DataPropertyName = ds.Tables[0].Columns["avg_circulation_value"].ToString();
 
-            rawDataGrid.Columns[50].HeaderText = "每笔换手";
-            rawDataGrid.Columns[50].Width = 100;
-            rawDataGrid.Columns[50].DataPropertyName = ds.Tables[0].Columns["turn_per_deal"].ToString();
+            rawDataGrid.Columns[50].HeaderText = "多头止损（元）";
+            rawDataGrid.Columns[50].Width = 120;
+            rawDataGrid.Columns[50].DataPropertyName = ds.Tables[0].Columns["bull_stop_losses"].ToString();
 
-            rawDataGrid.Columns[51].HeaderText = "活跃度";
-            rawDataGrid.Columns[51].Width = 90;
-            rawDataGrid.Columns[51].DataPropertyName = ds.Tables[0].Columns["activity"].ToString();
+            rawDataGrid.Columns[51].HeaderText = "卖价一（元）";
+            rawDataGrid.Columns[51].Width = 110;
+            rawDataGrid.Columns[51].DataPropertyName = ds.Tables[0].Columns["num1_sell_price"].ToString();
 
-            rawDataGrid.Columns[52].HeaderText = "买价一（元）";
-            rawDataGrid.Columns[52].Width = 110;
-            rawDataGrid.Columns[52].DataPropertyName = ds.Tables[0].Columns["num1_buy_price"].ToString();
+            rawDataGrid.Columns[52].HeaderText = "每笔换手";
+            rawDataGrid.Columns[52].Width = 100;
+            rawDataGrid.Columns[52].DataPropertyName = ds.Tables[0].Columns["turn_per_deal"].ToString();
 
-            rawDataGrid.Columns[53].HeaderText = "买价三（元）";
-            rawDataGrid.Columns[53].Width = 110;
-            rawDataGrid.Columns[53].DataPropertyName = ds.Tables[0].Columns["num3_buy_price"].ToString();
+            rawDataGrid.Columns[53].HeaderText = "活跃度";
+            rawDataGrid.Columns[53].Width = 90;
+            rawDataGrid.Columns[53].DataPropertyName = ds.Tables[0].Columns["activity"].ToString();
 
-            rawDataGrid.Columns[54].HeaderText = "卖价三（元）";
+            rawDataGrid.Columns[54].HeaderText = "买价一（元）";
             rawDataGrid.Columns[54].Width = 110;
-            rawDataGrid.Columns[54].DataPropertyName = ds.Tables[0].Columns["num3_sell_price"].ToString();
+            rawDataGrid.Columns[54].DataPropertyName = ds.Tables[0].Columns["num1_buy_price"].ToString();
+
+            rawDataGrid.Columns[55].HeaderText = "买价三（元）";
+            rawDataGrid.Columns[55].Width = 110;
+            rawDataGrid.Columns[55].DataPropertyName = ds.Tables[0].Columns["num3_buy_price"].ToString();
+
+            rawDataGrid.Columns[56].HeaderText = "卖价三（元）";
+            rawDataGrid.Columns[56].Width = 110;
+            rawDataGrid.Columns[56].DataPropertyName = ds.Tables[0].Columns["num3_sell_price"].ToString();
 
             for (int i = 55; i < rawDataGrid.Columns.Count; ++i)
             {
@@ -662,6 +674,11 @@ namespace StockiiPanel
         private void bkWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             
+        }
+
+        private void setColToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            customDialog.ShowDialog();
         }   
     }
 

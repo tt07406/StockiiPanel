@@ -514,8 +514,9 @@
             // setColToolStripMenuItem
             // 
             this.setColToolStripMenuItem.Name = "setColToolStripMenuItem";
-            this.setColToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.setColToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.setColToolStripMenuItem.Text = "设置列";
+            this.setColToolStripMenuItem.Click += new System.EventHandler(this.setColToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -3805,7 +3806,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -4565;
+            this.boardButton.WorkSizeY = -4620;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
