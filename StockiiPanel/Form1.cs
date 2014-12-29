@@ -8,7 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 using MySql.Data.MySqlClient;
-using System.Threading; 
+using System.Threading;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace StockiiPanel
 {
@@ -20,13 +23,15 @@ namespace StockiiPanel
         private DataSet ds;
         private int errorNo = -1;
 
-        private CustomDialog customDialog = new CustomDialog();
+        private CustomDialog customDialog;
 
         public Form1()
         {
             InitializeComponent();
-            pList = new Dictionary<string, ArrayList>();
+            pList = new SerializableDictionary<string, ArrayList>();
             InitialCombo();
+            customDialog = new CustomDialog();
+            customDialog.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void InitialCombo()
@@ -103,108 +108,26 @@ namespace StockiiPanel
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
-
-            //初始化版块菜单
-            try
+            //反序列化载入分组列表
+            using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
             {
-                conn = new MySqlConnection(strConn);
-                String sqlId = "select * from area_info";
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-                DataSet ds = new DataSet();
-                da.Fill(ds, "area_info");
-
-                DataView dvMenuOptions = new DataView(ds.Tables["area_info"]);
-
-                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
-                {
-                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
-
-                    tsItemParent.Text = rvMain["area_name"].ToString();
-                    tsItemParent.Name = rvMain["area_id"].ToString();
-                    sectionToolStripMenuItem.DropDownItems.Add(tsItemParent);
-                }
-
-                sqlId = "select * from industry_info";
-                cmd = new MySqlCommand(sqlId, conn);
-                da = new MySqlDataAdapter(cmd);
-
-                da.Fill(ds, "industry_info");
-
-                dvMenuOptions = new DataView(ds.Tables["industry_info"]);
-
-                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
-                {
-                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
-
-                    tsItemParent.Text = rvMain["industry_name"].ToString();
-                    tsItemParent.Name = rvMain["industry_id"].ToString();
-                    industryToolStripMenuItem.DropDownItems.Add(tsItemParent);
-                }
-
-                //获取股票基本信息
-                sqlId = "select stock_id,stock_name from stock_basic_info order by stock_id";
-                cmd = new MySqlCommand(sqlId, conn);
-                da = new MySqlDataAdapter(cmd);
-
-                stockDs = new DataSet();
-                da.Fill(stockDs, "stock_basic_info");
-
-                dt = (DataTable)stockDs.Tables["stock_basic_info"];
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
-            catch (MySqlException ex)
+
+            foreach (var dic in pList)
             {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("不能连接到数据库");
-                        break;
-                    case 1045:
-                        MessageBox.Show("无效的用户名密码");
-                        break;
-                    case 1049:
-                        MessageBox.Show("数据库不存在");
-                        break;
-                    case 24:
-                        MessageBox.Show("内存不足");
-                        break;
-                    default:
-                        MessageBox.Show(ex.Message);
-                        break;
-                }
+                groupList.Items.Add(dic.Key);
             }
-            finally
-            {
-                conn.Close();
-            }
+            Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
+            stockDs = Commons.GetStockBasicInfo();
         }
 
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            String startDate = startDatePicker.Value.ToString("yyyy-MM-dd");
-            String endDate = endDatePicker.Value.ToString("yyyy-MM-dd");
 
-            String sqlId = "select * from stock_basic_info as A,stock_day_info as B where A.stock_id=B.stock_id and created between '" + startDate + "' and '" + endDate + "'";
-
-            if (groupList.SelectedItems.Count > 0)
-            {
-                String name = groupList.SelectedItem.ToString();//取选中的分组
-                ArrayList stocks = new ArrayList(pList[name]);
-
-                sqlId += " and ( B.stock_id ='" + stocks[0].ToString() + "'";
-                stocks.RemoveAt(0);
-                foreach (string stockId in stocks)
-                {
-                    sqlId += " or B.stock_id ='" + stockId + "'";
-                }
-                sqlId += ")";
-                //MessageBox.Show(sqlId);
-            }
-            else
+            if (groupList.SelectedItems.Count <= 0)
             {
                 MessageBox.Show("请选择一个分组");
                 return;
@@ -217,7 +140,9 @@ namespace StockiiPanel
             //启动后台线程
             stop = false;
             pageLabel.Text = "0/0";
-            bkWorker.RunWorkerAsync(sqlId);
+
+            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+            bkWorker.RunWorkerAsync(args);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,7 +176,7 @@ namespace StockiiPanel
             groupList.Items.Add(name);
         }
 
-        private Dictionary<String, ArrayList> pList;
+        private SerializableDictionary<String, ArrayList> pList;
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
@@ -335,48 +260,25 @@ namespace StockiiPanel
                 {
                     rawDataGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
                 }
+            }
 
-                //前两行绿色
-                rawDataGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                rawDataGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
-            }   
+ 
         }
 
         private void bkWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            String sqlId = e.Argument.ToString();
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
+            String argStr = e.Argument.ToString();
+            String[] args = argStr.Split(',');
+            String startDate = args[0];
+            String endDate = args[1];
 
-            BackgroundWorker worker = (BackgroundWorker)sender;
-            try
-            {
-                conn = new MySqlConnection(strConn);
+            String name = args[2];//取选中的分组
+            ArrayList stocks = new ArrayList(pList[name]);
 
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-                ds = new DataSet();
-
-                da.Fill(ds, "stock_day_info");
-
-            }
-            catch (MySqlException ex)
-            {
-                errorNo = ex.Number;
-                stop = true;
-                e.Cancel = true;  
-            }
-            catch (Exception )
-            {
-                errorNo = 24;
-                stop = true;
-                e.Cancel = true;  
-            }
-            finally
-            {
-                conn.Close();
-            }
+            ds = new DataSet();
+            object error = errorNo;//装箱
+            stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, 1, 10000, error, ds);
+            errorNo = (int)error;//拆箱
         }
 
         private void bkWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -428,12 +330,12 @@ namespace StockiiPanel
             //设置该列宽度
             rawDataGrid.Columns[0].Width = 70;
             rawDataGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            rawDataGrid.Columns[0].Frozen = true;
+            //rawDataGrid.Columns[0].Frozen = true;
 
             rawDataGrid.Columns[1].HeaderText = "名称";
             rawDataGrid.Columns[1].Width = 80;
             rawDataGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            rawDataGrid.Columns[1].Frozen = true;
+            //rawDataGrid.Columns[1].Frozen = true;
 
             rawDataGrid.Columns[2].HeaderText = "日期";
             rawDataGrid.Columns[2].HeaderCell.Style.ForeColor = Color.Red;
@@ -663,11 +565,12 @@ namespace StockiiPanel
             rawDataGrid.Columns[56].Width = 110;
             rawDataGrid.Columns[56].DataPropertyName = ds.Tables[0].Columns["num3_sell_price"].ToString();
 
-            for (int i = 55; i < rawDataGrid.Columns.Count; ++i)
+            for (int i = Commons.colNum; i < rawDataGrid.Columns.Count; ++i)
             {
                 rawDataGrid.Columns[i].Visible = false;
             }
 
+            SetColumns();
             stop = true;
         }
 
@@ -678,8 +581,100 @@ namespace StockiiPanel
 
         private void setColToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            customDialog.ShowDialog();
-        }   
+            if (rawDataGrid.RowCount > 0)
+            {
+                customDialog.ShowDialog(this);
+
+                SetColumns();
+            }
+            else
+            {
+                MessageBox.Show("查询结果为空，请先查询");
+            }
+               
+        }
+
+        private void SetColumns()
+        {
+            string[] cols = customDialog.StrCollected.Split(',');
+
+            //选中的列可见
+            for (int i = 2; i < Commons.colNum ; ++i)
+            {
+                rawDataGrid.Columns[i].Visible = false;
+            }
+
+            foreach (string col in cols)
+            {
+                if (col == string.Empty)
+                    break;
+
+                int i = Convert.ToInt32(col);
+
+                rawDataGrid.Columns[i + 2].Visible = true;
+            }
+
+            //冻结列
+            rawDataGrid.AutoGenerateColumns = false;
+            for (int i = 0, j = 0; i < rawDataGrid.Columns.Count; ++i)
+            {
+                if (rawDataGrid.Columns[i].Visible)
+                {
+                    j++;
+                }
+                else
+                {
+                    rawDataGrid.Columns[i].Frozen = false;
+                    continue;
+                }
+
+                if (j <= customDialog.FrozenNum)
+                {
+                    rawDataGrid.Columns[i].Frozen = true;
+                }
+                else
+                {
+                    rawDataGrid.Columns[i].Frozen = false;
+                }
+            }
+
+            int coun = rawDataGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                //被冻结的行绿色
+                for (int j = 0; j < rawDataGrid.Columns.Count; ++j)
+                {
+                    if (rawDataGrid.Columns[j].Frozen)
+                        rawDataGrid.Rows[i].Cells[j].Style.BackColor = Color.Lime;
+                    else
+                        rawDataGrid.Rows[i].Cells[j].Style.BackColor = rawDataGrid.Rows[i].DefaultCellStyle.BackColor;
+                }
+            } 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //序列化保存
+            using (FileStream fileStream = new FileStream("group.xml", FileMode.Create))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                xmlFormatter.Serialize(fileStream, this.pList);
+            }
+        }
+
+        private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dt = (DataTable)ds.Tables["stock_day_info"];
+            Commons.ExportDataGridToCSV(dt);
+        }
+
+        private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dt = Commons.StructrueDataTable(rawDataGrid);
+
+            Commons.ExportDataGridToCSV(dt);
+        }
+
     }
 
      /// 说明: 使用此Button时要设置ContextMenuStrip属性值  
@@ -789,7 +784,5 @@ namespace StockiiPanel
 　　         }
            
 　　     } 
-
-        
 
 }

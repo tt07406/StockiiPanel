@@ -71,7 +71,7 @@ namespace StockiiPanel
             stockCheckedListBox.Items.Add("买价三（元）");
             stockCheckedListBox.Items.Add("卖价三（元）");
 
-            for (int i = 0; i < 57; ++i)
+            for (int i = 0; i < Commons.colNum ; ++i)
             {
                 comboBox1.Items.Add(i + "");
             }
@@ -125,6 +125,8 @@ namespace StockiiPanel
                     }
                 }
             }
+
+            this.Close();
         }
 
         private string strCollected = string.Empty;
@@ -140,6 +142,11 @@ namespace StockiiPanel
         {
             get { return strCollected; }
             set { strCollected = value; }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

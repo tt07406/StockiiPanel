@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -57,6 +61,7 @@
     <Compile Include="CircularProgressBarEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Common.cs" />
     <Compile Include="CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>

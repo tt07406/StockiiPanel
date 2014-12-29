@@ -388,6 +388,9 @@
             this.allButton = new System.Windows.Forms.Button();
             this.moreButton = new System.Windows.Forms.Button();
             this.rawDataGrid = new System.Windows.Forms.DataGridView();
+            this.rawContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.saveTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSelectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -462,6 +465,7 @@
             this.rawDataTab.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rawDataGrid)).BeginInit();
+            this.rawContextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.nsumTab.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -514,7 +518,7 @@
             // setColToolStripMenuItem
             // 
             this.setColToolStripMenuItem.Name = "setColToolStripMenuItem";
-            this.setColToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setColToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.setColToolStripMenuItem.Text = "设置列";
             this.setColToolStripMenuItem.Click += new System.EventHandler(this.setColToolStripMenuItem_Click);
             // 
@@ -3094,6 +3098,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.rawDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rawDataGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.rawDataGrid.Location = new System.Drawing.Point(16, 21);
             this.rawDataGrid.Name = "rawDataGrid";
             this.rawDataGrid.ReadOnly = true;
@@ -3102,6 +3107,28 @@
             this.rawDataGrid.Size = new System.Drawing.Size(823, 384);
             this.rawDataGrid.TabIndex = 0;
             this.rawDataGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.rawDataGrid_DataBindingComplete);
+            // 
+            // rawContextMenuStrip
+            // 
+            this.rawContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveTableToolStripMenuItem,
+            this.saveSelectToolStripMenuItem});
+            this.rawContextMenuStrip.Name = "rawContextMenuStrip";
+            this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 48);
+            // 
+            // saveTableToolStripMenuItem
+            // 
+            this.saveTableToolStripMenuItem.Name = "saveTableToolStripMenuItem";
+            this.saveTableToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.saveTableToolStripMenuItem.Text = "导出本页";
+            this.saveTableToolStripMenuItem.Click += new System.EventHandler(this.saveTableToolStripMenuItem_Click);
+            // 
+            // saveSelectToolStripMenuItem
+            // 
+            this.saveSelectToolStripMenuItem.Name = "saveSelectToolStripMenuItem";
+            this.saveSelectToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.saveSelectToolStripMenuItem.Text = "导出选中内容";
+            this.saveSelectToolStripMenuItem.Click += new System.EventHandler(this.saveSelectToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -3712,7 +3739,7 @@
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearButton.Location = new System.Drawing.Point(152, 536);
+            this.clearButton.Location = new System.Drawing.Point(159, 536);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(59, 23);
             this.clearButton.TabIndex = 2;
@@ -3722,7 +3749,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(83, 536);
+            this.cancelButton.Location = new System.Drawing.Point(72, 536);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(63, 23);
             this.cancelButton.TabIndex = 1;
@@ -3806,7 +3833,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -4620;
+            this.boardButton.WorkSizeY = -4950;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
@@ -3822,6 +3849,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -3832,6 +3860,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rawDataGrid)).EndInit();
+            this.rawContextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.nsumTab.ResumeLayout(false);
@@ -4293,6 +4322,9 @@
         private System.ComponentModel.BackgroundWorker bkWorker;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.ContextMenuStrip rawContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem saveTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveSelectToolStripMenuItem;
     }
 }
 
