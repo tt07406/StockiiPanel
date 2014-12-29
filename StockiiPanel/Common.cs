@@ -233,7 +233,7 @@ namespace StockiiPanel
                     {
                         for (int j = 0; j < dt.Columns.Count; j++)
                         {
-                            streamWriter.Write(DelQuota(dt.Rows[i][j].ToString()));
+                            streamWriter.Write(dt.Rows[i][j]);
                             streamWriter.Write(",");
                         }
                         streamWriter.WriteLine("");
@@ -262,11 +262,11 @@ namespace StockiiPanel
         }
 
         /// <summary>
-        /// 从dataGridView中选取行并放到一个新表中
+        /// 从dataGridView中的选中行或所有行并放到一个新表中
         /// </summary>
-        /// <param ></param>
+        /// <param name="isSelect">是否选中行</param>
         /// <returns>datatable</returns>
-        public static DataTable StructrueDataTable(DataGridView dataGridView)
+        public static DataTable StructrueDataTable(DataGridView dataGridView, bool isSelect)
         {
             #region 从dataGridView中选取行并放到一个新表中，然后再绑定到dataGridView中
             DataTable dataTable = new DataTable();
@@ -275,18 +275,36 @@ namespace StockiiPanel
             for (int col = 0; col < colNum; col++)
             {
                 string columnName = dataGridView.Columns[col].HeaderText;
-                dataTable.Columns.Add(columnName);
+                dataTable.Columns.Add(columnName,dataGridView.Columns[col].ValueType);
             }
 
-            for (int r = 0; r < dataGridView.SelectedRows.Count; r++)
+            if (isSelect)
             {
-                DataRow dataRow = dataTable.NewRow();
-                for (int c = 0; c < colNum; c++)
+
+                for (int r = dataGridView.SelectedRows.Count - 1; r >= 0; r--)
                 {
-                    dataRow[c] = dataGridView.SelectedRows[r].Cells[c].Value.ToString();
+                    DataRow dataRow = dataTable.NewRow();
+                    for (int c = 0; c < colNum; c++)
+                    {
+                        dataRow[c] = dataGridView.SelectedRows[r].Cells[c].Value;
+                    }
+                    dataTable.Rows.Add(dataRow);
                 }
-                dataTable.Rows.Add(dataRow);
             }
+            else
+            {
+
+                for (int r = 0; r < dataGridView.Rows.Count; r++)
+                {
+                    DataRow dataRow = dataTable.NewRow();
+                    for (int c = 0; c < colNum; c++)
+                    {
+                        dataRow[c] = dataGridView.Rows[r].Cells[c].Value;
+                    }
+                    dataTable.Rows.Add(dataRow);
+                }
+            }
+
             return dataTable;
             #endregion
         }

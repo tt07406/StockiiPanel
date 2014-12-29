@@ -3104,6 +3104,7 @@
             this.rawDataGrid.ReadOnly = true;
             this.rawDataGrid.RowHeadersWidth = 58;
             this.rawDataGrid.RowTemplate.Height = 23;
+            this.rawDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.rawDataGrid.Size = new System.Drawing.Size(823, 384);
             this.rawDataGrid.TabIndex = 0;
             this.rawDataGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.rawDataGrid_DataBindingComplete);
@@ -3833,7 +3834,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -4950;
+            this.boardButton.WorkSizeY = -5005;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1

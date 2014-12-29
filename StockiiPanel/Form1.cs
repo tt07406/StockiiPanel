@@ -17,7 +17,6 @@ namespace StockiiPanel
 {
     public partial class Form1 : Form
     {
-        private MySqlConnection conn;
         private DataTable dt;
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
@@ -664,13 +663,14 @@ namespace StockiiPanel
 
         private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt = (DataTable)ds.Tables["stock_day_info"];
+            dt = Commons.StructrueDataTable(rawDataGrid, false);
+
             Commons.ExportDataGridToCSV(dt);
         }
 
         private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt = Commons.StructrueDataTable(rawDataGrid);
+            dt = Commons.StructrueDataTable(rawDataGrid,true);
 
             Commons.ExportDataGridToCSV(dt);
         }

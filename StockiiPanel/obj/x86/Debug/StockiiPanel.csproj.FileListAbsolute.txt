@@ -1,6 +1,5 @@
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
-E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Form1.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SNListDialog.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Properties.Resources.resources
@@ -31,3 +30,5 @@ D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Proper
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
+E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomDialog.resources
