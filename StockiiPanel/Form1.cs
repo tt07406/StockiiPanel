@@ -65,9 +65,9 @@ namespace StockiiPanel
 
             compareCombo.Items.Add("指定两天减");
             compareCombo.Items.Add("指定时间段内的和");
-            compareCombo.Items.Add("指定时间段内最小值");
+            compareCombo.Items.Add("指定时间段内最大值比最小值");
             compareCombo.Items.Add("指定两天加");
-            compareCombo.Items.Add("指定时间段内最大值");
+            compareCombo.Items.Add("指定时间段内最大值减最小值");
             compareCombo.Items.Add("两个时间段时涨幅依据分段");
             compareCombo.Items.Add("指定两天比值");
 
@@ -199,6 +199,9 @@ namespace StockiiPanel
 
         private void upItem_Click(object sender, EventArgs e)
         {
+            if (tabControl.SelectedIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+                return;
+
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[3] = item.Name;
@@ -208,6 +211,9 @@ namespace StockiiPanel
 
         private void downItem_Click(object sender, EventArgs e)
         {
+            if (tabControl.SelectedIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+                return;
+
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[4] = item.Name;
@@ -258,6 +264,15 @@ namespace StockiiPanel
             {
                 case 0:
                     bkWorker.RunWorkerAsync(args);
+                    break;
+                case 1:
+                    sumWorker.RunWorkerAsync(args);
+                    break;
+                case 2:
+                    customWorker.RunWorkerAsync(args);
+                    break;
+                case 3:
+                    crossWorker.RunWorkerAsync(args);
                     break;
                 default:
                     break;
@@ -811,14 +826,46 @@ namespace StockiiPanel
 
         private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt = Commons.StructrueDataTable(rawDataGrid, false);
-
+            switch (tabControl.SelectedIndex)
+            {
+                case 0:
+                    dt = Commons.StructrueDataTable(rawDataGrid, false);
+                    break;
+                case 1:
+                    dt = Commons.StructrueDataTable(ndayGrid, false);
+                    break;
+                case 2:
+                    dt = Commons.StructrueDataTable(calResultGrid, false);
+                    break;
+                case 3:
+                    dt = Commons.StructrueDataTable(sectionResultGrid, false);
+                    break;
+                default:
+                    break;
+            }
+            
             Commons.ExportDataGridToCSV(dt);
         }
 
         private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt = Commons.StructrueDataTable(rawDataGrid,true);
+            switch (tabControl.SelectedIndex)
+            {
+                case 0:
+                    dt = Commons.StructrueDataTable(rawDataGrid, true);
+                    break;
+                case 1:
+                    dt = Commons.StructrueDataTable(ndayGrid, true);
+                    break;
+                case 2:
+                    dt = Commons.StructrueDataTable(calResultGrid, true);
+                    break;
+                case 3:
+                    dt = Commons.StructrueDataTable(sectionResultGrid, true);
+                    break;
+                default:
+                    break;
+            }
 
             Commons.ExportDataGridToCSV(dt);
         }
@@ -889,15 +936,62 @@ namespace StockiiPanel
 
         private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            if (rawDataGrid.RowCount > 0)
+            switch (tabControl.SelectedIndex)
             {
-                for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                    rawContextMenuStrip.Items[i].Visible = true;
-            }
-            else
-            {
-                for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                    rawContextMenuStrip.Items[i].Visible = false;
+                case 0:
+                    if (rawDataGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    break;
+                case 1:
+                    if (ndayGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    break;
+                case 2:
+                    if (calResultGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    break;
+                case 3:
+                    if (sectionResultGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -941,6 +1035,104 @@ namespace StockiiPanel
             endDatePicker1.Value = endDatePicker3.Value;
             endDatePicker2.Value = endDatePicker3.Value;
             endDatePicker.Value = endDatePicker3.Value;
+        }
+
+        private void searchButton1_Click(object sender, EventArgs e)
+        {
+            searchTab(1);
+        }
+
+        private void sumWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String argStr = e.Argument.ToString();
+            String[] args = argStr.Split(',');
+            String startDate = args[0];
+            String endDate = args[1];
+
+            ds = new DataSet();
+            object error = errorNo;//装箱
+            int type = 1;
+            if (daySumButton.Checked)
+            {
+                type = 1;
+            }
+            else if (weekSumButton.Checked)
+            {
+                type = 2;
+            }
+            else if (monthSumButton.Checked)
+            {
+                type = 3;
+            }
+
+            if (args[2] != string.Empty)//自选
+            {
+                String name = args[2];//取选中的分组
+                ArrayList stocks = new ArrayList(pList[name]);
+                
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+            }
+            else //版块
+            {
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+            }
+
+            errorNo = (int)error;//拆箱
+        }
+
+        private void customWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String argStr = e.Argument.ToString();
+            String[] args = argStr.Split(',');
+            String startDate = args[0];
+            String endDate = args[1];
+
+            ds = new DataSet();
+            object error = errorNo;//装箱
+
+            if (args[2] != string.Empty)//自选
+            {
+                String name = args[2];//取选中的分组
+                ArrayList stocks = new ArrayList(pList[name]);
+
+                stop = Commons.GetStockDaysDiff(stocks, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, error, ds);
+            }
+            else //版块
+            {
+                stop = Commons.GetStockDaysDiffBoard(record, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, error, ds);
+            }
+
+            errorNo = (int)error;//拆箱
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            searchTab(2);
+        }
+
+        private void crossWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String argStr = e.Argument.ToString();
+            String[] args = argStr.Split(',');
+            String startDate = args[0];
+            String endDate = args[1];
+
+            ds = new DataSet();
+            object error = errorNo;//装箱
+
+            if (args[2] != string.Empty)//自选
+            {
+                String name = args[2];//取选中的分组
+                ArrayList stocks = new ArrayList(pList[name]);
+
+                stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
+            }
+            else //版块
+            {
+                stop = Commons.GetCrossInfoCmdBoard(record,Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
+            }
+
+            errorNo = (int)error;//拆箱
         }
 
     }

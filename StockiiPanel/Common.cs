@@ -348,5 +348,132 @@ namespace StockiiPanel
             bool stop = false;
             return stop;
         }
+
+        /// <summary>
+        /// 查询股票N日和
+        /// </summary>
+        /// <param name="stockid">股票市场中股票的id号</param>
+        /// <param name="type">类型，1日和，2周和，3月和</param>
+        /// <param name="num">参数</param>
+        /// <param name="sumname">求和的指标名称</param>
+        /// <param name="sumtype">求和类型</param>
+        /// <param name="sortname">排序字段</param>
+        /// <param name="asc">升序或者降序排序</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="page">分页查询中的第几页</param>
+        /// <param name="pagesize">分页查询中，每页查询的数量</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <param name="totalpage">总页数</param>
+        /// <returns></returns>
+        public static bool GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        {
+            bool stop = false;
+
+            return stop;
+        }
+
+        /// <summary>
+        /// 查询股票N日和,区分版块
+        /// </summary>
+        /// <param name="record">版块记录</param>
+        /// <param name="type">类型，1日和，2周和，3月和</param>
+        /// <param name="num">参数</param>
+        /// <param name="sumname">求和的指标名称</param>
+        /// <param name="sumtype">求和类型</param>
+        /// <param name="sortname">排序字段</param>
+        /// <param name="asc">升序或者降序排序</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="page">分页查询中的第几页</param>
+        /// <param name="pagesize">分页查询中，每页查询的数量</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <param name="totalpage">总页数</param>
+        /// <returns></returns>
+        public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        {
+            bool stop = false;
+
+            return stop;
+        }
+
+        /// <summary>
+        /// 查询股票的自定义计算结果
+        /// </summary>
+        /// <param name="stockid">股票市场中股票的id号</param>
+        /// <param name="min">筛选最小值</param>
+        /// <param name="max">筛选最大值</param>
+        /// <param name="optname">自定义计算的指标名</param>
+        /// <param name="opt">自定义计算方式</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <returns></returns>
+        public static bool GetStockDaysDiff(ArrayList stockid, double min, double max, String optname, String opt, String startDate, String endDate, object errorNo, DataSet ds)
+        {
+            bool stop = false;
+
+            return stop;
+        }
+
+        /// <summary>
+        /// 查询股票的自定义计算结果，区分版块
+        /// </summary>
+        /// <param name="record">版块记录</param>
+        /// <param name="min">筛选最小值</param>
+        /// <param name="max">筛选最大值</param>
+        /// <param name="optname">自定义计算的指标名</param>
+        /// <param name="opt">自定义计算方式</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <returns></returns>
+        public static bool GetStockDaysDiffBoard(Dictionary<int, string> record, double min, double max, String optname, String opt, String startDate, String endDate, object errorNo, DataSet ds)
+        {
+            bool stop = false;
+
+            return stop;
+        }
+
+        /// <summary>
+        /// 查询股票跨区的信息
+        /// </summary>
+        /// <param name="weight">跨区的权重值</param>
+        /// <param name="optname">自定义计算的指标名</param>
+        /// <param name="opt">自定义计算方式</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <returns></returns>
+        public static bool GetCrossInfoCmd(double weight, String optname, String startDate, String endDate, object errorNo, DataSet ds)
+        {
+            bool stop = false;
+
+            return stop;
+        }
+
+        /// <summary>
+        /// 查询股票跨区的信息，区分版块
+        /// </summary>
+        /// <param name="record">版块记录</param>
+        /// <param name="weight">跨区的权重值</param>
+        /// <param name="optname">自定义计算的指标名</param>
+        /// <param name="opt">自定义计算方式</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="errorNo">错误码</param>
+        /// <param name="ds">结果集</param>
+        /// <returns></returns>
+        public static bool GetCrossInfoCmdBoard(Dictionary<int, string> record, double weight, String optname, String startDate, String endDate, object errorNo, DataSet ds)
+        {
+            bool stop = false;
+
+            return stop;
+        }
     }
 }

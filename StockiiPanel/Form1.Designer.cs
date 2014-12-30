@@ -391,6 +391,8 @@
             this.rawContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveSelectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.combinePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.combineSelectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -458,6 +460,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.boardButton = new StockiiPanel.DropButton();
+            this.sumWorker = new System.ComponentModel.BackgroundWorker();
+            this.customWorker = new System.ComponentModel.BackgroundWorker();
+            this.crossWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -3096,6 +3101,7 @@
             // 
             this.rawDataGrid.AllowUserToAddRows = false;
             this.rawDataGrid.AllowUserToDeleteRows = false;
+            this.rawDataGrid.AllowUserToResizeRows = false;
             this.rawDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -3115,9 +3121,11 @@
             // 
             this.rawContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveTableToolStripMenuItem,
-            this.saveSelectToolStripMenuItem});
+            this.saveSelectToolStripMenuItem,
+            this.combinePageToolStripMenuItem,
+            this.combineSelectToolStripMenuItem});
             this.rawContextMenuStrip.Name = "rawContextMenuStrip";
-            this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 48);
+            this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 92);
             this.rawContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.rawContextMenuStrip_Opening);
             // 
             // saveTableToolStripMenuItem
@@ -3133,6 +3141,18 @@
             this.saveSelectToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.saveSelectToolStripMenuItem.Text = "导出选中内容";
             this.saveSelectToolStripMenuItem.Click += new System.EventHandler(this.saveSelectToolStripMenuItem_Click);
+            // 
+            // combinePageToolStripMenuItem
+            // 
+            this.combinePageToolStripMenuItem.Name = "combinePageToolStripMenuItem";
+            this.combinePageToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.combinePageToolStripMenuItem.Text = "拼接本页";
+            // 
+            // combineSelectToolStripMenuItem
+            // 
+            this.combineSelectToolStripMenuItem.Name = "combineSelectToolStripMenuItem";
+            this.combineSelectToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.combineSelectToolStripMenuItem.Text = "拼接所选";
             // 
             // groupBox1
             // 
@@ -3254,13 +3274,16 @@
             // 
             // ndayGrid
             // 
+            this.ndayGrid.AllowUserToResizeRows = false;
             this.ndayGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ndayGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ndayGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.ndayGrid.Location = new System.Drawing.Point(7, 20);
             this.ndayGrid.Name = "ndayGrid";
             this.ndayGrid.RowTemplate.Height = 23;
+            this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ndayGrid.Size = new System.Drawing.Size(1565, 361);
             this.ndayGrid.TabIndex = 0;
             // 
@@ -3294,6 +3317,7 @@
             this.searchButton1.TabIndex = 12;
             this.searchButton1.Text = "查询";
             this.searchButton1.UseVisualStyleBackColor = true;
+            this.searchButton1.Click += new System.EventHandler(this.searchButton1_Click);
             // 
             // typeCombo
             // 
@@ -3413,13 +3437,16 @@
             // 
             // calResultGrid
             // 
+            this.calResultGrid.AllowUserToResizeRows = false;
             this.calResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.calResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.calResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.calResultGrid.Location = new System.Drawing.Point(7, 20);
             this.calResultGrid.Name = "calResultGrid";
             this.calResultGrid.RowTemplate.Height = 23;
+            this.calResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.calResultGrid.Size = new System.Drawing.Size(1575, 398);
             this.calResultGrid.TabIndex = 0;
             // 
@@ -3516,6 +3543,7 @@
             this.calculateButton.TabIndex = 12;
             this.calculateButton.Text = "计算";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // compareIndexCombo
             // 
@@ -3628,13 +3656,16 @@
             // 
             // sectionResultGrid
             // 
+            this.sectionResultGrid.AllowUserToResizeRows = false;
             this.sectionResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.sectionResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sectionResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.sectionResultGrid.Location = new System.Drawing.Point(16, 21);
             this.sectionResultGrid.Name = "sectionResultGrid";
             this.sectionResultGrid.RowTemplate.Height = 23;
+            this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.sectionResultGrid.Size = new System.Drawing.Size(1559, 427);
             this.sectionResultGrid.TabIndex = 0;
             // 
@@ -3844,8 +3875,20 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -5500;
+            this.boardButton.WorkSizeY = -5885;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
+            // 
+            // sumWorker
+            // 
+            this.sumWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sumWorker_DoWork);
+            // 
+            // customWorker
+            // 
+            this.customWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customWorker_DoWork);
+            // 
+            // crossWorker
+            // 
+            this.crossWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.crossWorker_DoWork);
             // 
             // Form1
             // 
@@ -4336,6 +4379,11 @@
         private System.Windows.Forms.ContextMenuStrip rawContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem saveTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveSelectToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker sumWorker;
+        private System.ComponentModel.BackgroundWorker customWorker;
+        private System.ComponentModel.BackgroundWorker crossWorker;
+        private System.Windows.Forms.ToolStripMenuItem combinePageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem combineSelectToolStripMenuItem;
     }
 }
 
