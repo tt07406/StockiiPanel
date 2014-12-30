@@ -23,6 +23,9 @@ namespace StockiiPanel
         /// </summary>
         private void ShowProgressBar()
         {
+            if (myBar == null || myBar.IsDisposed)
+                myBar = new MyProgressBar();
+
             myHandle = new funHandle(myBar.SetProgressValue);
           //  myBar.MdiParent = this;
             myBar.StartPosition = FormStartPosition.CenterScreen;

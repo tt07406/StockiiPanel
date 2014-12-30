@@ -19,6 +19,8 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\Stocki
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomDialog.resources
+E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomDialog.resources
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.pdb
@@ -30,5 +32,3 @@ D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Proper
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
-E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomDialog.resources

@@ -25,6 +25,8 @@ namespace StockiiPanel
         private int page;//第几页
         private int pagesize;//页大小
 
+        private Dictionary<int, string> record;//上次记录
+
         private CustomDialog customDialog;
 
         public Form1()
@@ -34,6 +36,7 @@ namespace StockiiPanel
             InitialCombo();
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
+            record = new Dictionary<int, string>();
         }
 
         private void InitialCombo()
@@ -123,19 +126,110 @@ namespace StockiiPanel
             }
             Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
             stockDs = Commons.GetStockBasicInfo();
+
+            //为版块菜单增加事件处理
+            for (int i = 0; i < sectionToolStripMenuItem.DropDownItems.Count; ++i)
+            {
+                sectionToolStripMenuItem.DropDownItems[i].Click += new EventHandler(sectionItem_Click);
+            }
+
+            for (int i = 0; i < industryToolStripMenuItem.DropDownItems.Count; ++i)
+            {
+                industryToolStripMenuItem.DropDownItems[i].Click += new EventHandler(industryItem_Click);
+            }
+
+            foreach (ToolStripMenuItem c in upToolStripMenuItem.DropDownItems)
+            {
+                if (!c.HasDropDownItems)
+                    c.Click += new EventHandler(upItem_Click);
+
+                foreach (ToolStripMenuItem dc in c.DropDownItems)
+                {
+                    if (!dc.HasDropDownItems)
+                        dc.Click += new EventHandler(upItem_Click);
+
+                    foreach (ToolStripMenuItem sdc in dc.DropDownItems)
+                    {
+                        foreach (ToolStripMenuItem ssdc in sdc.DropDownItems)
+                        {
+                            ssdc.Click += new EventHandler(upItem_Click);
+                        }
+                    }
+                }
+            }
+
+            foreach (ToolStripMenuItem c in downToolStripMenuItem.DropDownItems)
+            {
+                if (!c.HasDropDownItems)
+                    c.Click += new EventHandler(downItem_Click);
+
+                foreach (ToolStripMenuItem dc in c.DropDownItems)
+                {
+                    if (!dc.HasDropDownItems)
+                        dc.Click += new EventHandler(downItem_Click);
+
+                    foreach (ToolStripMenuItem sdc in dc.DropDownItems)
+                    {
+                        foreach (ToolStripMenuItem ssdc in sdc.DropDownItems)
+                        {
+                            ssdc.Click += new EventHandler(downItem_Click);
+                        }
+                    }
+                }
+            }
         }
 
+        private void sectionItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            record.Clear();
+            record[1] = item.Name;
 
-        private void searchButton_Click(object sender, EventArgs e)
+            searchTab(tabControl.SelectedIndex);
+        }
+
+        private void industryItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            record.Clear();
+            record[2] = item.Name;
+
+            searchTab(tabControl.SelectedIndex);
+        }
+
+        private void upItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            record.Clear();
+            record[3] = item.Name;
+
+            searchTab(tabControl.SelectedIndex);
+        }
+
+        private void downItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            record.Clear();
+            record[4] = item.Name;
+
+            searchTab(tabControl.SelectedIndex);
+        }
+
+        private void searchTab(int type)
         {
             if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
             {
                 return;
             }
 
-            if (groupList.SelectedItems.Count <= 0)
+            if (groupList.Visible == true && groupList.SelectedItems.Count == 0)
             {
                 MessageBox.Show("请选择一个分组");
+                return;
+            }
+            else if (groupList.Visible == false && record.Count == 0)
+            {
+                MessageBox.Show("请选择一个版块");
                 return;
             }
 
@@ -150,8 +244,30 @@ namespace StockiiPanel
             page = 1;
             pagesize = 10000;
             totalPages = 1;
-            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
-            bkWorker.RunWorkerAsync(args);
+            String args;
+            if (groupList.Visible)//自选
+            {
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+            }
+            else
+            {
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + ",";
+            }
+
+            switch (type)
+            {
+                case 0:
+                    bkWorker.RunWorkerAsync(args);
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            searchTab(0);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -283,13 +399,20 @@ namespace StockiiPanel
             String startDate = args[0];
             String endDate = args[1];
 
-            String name = args[2];//取选中的分组
-            ArrayList stocks = new ArrayList(pList[name]);
-
             ds = new DataSet();
             object error = errorNo;//装箱
 
-            stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+            if (args[2] != string.Empty)//自选
+            {
+                String name = args[2];//取选中的分组
+                ArrayList stocks = new ArrayList(pList[name]);
+                stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+            }
+            else //版块
+            {
+                stop = Commons.GetStockDayInfoBoard(record, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+            }
+
             errorNo = (int)error;//拆箱
         }
 
@@ -321,10 +444,10 @@ namespace StockiiPanel
 
             dt = (DataTable)ds.Tables["stock_day_info"];
 
-            if (dt.Rows.Count == 0)
+            if (dt == null || dt.Rows.Count == 0)
             {
-                MessageBox.Show("无查询结果");
                 stop = true;
+                MessageBox.Show("无查询结果");               
                 return;
             }
 

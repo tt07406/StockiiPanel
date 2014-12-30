@@ -18,6 +18,15 @@ namespace StockiiPanel
         private static MySqlConnection conn;
         public static int colNum = 57;
 
+        //版块分类
+        enum Board
+        {
+            Section = 1,
+            Industry = 2,
+            Up = 3,
+            Down = 4
+        }
+
         /// <summary>
         /// 查询股票所有分组信息，包括地区和行业两种
         /// </summary>
@@ -320,6 +329,24 @@ namespace StockiiPanel
         public static bool isTradeDay(String date)
         {          
             return true;
+        }
+
+        /// <summary>
+        /// 查询股票所有详细信息，区分版块
+        /// </summary>
+        /// <param name="record">版块记录</param>
+        /// <param name="sortname">排序字段</param>
+        /// <param name="asc">升序或者降序排序</param>
+        /// <param name="startDate">查询起始时间点</param>
+        /// <param name="endDate">查询结束时间点</param>
+        /// <param name="page">分页查询中的第几页</param>
+        /// <param name="pagesize">分页查询中，每页查询的数量</param>
+        /// <param name="totalpage">总页数</param>
+        /// <returns></returns>
+        public static bool GetStockDayInfoBoard(Dictionary<int,string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        {
+            bool stop = false;
+            return stop;
         }
     }
 }
