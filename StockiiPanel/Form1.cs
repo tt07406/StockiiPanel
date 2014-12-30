@@ -21,6 +21,9 @@ namespace StockiiPanel
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
         private int errorNo = -1;
+        private object totalPages;//总页数
+        private int page;//第几页
+        private int pagesize;//页大小
 
         private CustomDialog customDialog;
 
@@ -125,6 +128,10 @@ namespace StockiiPanel
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
+            {
+                return;
+            }
 
             if (groupList.SelectedItems.Count <= 0)
             {
@@ -140,6 +147,9 @@ namespace StockiiPanel
             stop = false;
             pageLabel.Text = "0/0";
 
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
             String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
             bkWorker.RunWorkerAsync(args);
         }
@@ -156,7 +166,9 @@ namespace StockiiPanel
 
         private void endDatePicker2_ValueChanged(object sender, EventArgs e)
         {
-
+            endDatePicker1.Value = endDatePicker2.Value;
+            endDatePicker.Value = endDatePicker2.Value;
+            endDatePicker3.Value = endDatePicker2.Value;
         }
 
         private void 添加分组ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -276,7 +288,8 @@ namespace StockiiPanel
 
             ds = new DataSet();
             object error = errorNo;//装箱
-            stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, 1, 10000, error, ds);
+
+            stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
             errorNo = (int)error;//拆箱
         }
 
@@ -289,6 +302,9 @@ namespace StockiiPanel
                 {
                     case 0:
                         MessageBox.Show("超时，不能连接到数据库");
+                        break;
+                    case 24:
+                        MessageBox.Show("内存溢出");
                         break;
                     case 1045:
                         MessageBox.Show("无效的用户名密码");
@@ -303,12 +319,14 @@ namespace StockiiPanel
                 return;
             }
 
-            pageLabel.Text = "1/1";
-
-            rawDataGrid.DataSource = ds;
-            rawDataGrid.DataMember = "stock_day_info";
-
             dt = (DataTable)ds.Tables["stock_day_info"];
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("无查询结果");
+                stop = true;
+                return;
+            }
 
             dt.Columns.Add("cir_of_cap_stock_tmp", typeof(decimal));
             dt.Columns.Add("total_money_tmp", typeof(decimal));
@@ -319,6 +337,10 @@ namespace StockiiPanel
                 Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
             }
 
+            pageLabel.Text = page + "/" + (int)totalPages;
+
+            rawDataGrid.DataSource = ds;
+            rawDataGrid.DataMember = "stock_day_info";
 
             rawDataGrid.AllowUserToAddRows = false;//不显示最后空白行
             rawDataGrid.EnableHeadersVisualStyles = false;
@@ -592,7 +614,10 @@ namespace StockiiPanel
             }
                
         }
-
+        
+        /// <summary>
+        /// 设置列
+        /// </summary>
         private void SetColumns()
         {
             string[] cols = customDialog.StrCollected.Split(',');
@@ -673,6 +698,126 @@ namespace StockiiPanel
             dt = Commons.StructrueDataTable(rawDataGrid,true);
 
             Commons.ExportDataGridToCSV(dt);
+        }
+
+        private void moreButton_Click(object sender, EventArgs e)
+        {
+            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
+            {
+                return;
+            }
+
+            if ((int)totalPages == page)
+            {
+                MessageBox.Show("已是尾页");
+                return;
+            }
+
+            if (groupList.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+
+            // 启动Loading线程
+            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
+            thread.Start();
+
+            //启动后台线程
+            stop = false;
+            pageLabel.Text = "0/0";
+
+            page = 2;
+            pagesize = 10000;
+            totalPages = 2;
+            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+            bkWorker.RunWorkerAsync(args);
+        }
+
+        private void allButton_Click(object sender, EventArgs e)
+        {
+            if (groupList.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+
+            // 启动Loading线程
+            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
+            thread.Start();
+
+            //启动后台线程
+            stop = false;
+            pageLabel.Text = "0/0";
+
+            page = 1;
+            pagesize = 100000;
+            totalPages = 1;
+            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+            bkWorker.RunWorkerAsync(args);
+        }
+
+        private void startDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker1.Value = startDatePicker.Value;
+            startDatePicker2.Value = startDatePicker.Value;
+            startDatePicker3.Value = startDatePicker.Value;
+        }
+
+        private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            if (rawDataGrid.RowCount > 0)
+            {
+                for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                    rawContextMenuStrip.Items[i].Visible = true;
+            }
+            else
+            {
+                for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                    rawContextMenuStrip.Items[i].Visible = false;
+            }
+        }
+
+        private void endDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            endDatePicker1.Value = endDatePicker.Value;
+            endDatePicker2.Value = endDatePicker.Value;
+            endDatePicker3.Value = endDatePicker.Value;
+        }
+
+        private void startDatePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker.Value = startDatePicker1.Value;
+            startDatePicker2.Value = startDatePicker1.Value;
+            startDatePicker3.Value = startDatePicker1.Value;
+        }
+
+        private void endDatePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            endDatePicker.Value = endDatePicker1.Value;
+            endDatePicker2.Value = endDatePicker1.Value;
+            endDatePicker3.Value = endDatePicker1.Value;
+        }
+
+        private void startDatePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker1.Value = startDatePicker2.Value;
+            startDatePicker.Value = startDatePicker2.Value;
+            startDatePicker3.Value = startDatePicker2.Value;
+        }
+
+        private void startDatePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker1.Value = startDatePicker3.Value;
+            startDatePicker2.Value = startDatePicker3.Value;
+            startDatePicker.Value = startDatePicker3.Value;
+        }
+
+        private void endDatePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            endDatePicker1.Value = endDatePicker3.Value;
+            endDatePicker2.Value = endDatePicker3.Value;
+            endDatePicker.Value = endDatePicker3.Value;
         }
 
     }

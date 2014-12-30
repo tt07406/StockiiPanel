@@ -3079,6 +3079,7 @@
             this.allButton.TabIndex = 2;
             this.allButton.Text = "显示全部";
             this.allButton.UseVisualStyleBackColor = true;
+            this.allButton.Click += new System.EventHandler(this.allButton_Click);
             // 
             // moreButton
             // 
@@ -3089,6 +3090,7 @@
             this.moreButton.TabIndex = 1;
             this.moreButton.Text = "显示更多";
             this.moreButton.UseVisualStyleBackColor = true;
+            this.moreButton.Click += new System.EventHandler(this.moreButton_Click);
             // 
             // rawDataGrid
             // 
@@ -3116,6 +3118,7 @@
             this.saveSelectToolStripMenuItem});
             this.rawContextMenuStrip.Name = "rawContextMenuStrip";
             this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 48);
+            this.rawContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.rawContextMenuStrip_Opening);
             // 
             // saveTableToolStripMenuItem
             // 
@@ -3163,6 +3166,7 @@
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(127, 21);
             this.endDatePicker.TabIndex = 4;
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             // 
             // label2
             // 
@@ -3179,6 +3183,7 @@
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(130, 21);
             this.startDatePicker.TabIndex = 2;
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
             // 
             // label1
             // 
@@ -3353,6 +3358,7 @@
             this.endDatePicker1.Name = "endDatePicker1";
             this.endDatePicker1.Size = new System.Drawing.Size(104, 21);
             this.endDatePicker1.TabIndex = 5;
+            this.endDatePicker1.ValueChanged += new System.EventHandler(this.endDatePicker1_ValueChanged);
             // 
             // label4
             // 
@@ -3369,6 +3375,7 @@
             this.startDatePicker1.Name = "startDatePicker1";
             this.startDatePicker1.Size = new System.Drawing.Size(104, 21);
             this.startDatePicker1.TabIndex = 3;
+            this.startDatePicker1.ValueChanged += new System.EventHandler(this.startDatePicker1_ValueChanged);
             // 
             // label3
             // 
@@ -3550,6 +3557,7 @@
             this.startDatePicker2.Name = "startDatePicker2";
             this.startDatePicker2.Size = new System.Drawing.Size(104, 21);
             this.startDatePicker2.TabIndex = 3;
+            this.startDatePicker2.ValueChanged += new System.EventHandler(this.startDatePicker2_ValueChanged);
             // 
             // label6
             // 
@@ -3698,6 +3706,7 @@
             this.endDatePicker3.Name = "endDatePicker3";
             this.endDatePicker3.Size = new System.Drawing.Size(104, 21);
             this.endDatePicker3.TabIndex = 5;
+            this.endDatePicker3.ValueChanged += new System.EventHandler(this.endDatePicker3_ValueChanged);
             // 
             // label17
             // 
@@ -3714,6 +3723,7 @@
             this.startDatePicker3.Name = "startDatePicker3";
             this.startDatePicker3.Size = new System.Drawing.Size(104, 21);
             this.startDatePicker3.TabIndex = 3;
+            this.startDatePicker3.ValueChanged += new System.EventHandler(this.startDatePicker3_ValueChanged);
             // 
             // label18
             // 
@@ -3834,7 +3844,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -5005;
+            this.boardButton.WorkSizeY = -5500;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1

@@ -152,10 +152,13 @@ namespace StockiiPanel
         /// <param name="endDate">查询结束时间点</param>
         /// <param name="page">分页查询中的第几页</param>
         /// <param name="pagesize">分页查询中，每页查询的数量</param>
+        /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds)
+        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
         {
             bool stop = false;
+
+            int line = (page - 1) * pagesize;
 
             String sqlId = "select * from stock_basic_info as A,stock_day_info as B where A.stock_id=B.stock_id and created between '" + startDate + "' and '" + endDate + "'";
 
@@ -165,7 +168,7 @@ namespace StockiiPanel
             {
                 sqlId += " or B.stock_id ='" + stockId + "'";
             }
-            sqlId += ")";
+            sqlId += ") and seq_no >= ( select seq_no from stock_day_info order by seq_no limit "+ line + ",1 ) limit " + pagesize;
 
             String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
 
@@ -307,6 +310,16 @@ namespace StockiiPanel
 
             return dataTable;
             #endregion
+        }
+
+        /// <summary>
+        /// 判断是不是交易日
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static bool isTradeDay(String date)
+        {          
+            return true;
         }
     }
 }
