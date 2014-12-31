@@ -31,9 +31,14 @@ namespace StockiiPanel
             stockInfoList.Columns[0].HeaderText = "代码";
             //设置该列宽度
             stockInfoList.Columns[0].Width = 50;
+            stockInfoList.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
 
             stockInfoList.Columns[1].HeaderText = "名称";
             stockInfoList.Columns[1].Width = 128;
+            stockInfoList.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
+
+            for (int i = 2; i < stockInfoList.Columns.Count; ++i)
+                stockInfoList.Columns[i].Visible = false;
 
 
             if (name.Equals(""))

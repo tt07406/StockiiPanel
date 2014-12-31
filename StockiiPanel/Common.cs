@@ -34,6 +34,7 @@ namespace StockiiPanel
         /// <param name="industryToolStripMenuItem">行业菜单</param>
         public static void GetStockClassification(ToolStripMenuItem sectionToolStripMenuItem, ToolStripMenuItem industryToolStripMenuItem)
         {
+            /*
             String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
 
             //初始化版块菜单
@@ -101,6 +102,31 @@ namespace StockiiPanel
             {
                 conn.Close();
             }
+             */
+
+            DataSet ds = JSONHandler.GetClassfication();
+            DataTable dt = ds.Tables["stockclassification"];
+
+            DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true,new string[]{"areaname"}));//distinct
+
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
+
+                tsItemParent.Text = rvMain["areaname"].ToString();
+                tsItemParent.Name = rvMain["areaname"].ToString();
+                sectionToolStripMenuItem.DropDownItems.Add(tsItemParent);
+            }
+            dvMenuOptions = new DataView(dt.DefaultView.ToTable(true, new string[] { "industryname" }));
+
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
+
+                tsItemParent.Text = rvMain["industryname"].ToString();
+                tsItemParent.Name = rvMain["industryname"].ToString();
+                industryToolStripMenuItem.DropDownItems.Add(tsItemParent);
+            }
         }
 
         /// <summary>
@@ -109,9 +135,11 @@ namespace StockiiPanel
         /// <returns></returns>
         public static DataSet GetStockBasicInfo()
         {
+            /*
             String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
 
             DataSet ds = new DataSet();
+            
             try
             {
                 conn = new MySqlConnection(strConn);
@@ -147,7 +175,9 @@ namespace StockiiPanel
             {
                 conn.Close();
             }
+            */
 
+            DataSet ds = JSONHandler.GetStockBasicInfo();
             return ds;
         }
 
