@@ -3261,6 +3261,7 @@
             this.allButton1.TabIndex = 5;
             this.allButton1.Text = "显示全部";
             this.allButton1.UseVisualStyleBackColor = true;
+            this.allButton1.Click += new System.EventHandler(this.allButton1_Click);
             // 
             // moreButton1
             // 
@@ -3271,6 +3272,7 @@
             this.moreButton1.TabIndex = 4;
             this.moreButton1.Text = "显示更多";
             this.moreButton1.UseVisualStyleBackColor = true;
+            this.moreButton1.Click += new System.EventHandler(this.moreButton1_Click);
             // 
             // ndayGrid
             // 
@@ -3286,6 +3288,7 @@
             this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ndayGrid.Size = new System.Drawing.Size(1565, 361);
             this.ndayGrid.TabIndex = 0;
+            this.ndayGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ndayGrid_DataBindingComplete);
             // 
             // groupBox4
             // 
@@ -3449,6 +3452,7 @@
             this.calResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.calResultGrid.Size = new System.Drawing.Size(1575, 398);
             this.calResultGrid.TabIndex = 0;
+            this.calResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.calResultGrid_DataBindingComplete);
             // 
             // groupBox6
             // 
@@ -3643,6 +3647,7 @@
             this.allButton3.TabIndex = 2;
             this.allButton3.Text = "显示全部";
             this.allButton3.UseVisualStyleBackColor = true;
+            this.allButton3.Click += new System.EventHandler(this.allButton3_Click);
             // 
             // moreButton3
             // 
@@ -3653,6 +3658,7 @@
             this.moreButton3.TabIndex = 1;
             this.moreButton3.Text = "显示更多";
             this.moreButton3.UseVisualStyleBackColor = true;
+            this.moreButton3.Click += new System.EventHandler(this.moreButton3_Click);
             // 
             // sectionResultGrid
             // 
@@ -3668,6 +3674,7 @@
             this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.sectionResultGrid.Size = new System.Drawing.Size(1559, 427);
             this.sectionResultGrid.TabIndex = 0;
+            this.sectionResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.sectionResultGrid_DataBindingComplete);
             // 
             // groupBox8
             // 
@@ -3722,6 +3729,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "跨区计算";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // indexCombox1
             // 
@@ -3875,20 +3883,23 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -5885;
+            this.boardButton.WorkSizeY = -6270;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // sumWorker
             // 
             this.sumWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sumWorker_DoWork);
+            this.sumWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sumWorker_RunWorkerCompleted);
             // 
             // customWorker
             // 
             this.customWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customWorker_DoWork);
+            this.customWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.customWorker_RunWorkerCompleted);
             // 
             // crossWorker
             // 
             this.crossWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.crossWorker_DoWork);
+            this.crossWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.crossWorker_RunWorkerCompleted);
             // 
             // Form1
             // 

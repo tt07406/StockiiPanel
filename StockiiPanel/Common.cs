@@ -457,23 +457,5 @@ namespace StockiiPanel
             return stop;
         }
 
-        /// <summary>
-        /// 查询股票跨区的信息，区分版块
-        /// </summary>
-        /// <param name="record">版块记录</param>
-        /// <param name="weight">跨区的权重值</param>
-        /// <param name="optname">自定义计算的指标名</param>
-        /// <param name="opt">自定义计算方式</param>
-        /// <param name="startDate">查询起始时间点</param>
-        /// <param name="endDate">查询结束时间点</param>
-        /// <param name="errorNo">错误码</param>
-        /// <param name="ds">结果集</param>
-        /// <returns></returns>
-        public static bool GetCrossInfoCmdBoard(Dictionary<int, string> record, double weight, String optname, String startDate, String endDate, object errorNo, DataSet ds)
-        {
-            bool stop = false;
-
-            return stop;
-        }
     }
 }

@@ -25,6 +25,7 @@ namespace StockiiPanel
         private int page;//第几页
         private int pagesize;//页大小
 
+        private SerializableDictionary<String, ArrayList> pList;
         private Dictionary<int, string> record;//上次记录
 
         private CustomDialog customDialog;
@@ -37,64 +38,6 @@ namespace StockiiPanel
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
             record = new Dictionary<int, string>();
-        }
-
-        private void InitialCombo()
-        {
-            indexCombo.Items.Add("均价");
-            indexCombo.Items.Add("振幅");
-            indexCombo.Items.Add("换手");
-            indexCombo.Items.Add("量比");
-            indexCombo.Items.Add("总金额");
-            indexCombo.Items.Add("涨幅");
-
-            indexCombo.SelectedIndex = 0;
-
-            for (int i = 3; i <= 30; ++i)
-            {
-                intervalCombo.Items.Add(i + "");
-            }
-
-            intervalCombo.SelectedIndex = 0;
-
-            typeCombo.Items.Add("负和");
-            typeCombo.Items.Add("所有和");
-            typeCombo.Items.Add("正和");
-
-            typeCombo.SelectedIndex = 0;
-
-            compareCombo.Items.Add("指定两天减");
-            compareCombo.Items.Add("指定时间段内的和");
-            compareCombo.Items.Add("指定时间段内最大值比最小值");
-            compareCombo.Items.Add("指定两天加");
-            compareCombo.Items.Add("指定时间段内最大值减最小值");
-            compareCombo.Items.Add("两个时间段时涨幅依据分段");
-            compareCombo.Items.Add("指定两天比值");
-
-            compareCombo.SelectedIndex = 0;
-
-            compareIndexCombo.Items.Add("振幅");
-            compareIndexCombo.Items.Add("流通股本");
-            compareIndexCombo.Items.Add("均价流通值");
-            compareIndexCombo.Items.Add("总股本");
-            compareIndexCombo.Items.Add("均价");
-            compareIndexCombo.Items.Add("现价");
-            compareIndexCombo.Items.Add("总市值");
-            compareIndexCombo.Items.Add("换手");
-            compareIndexCombo.Items.Add("量比");
-            compareIndexCombo.Items.Add("总金额");
-            compareIndexCombo.Items.Add("涨幅");
-
-            compareIndexCombo.SelectedIndex = 0;
-
-            indexCombox1.Items.Add("均价");
-            indexCombox1.Items.Add("总市值");
-            indexCombox1.Items.Add("昨收");
-            indexCombox1.Items.Add("流通股本");
-            indexCombox1.Items.Add("均价流通市值");
-            indexCombox1.Items.Add("总股本");
-
-            indexCombox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,7 +95,8 @@ namespace StockiiPanel
                     {
                         foreach (ToolStripMenuItem ssdc in sdc.DropDownItems)
                         {
-                            ssdc.Click += new EventHandler(upItem_Click);
+                            //ssdc.Click += new EventHandler(upItem_Click);
+                            ssdc.Click += new EventHandler(timeItem_Click);
                         }
                     }
                 }
@@ -172,10 +116,47 @@ namespace StockiiPanel
                     {
                         foreach (ToolStripMenuItem ssdc in sdc.DropDownItems)
                         {
-                            ssdc.Click += new EventHandler(downItem_Click);
+                            //ssdc.Click += new EventHandler(downItem_Click);
+                            ssdc.Click += new EventHandler(timeItem_Click);
                         }
                     }
                 }
+            }
+        }
+
+        private void timeItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            String name = item.Name;
+
+            int headEnd = name.IndexOf("Tool");
+            int tailStart = name.IndexOf("Item")+4;
+            int length = 1;
+            String arg = null;
+            String year = null;
+
+            if (name.StartsWith("season"))
+            {
+                length = headEnd - 6;
+                arg = name.Substring(6, length);
+                year = name.Substring(tailStart, 4);
+                SetDate("season", arg, year);
+            }
+            else
+            {
+                length = headEnd - 5;
+                arg = name.Substring(5, length);
+                year = name.Substring(tailStart, 4);
+                SetDate("month", arg, year);
+            }
+
+            if (name.Contains("Down"))
+            {
+                downItem_Click(sender, e);
+            }
+            else
+            {
+                upItem_Click(sender, e);
             }
         }
 
@@ -184,6 +165,9 @@ namespace StockiiPanel
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[1] = item.Name;
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
 
             searchTab(tabControl.SelectedIndex);
         }
@@ -193,6 +177,10 @@ namespace StockiiPanel
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[2] = item.Name;
+
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
 
             searchTab(tabControl.SelectedIndex);
         }
@@ -206,6 +194,10 @@ namespace StockiiPanel
             record.Clear();
             record[3] = item.Name;
 
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
+
             searchTab(tabControl.SelectedIndex);
         }
 
@@ -218,6 +210,10 @@ namespace StockiiPanel
             record.Clear();
             record[4] = item.Name;
 
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
+
             searchTab(tabControl.SelectedIndex);
         }
 
@@ -228,12 +224,12 @@ namespace StockiiPanel
                 return;
             }
 
-            if (groupList.Visible == true && groupList.SelectedItems.Count == 0)
+            if (type < 3 && groupList.Visible == true && groupList.SelectedItems.Count == 0)
             {
                 MessageBox.Show("请选择一个分组");
                 return;
             }
-            else if (groupList.Visible == false && record.Count == 0)
+            else if (type < 3 && groupList.Visible == false && record.Count == 0)
             {
                 MessageBox.Show("请选择一个版块");
                 return;
@@ -245,11 +241,7 @@ namespace StockiiPanel
 
             //启动后台线程
             stop = false;
-            pageLabel.Text = "0/0";
 
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
             String args;
             if (groupList.Visible)//自选
             {
@@ -264,15 +256,18 @@ namespace StockiiPanel
             {
                 case 0:
                     bkWorker.RunWorkerAsync(args);
+                    pageLabel.Text = "0/0";
                     break;
                 case 1:
                     sumWorker.RunWorkerAsync(args);
+                    pageLabel1.Text = "0/0";
                     break;
                 case 2:
-                    customWorker.RunWorkerAsync(args);
+                    customWorker.RunWorkerAsync(args);                   
                     break;
                 case 3:
                     crossWorker.RunWorkerAsync(args);
+                    pageLabel3.Text = "0/0";
                     break;
                 default:
                     break;
@@ -282,6 +277,9 @@ namespace StockiiPanel
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
             searchTab(0);
         }
 
@@ -293,13 +291,6 @@ namespace StockiiPanel
         private void label7_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void endDatePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            endDatePicker1.Value = endDatePicker2.Value;
-            endDatePicker.Value = endDatePicker2.Value;
-            endDatePicker3.Value = endDatePicker2.Value;
         }
 
         private void 添加分组ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -318,7 +309,6 @@ namespace StockiiPanel
             groupList.Items.Add(name);
         }
 
-        private SerializableDictionary<String, ArrayList> pList;
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
@@ -369,24 +359,6 @@ namespace StockiiPanel
             }
         }
 
-        /// <summary>
-
-        /// 判断一个数是否是奇数
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public bool IsOdd(int n)
-        {
-            if (n % 2 != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void rawDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
@@ -403,8 +375,6 @@ namespace StockiiPanel
                     rawDataGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
                 }
             }
-
- 
         }
 
         private void bkWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -814,231 +784,40 @@ namespace StockiiPanel
             } 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //序列化保存
-            using (FileStream fileStream = new FileStream("group.xml", FileMode.Create))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                xmlFormatter.Serialize(fileStream, this.pList);
-            }
-        }
-
-        private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            switch (tabControl.SelectedIndex)
-            {
-                case 0:
-                    dt = Commons.StructrueDataTable(rawDataGrid, false);
-                    break;
-                case 1:
-                    dt = Commons.StructrueDataTable(ndayGrid, false);
-                    break;
-                case 2:
-                    dt = Commons.StructrueDataTable(calResultGrid, false);
-                    break;
-                case 3:
-                    dt = Commons.StructrueDataTable(sectionResultGrid, false);
-                    break;
-                default:
-                    break;
-            }
-            
-            Commons.ExportDataGridToCSV(dt);
-        }
-
-        private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            switch (tabControl.SelectedIndex)
-            {
-                case 0:
-                    dt = Commons.StructrueDataTable(rawDataGrid, true);
-                    break;
-                case 1:
-                    dt = Commons.StructrueDataTable(ndayGrid, true);
-                    break;
-                case 2:
-                    dt = Commons.StructrueDataTable(calResultGrid, true);
-                    break;
-                case 3:
-                    dt = Commons.StructrueDataTable(sectionResultGrid, true);
-                    break;
-                default:
-                    break;
-            }
-
-            Commons.ExportDataGridToCSV(dt);
-        }
+       
 
         private void moreButton_Click(object sender, EventArgs e)
         {
-            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
-            {
-                return;
-            }
-
             if ((int)totalPages == page)
             {
                 MessageBox.Show("已是尾页");
                 return;
             }
 
-            if (groupList.SelectedItems.Count <= 0)
-            {
-                MessageBox.Show("请选择一个分组");
-                return;
-            }
-
-            // 启动Loading线程
-            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
-            thread.Start();
-
-            //启动后台线程
-            stop = false;
-            pageLabel.Text = "0/0";
-
             page = 2;
             pagesize = 10000;
             totalPages = 2;
-            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
-            bkWorker.RunWorkerAsync(args);
+
+            searchTab(0);
         }
 
         private void allButton_Click(object sender, EventArgs e)
         {
-            if (groupList.SelectedItems.Count <= 0)
-            {
-                MessageBox.Show("请选择一个分组");
-                return;
-            }
-
-            // 启动Loading线程
-            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
-            thread.Start();
-
-            //启动后台线程
-            stop = false;
-            pageLabel.Text = "0/0";
-
             page = 1;
             pagesize = 100000;
             totalPages = 1;
-            String args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
-            bkWorker.RunWorkerAsync(args);
+
+            searchTab(0);
         }
 
-        private void startDatePicker_ValueChanged(object sender, EventArgs e)
-        {
-            startDatePicker1.Value = startDatePicker.Value;
-            startDatePicker2.Value = startDatePicker.Value;
-            startDatePicker3.Value = startDatePicker.Value;
-        }
-
-        private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
-        {
-            switch (tabControl.SelectedIndex)
-            {
-                case 0:
-                    if (rawDataGrid.RowCount > 0)
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = true;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = false;
-                    }
-                    combinePageToolStripMenuItem.Visible = false;
-                    combineSelectToolStripMenuItem.Visible = false;
-                    break;
-                case 1:
-                    if (ndayGrid.RowCount > 0)
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = true;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = false;
-                    }
-                    combinePageToolStripMenuItem.Visible = false;
-                    combineSelectToolStripMenuItem.Visible = false;
-                    break;
-                case 2:
-                    if (calResultGrid.RowCount > 0)
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = true;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = false;
-                    }
-                    break;
-                case 3:
-                    if (sectionResultGrid.RowCount > 0)
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = true;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
-                            rawContextMenuStrip.Items[i].Visible = false;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void endDatePicker_ValueChanged(object sender, EventArgs e)
-        {
-            endDatePicker1.Value = endDatePicker.Value;
-            endDatePicker2.Value = endDatePicker.Value;
-            endDatePicker3.Value = endDatePicker.Value;
-        }
-
-        private void startDatePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            startDatePicker.Value = startDatePicker1.Value;
-            startDatePicker2.Value = startDatePicker1.Value;
-            startDatePicker3.Value = startDatePicker1.Value;
-        }
-
-        private void endDatePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            endDatePicker.Value = endDatePicker1.Value;
-            endDatePicker2.Value = endDatePicker1.Value;
-            endDatePicker3.Value = endDatePicker1.Value;
-        }
-
-        private void startDatePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            startDatePicker1.Value = startDatePicker2.Value;
-            startDatePicker.Value = startDatePicker2.Value;
-            startDatePicker3.Value = startDatePicker2.Value;
-        }
-
-        private void startDatePicker3_ValueChanged(object sender, EventArgs e)
-        {
-            startDatePicker1.Value = startDatePicker3.Value;
-            startDatePicker2.Value = startDatePicker3.Value;
-            startDatePicker.Value = startDatePicker3.Value;
-        }
-
-        private void endDatePicker3_ValueChanged(object sender, EventArgs e)
-        {
-            endDatePicker1.Value = endDatePicker3.Value;
-            endDatePicker2.Value = endDatePicker3.Value;
-            endDatePicker.Value = endDatePicker3.Value;
-        }
+ 
 
         private void searchButton1_Click(object sender, EventArgs e)
         {
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
+
             searchTab(1);
         }
 
@@ -1107,6 +886,9 @@ namespace StockiiPanel
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
             searchTab(2);
         }
 
@@ -1120,129 +902,68 @@ namespace StockiiPanel
             ds = new DataSet();
             object error = errorNo;//装箱
 
-            if (args[2] != string.Empty)//自选
-            {
-                String name = args[2];//取选中的分组
-                ArrayList stocks = new ArrayList(pList[name]);
-
-                stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
-            }
-            else //版块
-            {
-                stop = Commons.GetCrossInfoCmdBoard(record,Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
-            }
+            stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
 
             errorNo = (int)error;//拆箱
         }
 
-    }
+        private void moreButton1_Click(object sender, EventArgs e)
+        {
+            if ((int)totalPages == page)
+            {
+                MessageBox.Show("已是尾页");
+                return;
+            }
 
-     /// 说明: 使用此Button时要设置ContextMenuStrip属性值  
-　　      ///       单击些Button的Click事件要传入所在工做区的宽高  
-　　       ///       如果没有所需的属性值,则如平时所使用的Button一至  
-　　       /// 使用例子:  
-　　      ///       DropButton.WorkSizeX = this.MdiParent.ClientRectangle.Width;  
-　　       ///       DropButton.WorkSizeY = this.MdiParent.ClientRectangle.Height;  
-　　       /// 应用:  
-　　      /// 创建人: lrj  
-　　    /// 创建日期:2008-05-22  
-　　     /// 修改人:  
-　　     /// 修改日期:  
-　　     /// 
-  
-　　     public partial class DropButton : Button  
-　　     {  
-　　         private ContextMenuStrip contextMenuStrip;  
-　　         private Point point;     //立标  
-　　         private int x = 0;     //立标x  
-　　         private int y = 0;     //立标y  
-　　         private int workSize_x;//工做区x    
-　　         private int workSize_y;//工做区y  
+            page = 2;
+            pagesize = 10000;
+            totalPages = 2;
 
-　　         public DropButton()  
-　　        {  
-　　             x = this.Size.Width ;  
-　　             y = 0;  
-　　         }  
-　　         /// 
-  
-　　         /// 工做区的完  
-　　         /// 
-  
-　　         public int WorkSizeX  
-　　         {  
-　　             get { return workSize_x; }  
-　　             set { workSize_x = value; }  
-　　         }  
-　　         /// 
-  
-　　         /// 工做区的高  
-　　         /// 
-  
-　　         public int WorkSizeY  
-　　         {  
-　　             get { return workSize_y; }  
-　　             set { workSize_y = value - 55; }  
-　　         }  
-　　          ///
-　　          
-  
-　　         /// ContextMenuStrip菜单  
-　　         /// 
-  
-　　         public override ContextMenuStrip ContextMenuStrip  
-　　         {  
-　　             get { return contextMenuStrip; }  
-　　             set   
-　　             {  
-　　                 if (contextMenuStrip == null)  
-　　                 {  
-　　                     contextMenuStrip = value;  
-　　                 }  
-　　             }  
-　　        }   
-　　         //  
-　　         //重写的单击事件  
-　　         //  
-　　         protected override void OnClick(EventArgs e)  
-　　         {  
-　　             base.OnClick(e);  
-　　             //菜单在工做区离边框的宽高  
-　　             int _x = this.Parent.Location.X + this.Location.X  + contextMenuStrip.Size.Width;
-                 int _y = this.Parent.Location.Y + this.Location.Y  + this.Size.Height + contextMenuStrip.Size.Height;  
-　　             if
-　　             (_x < WorkSizeX - 8)  
-　　             {  
-　　                 x = this.Size.Width;  
-　　             }  
-　　             else 
-　　             {  
-　　                 x = 0 - contextMenuStrip.Size.Width + this.Size.Width;  
-　　             }  
-　　             if 
-　　             (_y < WorkSizeY)  
-　　             {  
-　　                 y = 0;  
-　　             }  
-　　             else 
-　　             {  
-　　                 y = 0 - contextMenuStrip.Size.Height ;  
-　　             }  
-　　              point =
-　　            new Point(x, y);  
-　　             contextMenuStrip.Show(this, point);  
-　　         }  
-　　         //  
-　　         //使鼠标右键失效  
-　　         //  
-　　         protected override void OnMouseDown(MouseEventArgs mevent)  
-　　        {  
-　　            base.OnMouseDown(mevent);  
-　　             if (mevent.Button.ToString() != "Right")  
-　　             {  
-　　             }  
-　　         }
-           
-　　     } 
+            searchTab(1);
+        }
+
+        private void allButton1_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            pagesize = 100000;
+            totalPages = 1;
+
+            searchTab(1);
+        }
+
+        private void moreButton3_Click(object sender, EventArgs e)
+        {
+            if ((int)totalPages == page)
+            {
+                MessageBox.Show("已是尾页");
+                return;
+            }
+
+            page = 2;
+            pagesize = 10000;
+            totalPages = 2;
+
+            searchTab(3);
+        }
+
+        private void allButton3_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            pagesize = 100000;
+            totalPages = 1;
+
+            searchTab(3);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            pagesize = 10000;
+            totalPages = 1;
+            searchTab(3);
+        }
+
+
+    }    
 
 }

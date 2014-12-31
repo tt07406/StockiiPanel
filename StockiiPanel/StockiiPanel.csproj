@@ -62,6 +62,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Common.cs" />
+    <Compile Include="CostomClass.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +94,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeControl.cs" />
     <EmbeddedResource Include="CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
