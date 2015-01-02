@@ -7,6 +7,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 using System.IO;
+using System.Reflection;
 
 namespace StockiiPanel
 {
@@ -35,83 +36,16 @@ namespace StockiiPanel
         /// <param name="industryToolStripMenuItem">行业菜单</param>
         public static void GetStockClassification(ToolStripMenuItem sectionToolStripMenuItem, ToolStripMenuItem industryToolStripMenuItem)
         {
-            /*
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
-
-            //初始化版块菜单
-            try
-            {
-                conn = new MySqlConnection(strConn);
-                String sqlId = "select * from area_info";
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-                DataSet ds = new DataSet();
-                da.Fill(ds, "area_info");
-
-                DataView dvMenuOptions = new DataView(ds.Tables["area_info"]);
-
-                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
-                {
-                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
-
-                    tsItemParent.Text = rvMain["area_name"].ToString();
-                    tsItemParent.Name = rvMain["area_id"].ToString();
-                    sectionToolStripMenuItem.DropDownItems.Add(tsItemParent);
-                }
-
-                sqlId = "select * from industry_info";
-                cmd = new MySqlCommand(sqlId, conn);
-                da = new MySqlDataAdapter(cmd);
-
-                da.Fill(ds, "industry_info");
-
-                dvMenuOptions = new DataView(ds.Tables["industry_info"]);
-
-                foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
-                {
-                    ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
-
-                    tsItemParent.Text = rvMain["industry_name"].ToString();
-                    tsItemParent.Name = rvMain["industry_id"].ToString();
-                    industryToolStripMenuItem.DropDownItems.Add(tsItemParent);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("不能连接到数据库");
-                        break;
-                    case 1045:
-                        MessageBox.Show("无效的用户名密码");
-                        break;
-                    case 1049:
-                        MessageBox.Show("数据库不存在");
-                        break;
-                    case 24:
-                        MessageBox.Show("内存不足");
-                        break;
-                    default:
-                        MessageBox.Show(ex.Message);
-                        break;
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-             */
-
             DataSet ds = JSONHandler.GetClassfication();
             DataTable dt = ds.Tables["stockclassification"];
-            classfiDt = dt.Clone();
+            classfiDt = dt.Copy();
             DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true,new string[]{"areaname"}));//distinct
 
             foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
             {
+                if (rvMain["areaname"].ToString().Equals(""))
+                    continue;
+
                 ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
 
                 tsItemParent.Text = rvMain["areaname"].ToString();
@@ -122,6 +56,9 @@ namespace StockiiPanel
 
             foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
             {
+                if (rvMain["industryname"].ToString().Equals(""))
+                    continue;
+
                 ToolStripMenuItem tsItemParent = new ToolStripMenuItem();
 
                 tsItemParent.Text = rvMain["industryname"].ToString();
@@ -136,49 +73,8 @@ namespace StockiiPanel
         /// <returns></returns>
         public static DataSet GetStockBasicInfo()
         {
-            /*
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
-
-            DataSet ds = new DataSet();
-            
-            try
-            {
-                conn = new MySqlConnection(strConn);
-                String sqlId = "select stock_id,stock_name from stock_basic_info order by stock_id";
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-                da.Fill(ds, "stock_basic_info");
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("不能连接到数据库");
-                        break;
-                    case 1045:
-                        MessageBox.Show("无效的用户名密码");
-                        break;
-                    case 1049:
-                        MessageBox.Show("数据库不存在");
-                        break;
-                    case 24:
-                        MessageBox.Show("内存不足");
-                        break;
-                    default:
-                        MessageBox.Show(ex.Message);
-                        break;
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-            */
-
             DataSet ds = JSONHandler.GetStockBasicInfo();
+
             return ds;
         }
 
@@ -194,52 +90,79 @@ namespace StockiiPanel
         /// <param name="pagesize">分页查询中，每页查询的数量</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
 
-            int line = (page - 1) * pagesize;
+            ds = JSONHandler.GetStockDayInfo(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
 
-            String sqlId = "select * from stock_basic_info as A,stock_day_info as B where A.stock_id=B.stock_id and created between '" + startDate + "' and '" + endDate + "'";
+            var query = (from u in ds.Tables["stockdayinfo"].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             created = u.Field<string>("created"),
+                             bull_profit = u.Field<string>("bull_profit"),
+                             bbi_balance = u.Field<string>("bbi_balance"),
+                             num2_sell_price = u.Field<string>("num2_sell_price"),
+                             last_deal_amount = u.Field<string>("last_deal_amount"),
+                             num3_buy = u.Field<string>("num3_buy"),
+                             num3_sell = u.Field<string>("num3_sell"),
+                             short_covering = u.Field<string>("short_covering"),
+                             bear_stop_losses = u.Field<string>("bear_stop_losses"),
+                             current_price = u.Field<string>("current_price"),
+                             turnover_ratio = u.Field<string>("turnover_ratio"),
+                             num2_buy = u.Field<string>("num2_buy"),
+                             cir_of_cap_stock = u.Field<string>("cir_of_cap_stock"),
+                             sell = u.Field<string>("sell"),
+                             update_date = u.Field<string>("update_date"),
+                             min_circulation_value = u.Field<string>("min_circulation_value"),
+                             relative_strength_index = u.Field<string>("relative_strength_index"),
+                             min = u.Field<string>("min"),
+                             pe_ratio = u.Field<string>("pe_ratio"),
+                             DaPanWeiBi = u.Field<string>("DaPanWeiBi"),
+                             sold_price = u.Field<string>("sold_price"),
+                             today_begin_price = u.Field<string>("today_begin_price"),
+                             bought_price = u.Field<string>("bought_price"),
+                             upordown_per_deal = u.Field<string>("upordown_per_deal"),
+                             num1_sell = u.Field<string>("num1_sell"),
+                             circulation_value = u.Field<string>("circulation_value"),
+                             daily_up_down = u.Field<string>("daily_up_down"),
+                             growth_speed = u.Field<string>("growth_speed"),
+                             max = u.Field<string>("max"),
+                             num1_buy = u.Field<string>("num1_buy"),
+                             volume_ratio = u.Field<string>("volume_ratio"),
+                             DaPanWeiCha = u.Field<string>("DaPanWeiCha"),
+                             buy = u.Field<string>("buy"),
+                             num2_sell = u.Field<string>("num2_sell"),
+                             num_per_deal = u.Field<string>("num_per_deal"),
+                             total_value = u.Field<string>("total_value"),
+                             max_circulation_value = u.Field<string>("max_circulation_value"),
+                             sb_ratio = u.Field<string>("sb_ratio"),
+                             growth_ratio = u.Field<string>("growth_ratio"),
+                             avg_price = u.Field<string>("avg_price"),
+                             ytd_end_price = u.Field<string>("ytd_end_price"),
+                             total_money = u.Field<string>("total_money"),
+                             num2_buy_price = u.Field<string>("num2_buy_price"),
+                             amplitude_ratio = u.Field<string>("amplitude_ratio"),
+                             total_deal_amount = u.Field<string>("total_deal_amount"),
+                             current_circulation_value = u.Field<string>("current_circulation_value"),
+                             total_stock = u.Field<string>("total_stock"),
+                             avg_circulation_value = u.Field<string>("avg_circulation_value"),
+                             bull_stop_losses = u.Field<string>("bull_stop_losses"),
+                             num1_sell_price = u.Field<string>("num1_sell_price"),
+                             turn_per_deal = u.Field<string>("turn_per_deal"),
+                             activity = u.Field<string>("activity"),
+                             num1_buy_price = u.Field<string>("num1_buy_price"),
+                             num3_buy_price = u.Field<string>("num3_buy_price"),
+                             num3_sell_price = u.Field<string>("num3_sell_price")
+                         });
 
-            sqlId += " and ( B.stock_id ='" + stockid[0].ToString() + "'";
-            stockid.RemoveAt(0);
-            foreach (string stockId in stockid)
-            {
-                sqlId += " or B.stock_id ='" + stockId + "'";
-            }
-            sqlId += ") and seq_no >= ( select seq_no from stock_day_info order by seq_no limit "+ line + ",1 ) limit " + pagesize;
-
-            String strConn = "Server=127.0.0.1;User ID=root;Password=root;Database=stock;CharSet=utf8;";
-
-            //BackgroundWorker worker = (BackgroundWorker)sender;
-            try
-            {
-                conn = new MySqlConnection(strConn);
-
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sqlId, conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-                
-
-                da.Fill(ds, "stock_day_info");
-
-            }
-            catch (MySqlException ex)
-            {
-                errorNo = ex.Number;
-                stop = true;
-            }
-            catch (Exception)
-            {
-                errorNo = 24;
-                stop = true;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            DataTable dt = ToDataTable(query.ToList(),"stock_day_info");
+            ds.Tables.Remove("stockdayinfo");
+            ds.Tables.Add(dt);
 
             return stop;
         }
@@ -394,9 +317,13 @@ namespace StockiiPanel
         /// <param name="pagesize">分页查询中，每页查询的数量</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetStockDayInfoBoard(Dictionary<int,string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        public static bool GetStockDayInfoBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
+            totalpage = 1;
+            errorNo = 0;
+            ds = new DataSet();
+
             return stop;
         }
 
@@ -418,9 +345,12 @@ namespace StockiiPanel
         /// <param name="ds">结果集</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        public static bool GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
+            totalpage = 1;
+            errorNo = 0;
+            ds = new DataSet();
 
             return stop;
         }
@@ -443,10 +373,12 @@ namespace StockiiPanel
         /// <param name="ds">结果集</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, object errorNo, DataSet ds, object totalpage)
+        public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
-
+            totalpage = 1;
+            errorNo = 0;
+            ds = new DataSet();
             return stop;
         }
 
@@ -463,10 +395,11 @@ namespace StockiiPanel
         /// <param name="errorNo">错误码</param>
         /// <param name="ds">结果集</param>
         /// <returns></returns>
-        public static bool GetStockDaysDiff(ArrayList stockid, double min, double max, String optname, String opt, String startDate, String endDate, object errorNo, DataSet ds)
+        public static bool GetStockDaysDiff(ArrayList stockid, double min, double max, String optname, String opt, String startDate, String endDate, out int errorNo, out DataSet ds)
         {
             bool stop = false;
-
+            errorNo = 0;
+            ds = new DataSet();
             return stop;
         }
 
@@ -483,9 +416,12 @@ namespace StockiiPanel
         /// <param name="errorNo">错误码</param>
         /// <param name="ds">结果集</param>
         /// <returns></returns>
-        public static bool GetStockDaysDiffBoard(Dictionary<int, string> record, double min, double max, String optname, String opt, String startDate, String endDate, object errorNo, DataSet ds)
+        public static bool GetStockDaysDiffBoard(Dictionary<int, string> record, double min, double max, String optname, String opt, String startDate, String endDate, out int errorNo,out DataSet ds)
         {
             bool stop = false;
+
+            errorNo = 0;
+            ds = new DataSet();
 
             return stop;
         }
@@ -501,11 +437,53 @@ namespace StockiiPanel
         /// <param name="errorNo">错误码</param>
         /// <param name="ds">结果集</param>
         /// <returns></returns>
-        public static bool GetCrossInfoCmd(double weight, String optname, String startDate, String endDate, object errorNo, DataSet ds)
+        public static bool GetCrossInfoCmd(double weight, String optname, String startDate, String endDate, out int errorNo,out DataSet ds)
         {
             bool stop = false;
 
+            errorNo = 0;
+            ds = new DataSet();
             return stop;
+        }
+
+        /// <summary>
+        /// list转化成DataTable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="varlist"></param>
+        /// <returns></returns>
+        public static DataTable ToDataTable<T>(IEnumerable<T> varlist, string name)
+        {
+            DataTable dtReturn = new DataTable(name);
+            // column names 
+            PropertyInfo[] oProps = null;
+            if (varlist == null)
+                return dtReturn;
+            foreach (T rec in varlist)
+            {
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition()
+                             == typeof(Nullable<>)))
+                        {
+                            colType = colType.GetGenericArguments()[0];
+                        }
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                }
+                DataRow dr = dtReturn.NewRow();
+                foreach (PropertyInfo pi in oProps)
+                {
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
+                    (rec, null);
+                }
+                dtReturn.Rows.Add(dr);
+            }
+            return dtReturn;
         }
 
     }

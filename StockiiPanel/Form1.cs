@@ -21,7 +21,7 @@ namespace StockiiPanel
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
         private int errorNo = -1;
-        private object totalPages;//总页数
+        private int totalPages;//总页数
         private int page;//第几页
         private int pagesize;//页大小
 
@@ -385,20 +385,17 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-            object error = errorNo;//装箱
 
             if (args[2] != string.Empty)//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
-                stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+                stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize,out errorNo, out ds,out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetStockDayInfoBoard(record, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+                stop = Commons.GetStockDayInfoBoard(record, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
             }
-
-            errorNo = (int)error;//拆箱
         }
 
         private void bkWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -829,7 +826,7 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-            object error = errorNo;//装箱
+
             int type = 1;
             if (daySumButton.Checked)
             {
@@ -848,15 +845,14 @@ namespace StockiiPanel
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
-                
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, error, ds, totalPages);
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
             }
 
-            errorNo = (int)error;//拆箱
         }
 
         private void customWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -867,21 +863,18 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-            object error = errorNo;//装箱
 
             if (args[2] != string.Empty)//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetStockDaysDiff(stocks, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, error, ds);
+                stop = Commons.GetStockDaysDiff(stocks, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, out errorNo, out ds);
             }
             else //版块
             {
-                stop = Commons.GetStockDaysDiffBoard(record, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, error, ds);
+                stop = Commons.GetStockDaysDiffBoard(record, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, out errorNo, out ds);
             }
-
-            errorNo = (int)error;//拆箱
         }
 
         private void calculateButton_Click(object sender, EventArgs e)
@@ -900,11 +893,9 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-            object error = errorNo;//装箱
 
-            stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, error, ds);
+            stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, out errorNo, out ds);
 
-            errorNo = (int)error;//拆箱
         }
 
         private void moreButton1_Click(object sender, EventArgs e)

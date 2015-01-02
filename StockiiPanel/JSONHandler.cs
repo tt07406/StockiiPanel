@@ -258,7 +258,7 @@ namespace StockiiPanel
 
             try
             {
-                string url = commonURL;
+                string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockclassification";
                 args["response"] = "json";
@@ -276,6 +276,7 @@ namespace StockiiPanel
             string jsonarray = jo.First.First.Last.ToString();
             
             DataSet jsDs = JsonToDataSet( "{"+ jsonarray +"}");
+            //jsDs.WriteXml("classfication.xml");
 
             return jsDs;
         }
@@ -290,11 +291,11 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("stockbasicinfo.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
-
-                sr.Close();
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "liststockbasicinfo";
+                args["response"] = "json";
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -304,9 +305,10 @@ namespace StockiiPanel
                 return null;
             }
 
-            JObject jo = (JObject)JsonConvert.DeserializeObject(jsonText);
-            string jsonarray = jo["liststockbasicinforesponse"]["stockbasicinfo"].ToString();
-            DataSet jsDs = JsonToDataSet("{'stockbasicinfo' :" + jsonarray + "}");
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
 
             jsDs.Tables["stockbasicinfo"].Columns["stockid"].ColumnName = "stock_id";
             jsDs.Tables["stockbasicinfo"].Columns["stockname"].ColumnName = "stock_name";
@@ -319,29 +321,53 @@ namespace StockiiPanel
         /// 获取股票所有详细信息，包括股票每天的各种指标值
         /// </summary>
         /// <returns></returns>
-        public static DataSet GetStockDayInfo()
+        public static DataSet GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage,out int errorNo)
         {
             string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+
+            String sqlId = stockid[0].ToString();
+
+            stockid.RemoveAt(0);
+            foreach (string stockId in stockid)
+            {
+                sqlId += "," + stockId;
+            }
 
             try
             {
-                FileStream aFile = new FileStream("stockdayinfo.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "liststockdayinfo";
+                args["response"] = "json";
 
-                sr.Close();
+                args["stockid"] = sqlId;
+                args["page"] = page+"";
+                args["pagesize"] = pagesize + "";
+                args["asc"] = asc + "";
+                if (!sortname.Equals(""))
+                    args["sortname"] = sortname;
+                if (!startDate.Equals(""))
+                    args["starttime"] = startDate;
+                if (!endDate.Equals(""))
+                    args["endtime"] = endDate;
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
                 Console.WriteLine("An IOException has been thrown!");
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
+                errorNo = 1;
                 return null;
             }
 
-            JObject jo = (JObject)JsonConvert.DeserializeObject(jsonText);
-            string jsonarray = jo["liststockdayinforesponse"]["stockdayinfo"].ToString();
-            DataSet jsDs = JsonToDataSet("{'stockdayinfo' :" + jsonarray + "}");
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(num) / pagesize + 1;
 
             return jsDs;
         }
