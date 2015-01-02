@@ -17,6 +17,7 @@ namespace StockiiPanel
     {
         private static MySqlConnection conn;
         public static int colNum = 57;
+        public static DataTable classfiDt = new DataTable();
 
         //版块分类
         enum Board
@@ -106,7 +107,7 @@ namespace StockiiPanel
 
             DataSet ds = JSONHandler.GetClassfication();
             DataTable dt = ds.Tables["stockclassification"];
-
+            classfiDt = dt.Clone();
             DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true,new string[]{"areaname"}));//distinct
 
             foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
