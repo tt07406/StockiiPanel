@@ -16,6 +16,9 @@ namespace StockiiPanel
     /// </summary>
     static class JSONHandler
     {
+        public static string commonURL = "http://stockii-gf.oicp.net/client/api";
+        public static string localURL = "http://192.168.1.220:8080/client/api";
+
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据
         /// 例如：Json＝{t1:[{name:'数据name',type:'数据type'}]} 或 Json＝{t1:[{name:'数据name',type:'数据type'}],t2:[{id:'数据id',gx:'数据gx',val:'数据val'}]}
@@ -37,6 +40,7 @@ namespace StockiiPanel
                 foreach (var item in datajson)
                 {
                     DataTable dt = new DataTable(item.Key);
+
                     object[] rows = (object[])item.Value;
                     foreach (var row in rows)
                     {
@@ -254,11 +258,11 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("classification.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
-
-                sr.Close();
+                string url = commonURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "liststockclassification";
+                args["response"] = "json";
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -268,9 +272,10 @@ namespace StockiiPanel
                 return null;
             }
 
-            JObject jo = (JObject)JsonConvert.DeserializeObject(jsonText);
-            string jsonarray = jo["liststockclassficationresponse"]["stockclassification"].ToString();
-            DataSet jsDs = JsonToDataSet("{'stockclassification' :" + jsonarray + "}");
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+            
+            DataSet jsDs = JsonToDataSet( "{"+ jsonarray +"}");
 
             return jsDs;
         }

@@ -367,27 +367,31 @@ namespace StockiiPanel
             ndayGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
             ndayGrid.Columns[1].Frozen = true;
 
-            ndayGrid.Columns[2].HeaderText = "日期";
-            ndayGrid.Columns[2].Width = 80;
+            ndayGrid.Columns[2].HeaderText = "开始日期";
+            ndayGrid.Columns[2].Width = 110;
             ndayGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["created"].ToString();
+
+            ndayGrid.Columns[3].HeaderText = "结束日期";
+            ndayGrid.Columns[3].Width = 110;
+            ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["created"].ToString();
 
             if (daySumButton.Checked)
             {
-                ndayGrid.Columns[3].HeaderText = intervalCombo.Text + "日和";
-                ndayGrid.Columns[3].Width = 110;
-                ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "日和（元）";
+                ndayGrid.Columns[4].Width = 110;
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
             }
             else if (weekSumButton.Checked)
             {
-                ndayGrid.Columns[3].HeaderText = intervalCombo.Text + "周和";
-                ndayGrid.Columns[3].Width = 110;
-                ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "周和（元）";
+                ndayGrid.Columns[4].Width = 110;
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
             }
             else if (monthSumButton.Checked)
             {
-                ndayGrid.Columns[3].HeaderText = intervalCombo.Text + "月和";
-                ndayGrid.Columns[3].Width = 110;
-                ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "月和（元）";
+                ndayGrid.Columns[4].Width = 110;
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
             }
 
             stop = true;

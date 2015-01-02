@@ -313,8 +313,28 @@ namespace StockiiPanel
             #region 从dataGridView中选取行并放到一个新表中，然后再绑定到dataGridView中
             DataTable dataTable = new DataTable();
 
+            int length = 0;
+
+            switch (dataGridView.Name)
+            {
+                case "rawDataGrid":
+                    length = colNum;
+                    break;
+                case "ndayGrid":
+                    length = 5;
+                    break;
+                case "calResultGrid":
+                    length = 7;
+                    break;
+                case "sectionResultGrid":
+                    length = 11;
+                    break;
+                default:
+                    break;
+            }
+
             //添加表头
-            for (int col = 0; col < colNum; col++)
+            for (int col = 0; col < length; col++)
             {
                 string columnName = dataGridView.Columns[col].HeaderText;
                 dataTable.Columns.Add(columnName,dataGridView.Columns[col].ValueType);
@@ -326,7 +346,7 @@ namespace StockiiPanel
                 for (int r = dataGridView.SelectedRows.Count - 1; r >= 0; r--)
                 {
                     DataRow dataRow = dataTable.NewRow();
-                    for (int c = 0; c < colNum; c++)
+                    for (int c = 0; c < length; c++)
                     {
                         dataRow[c] = dataGridView.SelectedRows[r].Cells[c].Value;
                     }
@@ -339,7 +359,7 @@ namespace StockiiPanel
                 for (int r = 0; r < dataGridView.Rows.Count; r++)
                 {
                     DataRow dataRow = dataTable.NewRow();
-                    for (int c = 0; c < colNum; c++)
+                    for (int c = 0; c < length; c++)
                     {
                         dataRow[c] = dataGridView.Rows[r].Cells[c].Value;
                     }
