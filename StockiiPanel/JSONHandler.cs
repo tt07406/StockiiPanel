@@ -32,7 +32,7 @@ namespace StockiiPanel
                 DataSet ds = new DataSet();
                 JavaScriptSerializer JSS = new JavaScriptSerializer();
 
-               
+                JSS.MaxJsonLength = Int32.MaxValue; //取得最大数值,代码在对象过大时会报错
                 object obj = JSS.DeserializeObject(Json);
                 Dictionary<string, object> datajson = (Dictionary<string, object>)obj;
 
@@ -62,8 +62,9 @@ namespace StockiiPanel
                 }
                 return ds;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -327,6 +328,9 @@ namespace StockiiPanel
             totalpage = 1;
             errorNo = 0;
 
+            if (stockid.Count == 0)
+                return null;
+
             String sqlId = stockid[0].ToString();
 
             stockid.RemoveAt(0);
@@ -371,5 +375,37 @@ namespace StockiiPanel
 
             return jsDs;
         }
+
+        public static DataSet GetCrossInfo(double weight, String optName, String startDate, String endDate)
+        {
+            string jsonText = "";
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listcrossinfo";
+                args["response"] = "json";
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                args["optname"] = optName;
+                args["weight"] = weight.ToString();
+                jsonText = WebService.Get(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+
+            return jsDs;
+        }
+
     }
 }

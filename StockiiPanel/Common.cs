@@ -16,7 +16,6 @@ namespace StockiiPanel
     /// </summary>
     class Commons
     {
-        private static MySqlConnection conn;
         public static int colNum = 57;
         public static DataTable classfiDt = new DataTable();
 
@@ -319,12 +318,30 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool GetStockDayInfoBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
-            bool stop = false;
-            totalpage = 1;
-            errorNo = 0;
-            ds = new DataSet();
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '"+name+"'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default :
+                    break;
+            }
 
-            return stop;
+            return GetStockDayInfo(stocks, sortname, asc, startDate, endDate, page, pagesize,out errorNo,out ds,out totalpage);
         }
 
         /// <summary>
@@ -440,10 +457,34 @@ namespace StockiiPanel
         public static bool GetCrossInfoCmd(double weight, String optname, String startDate, String endDate, out int errorNo,out DataSet ds)
         {
             bool stop = false;
+            errorNo = -1;
+            ds = JSONHandler.GetCrossInfo(2, "avg_price", "2012-12-03", "2013-12-2");
 
-            errorNo = 0;
-            ds = new DataSet();
+            var query = (from u in ds.Tables["crossinfo"].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             start_date = u.Field<string>("startdate"),
+                             end_date = u.Field<string>("enddate"),
+                             start_value = u.Field<string>("startvalue"),
+                             end_value = u.Field<string>("endvalue"),
+                             start_list_date = u.Field<string>("startlistdate"),
+                             end_list_date = u.Field<string>("endlistdate"),
+                             cross_type = u.Field<string>("crosstype"),
+                             avg = u.Field<string>("avg"),
+                             difference = u.Field<string>("difference"),
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "cross_info");
+            ds.Tables.Remove("crossinfo");
+            ds.Tables.Add(dt);
+
+            //Console.WriteLine("ds: {0}")
             return stop;
+
         }
 
         /// <summary>

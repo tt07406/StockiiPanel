@@ -36,6 +36,8 @@ namespace StockiiPanel
 
             url += data.ToString();
 
+            //Console.WriteLine(url);
+
             // Create the web request
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
 

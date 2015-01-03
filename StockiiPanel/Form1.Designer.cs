@@ -459,10 +459,10 @@
             this.bkWorker = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.boardButton = new StockiiPanel.DropButton();
             this.sumWorker = new System.ComponentModel.BackgroundWorker();
             this.customWorker = new System.ComponentModel.BackgroundWorker();
             this.crossWorker = new System.ComponentModel.BackgroundWorker();
+            this.boardButton = new StockiiPanel.DropButton();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -3235,9 +3235,9 @@
             this.groupBox5.Controls.Add(this.allButton1);
             this.groupBox5.Controls.Add(this.moreButton1);
             this.groupBox5.Controls.Add(this.ndayGrid);
-            this.groupBox5.Location = new System.Drawing.Point(13, 129);
+            this.groupBox5.Location = new System.Drawing.Point(6, 128);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1578, 418);
+            this.groupBox5.Size = new System.Drawing.Size(868, 418);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "n日数据";
@@ -3246,7 +3246,7 @@
             // 
             this.pageLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel1.AutoSize = true;
-            this.pageLabel1.Location = new System.Drawing.Point(774, 393);
+            this.pageLabel1.Location = new System.Drawing.Point(419, 393);
             this.pageLabel1.Name = "pageLabel1";
             this.pageLabel1.Size = new System.Drawing.Size(23, 12);
             this.pageLabel1.TabIndex = 6;
@@ -3255,7 +3255,7 @@
             // allButton1
             // 
             this.allButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton1.Location = new System.Drawing.Point(815, 387);
+            this.allButton1.Location = new System.Drawing.Point(460, 387);
             this.allButton1.Name = "allButton1";
             this.allButton1.Size = new System.Drawing.Size(62, 25);
             this.allButton1.TabIndex = 5;
@@ -3266,7 +3266,7 @@
             // moreButton1
             // 
             this.moreButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton1.Location = new System.Drawing.Point(697, 387);
+            this.moreButton1.Location = new System.Drawing.Point(342, 387);
             this.moreButton1.Name = "moreButton1";
             this.moreButton1.Size = new System.Drawing.Size(61, 25);
             this.moreButton1.TabIndex = 4;
@@ -3276,17 +3276,20 @@
             // 
             // ndayGrid
             // 
+            this.ndayGrid.AllowUserToAddRows = false;
+            this.ndayGrid.AllowUserToDeleteRows = false;
             this.ndayGrid.AllowUserToResizeRows = false;
             this.ndayGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ndayGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ndayGrid.ContextMenuStrip = this.rawContextMenuStrip;
-            this.ndayGrid.Location = new System.Drawing.Point(7, 20);
+            this.ndayGrid.Location = new System.Drawing.Point(6, 21);
             this.ndayGrid.Name = "ndayGrid";
+            this.ndayGrid.RowHeadersWidth = 50;
             this.ndayGrid.RowTemplate.Height = 23;
             this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ndayGrid.Size = new System.Drawing.Size(1565, 361);
+            this.ndayGrid.Size = new System.Drawing.Size(856, 361);
             this.ndayGrid.TabIndex = 0;
             this.ndayGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ndayGrid_DataBindingComplete);
             // 
@@ -3307,7 +3310,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(12, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1579, 109);
+            this.groupBox4.Size = new System.Drawing.Size(862, 109);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "n日和筛选";
@@ -3433,13 +3436,15 @@
             this.groupBox7.Controls.Add(this.calResultGrid);
             this.groupBox7.Location = new System.Drawing.Point(7, 135);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1588, 436);
+            this.groupBox7.Size = new System.Drawing.Size(867, 398);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "计算结果";
             // 
             // calResultGrid
             // 
+            this.calResultGrid.AllowUserToAddRows = false;
+            this.calResultGrid.AllowUserToDeleteRows = false;
             this.calResultGrid.AllowUserToResizeRows = false;
             this.calResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
@@ -3448,9 +3453,10 @@
             this.calResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.calResultGrid.Location = new System.Drawing.Point(7, 20);
             this.calResultGrid.Name = "calResultGrid";
+            this.calResultGrid.RowHeadersWidth = 50;
             this.calResultGrid.RowTemplate.Height = 23;
             this.calResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.calResultGrid.Size = new System.Drawing.Size(1575, 398);
+            this.calResultGrid.Size = new System.Drawing.Size(854, 360);
             this.calResultGrid.TabIndex = 0;
             this.calResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.calResultGrid_DataBindingComplete);
             // 
@@ -3474,7 +3480,7 @@
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Location = new System.Drawing.Point(6, 15);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1589, 109);
+            this.groupBox6.Size = new System.Drawing.Size(868, 109);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "比较筛选";
@@ -3623,7 +3629,7 @@
             this.groupBox9.Controls.Add(this.sectionResultGrid);
             this.groupBox9.Location = new System.Drawing.Point(6, 77);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(1591, 488);
+            this.groupBox9.Size = new System.Drawing.Size(868, 456);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "跨区结果";
@@ -3632,7 +3638,7 @@
             // 
             this.pageLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel3.AutoSize = true;
-            this.pageLabel3.Location = new System.Drawing.Point(791, 463);
+            this.pageLabel3.Location = new System.Drawing.Point(430, 431);
             this.pageLabel3.Name = "pageLabel3";
             this.pageLabel3.Size = new System.Drawing.Size(23, 12);
             this.pageLabel3.TabIndex = 3;
@@ -3641,7 +3647,7 @@
             // allButton3
             // 
             this.allButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton3.Location = new System.Drawing.Point(831, 457);
+            this.allButton3.Location = new System.Drawing.Point(470, 425);
             this.allButton3.Name = "allButton3";
             this.allButton3.Size = new System.Drawing.Size(62, 25);
             this.allButton3.TabIndex = 2;
@@ -3652,7 +3658,7 @@
             // moreButton3
             // 
             this.moreButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton3.Location = new System.Drawing.Point(714, 457);
+            this.moreButton3.Location = new System.Drawing.Point(353, 425);
             this.moreButton3.Name = "moreButton3";
             this.moreButton3.Size = new System.Drawing.Size(61, 25);
             this.moreButton3.TabIndex = 1;
@@ -3662,6 +3668,8 @@
             // 
             // sectionResultGrid
             // 
+            this.sectionResultGrid.AllowUserToAddRows = false;
+            this.sectionResultGrid.AllowUserToDeleteRows = false;
             this.sectionResultGrid.AllowUserToResizeRows = false;
             this.sectionResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
@@ -3670,9 +3678,10 @@
             this.sectionResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
             this.sectionResultGrid.Location = new System.Drawing.Point(16, 21);
             this.sectionResultGrid.Name = "sectionResultGrid";
+            this.sectionResultGrid.RowHeadersWidth = 50;
             this.sectionResultGrid.RowTemplate.Height = 23;
             this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.sectionResultGrid.Size = new System.Drawing.Size(1559, 427);
+            this.sectionResultGrid.Size = new System.Drawing.Size(836, 395);
             this.sectionResultGrid.TabIndex = 0;
             this.sectionResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.sectionResultGrid_DataBindingComplete);
             // 
@@ -3691,7 +3700,7 @@
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1589, 65);
+            this.groupBox8.Size = new System.Drawing.Size(868, 65);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "跨区筛选";
@@ -3872,20 +3881,6 @@
             this.splitContainer2.SplitterDistance = 98;
             this.splitContainer2.TabIndex = 9;
             // 
-            // boardButton
-            // 
-            this.boardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.boardButton.ContextMenuStrip = this.boardMenuStrip;
-            this.boardButton.Location = new System.Drawing.Point(109, 599);
-            this.boardButton.Name = "boardButton";
-            this.boardButton.Size = new System.Drawing.Size(75, 23);
-            this.boardButton.TabIndex = 4;
-            this.boardButton.Text = "版块";
-            this.boardButton.UseVisualStyleBackColor = true;
-            this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -6270;
-            this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
-            // 
             // sumWorker
             // 
             this.sumWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sumWorker_DoWork);
@@ -3900,6 +3895,20 @@
             // 
             this.crossWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.crossWorker_DoWork);
             this.crossWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.crossWorker_RunWorkerCompleted);
+            // 
+            // boardButton
+            // 
+            this.boardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.boardButton.ContextMenuStrip = this.boardMenuStrip;
+            this.boardButton.Location = new System.Drawing.Point(109, 599);
+            this.boardButton.Name = "boardButton";
+            this.boardButton.Size = new System.Drawing.Size(75, 23);
+            this.boardButton.TabIndex = 4;
+            this.boardButton.Text = "版块";
+            this.boardButton.UseVisualStyleBackColor = true;
+            this.boardButton.WorkSizeX = 0;
+            this.boardButton.WorkSizeY = -6600;
+            this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
             // 

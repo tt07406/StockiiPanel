@@ -217,64 +217,6 @@ namespace StockiiPanel
             searchTab(tabControl.SelectedIndex);
         }
 
-        private void searchTab(int type)
-        {
-            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
-            {
-                return;
-            }
-
-            if (type < 3 && groupList.Visible == true && groupList.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("请选择一个分组");
-                return;
-            }
-            else if (type < 3 && groupList.Visible == false && record.Count == 0)
-            {
-                MessageBox.Show("请选择一个版块");
-                return;
-            }
-
-            // 启动Loading线程
-            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
-            thread.Start();
-
-            //启动后台线程
-            stop = false;
-
-            String args;
-            if (groupList.Visible)//自选
-            {
-                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
-            }
-            else
-            {
-                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + ",";
-            }
-
-            switch (type)
-            {
-                case 0:
-                    bkWorker.RunWorkerAsync(args);
-                    pageLabel.Text = "0/0";
-                    break;
-                case 1:
-                    sumWorker.RunWorkerAsync(args);
-                    pageLabel1.Text = "0/0";
-                    break;
-                case 2:
-                    customWorker.RunWorkerAsync(args);                   
-                    break;
-                case 3:
-                    crossWorker.RunWorkerAsync(args);
-                    pageLabel3.Text = "0/0";
-                    break;
-                default:
-                    break;
-            }
-            
-        }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             page = 1;
@@ -386,7 +328,7 @@ namespace StockiiPanel
 
             ds = new DataSet();
 
-            if (args[2] != string.Empty)//自选
+            if (args.Length == 3)//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
@@ -841,16 +783,16 @@ namespace StockiiPanel
                 type = 3;
             }
 
-            if (args[2] != string.Empty)//自选
+            if (args.Length == 6 )//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(intervalCombo.Text), indexCombo.Text, typeCombo.Text, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
             }
 
         }
@@ -864,16 +806,16 @@ namespace StockiiPanel
 
             ds = new DataSet();
 
-            if (args[2] != string.Empty)//自选
+            if (args.Length == 7)//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetStockDaysDiff(stocks, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, out errorNo, out ds);
+                stop = Commons.GetStockDaysDiff(stocks, Convert.ToDouble(args[3]), Convert.ToDouble(args[4]), args[5], args[6], startDate, endDate, out errorNo, out ds);
             }
             else //版块
             {
-                stop = Commons.GetStockDaysDiffBoard(record, Convert.ToDouble(smallBox.Text), Convert.ToDouble(bigBox.Text), compareIndexCombo.Text, compareCombo.Text, startDate, endDate, out errorNo, out ds);
+                stop = Commons.GetStockDaysDiffBoard(record, Convert.ToDouble(args[2]), Convert.ToDouble(args[3]), args[4], args[5], startDate, endDate, out errorNo, out ds);
             }
         }
 
@@ -894,7 +836,7 @@ namespace StockiiPanel
 
             ds = new DataSet();
 
-            stop = Commons.GetCrossInfoCmd(Convert.ToDouble(weighBox.Text), indexCombox1.Text, startDate, endDate, out errorNo, out ds);
+            stop = Commons.GetCrossInfoCmd(Convert.ToDouble(args[2]), args[3], startDate, endDate, out errorNo, out ds);
 
         }
 

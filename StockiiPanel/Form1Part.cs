@@ -623,7 +623,18 @@ namespace StockiiPanel
                 int j = i + 1;
                 sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
 
-                sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "positive")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "negative")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
+                }
+                else
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                }
 
             }
         }
@@ -691,6 +702,66 @@ namespace StockiiPanel
             endDatePicker1.Value = TimeControl.GetLastDayOfMonth(endDate);
             endDatePicker2.Value = TimeControl.GetLastDayOfMonth(endDate);
             endDatePicker3.Value = TimeControl.GetLastDayOfMonth(endDate);
+        }
+
+        private void searchTab(int type)
+        {
+            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
+            {
+                return;
+            }
+
+            if (type < 3 && groupList.Visible == true && groupList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+            else if (type < 3 && groupList.Visible == false && record.Count == 0)
+            {
+                MessageBox.Show("请选择一个版块");
+                return;
+            }
+
+            // 启动Loading线程
+            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
+            thread.Start();
+
+            //启动后台线程
+            stop = false;
+
+            String args;
+            if (groupList.Visible && type < 3)//自选
+            {
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+            }
+            else
+            {
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") ;
+            }
+
+            switch (type)
+            {
+                case 0:
+                    bkWorker.RunWorkerAsync(args);
+                    pageLabel.Text = "0/0";
+                    break;
+                case 1:
+                    args += "," + Convert.ToInt32(intervalCombo.Text) + "," + indexCombo.Text + "," + typeCombo.Text;
+                    sumWorker.RunWorkerAsync(args);
+                    pageLabel1.Text = "0/0";
+                    break;
+                case 2:
+                    args += "," + smallBox.Text + "," + bigBox.Text + "," + compareIndexCombo.Text + "," + compareCombo.Text;
+                    customWorker.RunWorkerAsync(args);
+                    break;
+                case 3:
+                    crossWorker.RunWorkerAsync(startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + weighBox.Text + "," + indexCombox1.Text);
+                    pageLabel3.Text = "0/0";
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 
