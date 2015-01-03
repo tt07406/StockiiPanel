@@ -34,3 +34,16 @@ D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Debug\Newtonsoft.Json.dll
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\Newtonsoft.Json.dll
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe.config
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.pdb
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\bin\Debug\Newtonsoft.Json.dll
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomDialog.resources
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Form1.resources
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SNListDialog.resources
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.MyProgressBar.resources
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Properties.Resources.resources
+C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache

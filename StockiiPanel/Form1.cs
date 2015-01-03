@@ -67,6 +67,8 @@ namespace StockiiPanel
             {
                 groupList.Items.Add(dic.Key);
             }
+            Commons.GetTradeDate();
+
             Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
             stockDs = Commons.GetStockBasicInfo();
 

@@ -370,29 +370,29 @@ namespace StockiiPanel
 
             ndayGrid.Columns[2].HeaderText = "开始日期";
             ndayGrid.Columns[2].Width = 110;
-            ndayGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["created"].ToString();
+            ndayGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
 
             ndayGrid.Columns[3].HeaderText = "结束日期";
             ndayGrid.Columns[3].Width = 110;
-            ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["created"].ToString();
+            ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
 
             if (daySumButton.Checked)
             {
                 ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "日和（元）";
                 ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
             }
             else if (weekSumButton.Checked)
             {
                 ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "周和（元）";
                 ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
             }
             else if (monthSumButton.Checked)
             {
                 ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "月和（元）";
                 ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["ndaysum"].ToString();
+                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
             }
 
             stop = true;
@@ -423,9 +423,30 @@ namespace StockiiPanel
                 }
                 return;
             }
+            String tableName = "";
+            foreach (DataTable d in ds.Tables)
+            {
+                switch (d.TableName)
+                {
+                    case "stock_day_diff":
+                        dt = d;
+                        tableName = "stock_day_diff";
+                        break;
+                    case "stock_day_diff_seperate":
+                        dt = d;
+                        tableName = "stock_day_diff";
+                        break;
+                    case "stock_day_diff_sum":
+                        dt = d;
+                        tableName = "stock_day_diff";
+                        break;
+                    default:
+                        dt = null;
+                        break;
 
-            dt = (DataTable)ds.Tables["stock_day_diff"];
-
+                }
+                
+            }
             if (dt == null || dt.Rows.Count == 0)
             {
                 stop = true;
@@ -436,7 +457,7 @@ namespace StockiiPanel
             pageLabel.Text = page + "/" + (int)totalPages;
 
             calResultGrid.DataSource = ds;
-            calResultGrid.DataMember = "stock_day_diff";
+            calResultGrid.DataMember = tableName;
 
             calResultGrid.AllowUserToAddRows = false;//不显示最后空白行
             calResultGrid.EnableHeadersVisualStyles = false;
@@ -454,23 +475,59 @@ namespace StockiiPanel
 
             calResultGrid.Columns[2].HeaderText = "开始时间";
             calResultGrid.Columns[2].Width = 110;
-            calResultGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_time"].ToString();
+            calResultGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
 
             calResultGrid.Columns[3].HeaderText = "结束时间";
             calResultGrid.Columns[3].Width = 110;
-            calResultGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_time"].ToString();
+            calResultGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
 
-            calResultGrid.Columns[4].HeaderText = "起始时间的值";
-            calResultGrid.Columns[4].Width = 150;
-            calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
+            switch (tableName)
+            {
+                case "stock_day_diff":
+                    calResultGrid.Columns[4].HeaderText = "起始时间的值";
+                    calResultGrid.Columns[4].Width = 150;
+                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
 
-            calResultGrid.Columns[5].HeaderText = "结束时间的值";
-            calResultGrid.Columns[5].Width = 150;
-            calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
+                    calResultGrid.Columns[5].HeaderText = "结束时间的值";
+                    calResultGrid.Columns[5].Width = 150;
+                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
 
-            calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
-            calResultGrid.Columns[6].Width = 240;
-            calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
+                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
+                    calResultGrid.Columns[6].Width = 240;
+                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
+                    break;
+                case "stock_day_diff_seperate":
+                    calResultGrid.Columns[4].HeaderText = "涨幅总数";
+                    calResultGrid.Columns[4].Width = 110;
+                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["growth_count"].ToString();
+
+                    calResultGrid.Columns[5].HeaderText = "振幅总数";
+                    calResultGrid.Columns[5].Width = 110;
+                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["amp_count"].ToString();
+
+                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
+                    calResultGrid.Columns[6].Width = 240;
+                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
+                    break;
+                case "stock_day_diff_sum":
+                    calResultGrid.Columns[4].HeaderText = "起始时间的值";
+                    calResultGrid.Columns[4].Width = 150;
+                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
+
+                    calResultGrid.Columns[5].HeaderText = "结束时间的值";
+                    calResultGrid.Columns[5].Width = 150;
+                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
+
+                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
+                    calResultGrid.Columns[6].Width = 240;
+                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
+                    break;
+                default:
+                    break;
+
+            }
+
+            
 
             stop = true;
         }
@@ -707,8 +764,9 @@ namespace StockiiPanel
 
         private void searchTab(int type)
         {
-            if (!Commons.isTradeDay(startDatePicker.Value.ToString("yyyy-MM-dd")) || !Commons.isTradeDay(endDatePicker.Value.ToString("yyyy-MM-dd")))
+            if (!Commons.isTradeDay(startDatePicker.Value) || !Commons.isTradeDay(endDatePicker.Value))
             {
+                MessageBox.Show("非交易日");
                 return;
             }
 

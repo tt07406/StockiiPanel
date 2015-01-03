@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 using System.IO;
 using System.Reflection;
+using System.Globalization;
 
 namespace StockiiPanel
 {
@@ -18,7 +19,7 @@ namespace StockiiPanel
     {
         public static int colNum = 57;
         public static DataTable classfiDt = new DataTable();
-
+        public static List<DateTime> tradeDates = new List<DateTime>();
         //版块分类
         enum Board
         {
@@ -26,6 +27,25 @@ namespace StockiiPanel
             Industry = 2,
             Up = 3,
             Down = 4
+        }
+
+        /// <summary>
+        /// 获取所有的交易日列表
+        /// </summary>
+        public static void GetTradeDate()
+        {
+            DataSet ds = JSONHandler.GetTradeDate();
+            DataTable dt = ds.Tables["tradedate"];
+
+            foreach (DataRow row in dt.Rows)
+            {
+                String dateStr = (String)row["listdate"];
+                DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat; 
+                DateTime dateTime = DateTime.ParseExact(dateStr, "yyyy-MM-ddThh:mm:ss+08:00", dtfi, DateTimeStyles.None);
+                tradeDates.Add(dateTime);
+            }
+
+           
         }
 
         /// <summary>
@@ -297,8 +317,12 @@ namespace StockiiPanel
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public static bool isTradeDay(String date)
-        {          
+        public static bool isTradeDay(DateTime date)
+        {
+            if (tradeDates.Contains(date))
+            {
+                return true;
+            }
             return true;
         }
 
@@ -342,6 +366,40 @@ namespace StockiiPanel
             return GetStockDayInfo(stocks, sortname, asc, startDate, endDate, page, pagesize,out errorNo,out ds,out totalpage);
         }
 
+        public static DateTime findNearDate(DateTime curDate)
+        {
+            foreach (DateTime dt in tradeDates)
+                if (dt >= curDate)
+                    return dt;
+            return curDate;
+        }
+            
+        public static DateTime calcStartDate(String curDateStr, int delta, int type)
+        {
+            DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+            DateTime startDate = DateTime.ParseExact(curDateStr, "yyyy-MM-ddThh:mm:ss+08:00", dtfi, DateTimeStyles.None);
+            switch (type)
+            {
+                case 1:
+                    int index = tradeDates.IndexOf(startDate) - delta + 1;
+                    if (index < 0)
+                        index = 0;
+                    startDate = tradeDates[index];
+                    break;
+                case 2:
+                    delta = 7 * (delta - 1);
+                    delta += Convert.ToInt32(startDate.DayOfWeek.ToString("d"));
+                    startDate = startDate.AddDays(delta);
+                    startDate = findNearDate(startDate);
+                    break;
+                case 3:
+                    startDate = findNearDate(new DateTime(startDate.Year, startDate.Month, 1));
+                    break;
+            }
+        return startDate;
+        }
+        
+
         /// <summary>
         /// 查询股票N日和
         /// </summary>
@@ -365,7 +423,71 @@ namespace StockiiPanel
             bool stop = false;
             totalpage = 1;
             errorNo = 0;
-            ds = new DataSet();
+            switch (sumname)
+            {
+                case "涨幅":
+                    sumname = "growth";
+                    break;
+                case "均价":
+                    sumname = "avg_price";
+                    break;
+                case "换手":
+                    sumname = "turn";
+                    break;
+                case "振幅":
+                    sumname = "amp";
+                    break;
+                case "总金额":
+                    sumname = "total";
+                    break;
+                case "量比":
+                    sumname = "vol";
+                    break;
+            }
+            switch (sumtype)
+            {
+                case "正和":
+                    sumtype = "positive";
+                    break;
+                case "负和":
+                    sumtype = "negative";
+                    break;
+                case "所有和":
+                    sumtype = "all";
+                    break;
+            }
+            ds = JSONHandler.GetNDaysSum(stockid, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            String tableName = "";
+            switch (type)
+            {
+                case 1:
+                    tableName = "daysuminfo";
+                    break;
+                case 2:
+                    tableName = "weeksuminfo";
+                    break;
+                case 3:
+                    tableName = "monthsuminfo";
+                    break;
+            }
+            int columnCount = ds.Tables[tableName].Columns.Count;
+            var query = (from u in ds.Tables[tableName].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             end_date = u.Field<string>("created").Substring(0,10),
+                             start_date = calcStartDate(u.Field<string>("created"), num, type).ToString("yyyy-MM-dd"),
+                             value = u.Field<string>(columnCount - 1),
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "n_day_sum");
+            ds.Tables.Remove(tableName);
+            ds.Tables.Add(dt);
+
 
             return stop;
         }
@@ -390,11 +512,31 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
         {
-            bool stop = false;
-            totalpage = 1;
-            errorNo = 0;
-            ds = new DataSet();
-            return stop;
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return GetNDaysSum(stocks, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+
         }
 
         /// <summary>
@@ -414,7 +556,166 @@ namespace StockiiPanel
         {
             bool stop = false;
             errorNo = 0;
-            ds = new DataSet();
+            switch (opt)
+            {
+                case "指定两天加":
+                    opt = "plus";
+                    break;
+                case "指定两天减":
+                    opt = "minus";
+                    break;
+                case "指定两天比值":
+                    opt = "divide";
+                    break;
+                case "指定时间段内最大值减最小值":
+                    opt = "maxmin";
+                    break;
+                case "指定时间段内最大值比最小值":
+                    opt = "maxmindivide";
+                    break;
+                case "指定时间段内的和":
+                    opt = "sum";
+                    break;
+                case "两个时间内涨幅,振幅数据分段":
+                    opt = "seperate";
+                    break;
+            }
+            switch (optname)
+            {
+                case "均价":
+                    optname = "avg_price";
+                    break;
+                case "涨幅":
+                    optname = "growth_ratio";
+                    break;
+                case "总股本":
+                    optname = "total_stock";
+                    break;
+                case "总市值":
+                    optname = "total_value";
+                    break;
+                case "均价流通市值":
+                    optname = "avg_circulation_value";
+                    break;
+                case "流通股本":
+                    optname = "cir_of_cap_stock";
+                    break;
+                case "现价":
+                    optname = "current_price";
+                    break;
+                case "换手":
+                    optname = "turnover_ratio";
+                    break;
+                case "总金额":
+                    optname = "total_money";
+                    break;
+                case "振幅":
+                    optname = "amplitude_ratio";
+                    break;
+                case "量比":
+                    optname = "volume_ratio";
+                    break;
+            }
+            ds = JSONHandler.GetStockDaysDiff(stockid, min, max, optname, opt, startDate, endDate, out errorNo);
+            String tableName = "";
+            DataTable dt;
+            switch (optname)
+            {
+                case "seperate":
+                    tableName = "growthamp";
+                    var query1 = (from u in ds.Tables[tableName].AsEnumerable()
+                             join r in classfiDt.AsEnumerable()
+                             on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                             select new
+                             {
+                                 stock_id = u.Field<string>("stockid"),
+                                 stock_name = r.Field<string>("stockname"),
+                                 start_date = startDate,
+                                 end_date = endDate,
+                                 growth_count = u.Field<string>("growthcount"),
+                                 amp_count = u.Field<string>("ampcount"),
+                                 g0 = u.Field<string>("g0"),
+                                 g1 = u.Field<string>("g1"),
+                                 g2 = u.Field<string>("g2"),
+                                 g3 = u.Field<string>("g3"),
+                                 g4 = u.Field<string>("g4"),
+                                 g5 = u.Field<string>("g5"),
+                                 g6 = u.Field<string>("g6"),
+                                 g7 = u.Field<string>("g7"),
+                                 g8 = u.Field<string>("g8"),
+                                 g9 = u.Field<string>("g9"),
+                                 g10 = u.Field<string>("g10"),
+                                 g11 = u.Field<string>("g11"),
+                                 g12 = u.Field<string>("g12"),
+                                 g13 = u.Field<string>("g13"),
+                                 g14 = u.Field<string>("g14"),
+                                 g15 = u.Field<string>("g15"),
+                                 g16 = u.Field<string>("g16"),
+                                 g17 = u.Field<string>("g17"),
+                                 g18 = u.Field<string>("g18"),
+                                 g19 = u.Field<string>("g19"),
+                                 a0 = u.Field<string>("a0"),
+                                 a1 = u.Field<string>("a1"),
+                                 a2 = u.Field<string>("a2"),
+                                 a3 = u.Field<string>("a3"),
+                                 a4 = u.Field<string>("a4"),
+                                 a5 = u.Field<string>("a5"),
+                                 a6 = u.Field<string>("a6"),
+                                 a7 = u.Field<string>("a7"),
+                                 a8 = u.Field<string>("a8"),
+                                 a9 = u.Field<string>("a9"),
+                                 a10 = u.Field<string>("a10"),
+                                 a11 = u.Field<string>("a11"),
+                                 a12 = u.Field<string>("a12"),
+                                 a13 = u.Field<string>("a13"),
+                                 a14 = u.Field<string>("a14"),
+                                 a15 = u.Field<string>("a15"),
+                                 a16 = u.Field<string>("a16"),
+                                 a17 = u.Field<string>("a17"),
+                                 a18 = u.Field<string>("a18"),
+                                 a19 = u.Field<string>("a19"),
+                             });
+                    dt = ToDataTable(query1.ToList(), "stock_day_diff_seperate");
+                    break;
+                case "sum":
+                    tableName = "stockndayssum";
+                    var query2 = (from u in ds.Tables[tableName].AsEnumerable()
+                             join r in classfiDt.AsEnumerable()
+                             on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                             select new
+                             {
+                                 stock_id = u.Field<string>("stockid"),
+                                 stock_name = r.Field<string>("stockname"),
+                                 start_date = startDate,
+                                 end_date = endDate,
+                                 index_value = u.Field<string>(optname),
+                             });
+                    dt = ToDataTable(query2.ToList(), "stock_day_diff_sum");
+                    break;
+                default:
+                    tableName = "details";
+                    var query3 = (from u in ds.Tables[tableName].AsEnumerable()
+                             join r in classfiDt.AsEnumerable()
+                             on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                             select new
+                             {
+                                 stock_id = u.Field<string>("stockid"),
+                                 stock_name = r.Field<string>("stockname"),
+                                 end_date = endDate,
+                                 start_date = startDate,
+                                 start_value = u.Field<string>("startvalue"),
+                                 end_value = u.Field<string>("endvalue"),
+                                 index_value = u.Field<string>(optname),
+                             });
+                    dt = ToDataTable(query3.ToList(), "stock_day_diff");
+                    break;
+            }
+
+            
+            ds.Tables.Remove(tableName);
+            ds.Tables.Add(dt);
+
+
             return stop;
         }
 
@@ -456,7 +757,28 @@ namespace StockiiPanel
         {
             bool stop = false;
             errorNo = -1;
-            ds = JSONHandler.GetCrossInfo(2, "avg_price", "2012-12-03", "2013-12-2");
+            switch(optname)
+            {
+                case "昨收":
+                    optname = "ytd_end_price";
+                    break;
+                case "均价":
+                    optname = "avg_price";
+                    break;
+                case "均价流通市值":
+                    optname = "avg_circulation_value";
+                    break;
+                case "总市值":
+                    optname = "total_value";
+                    break;
+                case "总股本":
+                    optname = "total_stock";
+                    break;
+                case "流通股本":
+                    optname = "cir_of_cap_stock";
+                    break;
+            }
+            ds = JSONHandler.GetCrossInfo(weight, optname, startDate, endDate);
 
             var query = (from u in ds.Tables["crossinfo"].AsEnumerable()
                          join r in classfiDt.AsEnumerable()

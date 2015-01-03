@@ -248,6 +248,39 @@ namespace StockiiPanel
 
             return count;
         }
+        
+        /// <summary>
+        /// 获取所有的交易日列表
+        /// </summary>
+        /// <returns></returns>
+        public static DataSet GetTradeDate()
+        {
+            string jsonText = "";
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listtradedate";
+                args["response"] = "json";
+                jsonText = WebService.Get(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            //jsDs.WriteXml("classfication.xml");
+
+            return jsDs;
+        }
 
         /// <summary>
         /// 获取股票所有分组信息，包括地区和行业两种
@@ -330,15 +363,6 @@ namespace StockiiPanel
 
             if (stockid.Count == 0)
                 return null;
-
-            String sqlId = stockid[0].ToString();
-
-            stockid.RemoveAt(0);
-            foreach (string stockId in stockid)
-            {
-                sqlId += "," + stockId;
-            }
-
             try
             {
                 string url = localURL;
@@ -346,7 +370,7 @@ namespace StockiiPanel
                 args["command"] = "liststockdayinfo";
                 args["response"] = "json";
 
-                args["stockid"] = sqlId;
+                args["stockid"] = String.Join(",", stockid.ToArray());
                 args["page"] = page+"";
                 args["pagesize"] = pagesize + "";
                 args["asc"] = asc + "";
@@ -372,6 +396,105 @@ namespace StockiiPanel
             string num = jo.First.First.First.First.ToString();
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
             totalpage = Convert.ToInt32(num) / pagesize + 1;
+
+            return jsDs;
+        }
+
+        public static DataSet GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                switch (type)
+                {
+                    case 1:
+                        args["command"] = "listdaysum";
+                        args["days"] = num.ToString();
+                        break;
+                    case 2:
+                        args["command"] = "listweeksum";
+                        args["weeks"] = num.ToString();
+                        break;
+                    default:
+                        args["command"] = "lisgmonthsum";
+                        args["months"] = num.ToString();
+                        break;
+                }
+                args["response"] = "json";
+                args["stockid"] = String.Join(",", stockid.ToArray());
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                args["sumname"] = sumname;
+                args["sumtype"] = sumtype;
+                if (sortname.Trim().Length != 0)
+                {
+                    args["sortname"] = sortname;
+                    args["asc"] = asc.ToString();
+                }
+                args["page"] = page.ToString();
+                args["pagesize"] = pagesize.ToString();
+                jsonText = WebService.Get(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+            string count = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(count) / pagesize + 1;
+
+            return jsDs;
+        }
+        public static DataSet GetStockDaysDiff(ArrayList stockid, double min, double max, String optname, String opt, String startDate, String endDate, out int errorNo)
+        {
+            string jsonText = "";
+            errorNo = 0;
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                switch (optname)
+                {
+                    case "seperate":
+                        args["command"] = "listgrowthampdis";
+                        break;
+                    case "sum":
+                        args["command"] = "listndayssum";
+                        args["sumname"] = optname;
+                        break;
+                    default:
+                        args["command"] = "liststockdaysdiff";
+                        args["optname"] = optname;
+                        args["opt"] = opt;
+                        break;
+                }
+                args["response"] = "json";
+                args["stockid"] = String.Join(",", stockid.ToArray());
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                jsonText = WebService.Get(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+            string jsonarray = jo.First.First.Last.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
 
             return jsDs;
         }
