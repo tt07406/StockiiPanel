@@ -265,7 +265,6 @@ namespace StockiiPanel
 
             if (isSelect)
             {
-
                 for (int r = dataGridView.SelectedRows.Count - 1; r >= 0; r--)
                 {
                     DataRow dataRow = dataTable.NewRow();
@@ -278,7 +277,6 @@ namespace StockiiPanel
             }
             else
             {
-
                 for (int r = 0; r < dataGridView.Rows.Count; r++)
                 {
                     DataRow dataRow = dataTable.NewRow();
@@ -527,5 +525,71 @@ namespace StockiiPanel
             return dtReturn;
         }
 
+        /// <summary>
+        /// 拼接功能
+        /// </summary>
+        /// <param name="dataGridView">要拼接的</param>
+        /// <param name="isSelect">是否选中行</param>
+        public static DataGridView Combine(DataGridView dataGridView, DataGridView combineGridView,bool isSelect)
+        {
+            DataGridView result = new DataGridView();
+
+            if (isSelect)
+            {
+                DataTable tb1 = (DataTable)dataGridView.DataSource;
+                DataTable tb2 = new DataTable();
+                tb2 = tb1.Copy();
+
+                for (int r = dataGridView.SelectedRows.Count - 1; r >= 0; r--)
+                {
+                    DataRow dataRow = tb2.NewRow();
+                    for (int c = 0; c < dataGridView.Columns.Count; c++)
+                    {
+                        dataRow[c] = dataGridView.SelectedRows[r].Cells[c].Value;
+                    }
+                    tb2.Rows.Add(dataRow);
+                }
+                result.DataSource = tb2;
+                if (combineGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < combineGridView.Columns.Count; ++i)
+                        tb2.Columns.Add(combineGridView.Columns[i].Name, combineGridView.Columns[i].ValueType);
+                    foreach (DataRow dr in combineGridView.Rows)
+                   {
+                       foreach (DataRow re in tb2.Rows)
+                       {
+                           if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
+                           {
+                           }
+                       }
+                   }
+                }
+                
+            }
+            else
+            {
+                DataTable tb1 = (DataTable)dataGridView.DataSource;
+                DataTable tb2 = new DataTable();
+                tb2 = tb1.Copy();
+
+                for (int r = 0; r < dataGridView.Rows.Count; r++)
+                {
+                    DataRow dataRow = tb2.NewRow();
+                    for (int c = 0; c < dataGridView.Columns.Count; c++)
+                    {
+                        dataRow[c] = dataGridView.Rows[r].Cells[c].Value;
+                    }
+                    tb2.Rows.Add(dataRow);
+                }
+                result.DataSource = tb2;
+                if (combineGridView.RowCount > 0)
+                {
+                   
+                }
+                
+            }
+
+            return result;
+        }
     }
 }

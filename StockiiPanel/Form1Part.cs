@@ -18,6 +18,7 @@ namespace StockiiPanel
     public partial class Form1 : Form
     {
         MyProgressBar myBar = new MyProgressBar();
+        DataGridView buffResult = new DataGridView();//用于保留前一个数
 
         // 代理定义，可以在Invoke时传入相应的参数
         private delegate void funHandle(int nValue);
@@ -762,6 +763,35 @@ namespace StockiiPanel
                     break;
             }
 
+        }
+
+
+        private void combinePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffResult = combineResult;//保存上一个
+
+            if (tabControl.SelectedIndex == 2)
+            {
+                combineResult = Commons.Combine(calResultGrid, combineResult, false);
+            }
+            else
+            {
+                combineResult = Commons.Combine(sectionResultGrid, combineResult, false);
+            }
+           
+        }
+
+        private void combineSelectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffResult = combineResult;//保存上一个
+            if (tabControl.SelectedIndex == 2)
+            {
+                combineResult = Commons.Combine(calResultGrid, combineResult, true);
+            }
+            else
+            {
+                combineResult = Commons.Combine(sectionResultGrid, combineResult, true);
+            }
         }
     }
 

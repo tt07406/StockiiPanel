@@ -454,7 +454,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.combineResult = new System.Windows.Forms.DataGridView();
             this.groupList = new System.Windows.Forms.ListBox();
             this.bkWorker = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -485,6 +485,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sectionResultGrid)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.combineResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -3125,7 +3126,7 @@
             this.combinePageToolStripMenuItem,
             this.combineSelectToolStripMenuItem});
             this.rawContextMenuStrip.Name = "rawContextMenuStrip";
-            this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 92);
+            this.rawContextMenuStrip.Size = new System.Drawing.Size(153, 114);
             this.rawContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.rawContextMenuStrip_Opening);
             // 
             // saveTableToolStripMenuItem
@@ -3145,14 +3146,16 @@
             // combinePageToolStripMenuItem
             // 
             this.combinePageToolStripMenuItem.Name = "combinePageToolStripMenuItem";
-            this.combinePageToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.combinePageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.combinePageToolStripMenuItem.Text = "拼接本页";
+            this.combinePageToolStripMenuItem.Click += new System.EventHandler(this.combinePageToolStripMenuItem_Click);
             // 
             // combineSelectToolStripMenuItem
             // 
             this.combineSelectToolStripMenuItem.Name = "combineSelectToolStripMenuItem";
-            this.combineSelectToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.combineSelectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.combineSelectToolStripMenuItem.Text = "拼接所选";
+            this.combineSelectToolStripMenuItem.Click += new System.EventHandler(this.combineSelectToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -3786,7 +3789,7 @@
             // 
             this.groupBox2.Controls.Add(this.clearButton);
             this.groupBox2.Controls.Add(this.cancelButton);
-            this.groupBox2.Controls.Add(this.listBox1);
+            this.groupBox2.Controls.Add(this.combineResult);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
@@ -3815,17 +3818,19 @@
             this.cancelButton.Text = "撤销";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // combineResult
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.combineResult.AllowUserToAddRows = false;
+            this.combineResult.AllowUserToDeleteRows = false;
+            this.combineResult.AllowUserToResizeRows = false;
+            this.combineResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(6, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(250, 508);
-            this.listBox1.TabIndex = 0;
+            this.combineResult.Location = new System.Drawing.Point(6, 25);
+            this.combineResult.Name = "combineResult";
+            this.combineResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.combineResult.Size = new System.Drawing.Size(250, 508);
+            this.combineResult.TabIndex = 0;
             // 
             // groupList
             // 
@@ -3907,7 +3912,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -6600;
+            this.boardButton.WorkSizeY = -6655;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
@@ -3955,6 +3960,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.combineResult)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -3991,7 +3997,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.DataGridView combineResult;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker startDatePicker;
