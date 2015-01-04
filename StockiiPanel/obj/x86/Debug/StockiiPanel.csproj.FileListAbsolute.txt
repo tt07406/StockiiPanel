@@ -47,3 +47,5 @@ C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SNListDial
 C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.MyProgressBar.resources
 C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Properties.Resources.resources
 C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csproj.GenerateResource.Cache
+E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\Newtonsoft.Json.dll
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache

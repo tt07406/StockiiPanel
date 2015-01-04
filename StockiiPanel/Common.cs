@@ -939,14 +939,17 @@ namespace StockiiPanel
         /// <param name="clientDt">拼接表</param>
         public static void AppendDataTable(DataTable hostDt, DataTable clientDt)
         {
-          if (hostDt != null && hostDt.Rows.Count > 0)
+          if (hostDt != null)
           {
              DataRow dr;
  
              for (int i = 0; i < clientDt.Columns.Count; i++)
              {
                  if (hostDt.Columns.Contains(clientDt.Columns[i].ColumnName))
-                     hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName+"1"));
+                 {
+                     Random ro = new Random();
+                     hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName + ro.Next()));
+                 }
                  else
                      hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName));
  

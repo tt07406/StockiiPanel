@@ -19,6 +19,7 @@ namespace StockiiPanel
     {
         MyProgressBar myBar = new MyProgressBar();
         DataTable buffResult = new DataTable();//用于保留前一个数
+        ArrayList headText = new ArrayList();
 
         // 代理定义，可以在Invoke时传入相应的参数
         private delegate void funHandle(int nValue);
@@ -697,6 +698,17 @@ namespace StockiiPanel
             }
         }
 
+        private void combineResult_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            //自动整理序列号
+            int coun = combineResult.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                combineResult.Rows[i].HeaderCell.Value = j.ToString();
+            }
+        }
+
         /// <summary>
         /// 版块中设置时间
         /// </summary>
@@ -850,6 +862,9 @@ namespace StockiiPanel
         private void Combine(bool isSelect)
         {
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
+            headText.Clear();
+            for (int i = 0; i < combineResult.ColumnCount; i++)
+                headText.Add(combineResult.Columns[i].HeaderText);
            
             if (tabControl.SelectedIndex == 2)
             {
@@ -862,7 +877,7 @@ namespace StockiiPanel
                 else
                 {
                     int length = buffResult.Columns.Count;
-                    Console.WriteLine(buffResult.Columns.Count);
+
                     for (int i = 0; i < calResultGrid.ColumnCount; i++)
                         combineResult.Columns[length + i].HeaderText = calResultGrid.Columns[i].HeaderText;
                 }
@@ -878,23 +893,35 @@ namespace StockiiPanel
                 else
                 {
                     int length = buffResult.Columns.Count;
-                    Console.WriteLine(buffResult.Columns.Count);
+
                     for (int i = 0; i < sectionResultGrid.ColumnCount; i++)
                         combineResult.Columns[length + i].HeaderText = sectionResultGrid.Columns[i].HeaderText;
                 }
             }
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DataTable tmp = buffResult;
+            ArrayList tmpArray = (ArrayList)headText.Clone();
+            
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
+            headText.Clear();
+            for (int i = 0; i < combineResult.ColumnCount; i++)
+                headText.Add(combineResult.Columns[i].HeaderText);
+
             combineResult.DataSource = tmp;
+            for (int i = 0; i < tmpArray.Count; i++)
+                combineResult.Columns[i].HeaderText = tmpArray[i].ToString();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
+            headText.Clear();
+            for (int i = 0; i < combineResult.ColumnCount; i++)
+                headText.Add(combineResult.Columns[i].HeaderText);
             combineResult.DataSource = null;
         }
     }

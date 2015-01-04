@@ -3830,9 +3830,11 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.combineResult.Location = new System.Drawing.Point(6, 25);
             this.combineResult.Name = "combineResult";
+            this.combineResult.RowHeadersWidth = 50;
             this.combineResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.combineResult.Size = new System.Drawing.Size(250, 508);
             this.combineResult.TabIndex = 0;
+            this.combineResult.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.combineResult_DataBindingComplete);
             // 
             // groupList
             // 
@@ -3914,7 +3916,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -6710;
+            this.boardButton.WorkSizeY = -6820;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
