@@ -292,11 +292,17 @@ namespace StockiiPanel
 
             try
             {
+                FileStream aFile = new FileStream("classification.txt", FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                jsonText = sr.ReadToEnd();
+
+                sr.Close();
+                /*
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockclassification";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Get(url, args);*/
             }
             catch (IOException ex)
             {
@@ -325,11 +331,17 @@ namespace StockiiPanel
 
             try
             {
+                FileStream aFile = new FileStream("stockbasicinfo.txt", FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                jsonText = sr.ReadToEnd();
+
+                sr.Close();
+                /*
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockbasicinfo";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Get(url, args);*/
             }
             catch (IOException ex)
             {
@@ -461,6 +473,12 @@ namespace StockiiPanel
             errorNo = 0;
             try
             {
+                FileStream aFile = new FileStream("stockdaysdiff.txt", FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                jsonText = sr.ReadToEnd();
+
+                sr.Close();
+                /*
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 switch (optname)
@@ -482,7 +500,7 @@ namespace StockiiPanel
                 args["stockid"] = String.Join(",", stockid.ToArray());
                 args["starttime"] = startDate;
                 args["endtime"] = endDate;
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Get(url, args);*/
             }
             catch (IOException ex)
             {
@@ -505,6 +523,12 @@ namespace StockiiPanel
 
             try
             {
+                FileStream aFile = new FileStream("crossinfo.txt", FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                jsonText = sr.ReadToEnd();
+
+                sr.Close();
+                /*
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "listcrossinfo";
@@ -513,7 +537,7 @@ namespace StockiiPanel
                 args["endtime"] = endDate;
                 args["optname"] = optName;
                 args["weight"] = weight.ToString();
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Get(url, args);*/
             }
             catch (IOException ex)
             {

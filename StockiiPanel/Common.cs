@@ -34,6 +34,7 @@ namespace StockiiPanel
         /// </summary>
         public static void GetTradeDate()
         {
+            /*
             DataSet ds = JSONHandler.GetTradeDate();
             DataTable dt = ds.Tables["tradedate"];
 
@@ -45,7 +46,7 @@ namespace StockiiPanel
                 tradeDates.Add(dateTime);
             }
 
-           
+           */
         }
 
         /// <summary>
@@ -319,10 +320,11 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool isTradeDay(DateTime date)
         {
+            /*
             if (tradeDates.Contains(date))
             {
                 return true;
-            }
+            }*/
             return true;
         }
 
@@ -852,16 +854,15 @@ namespace StockiiPanel
         /// </summary>
         /// <param name="dataGridView">要拼接的</param>
         /// <param name="isSelect">是否选中行</param>
-        public static DataGridView Combine(DataGridView dataGridView, DataGridView combineGridView,bool isSelect)
+        public static DataTable Combine(DataGridView dataGridView, DataGridView combineGridView, bool isSelect)
         {
-            DataGridView result = new DataGridView();
+            DataTable tb1 = ((DataSet)dataGridView.DataSource).Tables[0];
+            DataTable tb2 = new DataTable();//临时表
+            tb2 = tb1.Clone();
 
+            //生成临时表保存选中或全部列
             if (isSelect)
             {
-                DataTable tb1 = (DataTable)dataGridView.DataSource;
-                DataTable tb2 = new DataTable();
-                tb2 = tb1.Copy();
-
                 for (int r = dataGridView.SelectedRows.Count - 1; r >= 0; r--)
                 {
                     DataRow dataRow = tb2.NewRow();
@@ -870,30 +871,10 @@ namespace StockiiPanel
                         dataRow[c] = dataGridView.SelectedRows[r].Cells[c].Value;
                     }
                     tb2.Rows.Add(dataRow);
-                }
-                result.DataSource = tb2;
-                if (combineGridView.RowCount > 0)
-                {
-                    for (int i = 0; i < combineGridView.Columns.Count; ++i)
-                        tb2.Columns.Add(combineGridView.Columns[i].Name, combineGridView.Columns[i].ValueType);
-                    foreach (DataRow dr in combineGridView.Rows)
-                   {
-                       foreach (DataRow re in tb2.Rows)
-                       {
-                           if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
-                           {
-                           }
-                       }
-                   }
-                }
-                
+                }                             
             }
             else
             {
-                DataTable tb1 = (DataTable)dataGridView.DataSource;
-                DataTable tb2 = new DataTable();
-                tb2 = tb1.Copy();
-
                 for (int r = 0; r < dataGridView.Rows.Count; r++)
                 {
                     DataRow dataRow = tb2.NewRow();
@@ -903,15 +884,81 @@ namespace StockiiPanel
                     }
                     tb2.Rows.Add(dataRow);
                 }
-                result.DataSource = tb2;
-                if (combineGridView.RowCount > 0)
-                {
-                   
-                }
-                
             }
 
-            return result;
+            //原有的表和选定的表中ID相同的项按列拼接
+            if (combineGridView.RowCount > 0)
+            {
+                DataTable tb3 = (DataTable)combineGridView.DataSource;
+                DataTable tb4 = new DataTable();//临时表
+                tb4 = tb3.Copy();
+
+                ArrayList host = new ArrayList();
+                ArrayList client = new ArrayList();
+                for (int i = tb4.Rows.Count - 1; i>=0 ;i--)
+                {
+                    DataRow dr = tb4.Rows[i];
+                    for (int j = tb2.Rows.Count - 1; j >= 0; j--)
+                    {
+                        DataRow re = tb2.Rows[j];
+                        if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
+                        {
+                            //要保留的
+                            host.Add(i);
+                            client.Add(j);
+                            break;
+                        }
+                    }
+                }
+
+                for (int i = tb4.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (!host.Contains(i))
+                        tb4.Rows.RemoveAt(i);
+                }
+                for (int i = tb2.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (!client.Contains(i))
+                        tb2.Rows.RemoveAt(i);
+                }
+
+                AppendDataTable(tb4, tb2);
+                return tb4;
+            }
+            else
+            {
+                return tb2;
+            }                
+
         }
+
+        /// <summary>
+        /// 将两个DataTable纵向合并
+        /// </summary>
+        /// <param name="hostDt">主表</param>
+        /// <param name="clientDt">拼接表</param>
+        public static void AppendDataTable(DataTable hostDt, DataTable clientDt)
+        {
+          if (hostDt != null && hostDt.Rows.Count > 0)
+          {
+             DataRow dr;
+ 
+             for (int i = 0; i < clientDt.Columns.Count; i++)
+             {
+                 if (hostDt.Columns.Contains(clientDt.Columns[i].ColumnName))
+                     hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName+"1"));
+                 else
+                     hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName));
+ 
+               if (clientDt.Rows.Count > 0)
+                 for (int j = 0; j < clientDt.Rows.Count; j++)
+                 {
+                      dr = hostDt.Rows[j];
+                      dr[hostDt.Columns.Count - 1] = clientDt.Rows[j][i];
+                      dr = null;
+                }
+             }
+          }
+       }
     }
 }

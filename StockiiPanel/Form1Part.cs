@@ -18,7 +18,7 @@ namespace StockiiPanel
     public partial class Form1 : Form
     {
         MyProgressBar myBar = new MyProgressBar();
-        DataGridView buffResult = new DataGridView();//用于保留前一个数
+        DataTable buffResult = new DataTable();//用于保留前一个数
 
         // 代理定义，可以在Invoke时传入相应的参数
         private delegate void funHandle(int nValue);
@@ -805,15 +805,28 @@ namespace StockiiPanel
                     pageLabel.Text = "0/0";
                     break;
                 case 1:
-                    args += "," + Convert.ToInt32(intervalCombo.Text) + "," + indexCombo.Text + "," + typeCombo.Text;
+                    args += "," + intervalCombo.Text + "," + indexCombo.Text + "," + typeCombo.Text;
                     sumWorker.RunWorkerAsync(args);
                     pageLabel1.Text = "0/0";
                     break;
                 case 2:
-                    args += "," + smallBox.Text + "," + bigBox.Text + "," + compareIndexCombo.Text + "," + compareCombo.Text;
+                    string min = smallBox.Text;
+                    string max = bigBox.Text;
+                    if (smallBox.Text.Equals(""))
+                        min = "0";
+                    if (bigBox.Text.Equals(""))
+                        max = "0";
+                    args += "," + min + "," + max + "," + compareIndexCombo.Text + "," + compareCombo.Text;
                     customWorker.RunWorkerAsync(args);
                     break;
                 case 3:
+                    if (weighBox.Text.Equals(""))
+                    {
+                        MessageBox.Show("请输入权重");
+                        stop = true;
+                        myBar.Close();
+                        return;
+                    }
                     crossWorker.RunWorkerAsync(startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + weighBox.Text + "," + indexCombox1.Text);
                     pageLabel3.Text = "0/0";
                     break;
@@ -826,30 +839,63 @@ namespace StockiiPanel
 
         private void combinePageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            buffResult = combineResult;//保存上一个
-
-            if (tabControl.SelectedIndex == 2)
-            {
-                combineResult = Commons.Combine(calResultGrid, combineResult, false);
-            }
-            else
-            {
-                combineResult = Commons.Combine(sectionResultGrid, combineResult, false);
-            }
-           
+            Combine(false);
         }
 
         private void combineSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            buffResult = combineResult;//保存上一个
+            Combine(true);
+        }
+
+        private void Combine(bool isSelect)
+        {
+            buffResult = (DataTable)combineResult.DataSource;//保存上一个
+           
             if (tabControl.SelectedIndex == 2)
             {
-                combineResult = Commons.Combine(calResultGrid, combineResult, true);
+                combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
+                if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接
+                {
+                    for (int i = 0; i < combineResult.ColumnCount; i++)
+                        combineResult.Columns[i].HeaderText = calResultGrid.Columns[i].HeaderText;
+                }
+                else
+                {
+                    int length = buffResult.Columns.Count;
+                    Console.WriteLine(buffResult.Columns.Count);
+                    for (int i = 0; i < calResultGrid.ColumnCount; i++)
+                        combineResult.Columns[length + i].HeaderText = calResultGrid.Columns[i].HeaderText;
+                }
             }
             else
             {
-                combineResult = Commons.Combine(sectionResultGrid, combineResult, true);
+                combineResult.DataSource = Commons.Combine(sectionResultGrid, combineResult, isSelect);
+                if (combineResult.ColumnCount == sectionResultGrid.ColumnCount)//第一次拼接
+                {
+                    for (int i = 0; i < combineResult.ColumnCount; i++)
+                        combineResult.Columns[i].HeaderText = sectionResultGrid.Columns[i].HeaderText;
+                }
+                else
+                {
+                    int length = buffResult.Columns.Count;
+                    Console.WriteLine(buffResult.Columns.Count);
+                    for (int i = 0; i < sectionResultGrid.ColumnCount; i++)
+                        combineResult.Columns[length + i].HeaderText = sectionResultGrid.Columns[i].HeaderText;
+                }
             }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            DataTable tmp = buffResult;
+            buffResult = (DataTable)combineResult.DataSource;//保存上一个
+            combineResult.DataSource = tmp;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            buffResult = (DataTable)combineResult.DataSource;//保存上一个
+            combineResult.DataSource = null;
         }
     }
 

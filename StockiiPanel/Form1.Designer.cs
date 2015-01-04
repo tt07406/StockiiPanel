@@ -3126,7 +3126,7 @@
             this.combinePageToolStripMenuItem,
             this.combineSelectToolStripMenuItem});
             this.rawContextMenuStrip.Name = "rawContextMenuStrip";
-            this.rawContextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            this.rawContextMenuStrip.Size = new System.Drawing.Size(149, 92);
             this.rawContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.rawContextMenuStrip_Opening);
             // 
             // saveTableToolStripMenuItem
@@ -3146,14 +3146,14 @@
             // combinePageToolStripMenuItem
             // 
             this.combinePageToolStripMenuItem.Name = "combinePageToolStripMenuItem";
-            this.combinePageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.combinePageToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.combinePageToolStripMenuItem.Text = "拼接本页";
             this.combinePageToolStripMenuItem.Click += new System.EventHandler(this.combinePageToolStripMenuItem_Click);
             // 
             // combineSelectToolStripMenuItem
             // 
             this.combineSelectToolStripMenuItem.Name = "combineSelectToolStripMenuItem";
-            this.combineSelectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.combineSelectToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.combineSelectToolStripMenuItem.Text = "拼接所选";
             this.combineSelectToolStripMenuItem.Click += new System.EventHandler(this.combineSelectToolStripMenuItem_Click);
             // 
@@ -3807,6 +3807,7 @@
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "清除";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // cancelButton
             // 
@@ -3817,6 +3818,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "撤销";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // combineResult
             // 
@@ -3912,7 +3914,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -6655;
+            this.boardButton.WorkSizeY = -6710;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
