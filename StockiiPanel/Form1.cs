@@ -413,15 +413,8 @@ namespace StockiiPanel
                     case "growth_ratio":
                     case "avg_price":
                     case "amplitude_ratio":
-                        rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
-                        break;
                     case "total_money":
                         rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
-                        rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns["total_money_tmp"].ToString();
-                        break;
-                    case "cir_of_cap_stock":
-                        rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
-                        rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns["cir_of_cap_stock_tmp"].ToString();
                         break;
                     default:
                         break;

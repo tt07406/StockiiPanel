@@ -185,12 +185,10 @@ namespace StockiiPanel
 
             DataTable dt = ToDataTable(query.ToList(),"stock_day_info");
             //精度处理
-            dt.Columns.Add("cir_of_cap_stock_tmp", typeof(decimal));
-            dt.Columns.Add("total_money_tmp", typeof(decimal));
             foreach (DataRow Row in dt.Rows)
             {
-                Row["cir_of_cap_stock_tmp"] = Math.Round(Convert.ToDouble(Row["cir_of_cap_stock"].ToString()) / 10000, 4);
-                Row["total_money_tmp"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
+                Row["cir_of_cap_stock"] = Math.Round(Convert.ToDouble(Row["cir_of_cap_stock"].ToString()) / 10000, 4);
+                Row["total_money"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
                 Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
             }
 
@@ -506,6 +504,18 @@ namespace StockiiPanel
             ds.Tables.Remove(tableName);
             ds.Tables.Add(dt);
 
+            //精度处理
+            foreach (DataRow Row in dt.Rows)
+            {
+                if (sumname.Equals("总金额"))
+                {
+                    Row["value"] = Math.Round(Convert.ToDouble(Row["value"].ToString()) / 100000000, 4);
+                }
+                else
+                {
+                    Row["value"] = Math.Round(Convert.ToDouble(Row["value"].ToString()), 4);
+                }
+            }
 
             return stop;
         }
@@ -637,7 +647,7 @@ namespace StockiiPanel
             ds = JSONHandler.GetStockDaysDiff(stockid, min, max, optname, opt, startDate, endDate, out errorNo);
             String tableName = "";
             DataTable dt;
-            switch (optname)
+            switch (optname)//是不是写错了，opt?
             {
                 case "seperate":
                     tableName = "growthamp";
@@ -733,6 +743,25 @@ namespace StockiiPanel
             ds.Tables.Remove(tableName);
             ds.Tables.Add(dt);
 
+            //精度处理
+            if (dt.TableName.Equals("stock_day_diff_seperate"))
+                return stop;
+
+            foreach (DataRow Row in dt.Rows)
+            {
+                if (optname.Equals("总金额"))
+                {
+                    Row["index_value"] = Math.Round(Convert.ToDouble(Row["index_value"].ToString()) / 100000000, 4);
+                }
+                else if (optname.Equals("总股本") || optname.Equals("流通股本"))
+                {
+                    Row["index_value"] = Math.Round(Convert.ToDouble(Row["index_value"].ToString()) / 10000, 4);
+                }
+                else
+                {
+                    Row["index_value"] = Math.Round(Convert.ToDouble(Row["index_value"].ToString()), 4);
+                }
+            }
 
             return stop;
         }
@@ -819,6 +848,29 @@ namespace StockiiPanel
             DataTable dt = ToDataTable(query.ToList(), "cross_info");
             ds.Tables.Remove("crossinfo");
             ds.Tables.Add(dt);
+
+            //精度处理
+            foreach (DataRow Row in dt.Rows)
+            {
+                if (optname.Equals("总金额"))
+                {
+                    Row["start_value"] = Math.Round(Convert.ToDouble(Row["start_value"].ToString()) / 100000000, 4);
+                    Row["end_value"] = Math.Round(Convert.ToDouble(Row["end_value"].ToString()) / 100000000, 4);
+                    Row["avg"] = Math.Round(Convert.ToDouble(Row["avg"].ToString()) / 100000000, 4);
+                }
+                else if (optname.Equals("总股本") || optname.Equals("流通股本"))
+                {
+                    Row["start_value"] = Math.Round(Convert.ToDouble(Row["start_value"].ToString()) / 10000, 4);
+                    Row["end_value"] = Math.Round(Convert.ToDouble(Row["end_value"].ToString()) / 10000, 4);
+                    Row["avg"] = Math.Round(Convert.ToDouble(Row["avg"].ToString()) / 10000, 4);
+                }
+                else
+                {
+                    Row["start_value"] = Math.Round(Convert.ToDouble(Row["start_value"].ToString()), 4);
+                    Row["end_value"] = Math.Round(Convert.ToDouble(Row["end_value"].ToString()), 4);
+                    Row["avg"] = Math.Round(Convert.ToDouble(Row["avg"].ToString()), 4);
+                }
+            }
 
             //Console.WriteLine("ds: {0}")
             return stop;

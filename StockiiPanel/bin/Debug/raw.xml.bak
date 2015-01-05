@@ -446,7 +446,8 @@
     <value>
       <string>买价三（元）</string>
     </value>
-  </SerializableDictionary><SerializableDictionary>
+  </SerializableDictionary>
+  <SerializableDictionary>
     <key>
       <string>num3_sell_price</string>
     </key>

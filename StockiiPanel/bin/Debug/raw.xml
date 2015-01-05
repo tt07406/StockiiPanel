@@ -114,7 +114,7 @@
   </SerializableDictionary>
   <SerializableDictionary>
     <key>
-      <string>cir_of_cap_stock_tmp</string>
+      <string>cir_of_cap_stock</string>
     </key>
     <value>
       <string>流通股本（亿股）</string>
@@ -346,7 +346,7 @@
   </SerializableDictionary>
   <SerializableDictionary>
     <key>
-      <string>total_money_tmp</string>
+      <string>total_money</string>
     </key>
     <value>
       <string>总金额（亿元）</string>
