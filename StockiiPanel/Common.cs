@@ -18,6 +18,9 @@ namespace StockiiPanel
     class Commons
     {
         public static int colNum = 57;
+        public static int sumNum = 5;
+        public static int customNum = 7;
+        public static int crossNum = 11; 
         public static DataTable classfiDt = new DataTable();
         public static List<DateTime> tradeDates = new List<DateTime>();
         //版块分类
@@ -34,7 +37,7 @@ namespace StockiiPanel
         /// </summary>
         public static void GetTradeDate()
         {
-            /*
+            
             DataSet ds = JSONHandler.GetTradeDate();
             DataTable dt = ds.Tables["tradedate"];
 
@@ -46,7 +49,7 @@ namespace StockiiPanel
                 tradeDates.Add(dateTime);
             }
 
-           */
+           
         }
 
         /// <summary>
@@ -181,6 +184,16 @@ namespace StockiiPanel
                          });
 
             DataTable dt = ToDataTable(query.ToList(),"stock_day_info");
+            //精度处理
+            dt.Columns.Add("cir_of_cap_stock_tmp", typeof(decimal));
+            dt.Columns.Add("total_money_tmp", typeof(decimal));
+            foreach (DataRow Row in dt.Rows)
+            {
+                Row["cir_of_cap_stock_tmp"] = Math.Round(Convert.ToDouble(Row["cir_of_cap_stock"].ToString()) / 10000, 4);
+                Row["total_money_tmp"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
+                Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
+            }
+
             ds.Tables.Remove("stockdayinfo");
             ds.Tables.Add(dt);
 
@@ -205,6 +218,9 @@ namespace StockiiPanel
             if (saveFileDialog.FileName != null) //打开保存文件对话框
             {
                 string fileName = saveFileDialog.FileName;//文件名字
+                if (fileName.Equals(""))
+                    return;
+
                 using (StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.Default))
                 {
                     //Tabel header
@@ -265,13 +281,13 @@ namespace StockiiPanel
                     length = colNum;
                     break;
                 case "ndayGrid":
-                    length = 5;
+                    length = sumNum;
                     break;
                 case "calResultGrid":
-                    length = 7;
+                    length = customNum;
                     break;
                 case "sectionResultGrid":
-                    length = 11;
+                    length = crossNum;
                     break;
                 default:
                     break;
@@ -320,12 +336,12 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool isTradeDay(DateTime date)
         {
-            /*
-            if (tradeDates.Contains(date))
+            DateTime riqi = Convert.ToDateTime(date.ToShortDateString() + "T00:00:00+0800");
+            if (tradeDates.Contains(riqi))
             {
                 return true;
-            }*/
-            return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -483,7 +499,7 @@ namespace StockiiPanel
                              stock_name = r.Field<string>("stockname"),
                              end_date = u.Field<string>("created").Substring(0,10),
                              start_date = calcStartDate(u.Field<string>("created"), num, type).ToString("yyyy-MM-dd"),
-                             value = u.Field<string>(columnCount - 1),
+                             value = u.Field<string>(columnCount - 1),//取最后一列
                          });
 
             DataTable dt = ToDataTable(query.ToList(), "n_day_sum");

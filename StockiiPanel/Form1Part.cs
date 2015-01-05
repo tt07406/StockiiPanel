@@ -21,6 +21,11 @@ namespace StockiiPanel
         DataTable buffResult = new DataTable();//用于保留前一个数
         ArrayList headText = new ArrayList();
 
+        private SerializableDictionary<string, string> rawDict = new SerializableDictionary<string, string>();
+        private SerializableDictionary<string, string> sumDict = new SerializableDictionary<string, string>();
+        private SerializableDictionary<string, string> customDict = new SerializableDictionary<string, string>();
+        private SerializableDictionary<string, string> crossDict = new SerializableDictionary<string, string>();
+
         // 代理定义，可以在Invoke时传入相应的参数
         private delegate void funHandle(int nValue);
         private funHandle myHandle = null;
@@ -358,6 +363,7 @@ namespace StockiiPanel
             ndayGrid.AllowUserToAddRows = false;//不显示最后空白行
             ndayGrid.EnableHeadersVisualStyles = false;
 
+            /*
             //改变DataGridView的表头
             ndayGrid.Columns[0].HeaderText = "代码";
             ndayGrid.Columns[0].Width = 70;
@@ -395,6 +401,54 @@ namespace StockiiPanel
                 ndayGrid.Columns[4].Width = 110;
                 ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
             }
+             */
+            if (daySumButton.Checked)
+            {
+                using (FileStream fileStream = new FileStream("sumDay.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                    this.sumDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                }
+            }
+            else if (weekSumButton.Checked)
+            {
+                using (FileStream fileStream = new FileStream("sumWeek.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                    this.sumDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                }
+            }
+            else if (monthSumButton.Checked)
+            {
+                using (FileStream fileStream = new FileStream("sumMonth.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                    this.sumDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                }
+            }
+            int k = 0;
+            foreach (var item in sumDict)
+            {
+                ndayGrid.Columns[k].HeaderText = item.Value;
+                ndayGrid.Columns[k].Width = 60 + item.Value.Length * 10;
+                ndayGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
+
+                switch (item.Key)
+                {
+                    case "stock_id":
+                    case "stock_name":
+                        ndayGrid.Columns[k].Frozen = true;
+                        break;
+                    case "value":
+                        ndayGrid.Columns[k].HeaderText = intervalCombo.Text + item.Value;
+                        ndayGrid.Columns[k].Width = 60 + ndayGrid.Columns[k].HeaderText.Length * 10;
+                        break;
+                    default:
+                        break;
+                }
+                k++;
+            }
+            Commons.sumNum = sumDict.Count;
 
             stop = true;
         }
@@ -462,7 +516,7 @@ namespace StockiiPanel
 
             calResultGrid.AllowUserToAddRows = false;//不显示最后空白行
             calResultGrid.EnableHeadersVisualStyles = false;
-
+            /*
             //改变DataGridView的表头
             calResultGrid.Columns[0].HeaderText = "代码";
             calResultGrid.Columns[0].Width = 70;
@@ -527,8 +581,68 @@ namespace StockiiPanel
                     break;
 
             }
+            */
+            switch (tableName)
+            {
+                case "stock_day_diff":
+                    using (FileStream fileStream = new FileStream("custom.xml", FileMode.Open))
+                    {
+                        XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                        this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                    }
+                    break;
+                case "stock_day_diff_seperate":
+                    using (FileStream fileStream = new FileStream("customSeperate.xml", FileMode.Open))
+                    {
+                        XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                        this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                    }
+                    break;
+                case "stock_day_diff_sum":
+                    using (FileStream fileStream = new FileStream("customSum.xml", FileMode.Open))
+                    {
+                        XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                        this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            int k = 0;
+            foreach (var item in customDict)
+            {
+                calResultGrid.Columns[k].HeaderText = item.Value;
+                calResultGrid.Columns[k].Width = 60 + item.Value.Length * 10;
+                calResultGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
 
-            
+                switch (item.Key)
+                {
+                    case "stock_id":
+                    case "stock_name":
+                        calResultGrid.Columns[k].Frozen = true;
+                        break;
+                    case "index_value":
+                        calResultGrid.Columns[k].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
+                        calResultGrid.Columns[k].Width = 60 + calResultGrid.Columns[k].HeaderText.Length * 10;
+                        break;
+                    default:
+                        break;
+                }
+                k++;
+            }
+            Commons.customNum = customDict.Count;
+
+            //除了涨幅、振幅分段的计算是冻结6列之外，别的计算都是冻结2列
+            switch (compareIndexCombo.Text)
+            {
+                case "涨幅":
+                case "振幅":
+                    for (int i = 2; i < 6; i++)
+                    {
+                        calResultGrid.Columns[i].Frozen = true;
+                    }
+                    break;
+            }
 
             stop = true;
         }
@@ -576,6 +690,7 @@ namespace StockiiPanel
             sectionResultGrid.AllowUserToAddRows = false;//不显示最后空白行
             sectionResultGrid.EnableHeadersVisualStyles = false;
 
+            /*
             //改变DataGridView的表头
             sectionResultGrid.Columns[0].HeaderText = "代码";
             sectionResultGrid.Columns[0].Width = 70;
@@ -622,6 +737,31 @@ namespace StockiiPanel
             sectionResultGrid.Columns[10].HeaderText = "差异(" + indexCombox1.Text + ")";
             sectionResultGrid.Columns[10].Width = 180;
             sectionResultGrid.Columns[10].DataPropertyName = ds.Tables[0].Columns["difference"].ToString();
+            */
+            int k = 0;
+            foreach (var item in crossDict)
+            {
+                sectionResultGrid.Columns[k].HeaderText = item.Value;
+                sectionResultGrid.Columns[k].Width = 60 + item.Value.Length * 10;
+                sectionResultGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
+
+                switch (item.Key)
+                {
+                    case "stock_id":
+                    case "stock_name":
+                        sectionResultGrid.Columns[k].Frozen = true;
+                        break;
+                    case "avg":
+                    case "difference":
+                        sectionResultGrid.Columns[k].HeaderText = item.Value + "(" + compareCombo.Text + ")";
+                        sectionResultGrid.Columns[k].Width = 60 + sectionResultGrid.Columns[k].HeaderText.Length * 10;
+                        break;
+                    default:
+                        break;
+                }
+                k++;
+            }
+            Commons.crossNum = crossDict.Count;
 
             stop = true;
         }
@@ -669,6 +809,17 @@ namespace StockiiPanel
                 //前两行显示绿色
                 calResultGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
                 calResultGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+                switch (compareIndexCombo.Text)
+                {
+                    case "涨幅":
+                    case "振幅":
+                        for (int k = 2; k < 6; k++)
+                        {
+                            calResultGrid.Rows[i].Cells[k].Style.BackColor = Color.Lime;
+                        }
+                        break;
+                }
+
             }
         }
 

@@ -62,6 +62,17 @@ namespace StockiiPanel
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
+            using (FileStream fileStream = new FileStream("raw.xml", FileMode.Open))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                this.rawDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+            }
+            
+            using (FileStream fileStream = new FileStream("cross.xml", FileMode.Open))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                this.crossDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+            }
 
             foreach (var dic in pList)
             {
@@ -377,15 +388,7 @@ namespace StockiiPanel
                 return;
             }
 
-            dt.Columns.Add("cir_of_cap_stock_tmp", typeof(decimal));
-            dt.Columns.Add("total_money_tmp", typeof(decimal));
-            foreach (DataRow Row in dt.Rows)
-            {
-                Row["cir_of_cap_stock_tmp"] = Math.Round(Convert.ToDouble(Row["cir_of_cap_stock"].ToString()) / 10000, 4);
-                Row["total_money_tmp"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
-                Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
-            }
-
+           
             pageLabel.Text = page + "/" + (int)totalPages;
 
             rawDataGrid.DataSource = ds;
@@ -394,18 +397,48 @@ namespace StockiiPanel
             rawDataGrid.AllowUserToAddRows = false;//不显示最后空白行
             rawDataGrid.EnableHeadersVisualStyles = false;
 
+            int k = 0;
+            foreach (var item in rawDict)
+            {
+                rawDataGrid.Columns[k].HeaderText = item.Value;
+                rawDataGrid.Columns[k].Width = 60 + item.Value.Length * 10;
+                rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
+
+                switch (item.Key)
+                {
+                    case "stock_id":
+                    case "created":
+                    case "turnover_ratio":
+                    case "volume_ratio":
+                    case "growth_ratio":
+                    case "avg_price":
+                    case "amplitude_ratio":
+                        rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
+                        break;
+                    case "total_money":
+                        rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
+                        rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns["total_money_tmp"].ToString();
+                        break;
+                    case "cir_of_cap_stock":
+                        rawDataGrid.Columns[k].HeaderCell.Style.ForeColor = Color.Red;
+                        rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns["cir_of_cap_stock_tmp"].ToString();
+                        break;
+                    default:
+                        break;
+                }
+                k++;
+            }
+            /*
             //改变DataGridView的表头
             rawDataGrid.Columns[0].HeaderText = "代码";
             rawDataGrid.Columns[0].HeaderCell.Style.ForeColor = Color.Red;
             //设置该列宽度
             rawDataGrid.Columns[0].Width = 70;
             rawDataGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            //rawDataGrid.Columns[0].Frozen = true;
 
             rawDataGrid.Columns[1].HeaderText = "名称";
             rawDataGrid.Columns[1].Width = 80;
             rawDataGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            //rawDataGrid.Columns[1].Frozen = true;
 
             rawDataGrid.Columns[2].HeaderText = "日期";
             rawDataGrid.Columns[2].HeaderCell.Style.ForeColor = Color.Red;
@@ -634,11 +667,12 @@ namespace StockiiPanel
             rawDataGrid.Columns[56].HeaderText = "卖价三（元）";
             rawDataGrid.Columns[56].Width = 110;
             rawDataGrid.Columns[56].DataPropertyName = ds.Tables[0].Columns["num3_sell_price"].ToString();
-
-            for (int i = Commons.colNum; i < rawDataGrid.Columns.Count; ++i)
+            */
+            for (int i = rawDict.Count; i < rawDataGrid.Columns.Count; ++i)
             {
                 rawDataGrid.Columns[i].Visible = false;
             }
+            Commons.colNum = rawDict.Count;
 
             SetColumns();
             stop = true;
