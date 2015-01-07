@@ -3362,6 +3362,7 @@
             this.monthSumButton.TabIndex = 8;
             this.monthSumButton.Text = "月和";
             this.monthSumButton.UseVisualStyleBackColor = true;
+            this.monthSumButton.CheckedChanged += new System.EventHandler(this.monthSumButton_CheckedChanged);
             // 
             // weekSumButton
             // 
@@ -3372,6 +3373,7 @@
             this.weekSumButton.TabIndex = 7;
             this.weekSumButton.Text = "周和";
             this.weekSumButton.UseVisualStyleBackColor = true;
+            this.weekSumButton.CheckedChanged += new System.EventHandler(this.weekSumButton_CheckedChanged);
             // 
             // daySumButton
             // 
@@ -3384,6 +3386,7 @@
             this.daySumButton.TabStop = true;
             this.daySumButton.Text = "日和";
             this.daySumButton.UseVisualStyleBackColor = true;
+            this.daySumButton.CheckedChanged += new System.EventHandler(this.daySumButton_CheckedChanged);
             // 
             // endDatePicker1
             // 
@@ -3916,7 +3919,7 @@
             this.boardButton.Text = "版块";
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -6820;
+            this.boardButton.WorkSizeY = -6930;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1

@@ -783,7 +783,7 @@ namespace StockiiPanel
         private void searchButton1_Click(object sender, EventArgs e)
         {
             page = 1;
-            pagesize = 10000;
+            pagesize = 20000;
             totalPages = 1;
 
             searchTab(1);
@@ -878,7 +878,7 @@ namespace StockiiPanel
             }
 
             page = 2;
-            pagesize = 10000;
+            pagesize = 20000;
             totalPages = 2;
 
             searchTab(1);
@@ -887,7 +887,7 @@ namespace StockiiPanel
         private void allButton1_Click(object sender, EventArgs e)
         {
             page = 1;
-            pagesize = 100000;
+            pagesize = 200000;
             totalPages = 1;
 
             searchTab(1);
@@ -923,6 +923,30 @@ namespace StockiiPanel
             pagesize = 10000;
             totalPages = 1;
             searchTab(3);
+        }
+
+        private void daySumButton_CheckedChanged(object sender, EventArgs e)
+        {
+            intervalCombo.Items.Clear();
+            for (int i = 3; i <= 31; i++)
+                intervalCombo.Items.Add(i+"");
+            intervalCombo.SelectedIndex = 0;
+        }
+
+        private void weekSumButton_CheckedChanged(object sender, EventArgs e)
+        {
+            intervalCombo.Items.Clear();
+            for (int i = 1; i <= 6; i++)
+                intervalCombo.Items.Add(i + "");
+            intervalCombo.SelectedIndex = 0;
+        }
+
+        private void monthSumButton_CheckedChanged(object sender, EventArgs e)
+        {
+            intervalCombo.Items.Clear();
+            for (int i = 1; i <= 12; i++)
+                intervalCombo.Items.Add(i + "");
+            intervalCombo.SelectedIndex = 0;
         }
 
     }    
