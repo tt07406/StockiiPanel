@@ -1,0 +1,13 @@
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.exe.config
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.exe
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.pdb
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\bin\Release\Newtonsoft.Json.dll
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.CustomDialog.resources
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Form1.resources
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.SNListDialog.resources
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.MyProgressBar.resources
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Properties.Resources.resources
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csproj.GenerateResource.Cache
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.exe
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.pdb
+D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csprojResolveAssemblyReference.cache
