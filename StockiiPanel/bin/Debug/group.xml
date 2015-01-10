@@ -163,4 +163,79 @@
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>zz</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>laotu</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>wyf</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>guanfang</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>anweiya</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>xxx</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
 </SerializableDictionaryOfStringArrayList>

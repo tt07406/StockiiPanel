@@ -11,3 +11,16 @@ D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.cspr
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.exe
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.pdb
 D:\file\workspace\C#\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.exe.config
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.exe
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.pdb
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.exe
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.pdb
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Release\Newtonsoft.Json.dll
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.CustomDialog.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Form1.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.SNListDialog.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.MyProgressBar.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Properties.Resources.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csproj.GenerateResource.Cache

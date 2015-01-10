@@ -12,10 +12,11 @@ using System.Threading;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using DevComponents.DotNetBar;
 
 namespace StockiiPanel
 {
-    public partial class Form1 : Form
+    public partial class Form1 : RibbonForm
     {
         private DataTable dt;
         private DataSet stockDs;//股票基本信息
@@ -74,10 +75,6 @@ namespace StockiiPanel
                 this.crossDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
             }
 
-            foreach (var dic in pList)
-            {
-                groupList.Items.Add(dic.Key);
-            }
             Commons.GetTradeDate();
 
             Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
@@ -135,6 +132,28 @@ namespace StockiiPanel
                     }
                 }
             }
+
+            initFormUI();
+
+            // these code are only available after data initialization
+            initGroupsButton();
+
+        }
+
+        private void initGroupsButton()
+        {
+            myGroups.SubItems.Clear();
+            foreach (var dic in pList)
+            {
+                addNewGroupButton(dic.Key);
+            }
+        }
+
+        private void initFormUI()
+        {
+            nsumTab.Hide();
+            customCalTab.Hide();
+            crossSectionTab.Hide();
         }
 
         private void timeItem_Click(object sender, EventArgs e)
@@ -949,6 +968,150 @@ namespace StockiiPanel
             intervalCombo.SelectedIndex = 0;
         }
 
+        private void buttonItem15_Click(object sender, EventArgs e)
+        {
+            nsumTab.Show();
+            tabControl.SelectTab("nsumTab");
+        }
+
+        private void buttonItem18_Click(object sender, EventArgs e)
+        {
+            customCalTab.Show();
+            tabControl.SelectTab("customCalTab");
+        }
+
+        private void buttonItem36_Click(object sender, EventArgs e)
+        {
+            crossSectionTab.Show();
+            tabControl.SelectTab("crossSectionTab");
+        }
+
+        private void buttonItem2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonItem30_Click(object sender, EventArgs e)
+        {
+            SNListDialog dialog = new SNListDialog(pList, "", stockDs);
+            dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                return;
+            }
+
+            string name = dialog.GroupName;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
+            pList.Add(name, stocks);
+
+            addNewGroupButton(name);
+            //groupList.Items.Add(name);
+        }
+
+        private void addNewGroupButton(string name)
+        {
+            ButtonItem tempButtonItem = new ButtonItem();
+            tempButtonItem.Name = name;
+            tempButtonItem.Text = name;
+            tempButtonItem.Click += new EventHandler(groupButtonItemClicked);
+            myGroups.SubItems.Add(tempButtonItem);
+        }
+
+        private void groupButtonItemClicked(object sender, EventArgs e)
+        {
+            groupList.Items.Clear();
+
+            ButtonItem item = (ButtonItem) sender;
+            ArrayList selectStocks = pList[item.Name];
+            int k = selectStocks.Count;
+
+            dt = Commons.classfiDt;
+            for (int i = 0; i < k; ++i)
+            {
+                String id = selectStocks[i].ToString();
+
+                DataRow[] drs = dt.Select("stockid = '" + id + "'");
+
+                groupList.Items.Add(drs[0]["stockname"].ToString());
+            }
+        }
+
+        private void myGroups_Click(object sender, EventArgs e)
+        {
+            //for (int i = 0; i < myGroups.SubItems.Count; i++)
+            //{
+            //    ButtonItem item = (ButtonItem)myGroups.SubItems[i];
+            //}
+        }
+
+        private void showThisTab(TabPage tab) 
+        {
+            if (!tabControl.Controls.Contains(tab))
+            {
+                tabControl.Controls.Add(tab);
+                tabControl.SelectTab(tab);
+            }
+            else 
+            {
+                tabControl.SelectTab(tab);
+            }
+
+        }
+
+        private void stocksInfo_Click(object sender, EventArgs e)
+        {
+            showThisTab(rawDataTab);
+        }
+
+        private void maketInfo_Click(object sender, EventArgs e)
+        {
+            showThisTab(marketTab);
+        }
+
+        private void initNDaySumTab(int code)
+        {
+            MessageBox.Show(code.ToString());
+        }
+
+        private void monthSum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(MONTH_SUM);
+        }
+
+        private void weekSum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(WEEK_SUM);
+        }
+
+        private void daySum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(DAY_SUM);
+        }
+
+        private void nDaySumCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+        }
+
+        private void customCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(customCalTab);
+        }
+
+        private void crossSectionCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(crossSectionTab);
+        }
+
+
+        public const int MONTH_SUM = 0001;
+        public const int WEEK_SUM = 0002;
+        public const int DAY_SUM = 0003;
+        
     }    
 
 }

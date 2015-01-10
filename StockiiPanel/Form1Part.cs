@@ -12,10 +12,11 @@ using System.Drawing;
 using System.IO;
 using System.Data;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
+using DevComponents.DotNetBar;
 
 namespace StockiiPanel
 {
-    public partial class Form1 : Form
+    public partial class Form1 : RibbonForm
     {
         MyProgressBar myBar = new MyProgressBar();
         DataTable buffResult = new DataTable();//用于保留前一个数
