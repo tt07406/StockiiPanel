@@ -11,7 +11,6 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\Stocki
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.exe
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPanel.pdb
-C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Form1.resources
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SNListDialog.resources
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.MyProgressBar.resources

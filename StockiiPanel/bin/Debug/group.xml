@@ -229,12 +229,25 @@
   </SerializableDictionary>
   <SerializableDictionary>
     <key>
-      <string>xxx</string>
+      <string>test2</string>
     </key>
     <value>
       <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <anyType xsi:type="xsd:string">000001</anyType>
         <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>u</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000007</anyType>
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>

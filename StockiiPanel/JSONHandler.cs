@@ -259,18 +259,16 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("tradedates.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("tradedates.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "listtradedate";
                 args["response"] = "json";
                 jsonText = WebService.Get(url, args);
-                 */
             }
             catch (IOException ex)
             {
@@ -299,17 +297,16 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("classification.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("classification.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockclassification";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);*/
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -338,17 +335,17 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("stockbasicinfo.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("stockbasicinfo.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
+                
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockbasicinfo";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);*/
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -384,12 +381,12 @@ namespace StockiiPanel
                 return null;
             try
             {
-                FileStream aFile = new FileStream("stockdayinfo.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("stockdayinfo.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
+                
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockdayinfo";
@@ -405,7 +402,7 @@ namespace StockiiPanel
                     args["starttime"] = startDate;
                 if (!endDate.Equals(""))
                     args["endtime"] = endDate;
-                jsonText = WebService.Get(url, args);*/
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -432,25 +429,25 @@ namespace StockiiPanel
             errorNo = 0;
             try
             {
-                string name = "";
-                switch (type)
-                {
-                    case 1:
-                        name = "stockdaysum.txt";
-                        break;
-                    case 2:
-                        name = "stockweeksum.txt";
-                        break;
-                    default:
-                        name = "stockmonthsum.txt";
-                        break;
-                }
-                FileStream aFile = new FileStream(name, FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //string name = "";
+                //switch (type)
+                //{
+                //    case 1:
+                //        name = "stockdaysum.txt";
+                //        break;
+                //    case 2:
+                //        name = "stockweeksum.txt";
+                //        break;
+                //    default:
+                //        name = "stockmonthsum.txt";
+                //        break;
+                //}
+                //FileStream aFile = new FileStream(name, FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
+                
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 switch (type)
@@ -482,7 +479,6 @@ namespace StockiiPanel
                 args["page"] = page.ToString();
                 args["pagesize"] = pagesize.ToString();
                 jsonText = WebService.Get(url, args);
-                 * */
             }
             catch (IOException ex)
             {
@@ -506,12 +502,12 @@ namespace StockiiPanel
             errorNo = 0;
             try
             {
-                FileStream aFile = new FileStream("stockdaysdiff.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("stockdaysdiff.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
+                
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 switch (optname)
@@ -533,7 +529,7 @@ namespace StockiiPanel
                 args["stockid"] = String.Join(",", stockid.ToArray());
                 args["starttime"] = startDate;
                 args["endtime"] = endDate;
-                jsonText = WebService.Get(url, args);*/
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {
@@ -556,12 +552,12 @@ namespace StockiiPanel
 
             try
             {
-                FileStream aFile = new FileStream("crossinfo.txt", FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                jsonText = sr.ReadToEnd();
+                //FileStream aFile = new FileStream("crossinfo.txt", FileMode.OpenOrCreate);
+                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
+                //jsonText = sr.ReadToEnd();
 
-                sr.Close();
-                /*
+                //sr.Close();
+                
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "listcrossinfo";
@@ -570,7 +566,7 @@ namespace StockiiPanel
                 args["endtime"] = endDate;
                 args["optname"] = optName;
                 args["weight"] = weight.ToString();
-                jsonText = WebService.Get(url, args);*/
+                jsonText = WebService.Get(url, args);
             }
             catch (IOException ex)
             {

@@ -147,9 +147,9 @@ namespace StockiiPanel
 
         private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            switch (tabControl.SelectedIndex)
+            switch (tabControl.SelectedTab.Name)
             {
-                case 0:
+                case "rawDataTab":
                     if (rawDataGrid.RowCount > 0)
                     {
                         for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
@@ -163,7 +163,7 @@ namespace StockiiPanel
                     combinePageToolStripMenuItem.Visible = false;
                     combineSelectToolStripMenuItem.Visible = false;
                     break;
-                case 1:
+                case "nsumTab":
                     if (ndayGrid.RowCount > 0)
                     {
                         for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
@@ -177,7 +177,7 @@ namespace StockiiPanel
                     combinePageToolStripMenuItem.Visible = false;
                     combineSelectToolStripMenuItem.Visible = false;
                     break;
-                case 2:
+                case "customCalTab":
                     if (calResultGrid.RowCount > 0)
                     {
                         for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
@@ -189,7 +189,7 @@ namespace StockiiPanel
                             rawContextMenuStrip.Items[i].Visible = false;
                     }
                     break;
-                case 3:
+                case "crossSectionTab":
                     if (sectionResultGrid.RowCount > 0)
                     {
                         for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
@@ -274,21 +274,21 @@ namespace StockiiPanel
             }
         }
 
-        private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveGrid(bool isSelected)
         {
-            switch (tabControl.SelectedIndex)
+            switch (tabControl.SelectedTab.Name)
             {
-                case 0:
-                    dt = Commons.StructrueDataTable(rawDataGrid, false);
+                case "rawDataTab":
+                    dt = Commons.StructrueDataTable(rawDataGrid, isSelected);
                     break;
-                case 1:
-                    dt = Commons.StructrueDataTable(ndayGrid, false);
+                case "nsumTab":
+                    dt = Commons.StructrueDataTable(ndayGrid, isSelected);
                     break;
-                case 2:
-                    dt = Commons.StructrueDataTable(calResultGrid, false);
+                case "customCalTab":
+                    dt = Commons.StructrueDataTable(calResultGrid, isSelected);
                     break;
-                case 3:
-                    dt = Commons.StructrueDataTable(sectionResultGrid, false);
+                case "crossSectionTab":
+                    dt = Commons.StructrueDataTable(sectionResultGrid, isSelected);
                     break;
                 default:
                     break;
@@ -297,27 +297,14 @@ namespace StockiiPanel
             Commons.ExportDataGridToCSV(dt);
         }
 
+        private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveGrid(false);
+        }
+
         private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch (tabControl.SelectedIndex)
-            {
-                case 0:
-                    dt = Commons.StructrueDataTable(rawDataGrid, true);
-                    break;
-                case 1:
-                    dt = Commons.StructrueDataTable(ndayGrid, true);
-                    break;
-                case 2:
-                    dt = Commons.StructrueDataTable(calResultGrid, true);
-                    break;
-                case 3:
-                    dt = Commons.StructrueDataTable(sectionResultGrid, true);
-                    break;
-                default:
-                    break;
-            }
-
-            Commons.ExportDataGridToCSV(dt);
+            SaveGrid(true);
         }
 
 
@@ -364,45 +351,6 @@ namespace StockiiPanel
             ndayGrid.AllowUserToAddRows = false;//不显示最后空白行
             ndayGrid.EnableHeadersVisualStyles = false;
 
-            /*
-            //改变DataGridView的表头
-            ndayGrid.Columns[0].HeaderText = "代码";
-            ndayGrid.Columns[0].Width = 70;
-            ndayGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            ndayGrid.Columns[0].Frozen = true;
-
-            ndayGrid.Columns[1].HeaderText = "名称";
-            ndayGrid.Columns[1].Width = 80;
-            ndayGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            ndayGrid.Columns[1].Frozen = true;
-
-            ndayGrid.Columns[2].HeaderText = "开始日期";
-            ndayGrid.Columns[2].Width = 110;
-            ndayGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
-
-            ndayGrid.Columns[3].HeaderText = "结束日期";
-            ndayGrid.Columns[3].Width = 110;
-            ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
-
-            if (daySumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "日和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-            else if (weekSumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "周和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-            else if (monthSumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "月和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-             */
             if (daySumButton.Checked)
             {
                 using (FileStream fileStream = new FileStream("sumDay.xml", FileMode.Open))
@@ -517,72 +465,7 @@ namespace StockiiPanel
 
             calResultGrid.AllowUserToAddRows = false;//不显示最后空白行
             calResultGrid.EnableHeadersVisualStyles = false;
-            /*
-            //改变DataGridView的表头
-            calResultGrid.Columns[0].HeaderText = "代码";
-            calResultGrid.Columns[0].Width = 70;
-            calResultGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            calResultGrid.Columns[0].Frozen = true;
 
-            calResultGrid.Columns[1].HeaderText = "名称";
-            calResultGrid.Columns[1].Width = 80;
-            calResultGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            calResultGrid.Columns[1].Frozen = true;
-
-            calResultGrid.Columns[2].HeaderText = "开始时间";
-            calResultGrid.Columns[2].Width = 110;
-            calResultGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
-
-            calResultGrid.Columns[3].HeaderText = "结束时间";
-            calResultGrid.Columns[3].Width = 110;
-            calResultGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
-
-            switch (tableName)
-            {
-                case "stock_day_diff":
-                    calResultGrid.Columns[4].HeaderText = "起始时间的值";
-                    calResultGrid.Columns[4].Width = 150;
-                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
-
-                    calResultGrid.Columns[5].HeaderText = "结束时间的值";
-                    calResultGrid.Columns[5].Width = 150;
-                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
-
-                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
-                    calResultGrid.Columns[6].Width = 240;
-                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
-                    break;
-                case "stock_day_diff_seperate":
-                    calResultGrid.Columns[4].HeaderText = "涨幅总数";
-                    calResultGrid.Columns[4].Width = 110;
-                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["growth_count"].ToString();
-
-                    calResultGrid.Columns[5].HeaderText = "振幅总数";
-                    calResultGrid.Columns[5].Width = 110;
-                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["amp_count"].ToString();
-
-                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
-                    calResultGrid.Columns[6].Width = 240;
-                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
-                    break;
-                case "stock_day_diff_sum":
-                    calResultGrid.Columns[4].HeaderText = "起始时间的值";
-                    calResultGrid.Columns[4].Width = 150;
-                    calResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
-
-                    calResultGrid.Columns[5].HeaderText = "结束时间的值";
-                    calResultGrid.Columns[5].Width = 150;
-                    calResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
-
-                    calResultGrid.Columns[6].HeaderText = compareIndexCombo.Text + "(" + compareCombo.Text + ")";
-                    calResultGrid.Columns[6].Width = 240;
-                    calResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["index_value"].ToString();
-                    break;
-                default:
-                    break;
-
-            }
-            */
             switch (tableName)
             {
                 case "stock_day_diff":
@@ -691,54 +574,6 @@ namespace StockiiPanel
             sectionResultGrid.AllowUserToAddRows = false;//不显示最后空白行
             sectionResultGrid.EnableHeadersVisualStyles = false;
 
-            /*
-            //改变DataGridView的表头
-            sectionResultGrid.Columns[0].HeaderText = "代码";
-            sectionResultGrid.Columns[0].Width = 70;
-            sectionResultGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            sectionResultGrid.Columns[0].Frozen = true;
-
-            sectionResultGrid.Columns[1].HeaderText = "名称";
-            sectionResultGrid.Columns[1].Width = 80;
-            sectionResultGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            sectionResultGrid.Columns[1].Frozen = true;
-
-            sectionResultGrid.Columns[2].HeaderText = "开始日期";
-            sectionResultGrid.Columns[2].Width = 110;
-            sectionResultGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
-
-            sectionResultGrid.Columns[3].HeaderText = "起始时间的值";
-            sectionResultGrid.Columns[3].Width = 150;
-            sectionResultGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["start_value"].ToString();
-
-            sectionResultGrid.Columns[4].HeaderText = "结束日期";
-            sectionResultGrid.Columns[4].Width = 110;
-            sectionResultGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
-
-            sectionResultGrid.Columns[5].HeaderText = "结束时间的值";
-            sectionResultGrid.Columns[5].Width = 150;
-            sectionResultGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["end_value"].ToString();
-
-            sectionResultGrid.Columns[6].HeaderText = "开始－上市（天）";
-            sectionResultGrid.Columns[6].Width = 150;
-            sectionResultGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["start_list_date"].ToString();
-
-            sectionResultGrid.Columns[7].HeaderText = "结束－上市（天）";
-            sectionResultGrid.Columns[7].Width = 150;
-            sectionResultGrid.Columns[7].DataPropertyName = ds.Tables[0].Columns["end_list_date"].ToString();
-
-            sectionResultGrid.Columns[8].HeaderText = "跨区类型";
-            sectionResultGrid.Columns[8].Width = 120;
-            sectionResultGrid.Columns[8].DataPropertyName = ds.Tables[0].Columns["cross_type"].ToString();
-
-            sectionResultGrid.Columns[9].HeaderText = "均值(" + indexCombox1.Text + ")";
-            sectionResultGrid.Columns[9].Width = 180;
-            sectionResultGrid.Columns[9].DataPropertyName = ds.Tables[0].Columns["avg"].ToString();
-
-            sectionResultGrid.Columns[10].HeaderText = "差异(" + indexCombox1.Text + ")";
-            sectionResultGrid.Columns[10].Width = 180;
-            sectionResultGrid.Columns[10].DataPropertyName = ds.Tables[0].Columns["difference"].ToString();
-            */
             int k = 0;
             foreach (var item in crossDict)
             {
@@ -926,7 +761,7 @@ namespace StockiiPanel
             endDatePicker3.Value = TimeControl.GetLastDayOfMonth(endDate);
         }
 
-        private void searchTab(int type)
+        private void searchTab(String type)
         {
             if (!Commons.isTradeDay(startDatePicker.Value) || !Commons.isTradeDay(endDatePicker.Value))
             {
@@ -934,14 +769,20 @@ namespace StockiiPanel
                 return;
             }
 
-            if (type < 3 && groupList.Visible == true && groupList.SelectedItems.Count == 0)
+            if (!type.Equals("crossSectionTab") && groupList.Visible == true && groupList.Items.Count == 0)
             {
                 MessageBox.Show("请选择一个分组");
                 return;
             }
-            else if (type < 3 && groupList.Visible == false && record.Count == 0)
+            else if (!type.Equals("crossSectionTab") && groupList.Visible == false && record.Count == 0)
             {
                 MessageBox.Show("请选择一个版块");
+                return;
+            }
+
+            if (type.Equals("crossSectionTab") && weighBox.Text.Equals(""))
+            {
+                MessageBox.Show("请输入权重");
                 return;
             }
 
@@ -953,27 +794,27 @@ namespace StockiiPanel
             stop = false;
 
             String args;
-            if (groupList.Visible && type < 3)//自选
+            if (groupList.Visible && !type.Equals("crossSectionTab"))//自选
             {
-                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.SelectedItem.ToString();
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.Text.ToString();
             }
             else
             {
-                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") ;
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd");
             }
 
             switch (type)
             {
-                case 0:
+                case "rawDataTab":
                     bkWorker.RunWorkerAsync(args);
                     pageLabel.Text = "0/0";
                     break;
-                case 1:
+                case "nsumTab":
                     args += "," + intervalCombo.Text + "," + indexCombo.Text + "," + typeCombo.Text;
                     sumWorker.RunWorkerAsync(args);
                     pageLabel1.Text = "0/0";
                     break;
-                case 2:
+                case "customCalTab":
                     string min = smallBox.Text;
                     string max = bigBox.Text;
                     if (smallBox.Text.Equals(""))
@@ -983,14 +824,7 @@ namespace StockiiPanel
                     args += "," + min + "," + max + "," + compareIndexCombo.Text + "," + compareCombo.Text;
                     customWorker.RunWorkerAsync(args);
                     break;
-                case 3:
-                    if (weighBox.Text.Equals(""))
-                    {
-                        MessageBox.Show("请输入权重");
-                        stop = true;
-                        myBar.Close();
-                        return;
-                    }
+                case "crossSectionTab":
                     crossWorker.RunWorkerAsync(startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + weighBox.Text + "," + indexCombox1.Text);
                     pageLabel3.Text = "0/0";
                     break;
@@ -1017,8 +851,8 @@ namespace StockiiPanel
             headText.Clear();
             for (int i = 0; i < combineResult.ColumnCount; i++)
                 headText.Add(combineResult.Columns[i].HeaderText);
-           
-            if (tabControl.SelectedIndex == 2)
+
+            if (tabControl.SelectedTab.Name.Equals("customCalTab"))
             {
                 combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
                 if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接

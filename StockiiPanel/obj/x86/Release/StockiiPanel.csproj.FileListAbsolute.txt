@@ -24,3 +24,6 @@ C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\Stoc
 C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.MyProgressBar.resources
 C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Properties.Resources.resources
 C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csproj.GenerateResource.Cache
+C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Release\StockiiPanel.exe.config
+C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.exe
+C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.pdb

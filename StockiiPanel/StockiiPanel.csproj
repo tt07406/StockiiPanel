@@ -93,6 +93,9 @@
     <Compile Include="Form1Part.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form1Part2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
