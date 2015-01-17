@@ -267,6 +267,11 @@ namespace StockiiPanel
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //序列化保存
+            saveGroup();
+        }
+
+        private void saveGroup()
+        {
             using (FileStream fileStream = new FileStream("group.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
@@ -358,45 +363,6 @@ namespace StockiiPanel
             ndayGrid.AllowUserToAddRows = false;//不显示最后空白行
             ndayGrid.EnableHeadersVisualStyles = false;
 
-            /*
-            //改变DataGridView的表头
-            ndayGrid.Columns[0].HeaderText = "代码";
-            ndayGrid.Columns[0].Width = 70;
-            ndayGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
-            ndayGrid.Columns[0].Frozen = true;
-
-            ndayGrid.Columns[1].HeaderText = "名称";
-            ndayGrid.Columns[1].Width = 80;
-            ndayGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
-            ndayGrid.Columns[1].Frozen = true;
-
-            ndayGrid.Columns[2].HeaderText = "开始日期";
-            ndayGrid.Columns[2].Width = 110;
-            ndayGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["start_date"].ToString();
-
-            ndayGrid.Columns[3].HeaderText = "结束日期";
-            ndayGrid.Columns[3].Width = 110;
-            ndayGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["end_date"].ToString();
-
-            if (daySumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "日和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-            else if (weekSumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "周和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-            else if (monthSumButton.Checked)
-            {
-                ndayGrid.Columns[4].HeaderText = intervalCombo.Text + "月和（元）";
-                ndayGrid.Columns[4].Width = 110;
-                ndayGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["value"].ToString();
-            }
-             */
             if (daySumButton.Checked)
             {
                 using (FileStream fileStream = new FileStream("sumDay.xml", FileMode.Open))
@@ -722,28 +688,7 @@ namespace StockiiPanel
 
         private void sectionResultGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
-            //自动整理序列号
-            int coun = sectionResultGrid.RowCount;
-            for (int i = 0; i < coun; i++)
-            {
-                int j = i + 1;
-                sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
-
-                if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "positive")
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
-                }
-                else if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "negative")
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
-                }
-                else
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
-                }
-
-            }
+            sectionResultGrid_Sorted(sender, null);
         }
 
         private void combineResult_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -857,7 +802,7 @@ namespace StockiiPanel
             String args;
             if (groupList.Visible && !type.Equals("crossSectionTab"))//自选
             {
-                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + groupList.Text.ToString();
+                args = startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + curGroupName.ToString();
             }
             else
             {

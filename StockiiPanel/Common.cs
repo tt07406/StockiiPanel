@@ -236,18 +236,26 @@ namespace StockiiPanel
                 using (StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.Default))
                 {
                     //Tabel header
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        streamWriter.Write(dt.Columns[i].ColumnName);
-                        streamWriter.Write(",");
-                    }
-                    streamWriter.WriteLine("");
+                    //for (int i = 0; i < dt.Columns.Count; i++)
+                    //{
+                    //    streamWriter.Write(dt.Columns[i].ColumnName);
+                    //    streamWriter.Write(",");
+                    //}
+                    //streamWriter.WriteLine("");
                     //Table body
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         for (int j = 0; j < dt.Columns.Count; j++)
                         {
-                            streamWriter.Write(dt.Rows[i][j]);
+                            if (j == 0)
+                            {
+                                streamWriter.Write("=\"" + dt.Rows[i][j] + "\"");
+                            }
+                            else
+                            {
+                                streamWriter.Write(dt.Rows[i][j]);
+                            }
+                            
                             streamWriter.Write(",");
                         }
                         streamWriter.WriteLine("");
@@ -301,6 +309,9 @@ namespace StockiiPanel
                 case "sectionResultGrid":
                     length = crossNum;
                     break;
+                case "combineResult":
+                    length = dataGridView.Columns.Count;
+                    break;
                 default:
                     break;
             }
@@ -308,9 +319,17 @@ namespace StockiiPanel
             //添加表头
             for (int col = 0; col < length; col++)
             {
-                string columnName = dataGridView.Columns[col].HeaderText;
+                string columnName = dataGridView.Columns[col].Name;
                 dataTable.Columns.Add(columnName,dataGridView.Columns[col].ValueType);
             }
+            //标题为第一行
+            DataRow Row = dataTable.NewRow();
+            for (int col = 0; col < length; col++)
+            {
+                string columnName = dataGridView.Columns[col].HeaderText;
+                Row[col] = columnName;
+            }
+            dataTable.Rows.Add(Row);
 
             if (isSelect)
             {

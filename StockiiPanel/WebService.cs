@@ -60,6 +60,7 @@ namespace StockiiPanel
         /// <returns></returns>
         public static String Post(String url, Dictionary<string, string> args)
         {
+            Console.WriteLine(url);
             Uri address = new Uri(url);
 
             // Create the web request

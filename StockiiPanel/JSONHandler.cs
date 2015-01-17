@@ -17,7 +17,8 @@ namespace StockiiPanel
     static class JSONHandler
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
-        public static string localURL = "http://192.168.1.220:8080/client/api";
+        //public static string localURL = "http://192.168.1.220:8080/client/api";
+        public static string localURL = "http://www.stockii.com:8090/client/api"; 
 
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据
@@ -269,7 +270,7 @@ namespace StockiiPanel
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "listtradedate";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
                  
             }
             catch (IOException ex)
@@ -309,7 +310,7 @@ namespace StockiiPanel
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockclassification";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
             }
             catch (IOException ex)
             {
@@ -348,7 +349,7 @@ namespace StockiiPanel
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockbasicinfo";
                 args["response"] = "json";
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
             }
             catch (IOException ex)
             {
@@ -405,7 +406,7 @@ namespace StockiiPanel
                     args["starttime"] = startDate;
                 if (!endDate.Equals(""))
                     args["endtime"] = endDate;
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
             }
             catch (IOException ex)
             {
@@ -481,7 +482,7 @@ namespace StockiiPanel
                 }
                 args["page"] = page.ToString();
                 args["pagesize"] = pagesize.ToString();
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
                 
             }
             catch (IOException ex)
@@ -533,7 +534,7 @@ namespace StockiiPanel
                 args["stockid"] = String.Join(",", stockid.ToArray());
                 args["starttime"] = startDate;
                 args["endtime"] = endDate;
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
             }
             catch (IOException ex)
             {
@@ -570,7 +571,7 @@ namespace StockiiPanel
                 args["endtime"] = endDate;
                 args["optname"] = optName;
                 args["weight"] = weight.ToString();
-                jsonText = WebService.Get(url, args);
+                jsonText = WebService.Post(url, args);
             }
             catch (IOException ex)
             {

@@ -172,6 +172,72 @@
   <ItemGroup>
     <None Include="stockii.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504847_add-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504848_camera-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504849_download-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504854_find-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504855_info-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504856_cloud-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504863_photo-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504864_back-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504865_upload-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504866_send-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504868_copy-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504869_file-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504870_note-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504870_time-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504872_flag-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504873_clock-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504874_folder-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504875_message-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504876_delete-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504876_eye-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504877_star-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\new icons\1421504879_sub-128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

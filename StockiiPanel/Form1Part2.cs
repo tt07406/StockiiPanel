@@ -24,8 +24,9 @@ namespace StockiiPanel
         }
 
 
-        private void upItem_MouseDown(object sender, MouseEventArgs e)
+        private void upItem_MouseDown(object sender, EventArgs e)
         {
+            groupList.Hide();
             boardMenuStrip.Show(this, ribbonBar4.Location.X + upContainer.Size.Width, boardMenuStrip.Height + upContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
@@ -34,9 +35,9 @@ namespace StockiiPanel
             upToolStripMenuItem.ShowDropDown();
         }
 
-        private void downItem_MouseDown(object sender, MouseEventArgs e)
+        private void downItem_MouseDown(object sender, EventArgs e)
         {
-
+            groupList.Hide();
             boardMenuStrip.Show(this, ribbonBar4.Location.X+ upContainer.Size.Width+ downContainer.Size.Width, boardMenuStrip.Height + downContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
@@ -69,5 +70,17 @@ namespace StockiiPanel
         {
             showThisTab(marketTab);
         }
+
+        private void dumpCurPage_Click(object sender, EventArgs e)
+        {
+            dt = Commons.StructrueDataTable(combineResult, false);
+            Commons.ExportDataGridToCSV(dt);
+        }
+        private void dumpCurSelected_Click(object sender, EventArgs e)
+        {
+            dt = Commons.StructrueDataTable(combineResult, true);
+            Commons.ExportDataGridToCSV(dt);
+        }
+
     }
 }

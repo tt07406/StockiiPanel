@@ -28,7 +28,7 @@ namespace StockiiPanel
         private Dictionary<String, bool> sortTypeList = new Dictionary<String, bool>();
         private int pagesize;//页大小
         private String curTabName = "";
-
+        private String curGroupName = "";
         private SerializableDictionary<String, ArrayList> pList;
         private Dictionary<int, string> record;//上次记录
 
@@ -85,23 +85,31 @@ namespace StockiiPanel
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+                using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                }
+                using (FileStream fileStream = new FileStream("raw.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                    this.rawDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                }
+
+                using (FileStream fileStream = new FileStream("cross.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                    this.crossDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
             //反序列化载入分组列表
-            using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
-            }
-            using (FileStream fileStream = new FileStream("raw.xml", FileMode.Open))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
-                this.rawDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
-            }
             
-            using (FileStream fileStream = new FileStream("cross.xml", FileMode.Open))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
-                this.crossDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
-            }
 
 
             
@@ -332,12 +340,12 @@ namespace StockiiPanel
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (groupList.Text == null || groupList.Text.Equals(""))
+            if (curGroupName == null || curGroupName.Equals(""))
             {
                 MessageBox.Show("请选择一个分组");
                 return;
             }
-            string selectedName = groupList.Text.ToString();
+            string selectedName = curGroupName.ToString();
             SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs);
             dialog.ShowDialog(this);
 
@@ -352,19 +360,21 @@ namespace StockiiPanel
 
             ButtonItem item = new ButtonItem(name);
             groupButtonItemClicked(item, e);
+            saveGroup();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (groupList.Text == null || groupList.Text.Equals(""))
+            if (curGroupName == null || curGroupName.Equals(""))
             {
                 MessageBox.Show("请选择一个分组");
                 return;
             }
-            string selectedName = groupList.Text.ToString();
+            string selectedName = curGroupName.ToString();
             pList.Remove(selectedName);
             groupList.Items.Clear();
             myGroups.SubItems.Remove(selectedName);
+            saveGroup();
         }
 
         private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -775,6 +785,7 @@ namespace StockiiPanel
             pList.Add(name, stocks);
 
             addNewGroupButton(name);
+            saveGroup();
             //groupList.Items.Add(name);
         }
 
@@ -802,9 +813,9 @@ namespace StockiiPanel
 
                 DataRow[] drs = dt.Select("stockid = '" + id + "'");
 
-                groupList.Items.Add(drs[0]["stockname"].ToString());
+                groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
             }
-            groupList.Text = item.Name;
+            curGroupName = item.Name;
         }
 
         private void myGroups_Click(object sender, EventArgs e)
@@ -883,6 +894,31 @@ namespace StockiiPanel
         public const int WEEK_SUM = 0002;
         public const int DAY_SUM = 0003;
 
+        private void sectionResultGrid_Sorted(object sender, EventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
+            int coun = sectionResultGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+                if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "positive")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "negative")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
+                }
+                else
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+
+            }
+        }
     }    
 
 }
