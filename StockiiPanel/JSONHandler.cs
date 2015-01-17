@@ -464,7 +464,7 @@ namespace StockiiPanel
                         args["weeks"] = num.ToString();
                         break;
                     default:
-                        args["command"] = "lisgmonthsum";
+                        args["command"] = "listmonthsum";
                         args["months"] = num.ToString();
                         break;
                 }

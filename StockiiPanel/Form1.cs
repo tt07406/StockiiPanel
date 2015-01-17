@@ -12,21 +12,22 @@ using System.Threading;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using DevComponents.DotNetBar;
 
 namespace StockiiPanel
 {
-    public partial class Form1 : Form
+    public partial class Form1 : RibbonForm
     {
         private DataTable dt;
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
         private int errorNo = -1;
-        private List<int> totalPageList = new List<int>();
-        private List<int> pageList= new List<int>();
-        private List<String> sortColumnList = new List<String>();
-        private List<bool> sortTypeList = new List<bool>();
+        private Dictionary<String, int> totalPageList = new Dictionary<String, int>();
+        private Dictionary<String, int> pageList = new Dictionary<String, int>();
+        private Dictionary<String, String> sortColumnList = new Dictionary<String, String>();
+        private Dictionary<String, bool> sortTypeList = new Dictionary<String, bool>();
         private int pagesize;//页大小
-        private int curTabIndex = 0;
+        private String curTabName = "";
 
         private SerializableDictionary<String, ArrayList> pList;
         private Dictionary<int, string> record;//上次记录
@@ -41,14 +42,24 @@ namespace StockiiPanel
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
             record = new Dictionary<int, string>();
-            for (int i = 0; i < tabControl.TabCount; i++)
+            curTabName = tabControl.SelectedTab.Name;
+            initTab(curTabName);
+            
+        }
+
+        private void initTab(string curTabName)
+        {
+            if (curTabName != "")
             {
-                pageList.Add(1);
-                totalPageList.Add(1);
-                sortColumnList.Add("");
-                sortTypeList.Add(true);
+                if (!totalPageList.Keys.Contains(curTabName))
+                    totalPageList[curTabName] = 0;
+                if (!pageList.Keys.Contains(curTabName))
+                    pageList[curTabName] = 0;
+                if (!sortColumnList.Keys.Contains(curTabName))
+                    sortColumnList[curTabName] = "";
+                if (!sortTypeList.Keys.Contains(curTabName))
+                    sortTypeList[curTabName] = true;
             }
-            curTabIndex = tabControl.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,21 +103,30 @@ namespace StockiiPanel
                 this.crossDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
             }
 
-            foreach (var dic in pList)
-            {
-                groupList.Items.Add(dic.Key);
-            }
+
             
 
+            areaItem.SubItems.Clear();
+            industryItem.SubItems.Clear();
             //为版块菜单增加事件处理
             for (int i = 0; i < sectionToolStripMenuItem.DropDownItems.Count; ++i)
             {
-                sectionToolStripMenuItem.DropDownItems[i].Click += new EventHandler(sectionItem_Click);
+                //sectionToolStripMenuItem.DropDownItems[i].Click += new EventHandler(sectionItem_Click);
+                ButtonItem item = new ButtonItem();
+                item.Name = sectionToolStripMenuItem.DropDownItems[i].Name;
+                item.Text = sectionToolStripMenuItem.DropDownItems[i].Text;
+                item.Click += new EventHandler(sectionItem_Click);
+                areaItem.SubItems.Add(item);
             }
 
             for (int i = 0; i < industryToolStripMenuItem.DropDownItems.Count; ++i)
             {
-                industryToolStripMenuItem.DropDownItems[i].Click += new EventHandler(industryItem_Click);
+                //industryToolStripMenuItem.DropDownItems[i].Click += new EventHandler(industryItem_Click);
+                ButtonItem item = new ButtonItem();
+                item.Name = industryToolStripMenuItem.DropDownItems[i].Name;
+                item.Text = industryToolStripMenuItem.DropDownItems[i].Text;
+                item.Click += new EventHandler(industryItem_Click);
+                industryItem.SubItems.Add(item);
             }
 
             foreach (ToolStripMenuItem c in upToolStripMenuItem.DropDownItems)
@@ -150,6 +170,31 @@ namespace StockiiPanel
                     }
                 }
             }
+            initFormUI();
+
+            // these code are only available after data initialization
+            initGroupsButton();
+
+        }
+
+        private void initGroupsButton()
+        {
+            myGroups.SubItems.Clear();
+
+            foreach (var dic in pList)
+            {
+                addNewGroupButton(dic.Key);
+            }
+        }
+
+        private void initFormUI()
+        {
+            //nsumTab.Hide();
+            //customCalTab.Hide();
+            //crossSectionTab.Hide();
+            tabControl.TabPages.Remove(nsumTab);
+            tabControl.TabPages.Remove(customCalTab);
+            tabControl.TabPages.Remove(crossSectionTab);
         }
 
         private void timeItem_Click(object sender, EventArgs e)
@@ -190,28 +235,28 @@ namespace StockiiPanel
 
         private void sectionItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[1] = item.Name;
             pagesize = 1000;
-            pageList[curTabIndex] = 1;
-            searchTab(curTabIndex);
+            pageList[curTabName] = 1;
+            searchTab(curTabName);
         }
 
         private void industryItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[2] = item.Name;
 
             pagesize = 1000;
-            pageList[curTabIndex] = 1;
-            searchTab(curTabIndex);
+            pageList[curTabName] = 1;
+            searchTab(curTabName);
         }
 
         private void upItem_Click(object sender, EventArgs e)
         {
-            if (curTabIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -220,12 +265,12 @@ namespace StockiiPanel
 
             pagesize = 1000;
 
-            searchTab(curTabIndex);
+            searchTab(curTabName);
         }
 
         private void downItem_Click(object sender, EventArgs e)
         {
-            if (curTabIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -234,14 +279,14 @@ namespace StockiiPanel
 
             pagesize = 1000;
 
-            searchTab(curTabIndex);
+            searchTab(curTabName);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
             pagesize = 1000;
-            pageList[curTabIndex] = 1;
-            searchTab(curTabIndex);
+            pageList[curTabName] = 1;
+            searchTab(curTabName);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -287,7 +332,12 @@ namespace StockiiPanel
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string selectedName = groupList.SelectedItem.ToString();
+            if (groupList.Text == null || groupList.Text.Equals(""))
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+            string selectedName = groupList.Text.ToString();
             SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs);
             dialog.ShowDialog(this);
 
@@ -299,13 +349,22 @@ namespace StockiiPanel
             string name = dialog.GroupName;
             ArrayList stocks = new ArrayList(dialog.SelectStocks);
             pList[name] = stocks;
+
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string selectedName = groupList.SelectedItem.ToString();
+            if (groupList.Text == null || groupList.Text.Equals(""))
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+            string selectedName = groupList.Text.ToString();
             pList.Remove(selectedName);
-            groupList.Items.Remove(selectedName);
+            groupList.Items.Clear();
+            myGroups.SubItems.Remove(selectedName);
         }
 
         private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -352,14 +411,14 @@ namespace StockiiPanel
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
-                stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
-                totalPageList[curTabIndex] = totalPages;
+                stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabName] = totalPages;
             }
             else //版块
             {
 
-                stop = Commons.GetStockDayInfoBoard(record, sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
-                totalPageList[curTabIndex] = totalPages;
+                stop = Commons.GetStockDayInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabName] = totalPages;
             }
         }
 
@@ -398,7 +457,7 @@ namespace StockiiPanel
                 return;
             }
             DataSet orgDs = (DataSet)rawDataGrid.DataSource;
-            if (orgDs != null && orgDs.Tables["stock_day_info"] != null && pageList[curTabIndex] != 1)
+            if (orgDs != null && orgDs.Tables["stock_day_info"] != null && pageList[curTabName] != 1)
             {
                 orgDs.Tables["stock_day_info"].Merge(dt);
             }
@@ -407,7 +466,7 @@ namespace StockiiPanel
                 rawDataGrid.DataSource = ds;
                 rawDataGrid.DataMember = "stock_day_info";
             }
-            pageLabel.Text = pageList[curTabIndex] + "/" + (int)totalPageList[curTabIndex];
+            pageLabel.Text = pageList[curTabName] + "/" + (int)totalPageList[curTabName];
 
             rawDataGrid.AllowUserToAddRows = false;//不显示最后空白行
             rawDataGrid.EnableHeadersVisualStyles = false;
@@ -434,14 +493,14 @@ namespace StockiiPanel
                     default:
                         break;
                 }
-                if (sortColumnList[curTabIndex] == rawDataGrid.Columns[k].DataPropertyName)
+                if (sortColumnList[curTabName] == rawDataGrid.Columns[k].DataPropertyName)
                 {
                     sortIndex = k;
                 }
                 k++;
             }
 
-            rawDataGrid.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabIndex] ? SortOrder.Ascending : SortOrder.Descending;
+            rawDataGrid.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
 
             for (int i = 2; i < rawDataGrid.Columns.Count; ++i)
             {
@@ -541,24 +600,24 @@ namespace StockiiPanel
 
         private void moreButton_Click(object sender, EventArgs e)
         {
-            if ((int)totalPageList[curTabIndex] == pageList[curTabIndex])
+            if ((int)totalPageList[curTabName] == pageList[curTabName])
             {
                 MessageBox.Show("已是尾页");
                 return;
             }
-            pageList[curTabIndex]++;
+            pageList[curTabName]++;
             pagesize = 1000;
 
-            searchTab(curTabIndex);
+            searchTab(curTabName);
         }
 
         private void allButton_Click(object sender, EventArgs e)
         {
-            pageList[curTabIndex] = 1;
+            pageList[curTabName] = 1;
             pagesize = 10000;
-            totalPageList[curTabIndex] = 1;
+            totalPageList[curTabName] = 1;
 
-            searchTab(curTabIndex);
+            searchTab(curTabName);
         }
 
         private void sumWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -589,13 +648,13 @@ namespace StockiiPanel
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
             }
-            totalPageList[curTabIndex] = totalPages;
+            totalPageList[curTabName] = totalPages;
 
         }
 
@@ -661,7 +720,9 @@ namespace StockiiPanel
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            curTabIndex = tabControl.SelectedIndex;
+            //curTabName = tabControl.SelectedIndex;
+            curTabName = tabControl.SelectedTab.Name;
+            initTab(curTabName);
         }
 
         private void rawDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -671,34 +732,156 @@ namespace StockiiPanel
             int curSortIndex = 0;
             for (int i = 0; i < gridView.Columns.Count; i++)
             {
-                if (sortColumnList[curTabIndex] == gridView.Columns[i].DataPropertyName)
+                if (sortColumnList[curTabName] == gridView.Columns[i].DataPropertyName)
                 {
                     curSortIndex = i;
                 }
             }
 
-            sortColumnList[curTabIndex] = gridView.Columns[e.ColumnIndex].DataPropertyName;
+            sortColumnList[curTabName] = gridView.Columns[e.ColumnIndex].DataPropertyName;
             if (curSortIndex == e.ColumnIndex)
             {
                 if (gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
                 {
-                    sortTypeList[curTabIndex] = false;
+                    sortTypeList[curTabName] = false;
                 }
                 else
                 {
-                    sortTypeList[curTabIndex] = true;
+                    sortTypeList[curTabName] = true;
                 }
             }
             else
             {
                 gridView.Columns[curSortIndex].HeaderCell.SortGlyphDirection = SortOrder.None;
             }
-            gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabIndex] ? SortOrder.Ascending : SortOrder.Descending;
+            gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
             Console.WriteLine("sort_name: {0}", gridView.Columns[e.ColumnIndex].DataPropertyName);
-            pageList[curTabIndex] = 1;
-            searchTab(curTabIndex);
+            pageList[curTabName] = 1;
+            searchTab(curTabName);
             //gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
         }
+        private void buttonItem30_Click(object sender, EventArgs e)
+        {
+            SNListDialog dialog = new SNListDialog(pList, "", stockDs);
+            dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                return;
+            }
+
+            string name = dialog.GroupName;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
+            pList.Add(name, stocks);
+
+            addNewGroupButton(name);
+            //groupList.Items.Add(name);
+        }
+
+        private void addNewGroupButton(string name)
+        {
+            ButtonItem tempButtonItem = new ButtonItem();
+            tempButtonItem.Name = name;
+            tempButtonItem.Text = name;
+            tempButtonItem.Click += new EventHandler(groupButtonItemClicked);
+            myGroups.SubItems.Add(tempButtonItem);
+        }
+
+        private void groupButtonItemClicked(object sender, EventArgs e)
+        {
+            groupList.Items.Clear();
+
+            ButtonItem item = (ButtonItem)sender;
+            ArrayList selectStocks = pList[item.Name];
+            int k = selectStocks.Count;
+
+            dt = Commons.classfiDt;
+            for (int i = 0; i < k; ++i)
+            {
+                String id = selectStocks[i].ToString();
+
+                DataRow[] drs = dt.Select("stockid = '" + id + "'");
+
+                groupList.Items.Add(drs[0]["stockname"].ToString());
+            }
+            groupList.Text = item.Name;
+        }
+
+        private void myGroups_Click(object sender, EventArgs e)
+        {
+            groupList.Show();
+        }
+
+        private void initNDaySumTab(int code)
+        {
+            switch (code)
+            {
+                case MONTH_SUM:
+                    nsumTab.Text = "月和";
+                    groupBox4.Text = "月和筛选";
+                    groupBox5.Text = "月和数据";
+                    daySumButton.Checked = false;
+                    weekSumButton.Checked = false;
+                    monthSumButton.Checked = true;
+                    break;
+                case WEEK_SUM:
+                    nsumTab.Text = "周和";
+                    groupBox4.Text = "周和筛选";
+                    groupBox5.Text = "周和数据";
+                    daySumButton.Checked = false;
+                    weekSumButton.Checked = true;
+                    monthSumButton.Checked = false;
+                    break;
+                case DAY_SUM:
+                    nsumTab.Text = "日和";
+                    groupBox4.Text = "日和筛选";
+                    groupBox5.Text = "日和数据";
+                    daySumButton.Checked = true;
+                    weekSumButton.Checked = false;
+                    monthSumButton.Checked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void monthSum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(MONTH_SUM);
+        }
+
+        private void weekSum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(WEEK_SUM);
+        }
+
+        private void daySum_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+            initNDaySumTab(DAY_SUM);
+        }
+
+        private void nDaySumCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(nsumTab);
+        }
+
+        private void customCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(customCalTab);
+        }
+
+        private void crossSectionCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(crossSectionTab);
+        }
+
+
+        public const int MONTH_SUM = 0001;
+        public const int WEEK_SUM = 0002;
+        public const int DAY_SUM = 0003;
 
     }    
 
