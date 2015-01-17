@@ -21,9 +21,12 @@ namespace StockiiPanel
         private DataSet stockDs;//股票基本信息
         private DataSet ds;
         private int errorNo = -1;
-        private int totalPages;//总页数
-        private int page;//第几页
+        private List<int> totalPageList = new List<int>();
+        private List<int> pageList= new List<int>();
+        private List<String> sortColumnList = new List<String>();
+        private List<bool> sortTypeList = new List<bool>();
         private int pagesize;//页大小
+        private int curTabIndex = 0;
 
         private SerializableDictionary<String, ArrayList> pList;
         private Dictionary<int, string> record;//上次记录
@@ -38,6 +41,14 @@ namespace StockiiPanel
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
             record = new Dictionary<int, string>();
+            for (int i = 0; i < tabControl.TabCount; i++)
+            {
+                pageList.Add(1);
+                totalPageList.Add(1);
+                sortColumnList.Add("");
+                sortTypeList.Add(true);
+            }
+            curTabIndex = tabControl.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +65,13 @@ namespace StockiiPanel
             //tabControl.Location = new System.Drawing.Point(16, 34); ;
         }
 
+        public void initBeforeShow()
+        {
+            Commons.GetTradeDate();
+
+            Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
+            stockDs = Commons.GetStockBasicInfo();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             //反序列化载入分组列表
@@ -78,10 +96,7 @@ namespace StockiiPanel
             {
                 groupList.Items.Add(dic.Key);
             }
-            Commons.GetTradeDate();
-
-            Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
-            stockDs = Commons.GetStockBasicInfo();
+            
 
             //为版块菜单增加事件处理
             for (int i = 0; i < sectionToolStripMenuItem.DropDownItems.Count; ++i)
@@ -178,11 +193,9 @@ namespace StockiiPanel
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[1] = item.Name;
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
-
-            searchTab(tabControl.SelectedIndex);
+            pagesize = 1000;
+            pageList[curTabIndex] = 1;
+            searchTab(curTabIndex);
         }
 
         private void industryItem_Click(object sender, EventArgs e)
@@ -191,51 +204,44 @@ namespace StockiiPanel
             record.Clear();
             record[2] = item.Name;
 
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
-
-            searchTab(tabControl.SelectedIndex);
+            pagesize = 1000;
+            pageList[curTabIndex] = 1;
+            searchTab(curTabIndex);
         }
 
         private void upItem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+            if (curTabIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[3] = item.Name;
 
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
+            pagesize = 1000;
 
-            searchTab(tabControl.SelectedIndex);
+            searchTab(curTabIndex);
         }
 
         private void downItem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
+            if (curTabIndex > 1)//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             record.Clear();
             record[4] = item.Name;
 
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
+            pagesize = 1000;
 
-            searchTab(tabControl.SelectedIndex);
+            searchTab(curTabIndex);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
-            searchTab(0);
+            pagesize = 1000;
+            pageList[curTabIndex] = 1;
+            searchTab(curTabIndex);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -318,6 +324,7 @@ namespace StockiiPanel
         {
             DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
             //自动整理序列号
+            
             int coun = rawDataGrid.RowCount;
             for (int i = 0; i < coun; i++)
             {
@@ -340,16 +347,19 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-
+            int totalPages;
             if (args.Length == 3)//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
-                stop = Commons.GetStockDayInfo(stocks, "", true, startDate, endDate, page, pagesize,out errorNo, out ds,out totalPages);
+                stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabIndex] = totalPages;
             }
             else //版块
             {
-                stop = Commons.GetStockDayInfoBoard(record, "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
+
+                stop = Commons.GetStockDayInfoBoard(record, sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabIndex] = totalPages;
             }
         }
 
@@ -387,23 +397,28 @@ namespace StockiiPanel
                 MessageBox.Show("无查询结果");               
                 return;
             }
-
-           
-            pageLabel.Text = page + "/" + (int)totalPages;
-
-            rawDataGrid.DataSource = ds;
-            rawDataGrid.DataMember = "stock_day_info";
+            DataSet orgDs = (DataSet)rawDataGrid.DataSource;
+            if (orgDs != null && orgDs.Tables["stock_day_info"] != null && pageList[curTabIndex] != 1)
+            {
+                orgDs.Tables["stock_day_info"].Merge(dt);
+            }
+            else 
+            {
+                rawDataGrid.DataSource = ds;
+                rawDataGrid.DataMember = "stock_day_info";
+            }
+            pageLabel.Text = pageList[curTabIndex] + "/" + (int)totalPageList[curTabIndex];
 
             rawDataGrid.AllowUserToAddRows = false;//不显示最后空白行
             rawDataGrid.EnableHeadersVisualStyles = false;
-
             int k = 0;
+            int sortIndex = 0;
             foreach (var item in rawDict)
             {
                 rawDataGrid.Columns[k].HeaderText = item.Value;
                 rawDataGrid.Columns[k].Width = 60 + item.Value.Length * 10;
                 rawDataGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
-
+                rawDataGrid.Columns[k].SortMode = DataGridViewColumnSortMode.Programmatic;
                 switch (item.Key)
                 {
                     case "stock_id":
@@ -419,252 +434,22 @@ namespace StockiiPanel
                     default:
                         break;
                 }
+                if (sortColumnList[curTabIndex] == rawDataGrid.Columns[k].DataPropertyName)
+                {
+                    sortIndex = k;
+                }
                 k++;
             }
-            /*
-            //改变DataGridView的表头
-            rawDataGrid.Columns[0].HeaderText = "代码";
-            rawDataGrid.Columns[0].HeaderCell.Style.ForeColor = Color.Red;
-            //设置该列宽度
-            rawDataGrid.Columns[0].Width = 70;
-            rawDataGrid.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
 
-            rawDataGrid.Columns[1].HeaderText = "名称";
-            rawDataGrid.Columns[1].Width = 80;
-            rawDataGrid.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
+            rawDataGrid.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabIndex] ? SortOrder.Ascending : SortOrder.Descending;
 
-            rawDataGrid.Columns[2].HeaderText = "日期";
-            rawDataGrid.Columns[2].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[2].Width = 80;
-            rawDataGrid.Columns[2].DataPropertyName = ds.Tables[0].Columns["created"].ToString();
-
-            rawDataGrid.Columns[3].HeaderText = "多头获利（元）";
-            rawDataGrid.Columns[3].Width = 120;
-            rawDataGrid.Columns[3].DataPropertyName = ds.Tables[0].Columns["bull_profit"].ToString();
-
-            rawDataGrid.Columns[4].HeaderText = "多空平衡（元）";
-            rawDataGrid.Columns[4].Width = 120;
-            rawDataGrid.Columns[4].DataPropertyName = ds.Tables[0].Columns["bbi_balance"].ToString();
-
-            rawDataGrid.Columns[5].HeaderText = "卖价二（元）";
-            rawDataGrid.Columns[5].Width = 110;
-            rawDataGrid.Columns[5].DataPropertyName = ds.Tables[0].Columns["num2_sell_price"].ToString();
-
-            rawDataGrid.Columns[6].HeaderText = "现量";
-            rawDataGrid.Columns[6].Width = 80;
-            rawDataGrid.Columns[6].DataPropertyName = ds.Tables[0].Columns["last_deal_amount"].ToString();
-
-            rawDataGrid.Columns[7].HeaderText = "买量三";
-            rawDataGrid.Columns[7].Width = 90;
-            rawDataGrid.Columns[7].DataPropertyName = ds.Tables[0].Columns["num3_buy"].ToString();
-
-            rawDataGrid.Columns[8].HeaderText = "卖量三";
-            rawDataGrid.Columns[8].Width = 90;
-            rawDataGrid.Columns[8].DataPropertyName = ds.Tables[0].Columns["num3_sell"].ToString();
-
-            rawDataGrid.Columns[9].HeaderText = "空头回补";
-            rawDataGrid.Columns[9].Width = 100;
-            rawDataGrid.Columns[9].DataPropertyName = ds.Tables[0].Columns["short_covering"].ToString();
-
-            rawDataGrid.Columns[10].HeaderText = "空头止损";
-            rawDataGrid.Columns[10].Width = 100;
-            rawDataGrid.Columns[10].DataPropertyName = ds.Tables[0].Columns["bear_stop_losses"].ToString();
-
-            rawDataGrid.Columns[11].HeaderText = "现价（元）";
-            rawDataGrid.Columns[11].Width = 90;
-            rawDataGrid.Columns[11].DataPropertyName = ds.Tables[0].Columns["current_price"].ToString();
-
-            rawDataGrid.Columns[12].HeaderText = "换手（%）";
-            rawDataGrid.Columns[12].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[12].Width = 90;
-            rawDataGrid.Columns[12].DataPropertyName = ds.Tables[0].Columns["turnover_ratio"].ToString();
-
-            rawDataGrid.Columns[13].HeaderText = "买量二";
-            rawDataGrid.Columns[13].Width = 90;
-            rawDataGrid.Columns[13].DataPropertyName = ds.Tables[0].Columns["num2_buy"].ToString();
-
-            rawDataGrid.Columns[14].HeaderText = "流通股本（亿股）";
-            rawDataGrid.Columns[14].Width = 130;
-            rawDataGrid.Columns[14].DataPropertyName = ds.Tables[0].Columns["cir_of_cap_stock_tmp"].ToString();
-
-
-            rawDataGrid.Columns[15].HeaderText = "内盘";
-            rawDataGrid.Columns[15].Width = 80;
-            rawDataGrid.Columns[15].DataPropertyName = ds.Tables[0].Columns["sell"].ToString();
-
-            rawDataGrid.Columns[16].HeaderText = "更新日期";
-            rawDataGrid.Columns[16].Width = 120;
-            rawDataGrid.Columns[16].DataPropertyName = ds.Tables[0].Columns["update_date"].ToString();
-
-            rawDataGrid.Columns[17].HeaderText = "最低价流通市值（亿元）";
-            rawDataGrid.Columns[17].Width = 200;
-            rawDataGrid.Columns[17].DataPropertyName = ds.Tables[0].Columns["min_circulation_value"].ToString();
-
-            rawDataGrid.Columns[18].HeaderText = "强弱度";
-            rawDataGrid.Columns[18].Width = 90;
-            rawDataGrid.Columns[18].DataPropertyName = ds.Tables[0].Columns["relative_strength_index"].ToString();
-
-            rawDataGrid.Columns[19].HeaderText = "最低（元）";
-            rawDataGrid.Columns[19].Width = 90;
-            rawDataGrid.Columns[19].DataPropertyName = ds.Tables[0].Columns["min"].ToString();
-
-            rawDataGrid.Columns[20].HeaderText = "市盈率";
-            rawDataGrid.Columns[20].Width = 90;
-            rawDataGrid.Columns[20].DataPropertyName = ds.Tables[0].Columns["pe_ratio"].ToString();
-
-            rawDataGrid.Columns[21].HeaderText = "委比";
-            rawDataGrid.Columns[21].Width = 80;
-            rawDataGrid.Columns[21].DataPropertyName = ds.Tables[0].Columns["DaPanWeiBi"].ToString();
-
-            rawDataGrid.Columns[22].HeaderText = "卖出价（元）";
-            rawDataGrid.Columns[22].Width = 110;
-            rawDataGrid.Columns[22].DataPropertyName = ds.Tables[0].Columns["sold_price"].ToString();
-
-            rawDataGrid.Columns[23].HeaderText = "今开（元）";
-            rawDataGrid.Columns[23].Width = 100;
-            rawDataGrid.Columns[23].DataPropertyName = ds.Tables[0].Columns["today_begin_price"].ToString();
-
-            rawDataGrid.Columns[24].HeaderText = "买入价（元）";
-            rawDataGrid.Columns[24].Width = 110;
-            rawDataGrid.Columns[24].DataPropertyName = ds.Tables[0].Columns["bought_price"].ToString();
-
-            rawDataGrid.Columns[25].HeaderText = "笔涨跌";
-            rawDataGrid.Columns[25].Width = 90;
-            rawDataGrid.Columns[25].DataPropertyName = ds.Tables[0].Columns["upordown_per_deal"].ToString();
-
-            rawDataGrid.Columns[26].HeaderText = "卖量一";
-            rawDataGrid.Columns[26].Width = 90;
-            rawDataGrid.Columns[26].DataPropertyName = ds.Tables[0].Columns["num1_sell"].ToString();
-
-            rawDataGrid.Columns[27].HeaderText = "流通市值（亿元）";
-            rawDataGrid.Columns[27].Width = 160;
-            rawDataGrid.Columns[27].DataPropertyName = ds.Tables[0].Columns["circulation_value"].ToString();
-
-            rawDataGrid.Columns[28].HeaderText = "日涨跌（元）";
-            rawDataGrid.Columns[28].Width = 110;
-            rawDataGrid.Columns[28].DataPropertyName = ds.Tables[0].Columns["daily_up_down"].ToString();
-
-            rawDataGrid.Columns[29].HeaderText = "涨速（%）";
-            rawDataGrid.Columns[29].Width = 100;
-            rawDataGrid.Columns[29].DataPropertyName = ds.Tables[0].Columns["growth_speed"].ToString();
-
-            rawDataGrid.Columns[30].HeaderText = "最高（元）";
-            rawDataGrid.Columns[30].Width = 100;
-            rawDataGrid.Columns[30].DataPropertyName = ds.Tables[0].Columns["max"].ToString();
-
-            rawDataGrid.Columns[31].HeaderText = "买量一";
-            rawDataGrid.Columns[31].Width = 90;
-            rawDataGrid.Columns[31].DataPropertyName = ds.Tables[0].Columns["num1_buy"].ToString();
-
-            rawDataGrid.Columns[32].HeaderText = "量比";
-            rawDataGrid.Columns[32].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[32].Width = 80;
-            rawDataGrid.Columns[32].DataPropertyName = ds.Tables[0].Columns["volume_ratio"].ToString();
-
-            rawDataGrid.Columns[33].HeaderText = "尾量差";
-            rawDataGrid.Columns[33].Width = 90;
-            rawDataGrid.Columns[33].DataPropertyName = ds.Tables[0].Columns["DaPanWeiCha"].ToString();
-
-            rawDataGrid.Columns[34].HeaderText = "外盘";
-            rawDataGrid.Columns[34].Width = 80;
-            rawDataGrid.Columns[34].DataPropertyName = ds.Tables[0].Columns["buy"].ToString();
-
-            rawDataGrid.Columns[35].HeaderText = "卖量二";
-            rawDataGrid.Columns[35].Width = 90;
-            rawDataGrid.Columns[35].DataPropertyName = ds.Tables[0].Columns["num2_sell"].ToString();
-
-            rawDataGrid.Columns[36].HeaderText = "每笔均量";
-            rawDataGrid.Columns[36].Width = 100;
-            rawDataGrid.Columns[36].DataPropertyName = ds.Tables[0].Columns["num_per_deal"].ToString();
-
-            rawDataGrid.Columns[37].HeaderText = "总市值（亿元）";
-            rawDataGrid.Columns[37].Width = 120;
-            rawDataGrid.Columns[37].DataPropertyName = ds.Tables[0].Columns["total_value"].ToString();
-
-            rawDataGrid.Columns[38].HeaderText = "最高价流通市值（亿元）";
-            rawDataGrid.Columns[38].Width = 200;
-            rawDataGrid.Columns[38].DataPropertyName = ds.Tables[0].Columns["max_circulation_value"].ToString();
-
-            rawDataGrid.Columns[39].HeaderText = "内外比";
-            rawDataGrid.Columns[39].Width = 90;
-            rawDataGrid.Columns[39].DataPropertyName = ds.Tables[0].Columns["sb_ratio"].ToString();
-
-            rawDataGrid.Columns[40].HeaderText = "涨幅（%）";
-            rawDataGrid.Columns[40].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[40].Width = 100;
-            rawDataGrid.Columns[40].DataPropertyName = ds.Tables[0].Columns["growth_ratio"].ToString();
-
-            rawDataGrid.Columns[41].HeaderText = "均价（元）";
-            rawDataGrid.Columns[41].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[41].Width = 100;
-            rawDataGrid.Columns[41].DataPropertyName = ds.Tables[0].Columns["avg_price"].ToString();
-
-            rawDataGrid.Columns[42].HeaderText = "昨收（元）";
-            rawDataGrid.Columns[42].Width = 100;
-            rawDataGrid.Columns[42].DataPropertyName = ds.Tables[0].Columns["ytd_end_price"].ToString();
-
-            rawDataGrid.Columns[43].HeaderText = "总金额（亿元）";
-            rawDataGrid.Columns[43].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[43].Width = 120;
-            rawDataGrid.Columns[43].DataPropertyName = ds.Tables[0].Columns["total_money_tmp"].ToString();
-
-            rawDataGrid.Columns[44].HeaderText = "买价二（元）";
-            rawDataGrid.Columns[44].Width = 110;
-            rawDataGrid.Columns[44].DataPropertyName = ds.Tables[0].Columns["num2_buy_price"].ToString();
-
-            rawDataGrid.Columns[45].HeaderText = "振幅";
-            rawDataGrid.Columns[45].HeaderCell.Style.ForeColor = Color.Red;
-            rawDataGrid.Columns[45].Width = 80;
-            rawDataGrid.Columns[45].DataPropertyName = ds.Tables[0].Columns["amplitude_ratio"].ToString();
-
-            rawDataGrid.Columns[46].HeaderText = "总量";
-            rawDataGrid.Columns[46].Width = 80;
-            rawDataGrid.Columns[46].DataPropertyName = ds.Tables[0].Columns["total_deal_amount"].ToString();
-
-            rawDataGrid.Columns[47].HeaderText = "现价流通市值（亿元）";
-            rawDataGrid.Columns[47].Width = 200;
-            rawDataGrid.Columns[47].DataPropertyName = ds.Tables[0].Columns["current_circulation_value"].ToString();
-
-            rawDataGrid.Columns[48].HeaderText = "总股本（亿股）";
-            rawDataGrid.Columns[48].Width = 120;
-            rawDataGrid.Columns[48].DataPropertyName = ds.Tables[0].Columns["total_stock"].ToString();
-
-            rawDataGrid.Columns[49].HeaderText = "均价流通市值（亿元）";
-            rawDataGrid.Columns[49].Width = 200;
-            rawDataGrid.Columns[49].DataPropertyName = ds.Tables[0].Columns["avg_circulation_value"].ToString();
-
-            rawDataGrid.Columns[50].HeaderText = "多头止损（元）";
-            rawDataGrid.Columns[50].Width = 120;
-            rawDataGrid.Columns[50].DataPropertyName = ds.Tables[0].Columns["bull_stop_losses"].ToString();
-
-            rawDataGrid.Columns[51].HeaderText = "卖价一（元）";
-            rawDataGrid.Columns[51].Width = 110;
-            rawDataGrid.Columns[51].DataPropertyName = ds.Tables[0].Columns["num1_sell_price"].ToString();
-
-            rawDataGrid.Columns[52].HeaderText = "每笔换手";
-            rawDataGrid.Columns[52].Width = 100;
-            rawDataGrid.Columns[52].DataPropertyName = ds.Tables[0].Columns["turn_per_deal"].ToString();
-
-            rawDataGrid.Columns[53].HeaderText = "活跃度";
-            rawDataGrid.Columns[53].Width = 90;
-            rawDataGrid.Columns[53].DataPropertyName = ds.Tables[0].Columns["activity"].ToString();
-
-            rawDataGrid.Columns[54].HeaderText = "买价一（元）";
-            rawDataGrid.Columns[54].Width = 110;
-            rawDataGrid.Columns[54].DataPropertyName = ds.Tables[0].Columns["num1_buy_price"].ToString();
-
-            rawDataGrid.Columns[55].HeaderText = "买价三（元）";
-            rawDataGrid.Columns[55].Width = 110;
-            rawDataGrid.Columns[55].DataPropertyName = ds.Tables[0].Columns["num3_buy_price"].ToString();
-
-            rawDataGrid.Columns[56].HeaderText = "卖价三（元）";
-            rawDataGrid.Columns[56].Width = 110;
-            rawDataGrid.Columns[56].DataPropertyName = ds.Tables[0].Columns["num3_sell_price"].ToString();
-            */
-            for (int i = rawDict.Count; i < rawDataGrid.Columns.Count; ++i)
+            for (int i = 2; i < rawDataGrid.Columns.Count; ++i)
             {
                 rawDataGrid.Columns[i].Visible = false;
             }
+            rawDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            rawDataGrid.AutoResizeColumns();
+            
             Commons.colNum = rawDict.Count;
 
             SetColumns();
@@ -756,37 +541,24 @@ namespace StockiiPanel
 
         private void moreButton_Click(object sender, EventArgs e)
         {
-            if ((int)totalPages == page)
+            if ((int)totalPageList[curTabIndex] == pageList[curTabIndex])
             {
                 MessageBox.Show("已是尾页");
                 return;
             }
+            pageList[curTabIndex]++;
+            pagesize = 1000;
 
-            page = 2;
-            pagesize = 10000;
-            totalPages = 2;
-
-            searchTab(0);
+            searchTab(curTabIndex);
         }
 
         private void allButton_Click(object sender, EventArgs e)
         {
-            page = 1;
-            pagesize = 100000;
-            totalPages = 1;
+            pageList[curTabIndex] = 1;
+            pagesize = 10000;
+            totalPageList[curTabIndex] = 1;
 
-            searchTab(0);
-        }
-
- 
-
-        private void searchButton1_Click(object sender, EventArgs e)
-        {
-            page = 1;
-            pagesize = 20000;
-            totalPages = 1;
-
-            searchTab(1);
+            searchTab(curTabIndex);
         }
 
         private void sumWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -811,18 +583,19 @@ namespace StockiiPanel
             {
                 type = 3;
             }
-
+            int totalPages;
             if (args.Length == 6 )//自选
             {
                 String name = args[2];//取选中的分组
                 ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], "", true, startDate, endDate, page, pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], sortColumnList[curTabIndex], sortTypeList[curTabIndex], startDate, endDate, pageList[curTabIndex], pagesize, out errorNo, out ds, out totalPages);
             }
+            totalPageList[curTabIndex] = totalPages;
 
         }
 
@@ -834,7 +607,7 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-
+            
             if (args.Length == 7)//自选
             {
                 String name = args[2];//取选中的分组
@@ -848,13 +621,6 @@ namespace StockiiPanel
             }
         }
 
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
-            searchTab(2);
-        }
 
         private void crossWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -867,62 +633,6 @@ namespace StockiiPanel
 
             stop = Commons.GetCrossInfoCmd(Convert.ToDouble(args[2]), args[3], startDate, endDate, out errorNo, out ds);
 
-        }
-
-        private void moreButton1_Click(object sender, EventArgs e)
-        {
-            if ((int)totalPages == page)
-            {
-                MessageBox.Show("已是尾页");
-                return;
-            }
-
-            page = 2;
-            pagesize = 20000;
-            totalPages = 2;
-
-            searchTab(1);
-        }
-
-        private void allButton1_Click(object sender, EventArgs e)
-        {
-            page = 1;
-            pagesize = 200000;
-            totalPages = 1;
-
-            searchTab(1);
-        }
-
-        private void moreButton3_Click(object sender, EventArgs e)
-        {
-            if ((int)totalPages == page)
-            {
-                MessageBox.Show("已是尾页");
-                return;
-            }
-
-            page = 2;
-            pagesize = 10000;
-            totalPages = 2;
-
-            searchTab(3);
-        }
-
-        private void allButton3_Click(object sender, EventArgs e)
-        {
-            page = 1;
-            pagesize = 100000;
-            totalPages = 1;
-
-            searchTab(3);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            page = 1;
-            pagesize = 10000;
-            totalPages = 1;
-            searchTab(3);
         }
 
         private void daySumButton_CheckedChanged(object sender, EventArgs e)
@@ -947,6 +657,47 @@ namespace StockiiPanel
             for (int i = 1; i <= 12; i++)
                 intervalCombo.Items.Add(i + "");
             intervalCombo.SelectedIndex = 0;
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            curTabIndex = tabControl.SelectedIndex;
+        }
+
+        private void rawDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            DataGridView gridView  = (DataGridView)sender;
+            int curSortIndex = 0;
+            for (int i = 0; i < gridView.Columns.Count; i++)
+            {
+                if (sortColumnList[curTabIndex] == gridView.Columns[i].DataPropertyName)
+                {
+                    curSortIndex = i;
+                }
+            }
+
+            sortColumnList[curTabIndex] = gridView.Columns[e.ColumnIndex].DataPropertyName;
+            if (curSortIndex == e.ColumnIndex)
+            {
+                if (gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
+                {
+                    sortTypeList[curTabIndex] = false;
+                }
+                else
+                {
+                    sortTypeList[curTabIndex] = true;
+                }
+            }
+            else
+            {
+                gridView.Columns[curSortIndex].HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+            gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabIndex] ? SortOrder.Ascending : SortOrder.Descending;
+            Console.WriteLine("sort_name: {0}", gridView.Columns[e.ColumnIndex].DataPropertyName);
+            pageList[curTabIndex] = 1;
+            searchTab(curTabIndex);
+            //gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
         }
 
     }    

@@ -146,7 +146,7 @@ namespace StockiiPanel
 
         private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            switch (tabControl.SelectedIndex)
+            switch (curTabIndex)
             {
                 case 0:
                     if (rawDataGrid.RowCount > 0)
@@ -275,7 +275,7 @@ namespace StockiiPanel
 
         private void saveTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch (tabControl.SelectedIndex)
+            switch (curTabIndex)
             {
                 case 0:
                     dt = Commons.StructrueDataTable(rawDataGrid, false);
@@ -298,7 +298,7 @@ namespace StockiiPanel
 
         private void saveSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch (tabControl.SelectedIndex)
+            switch (curTabIndex)
             {
                 case 0:
                     dt = Commons.StructrueDataTable(rawDataGrid, true);
@@ -354,11 +354,18 @@ namespace StockiiPanel
                 MessageBox.Show("无查询结果");
                 return;
             }
+            DataSet orgDs = (DataSet)ndayGrid.DataSource;
+            if (orgDs != null && orgDs.Tables["n_day_sum"] != null && pageList[curTabIndex] != 1)
+            {
+                orgDs.Tables["n_day_sum"].Merge(dt);
+            }
+            else
+            {
+                ndayGrid.DataSource = ds;
+                ndayGrid.DataMember = "n_day_sum";
+            }
 
-            pageLabel.Text = page + "/" + (int)totalPages;
-
-            ndayGrid.DataSource = ds;
-            ndayGrid.DataMember = "n_day_sum";
+            pageLabel1.Text = pageList[curTabIndex] + "/" + (int)totalPageList[curTabIndex];
 
             ndayGrid.AllowUserToAddRows = false;//不显示最后空白行
             ndayGrid.EnableHeadersVisualStyles = false;
@@ -427,12 +434,13 @@ namespace StockiiPanel
                 }
             }
             int k = 0;
+            int sortIndex = 0;
             foreach (var item in sumDict)
             {
                 ndayGrid.Columns[k].HeaderText = item.Value;
                 ndayGrid.Columns[k].Width = 60 + item.Value.Length * 10;
-                ndayGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
-
+                ndayGrid.Columns[k].DataPropertyName = ds.Tables[0].Columns[k].ToString();
+                ndayGrid.Columns[k].SortMode = DataGridViewColumnSortMode.Programmatic;
                 switch (item.Key)
                 {
                     case "stock_id":
@@ -446,8 +454,15 @@ namespace StockiiPanel
                     default:
                         break;
                 }
+                if (sortColumnList[curTabIndex] == ndayGrid.Columns[k].DataPropertyName)
+                {
+                    sortIndex = k;
+                }
                 k++;
             }
+            ndayGrid.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabIndex] ? SortOrder.Ascending : SortOrder.Descending;
+            ndayGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            ndayGrid.AutoResizeColumns();
             Commons.sumNum = sumDict.Count;
 
             stop = true;
@@ -489,11 +504,11 @@ namespace StockiiPanel
                         break;
                     case "stock_day_diff_seperate":
                         dt = d;
-                        tableName = "stock_day_diff";
+                        tableName = "stock_day_diff_seperate";
                         break;
                     case "stock_day_diff_sum":
                         dt = d;
-                        tableName = "stock_day_diff";
+                        tableName = "stock_day_diff_sum";
                         break;
                     default:
                         dt = null;
@@ -509,7 +524,7 @@ namespace StockiiPanel
                 return;
             }
 
-            pageLabel.Text = page + "/" + (int)totalPages;
+            pageLabel.Text = pageList[curTabIndex] + "/" + (int)totalPageList[curTabIndex];
 
             calResultGrid.DataSource = ds;
             calResultGrid.DataMember = tableName;
@@ -585,11 +600,25 @@ namespace StockiiPanel
             switch (tableName)
             {
                 case "stock_day_diff":
-                    using (FileStream fileStream = new FileStream("custom.xml", FileMode.Open))
+                    switch (compareCombo.Text)
                     {
-                        XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
-                        this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                        case "指定时间段内最大值减最小值":
+                        case "指定时间段内最大值比最小值":
+                            using (FileStream fileStream = new FileStream("customMaxMin.xml", FileMode.Open))
+                            {
+                                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                                this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                            }
+                            break;
+                        default:
+                            using (FileStream fileStream = new FileStream("custom.xml", FileMode.Open))
+                            {
+                                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                                this.customDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+                            }
+                            break;
                     }
+                    
                     break;
                 case "stock_day_diff_seperate":
                     using (FileStream fileStream = new FileStream("customSeperate.xml", FileMode.Open))
@@ -633,15 +662,12 @@ namespace StockiiPanel
             Commons.customNum = customDict.Count;
 
             //除了涨幅、振幅分段的计算是冻结6列之外，别的计算都是冻结2列
-            switch (compareIndexCombo.Text)
+            if (compareCombo.Text == "两个时间段时涨幅依据分段")
             {
-                case "涨幅":
-                case "振幅":
-                    for (int i = 2; i < 6; i++)
-                    {
-                        calResultGrid.Columns[i].Frozen = true;
-                    }
-                    break;
+                for (int i = 2; i < 6; i++)
+                {
+                    calResultGrid.Columns[i].Frozen = true;
+                }
             }
 
             stop = true;
@@ -682,7 +708,7 @@ namespace StockiiPanel
                 return;
             }
 
-            pageLabel.Text = page + "/" + (int)totalPages;
+            pageLabel.Text = pageList[curTabIndex] + "/" + (int)totalPageList[curTabIndex];
 
             sectionResultGrid.DataSource = ds;
             sectionResultGrid.DataMember = "cross_info";
@@ -809,17 +835,13 @@ namespace StockiiPanel
                 //前两行显示绿色
                 calResultGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
                 calResultGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
-                switch (compareIndexCombo.Text)
+                if (compareCombo.Text == "两个时间段时涨幅依据分段")
                 {
-                    case "涨幅":
-                    case "振幅":
-                        for (int k = 2; k < 6; k++)
-                        {
-                            calResultGrid.Rows[i].Cells[k].Style.BackColor = Color.Lime;
-                        }
-                        break;
+                    for (int k = 2; k < 6; k++)
+                    {
+                        calResultGrid.Rows[i].Cells[k].Style.BackColor = Color.Lime;
+                    }
                 }
-
             }
         }
 
@@ -965,12 +987,12 @@ namespace StockiiPanel
             {
                 case 0:
                     bkWorker.RunWorkerAsync(args);
-                    pageLabel.Text = "0/0";
+                    //pageLabel.Text = "0/0";
                     break;
                 case 1:
                     args += "," + intervalCombo.Text + "," + indexCombo.Text + "," + typeCombo.Text;
                     sumWorker.RunWorkerAsync(args);
-                    pageLabel1.Text = "0/0";
+                    //pageLabel1.Text = "0/0";
                     break;
                 case 2:
                     string min = smallBox.Text;
@@ -991,7 +1013,6 @@ namespace StockiiPanel
                         return;
                     }
                     crossWorker.RunWorkerAsync(startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + weighBox.Text + "," + indexCombox1.Text);
-                    pageLabel3.Text = "0/0";
                     break;
                 default:
                     break;
@@ -1017,7 +1038,7 @@ namespace StockiiPanel
             for (int i = 0; i < combineResult.ColumnCount; i++)
                 headText.Add(combineResult.Columns[i].HeaderText);
            
-            if (tabControl.SelectedIndex == 2)
+            if (curTabIndex == 2)
             {
                 combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
                 if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接

@@ -39,6 +39,13 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="MySql.Data, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MySql.Data.dll</HintPath>
@@ -107,6 +114,12 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeControl.cs" />
+    <Compile Include="CustomGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomGrid.Designer.cs">
+      <DependentUpon>CustomGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebService.cs" />
     <EmbeddedResource Include="CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
@@ -120,6 +133,7 @@
     <EmbeddedResource Include="MyProgressBar.resx">
       <DependentUpon>MyProgressBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -130,6 +144,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="CustomGrid.resx">
+      <DependentUpon>CustomGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

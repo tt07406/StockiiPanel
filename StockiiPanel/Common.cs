@@ -9,6 +9,7 @@ using System.Collections;//在C#中使用ArrayList必须引用Collections类
 using System.IO;
 using System.Reflection;
 using System.Globalization;
+using System.Xml.Serialization;
 
 namespace StockiiPanel
 {
@@ -191,6 +192,19 @@ namespace StockiiPanel
                 Row["total_money"] = Math.Round(Convert.ToDouble(Row["total_money"].ToString()) / 100000000, 4);
                 Row["total_stock"] = Math.Round(Convert.ToDouble(Row["total_stock"].ToString()) / 10000, 4);
             }
+
+            //SerializableDictionary<string, string> rawDict = new SerializableDictionary<string, string>();
+            //using (FileStream fileStream = new FileStream("raw.xml", FileMode.Open))
+            //{
+            //    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+            //    rawDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+            //}
+            //int k = 0;
+            //foreach (var item in rawDict)
+            //{
+            //    dt.Columns[k].ColumnName = item.Value;
+            //    k++;
+            //}
 
             ds.Tables.Remove("stockdayinfo");
             ds.Tables.Add(dt);
@@ -501,9 +515,6 @@ namespace StockiiPanel
                          });
 
             DataTable dt = ToDataTable(query.ToList(), "n_day_sum");
-            ds.Tables.Remove(tableName);
-            ds.Tables.Add(dt);
-
             //精度处理
             foreach (DataRow Row in dt.Rows)
             {
@@ -516,6 +527,13 @@ namespace StockiiPanel
                     Row["value"] = Math.Round(Convert.ToDouble(Row["value"].ToString()), 4);
                 }
             }
+
+            dt.Columns["value"].ColumnName = ds.Tables[tableName].Columns[columnCount - 1].ColumnName;
+            ds.Tables.Remove(tableName);
+            ds.Tables.Add(dt);
+
+            
+            
 
             return stop;
         }
@@ -604,7 +622,7 @@ namespace StockiiPanel
                 case "指定时间段内的和":
                     opt = "sum";
                     break;
-                case "两个时间内涨幅,振幅数据分段":
+                case "两个时间段时涨幅依据分段":
                     opt = "seperate";
                     break;
             }
@@ -647,7 +665,7 @@ namespace StockiiPanel
             ds = JSONHandler.GetStockDaysDiff(stockid, min, max, optname, opt, startDate, endDate, out errorNo);
             String tableName = "";
             DataTable dt;
-            switch (optname)//是不是写错了，opt?
+            switch (opt)//是不是写错了，opt?
             {
                 case "seperate":
                     tableName = "growthamp";
@@ -720,6 +738,26 @@ namespace StockiiPanel
                              });
                     dt = ToDataTable(query2.ToList(), "stock_day_diff_sum");
                     break;
+                case "maxmin":
+                case "maxmindivide":
+                    tableName = "details";
+                    var query4 = (from u in ds.Tables[tableName].AsEnumerable()
+                             join r in classfiDt.AsEnumerable()
+                             on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                             select new
+                             {
+                                 stock_id = u.Field<string>("stockid"),
+                                 stock_name = r.Field<string>("stockname"),
+                                 end_date = endDate,
+                                 start_date = startDate,
+                                 max_date = u.Field<string>("maxdate"),
+                                 max_value = u.Field<string>("maxvalue"),
+                                 min_date = u.Field<string>("mindate"),
+                                 min_value = u.Field<string>("minvalue"),
+                                 index_value = u.Field<string>(optname),
+                             });
+                    dt = ToDataTable(query4.ToList(), "stock_day_diff");
+                    break;
                 default:
                     tableName = "details";
                     var query3 = (from u in ds.Tables[tableName].AsEnumerable()
@@ -781,12 +819,29 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool GetStockDaysDiffBoard(Dictionary<int, string> record, double min, double max, String optname, String opt, String startDate, String endDate, out int errorNo,out DataSet ds)
         {
-            bool stop = false;
-
-            errorNo = 0;
-            ds = new DataSet();
-
-            return stop;
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return GetStockDaysDiff(stocks, min, max, optname, opt, startDate, endDate, out errorNo, out ds);
         }
 
         /// <summary>

@@ -34,6 +34,38 @@
   </SerializableDictionary>
   <SerializableDictionary>
     <key>
+      <string>max_date</string>
+    </key>
+    <value>
+      <string>最大值时间</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>max_value</string>
+    </key>
+    <value>
+      <string>最大值</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>min_date</string>
+    </key>
+    <value>
+      <string>最小值日期</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>min_value</string>
+    </key>
+    <value>
+      <string>最小值</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
       <string>index_value</string>
     </key>
     <value>
