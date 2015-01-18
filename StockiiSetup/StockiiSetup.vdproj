@@ -183,12 +183,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E1357872D2604D0A9ED1192DFF04BBF3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E87AE7571C499A87BB2D3D6B8703D3FD"
         "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
         "MsmSig" = "8:_UNDEFINED"
@@ -197,6 +191,12 @@
         {
         "MsmKey" = "8:_E87AE7571C499A87BB2D3D6B8703D3FD"
         "OwnerKey" = "8:_2D1CD623D17948CE6C2CE08B67D59BC4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE7283E0FC9A4B9BA30EFAFA90B9494D"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1068,26 +1068,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E1357872D2604D0A9ED1192DFF04BBF3"
-            {
-            "SourcePath" = "8:Debug\\stockii.ico"
-            "TargetName" = "8:stockii.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_43B22A695F9248A08697AD6BC23C9032"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E87AE7571C499A87BB2D3D6B8703D3FD"
             {
             "AssemblyRegister" = "3:1"
@@ -1117,6 +1097,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE7283E0FC9A4B9BA30EFAFA90B9494D"
+            {
+            "SourcePath" = "8:..\\StockiiPanel\\icons\\stockii.ico"
+            "TargetName" = "8:stockii.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_43B22A695F9248A08697AD6BC23C9032"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F5AF1B46B674CC357E6B95947F97AD34"
@@ -1249,7 +1249,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:斯多克智能股票分析系统"
         "ProductCode" = "8:{A600870B-24D3-4589-801E-59F3B2F10491}"
-        "PackageCode" = "8:{5295CFDE-C97E-4F12-B972-D3B5E44FBA9B}"
+        "PackageCode" = "8:{05547EE6-C48D-4E90-8C97-0F6E82528A38}"
         "UpgradeCode" = "8:{0A009323-EE87-4032-9134-A375BCFEA8FC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1380,7 +1380,7 @@
             "Target" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
             "Folder" = "8:_95DED92B43D346D29F71918E21AB9B92"
             "WorkingFolder" = "8:_4ACF17EC9DCB4BDC8EC070E7D5B2E549"
-            "Icon" = "8:_E1357872D2604D0A9ED1192DFF04BBF3"
+            "Icon" = "8:_EE7283E0FC9A4B9BA30EFAFA90B9494D"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_81D1E63106CF4835849846F5C106EF0F"
@@ -1394,7 +1394,7 @@
             "Target" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
             "Folder" = "8:_CF6FC0205C164533A077B7EF41D9B99F"
             "WorkingFolder" = "8:_4ACF17EC9DCB4BDC8EC070E7D5B2E549"
-            "Icon" = "8:_E1357872D2604D0A9ED1192DFF04BBF3"
+            "Icon" = "8:_EE7283E0FC9A4B9BA30EFAFA90B9494D"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CC5C77D8DD5B42DAA0597A44CF50F66D"

@@ -545,8 +545,9 @@ namespace StockiiPanel
                          {
                              stock_id = u.Field<string>("stockid"),
                              stock_name = r.Field<string>("stockname"),
-                             end_date = u.Field<string>("created").Substring(0,10),
+                             
                              start_date = calcStartDate(u.Field<string>("created"), num, type).ToString("yyyy-MM-dd"),
+                             end_date = u.Field<string>("created").Substring(0, 10),
                              value = u.Field<string>(columnCount - 1),//取最后一列
                          });
 

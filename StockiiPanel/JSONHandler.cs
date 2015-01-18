@@ -289,6 +289,12 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
 
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
@@ -334,6 +340,12 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
             
             DataSet jsDs = JsonToDataSet( "{"+ jsonarray +"}");
@@ -379,6 +391,12 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
 
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
@@ -444,6 +462,13 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                errorNo = 1;
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
             string num = jo.First.First.First.First.ToString();
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
@@ -527,6 +552,13 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                errorNo = 1;
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
             string count = jo.First.First.First.First.ToString();
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
@@ -585,6 +617,13 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                errorNo = 1;
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
 
@@ -628,6 +667,12 @@ namespace StockiiPanel
             }
 
             JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return null;
+            }
+
             string jsonarray = jo.First.First.Last.ToString();
             DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
 
