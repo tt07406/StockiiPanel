@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
+using System.Net;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 
 namespace StockiiPanel
@@ -265,19 +266,25 @@ namespace StockiiPanel
                 //jsonText = sr.ReadToEnd();
 
                 //sr.Close();
-                
+
                 string url = localURL;
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "listtradedate";
                 args["response"] = "json";
                 jsonText = WebService.Post(url, args);
-                 
+
             }
             catch (IOException ex)
             {
                 Console.WriteLine("An IOException has been thrown!");
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
                 return null;
             }
 
@@ -319,6 +326,12 @@ namespace StockiiPanel
                 Console.ReadLine();
                 return null;
             }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
 
             JObject jo = JObject.Parse(jsonText);
             string jsonarray = jo.First.First.Last.ToString();
@@ -356,6 +369,12 @@ namespace StockiiPanel
                 Console.WriteLine("An IOException has been thrown!");
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
                 return null;
             }
 
@@ -414,6 +433,13 @@ namespace StockiiPanel
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
                 errorNo = 1;
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                errorNo = 0;
                 return null;
             }
 
@@ -492,6 +518,13 @@ namespace StockiiPanel
                 Console.ReadLine();
                 return null;
             }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                errorNo = 0;
+                return null;
+            }
 
             JObject jo = JObject.Parse(jsonText);
             string jsonarray = jo.First.First.Last.ToString();
@@ -543,6 +576,13 @@ namespace StockiiPanel
                 Console.ReadLine();
                 return null;
             }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                errorNo = 0;
+                return null;
+            }
 
             JObject jo = JObject.Parse(jsonText);
             string jsonarray = jo.First.First.Last.ToString();
@@ -578,6 +618,12 @@ namespace StockiiPanel
                 Console.WriteLine("An IOException has been thrown!");
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
                 return null;
             }
 

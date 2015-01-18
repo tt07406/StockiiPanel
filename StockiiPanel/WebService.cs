@@ -20,8 +20,11 @@ namespace StockiiPanel
         /// <param name="url">URL</param>
         /// <param name="args">参数</param>
         /// <returns></returns>
-        public static String Get(String url, Dictionary<string, string> args)
+        public static String Get(String url, Dictionary<string, string> args) 
         {
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("stock_id"))
+                args["sortname"] = "stockId";
+
             StringBuilder data = new StringBuilder();
             int i = 0;
             foreach (var arg in args)
@@ -36,19 +39,28 @@ namespace StockiiPanel
 
             url += data.ToString();
 
-            Console.WriteLine(url);
+            //Console.WriteLine(url);
 
             // Create the web request
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
 
             // Get response
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            try
             {
-                // Get the response stream
-                StreamReader reader = new StreamReader(response.GetResponseStream());
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+                    // Get the response stream
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
 
-                // Console application output
-                return reader.ReadToEnd();
+                    // Console application output
+                    return reader.ReadToEnd();
+                }
+            }catch (WebException ex)
+            {
+                if(ex.Response == null || ex.Status != WebExceptionStatus.ProtocolError)
+                    throw;
+
+                throw ex;
             }
         }
 
@@ -60,7 +72,10 @@ namespace StockiiPanel
         /// <returns></returns>
         public static String Post(String url, Dictionary<string, string> args)
         {
-            Console.WriteLine(url);
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("stock_id"))
+                args["sortname"] = "stockId";
+
+            //Console.WriteLine(url);
             Uri address = new Uri(url);
 
             // Create the web request
@@ -96,14 +111,24 @@ namespace StockiiPanel
             }
 
             // Get response
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+             try
             {
-                // Get the response stream
-                StreamReader reader = new StreamReader(response.GetResponseStream());
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+                    // Get the response stream
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
 
-                // Console application output
-                return reader.ReadToEnd();
+                    // Console application output
+                    return reader.ReadToEnd();
+                }
             }
+             catch (WebException ex)
+             {
+                 if (ex.Response == null || ex.Status != WebExceptionStatus.ProtocolError)
+                     throw;
+
+                 throw ex;
+             }
         }
     }
 }

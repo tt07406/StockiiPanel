@@ -904,11 +904,11 @@ namespace StockiiPanel
                 int j = i + 1;
                 sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
 
-                if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "positive")
+                if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "positive")
                 {
                     sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                 }
-                else if (ds.Tables[0].Rows[i]["cross_type"].ToString() == "negative")
+                else if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "negative")
                 {
                     sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
                 }
@@ -919,6 +919,7 @@ namespace StockiiPanel
 
             }
         }
+
     }    
 
 }

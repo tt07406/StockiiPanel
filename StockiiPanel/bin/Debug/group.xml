@@ -2644,4 +2644,21 @@
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>test</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000005</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000009</anyType>
+        <anyType xsi:type="xsd:string">000024</anyType>
+        <anyType xsi:type="xsd:string">000025</anyType>
+        <anyType xsi:type="xsd:string">000026</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
 </SerializableDictionaryOfStringArrayList>

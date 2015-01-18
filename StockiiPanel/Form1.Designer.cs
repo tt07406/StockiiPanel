@@ -3161,23 +3161,23 @@
             this.rawDataTab.Location = new System.Drawing.Point(4, 22);
             this.rawDataTab.Name = "rawDataTab";
             this.rawDataTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rawDataTab.Size = new System.Drawing.Size(804, 355);
+            this.rawDataTab.Size = new System.Drawing.Size(949, 355);
             this.rawDataTab.TabIndex = 0;
             this.rawDataTab.Text = "原始数据";
             this.rawDataTab.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.rawDataGrid);
             this.groupBox3.Controls.Add(this.pageLabel);
             this.groupBox3.Controls.Add(this.allButton);
             this.groupBox3.Controls.Add(this.moreButton);
             this.groupBox3.Location = new System.Drawing.Point(3, 88);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(789, 261);
+            this.groupBox3.Size = new System.Drawing.Size(934, 261);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "原始数据";
@@ -3185,9 +3185,9 @@
             // rawDataGrid
             // 
             this.rawDataGrid.AllowUserToAddRows = false;
-            this.rawDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rawDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.rawDataGrid.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -3221,7 +3221,7 @@
             this.rawDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.rawDataGrid.RowTemplate.Height = 23;
             this.rawDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rawDataGrid.Size = new System.Drawing.Size(772, 200);
+            this.rawDataGrid.Size = new System.Drawing.Size(917, 200);
             this.rawDataGrid.TabIndex = 4;
             this.rawDataGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rawDataGrid_ColumnHeaderMouseClick);
             this.rawDataGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.rawDataGrid_DataBindingComplete);
@@ -3269,7 +3269,7 @@
             // 
             this.pageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel.AutoSize = true;
-            this.pageLabel.Location = new System.Drawing.Point(376, 233);
+            this.pageLabel.Location = new System.Drawing.Point(449, 233);
             this.pageLabel.Name = "pageLabel";
             this.pageLabel.Size = new System.Drawing.Size(23, 12);
             this.pageLabel.TabIndex = 3;
@@ -3278,7 +3278,7 @@
             // allButton
             // 
             this.allButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton.Location = new System.Drawing.Point(416, 227);
+            this.allButton.Location = new System.Drawing.Point(489, 227);
             this.allButton.Name = "allButton";
             this.allButton.Size = new System.Drawing.Size(62, 25);
             this.allButton.TabIndex = 2;
@@ -3289,7 +3289,7 @@
             // moreButton
             // 
             this.moreButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton.Location = new System.Drawing.Point(299, 227);
+            this.moreButton.Location = new System.Drawing.Point(372, 227);
             this.moreButton.Name = "moreButton";
             this.moreButton.Size = new System.Drawing.Size(61, 25);
             this.moreButton.TabIndex = 1;
@@ -3299,8 +3299,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.searchButton);
             this.groupBox1.Controls.Add(this.endDatePicker);
             this.groupBox1.Controls.Add(this.label2);
@@ -3308,7 +3308,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(787, 71);
+            this.groupBox1.Size = new System.Drawing.Size(932, 71);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "原始数据筛选";
@@ -3365,23 +3365,23 @@
             this.nsumTab.Location = new System.Drawing.Point(4, 22);
             this.nsumTab.Name = "nsumTab";
             this.nsumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.nsumTab.Size = new System.Drawing.Size(804, 355);
+            this.nsumTab.Size = new System.Drawing.Size(949, 355);
             this.nsumTab.TabIndex = 1;
             this.nsumTab.Text = "n日和";
             this.nsumTab.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.ndayGrid);
             this.groupBox5.Controls.Add(this.pageLabel1);
             this.groupBox5.Controls.Add(this.allButton1);
             this.groupBox5.Controls.Add(this.moreButton1);
             this.groupBox5.Location = new System.Drawing.Point(6, 128);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(792, 228);
+            this.groupBox5.Size = new System.Drawing.Size(937, 228);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "n日数据";
@@ -3389,9 +3389,9 @@
             // ndayGrid
             // 
             this.ndayGrid.AllowUserToAddRows = false;
-            this.ndayGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ndayGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.ndayGrid.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -3426,7 +3426,7 @@
             this.ndayGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.ndayGrid.RowTemplate.Height = 23;
             this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ndayGrid.Size = new System.Drawing.Size(779, 171);
+            this.ndayGrid.Size = new System.Drawing.Size(924, 171);
             this.ndayGrid.TabIndex = 7;
             this.ndayGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rawDataGrid_ColumnHeaderMouseClick);
             this.ndayGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ndayGrid_DataBindingComplete);
@@ -3435,7 +3435,7 @@
             // 
             this.pageLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel1.AutoSize = true;
-            this.pageLabel1.Location = new System.Drawing.Point(381, 203);
+            this.pageLabel1.Location = new System.Drawing.Point(453, 203);
             this.pageLabel1.Name = "pageLabel1";
             this.pageLabel1.Size = new System.Drawing.Size(23, 12);
             this.pageLabel1.TabIndex = 6;
@@ -3444,7 +3444,7 @@
             // allButton1
             // 
             this.allButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton1.Location = new System.Drawing.Point(422, 197);
+            this.allButton1.Location = new System.Drawing.Point(494, 197);
             this.allButton1.Name = "allButton1";
             this.allButton1.Size = new System.Drawing.Size(62, 25);
             this.allButton1.TabIndex = 5;
@@ -3455,7 +3455,7 @@
             // moreButton1
             // 
             this.moreButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton1.Location = new System.Drawing.Point(304, 197);
+            this.moreButton1.Location = new System.Drawing.Point(376, 197);
             this.moreButton1.Name = "moreButton1";
             this.moreButton1.Size = new System.Drawing.Size(61, 25);
             this.moreButton1.TabIndex = 4;
@@ -3465,8 +3465,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.searchButton1);
             this.groupBox4.Controls.Add(this.typeCombo);
             this.groupBox4.Controls.Add(this.intervalCombo);
@@ -3480,7 +3480,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(12, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(786, 109);
+            this.groupBox4.Size = new System.Drawing.Size(931, 109);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "n日和筛选";
@@ -3606,9 +3606,9 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.calResultGrid);
             this.groupBox7.Location = new System.Drawing.Point(7, 135);
             this.groupBox7.Name = "groupBox7";
@@ -3620,9 +3620,9 @@
             // calResultGrid
             // 
             this.calResultGrid.AllowUserToAddRows = false;
-            this.calResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.calResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.calResultGrid.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -3663,8 +3663,8 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.smallBox);
             this.groupBox6.Controls.Add(this.bigBox);
             this.groupBox6.Controls.Add(this.label11);
@@ -3815,23 +3815,23 @@
             this.crossSectionTab.Location = new System.Drawing.Point(4, 22);
             this.crossSectionTab.Name = "crossSectionTab";
             this.crossSectionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.crossSectionTab.Size = new System.Drawing.Size(804, 355);
+            this.crossSectionTab.Size = new System.Drawing.Size(949, 355);
             this.crossSectionTab.TabIndex = 3;
             this.crossSectionTab.Text = "跨区";
             this.crossSectionTab.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox9.Controls.Add(this.sectionResultGrid);
             this.groupBox9.Controls.Add(this.pageLabel3);
             this.groupBox9.Controls.Add(this.allButton3);
             this.groupBox9.Controls.Add(this.moreButton3);
             this.groupBox9.Location = new System.Drawing.Point(6, 77);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(792, 272);
+            this.groupBox9.Size = new System.Drawing.Size(937, 272);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "跨区结果";
@@ -3839,9 +3839,9 @@
             // sectionResultGrid
             // 
             this.sectionResultGrid.AllowUserToAddRows = false;
-            this.sectionResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sectionResultGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.sectionResultGrid.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
@@ -3876,7 +3876,7 @@
             this.sectionResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.sectionResultGrid.RowTemplate.Height = 23;
             this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.sectionResultGrid.Size = new System.Drawing.Size(778, 215);
+            this.sectionResultGrid.Size = new System.Drawing.Size(923, 215);
             this.sectionResultGrid.TabIndex = 4;
             this.sectionResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.sectionResultGrid_DataBindingComplete);
             this.sectionResultGrid.Sorted += new System.EventHandler(this.sectionResultGrid_Sorted);
@@ -3885,7 +3885,7 @@
             // 
             this.pageLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel3.AutoSize = true;
-            this.pageLabel3.Location = new System.Drawing.Point(392, 247);
+            this.pageLabel3.Location = new System.Drawing.Point(464, 247);
             this.pageLabel3.Name = "pageLabel3";
             this.pageLabel3.Size = new System.Drawing.Size(23, 12);
             this.pageLabel3.TabIndex = 3;
@@ -3894,7 +3894,7 @@
             // allButton3
             // 
             this.allButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton3.Location = new System.Drawing.Point(432, 241);
+            this.allButton3.Location = new System.Drawing.Point(504, 241);
             this.allButton3.Name = "allButton3";
             this.allButton3.Size = new System.Drawing.Size(62, 25);
             this.allButton3.TabIndex = 2;
@@ -3905,7 +3905,7 @@
             // moreButton3
             // 
             this.moreButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton3.Location = new System.Drawing.Point(315, 241);
+            this.moreButton3.Location = new System.Drawing.Point(387, 241);
             this.moreButton3.Name = "moreButton3";
             this.moreButton3.Size = new System.Drawing.Size(61, 25);
             this.moreButton3.TabIndex = 1;
@@ -3915,8 +3915,8 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.weighBox);
             this.groupBox8.Controls.Add(this.label15);
             this.groupBox8.Controls.Add(this.label16);
@@ -3928,7 +3928,7 @@
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(792, 65);
+            this.groupBox8.Size = new System.Drawing.Size(937, 65);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "跨区筛选";
@@ -4090,9 +4090,9 @@
             this.combineResult.AllowUserToAddRows = false;
             this.combineResult.AllowUserToDeleteRows = false;
             this.combineResult.AllowUserToResizeRows = false;
-            this.combineResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.combineResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.combineResult.ContextMenuStrip = this.contextMenuStrip2;
             this.combineResult.Location = new System.Drawing.Point(6, 25);
             this.combineResult.Name = "combineResult";
@@ -4160,9 +4160,9 @@
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer2.Location = new System.Drawing.Point(12, 161);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -4207,10 +4207,10 @@
             this.ribbonControl1.CaptionVisible = true;
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Controls.Add(this.ribbonPanel7);
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.ForeColor = System.Drawing.Color.Black;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -4282,6 +4282,7 @@
             // 
             // 
             this.ribbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar4.CanCustomize = false;
             this.ribbonBar4.ContainerControlProcessDialogKey = true;
             this.ribbonBar4.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar4.DragDropSupport = true;
@@ -4324,7 +4325,7 @@
             // 
             // areaItem
             // 
-            this.areaItem.Image = global::StockiiPanel.Properties.Resources._1421504872_flag_128;
+            this.areaItem.Image = global::StockiiPanel.Properties.Resources.icon_flag;
             this.areaItem.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.areaItem.Name = "areaItem";
             this.areaItem.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -4400,7 +4401,7 @@
             // 
             // upItem
             // 
-            this.upItem.Image = global::StockiiPanel.Properties.Resources._1421504865_upload_128;
+            this.upItem.Image = global::StockiiPanel.Properties.Resources.icon_upload;
             this.upItem.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.upItem.Name = "upItem";
             this.upItem.Text = "buttonItem16";
@@ -4430,7 +4431,7 @@
             // 
             // downItem
             // 
-            this.downItem.Image = global::StockiiPanel.Properties.Resources._1421504849_download_128;
+            this.downItem.Image = global::StockiiPanel.Properties.Resources.icon_download;
             this.downItem.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.downItem.Name = "downItem";
             this.downItem.Text = "buttonItem16";
@@ -4453,6 +4454,7 @@
             // 
             // 
             this.ribbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar3.CanCustomize = false;
             this.ribbonBar3.ContainerControlProcessDialogKey = true;
             this.ribbonBar3.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar3.DragDropSupport = true;
@@ -4494,7 +4496,7 @@
             // 
             // addGroup
             // 
-            this.addGroup.Image = global::StockiiPanel.Properties.Resources._1421504847_add_128;
+            this.addGroup.Image = global::StockiiPanel.Properties.Resources.icon_add_group;
             this.addGroup.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.addGroup.Name = "addGroup";
             this.addGroup.Text = "buttonItem16";
@@ -4524,7 +4526,7 @@
             // 
             // myGroups
             // 
-            this.myGroups.Image = global::StockiiPanel.Properties.Resources._1421504863_photo_128;
+            this.myGroups.Image = global::StockiiPanel.Properties.Resources.icon_user;
             this.myGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.myGroups.Name = "myGroups";
             this.myGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -4562,7 +4564,7 @@
             // 
             // manageGroups
             // 
-            this.manageGroups.Image = global::StockiiPanel.Properties.Resources._1421504870_note_128;
+            this.manageGroups.Image = global::StockiiPanel.Properties.Resources.icon_edit;
             this.manageGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.manageGroups.Name = "manageGroups";
             this.manageGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -4602,7 +4604,7 @@
             this.ribbonPanel1.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel1.Size = new System.Drawing.Size(1272, 101);
+            this.ribbonPanel1.Size = new System.Drawing.Size(1490, 101);
             // 
             // 
             // 
@@ -4629,6 +4631,7 @@
             // 
             // 
             this.ribbonBar12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar12.CanCustomize = false;
             this.ribbonBar12.ContainerControlProcessDialogKey = true;
             this.ribbonBar12.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar12.DragDropSupport = true;
@@ -4750,6 +4753,7 @@
             // 
             // 
             this.ribbonBar11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar11.CanCustomize = false;
             this.ribbonBar11.ContainerControlProcessDialogKey = true;
             this.ribbonBar11.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar11.DragDropSupport = true;
@@ -4842,6 +4846,7 @@
             // 
             // 
             this.ribbonBar10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar10.CanCustomize = false;
             this.ribbonBar10.ContainerControlProcessDialogKey = true;
             this.ribbonBar10.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar10.DragDropSupport = true;
@@ -4935,6 +4940,7 @@
             // 
             // 
             this.ribbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar5.CanCustomize = false;
             this.ribbonBar5.ContainerControlProcessDialogKey = true;
             this.ribbonBar5.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar5.DragDropSupport = true;
@@ -5059,6 +5065,7 @@
             // 
             // 
             this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar1.CanCustomize = false;
             this.ribbonBar1.ContainerControlProcessDialogKey = true;
             this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar1.DragDropSupport = true;
@@ -5150,7 +5157,7 @@
             this.ribbonPanel5.Location = new System.Drawing.Point(0, 0);
             this.ribbonPanel5.Name = "ribbonPanel5";
             this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel5.Size = new System.Drawing.Size(1272, 154);
+            this.ribbonPanel5.Size = new System.Drawing.Size(1490, 154);
             // 
             // 
             // 
@@ -5177,6 +5184,7 @@
             // 
             // 
             this.ribbonBar2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar2.CanCustomize = false;
             this.ribbonBar2.ContainerControlProcessDialogKey = true;
             this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar2.DragDropSupport = true;
@@ -5235,7 +5243,7 @@
             this.ribbonPanel7.Location = new System.Drawing.Point(0, 0);
             this.ribbonPanel7.Name = "ribbonPanel7";
             this.ribbonPanel7.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel7.Size = new System.Drawing.Size(1272, 154);
+            this.ribbonPanel7.Size = new System.Drawing.Size(1490, 154);
             // 
             // 
             // 
@@ -5262,6 +5270,7 @@
             // 
             // 
             this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar8.CanCustomize = false;
             this.ribbonBar8.ContainerControlProcessDialogKey = true;
             this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar8.DragDropSupport = true;
@@ -5378,7 +5387,7 @@
             this.ribbonPanel6.Location = new System.Drawing.Point(0, 0);
             this.ribbonPanel6.Name = "ribbonPanel6";
             this.ribbonPanel6.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel6.Size = new System.Drawing.Size(1272, 154);
+            this.ribbonPanel6.Size = new System.Drawing.Size(1490, 154);
             // 
             // 
             // 
@@ -5402,7 +5411,7 @@
             this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel4.Name = "ribbonPanel4";
             this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1272, 101);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1490, 101);
             // 
             // 
             // 
@@ -5429,6 +5438,7 @@
             // 
             // 
             this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar9.CanCustomize = false;
             this.ribbonBar9.ContainerControlProcessDialogKey = true;
             this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar9.DragDropSupport = true;
@@ -5492,6 +5502,7 @@
             // qatCustomizeItem1
             // 
             this.qatCustomizeItem1.Name = "qatCustomizeItem1";
+            this.qatCustomizeItem1.Visible = false;
             // 
             // itemContainer27
             // 
@@ -5533,7 +5544,7 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -13860;
+            this.boardButton.WorkSizeY = -14245;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1

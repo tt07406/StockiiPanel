@@ -61,6 +61,13 @@ namespace StockiiPanel
         public static void GetStockClassification(ToolStripMenuItem sectionToolStripMenuItem, ToolStripMenuItem industryToolStripMenuItem)
         {
             DataSet ds = JSONHandler.GetClassfication();
+
+            if (ds == null)
+            {
+                MessageBox.Show("连接数据库超时");
+                return;
+            }
+
             DataTable dt = ds.Tables["stockclassification"];
             classfiDt = dt.Copy();
             DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true,new string[]{"areaname"}));//distinct
@@ -119,6 +126,11 @@ namespace StockiiPanel
             bool stop = false;
 
             ds = JSONHandler.GetStockDayInfo(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
 
             var query = (from u in ds.Tables["stockdayinfo"].AsEnumerable()
                          join r in classfiDt.AsEnumerable()
@@ -507,6 +519,11 @@ namespace StockiiPanel
             }
             ds = JSONHandler.GetNDaysSum(stockid, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
 
+            if (ds == null)
+            {
+                return true;
+            }
+
             String tableName = "";
             switch (type)
             {
@@ -682,6 +699,12 @@ namespace StockiiPanel
                     break;
             }
             ds = JSONHandler.GetStockDaysDiff(stockid, min, max, optname, opt, startDate, endDate, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+
             String tableName = "";
             DataTable dt;
             switch (opt)//是不是写错了，opt?
@@ -900,6 +923,12 @@ namespace StockiiPanel
                     break;
             }
             ds = JSONHandler.GetCrossInfo(weight, optname, startDate, endDate);
+
+            if (ds == null)
+            {
+                errorNo = 0;
+                return true;
+            }
 
             var query = (from u in ds.Tables["crossinfo"].AsEnumerable()
                          join r in classfiDt.AsEnumerable()
