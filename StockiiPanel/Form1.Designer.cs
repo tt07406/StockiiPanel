@@ -555,6 +555,8 @@
             this.itemContainer6 = new DevComponents.DotNetBar.ItemContainer();
             this.maketInfo = new DevComponents.DotNetBar.ButtonItem();
             this.我的方案 = new DevComponents.DotNetBar.LabelItem();
+            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
             this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
@@ -572,8 +574,6 @@
             this.buttonItem41 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem22 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonPanel6 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
             this.ribbonTabItem1 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem3 = new DevComponents.DotNetBar.RibbonTabItem();
             this.方案 = new DevComponents.DotNetBar.RibbonTabItem();
@@ -621,15 +621,15 @@
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
+            this.ribbonPanel4.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
             this.ribbonPanel7.SuspendLayout();
-            this.ribbonPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(12, 562);
+            this.button1.Location = new System.Drawing.Point(8, 644);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -3135,7 +3135,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(957, 381);
+            this.tabControl.Size = new System.Drawing.Size(903, 419);
             this.tabControl.TabIndex = 5;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -3161,7 +3161,7 @@
             this.rawDataTab.Location = new System.Drawing.Point(4, 22);
             this.rawDataTab.Name = "rawDataTab";
             this.rawDataTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rawDataTab.Size = new System.Drawing.Size(949, 355);
+            this.rawDataTab.Size = new System.Drawing.Size(895, 393);
             this.rawDataTab.TabIndex = 0;
             this.rawDataTab.Text = "原始数据";
             this.rawDataTab.UseVisualStyleBackColor = true;
@@ -3177,7 +3177,7 @@
             this.groupBox3.Controls.Add(this.moreButton);
             this.groupBox3.Location = new System.Drawing.Point(3, 88);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(934, 261);
+            this.groupBox3.Size = new System.Drawing.Size(880, 299);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "原始数据";
@@ -3221,7 +3221,7 @@
             this.rawDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.rawDataGrid.RowTemplate.Height = 23;
             this.rawDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rawDataGrid.Size = new System.Drawing.Size(917, 200);
+            this.rawDataGrid.Size = new System.Drawing.Size(863, 238);
             this.rawDataGrid.TabIndex = 4;
             this.rawDataGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rawDataGrid_ColumnHeaderMouseClick);
             this.rawDataGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.rawDataGrid_DataBindingComplete);
@@ -3269,7 +3269,7 @@
             // 
             this.pageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel.AutoSize = true;
-            this.pageLabel.Location = new System.Drawing.Point(449, 233);
+            this.pageLabel.Location = new System.Drawing.Point(422, 271);
             this.pageLabel.Name = "pageLabel";
             this.pageLabel.Size = new System.Drawing.Size(23, 12);
             this.pageLabel.TabIndex = 3;
@@ -3278,7 +3278,7 @@
             // allButton
             // 
             this.allButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton.Location = new System.Drawing.Point(489, 227);
+            this.allButton.Location = new System.Drawing.Point(462, 265);
             this.allButton.Name = "allButton";
             this.allButton.Size = new System.Drawing.Size(62, 25);
             this.allButton.TabIndex = 2;
@@ -3289,7 +3289,7 @@
             // moreButton
             // 
             this.moreButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton.Location = new System.Drawing.Point(372, 227);
+            this.moreButton.Location = new System.Drawing.Point(345, 265);
             this.moreButton.Name = "moreButton";
             this.moreButton.Size = new System.Drawing.Size(61, 25);
             this.moreButton.TabIndex = 1;
@@ -3308,7 +3308,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(932, 71);
+            this.groupBox1.Size = new System.Drawing.Size(878, 71);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "原始数据筛选";
@@ -3365,7 +3365,7 @@
             this.nsumTab.Location = new System.Drawing.Point(4, 22);
             this.nsumTab.Name = "nsumTab";
             this.nsumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.nsumTab.Size = new System.Drawing.Size(949, 355);
+            this.nsumTab.Size = new System.Drawing.Size(895, 393);
             this.nsumTab.TabIndex = 1;
             this.nsumTab.Text = "n日和";
             this.nsumTab.UseVisualStyleBackColor = true;
@@ -3381,7 +3381,7 @@
             this.groupBox5.Controls.Add(this.moreButton1);
             this.groupBox5.Location = new System.Drawing.Point(6, 128);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(937, 228);
+            this.groupBox5.Size = new System.Drawing.Size(883, 266);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "n日数据";
@@ -3426,7 +3426,7 @@
             this.ndayGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.ndayGrid.RowTemplate.Height = 23;
             this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ndayGrid.Size = new System.Drawing.Size(924, 171);
+            this.ndayGrid.Size = new System.Drawing.Size(870, 209);
             this.ndayGrid.TabIndex = 7;
             this.ndayGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rawDataGrid_ColumnHeaderMouseClick);
             this.ndayGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ndayGrid_DataBindingComplete);
@@ -3435,7 +3435,7 @@
             // 
             this.pageLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel1.AutoSize = true;
-            this.pageLabel1.Location = new System.Drawing.Point(453, 203);
+            this.pageLabel1.Location = new System.Drawing.Point(426, 241);
             this.pageLabel1.Name = "pageLabel1";
             this.pageLabel1.Size = new System.Drawing.Size(23, 12);
             this.pageLabel1.TabIndex = 6;
@@ -3444,7 +3444,7 @@
             // allButton1
             // 
             this.allButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton1.Location = new System.Drawing.Point(494, 197);
+            this.allButton1.Location = new System.Drawing.Point(467, 235);
             this.allButton1.Name = "allButton1";
             this.allButton1.Size = new System.Drawing.Size(62, 25);
             this.allButton1.TabIndex = 5;
@@ -3455,7 +3455,7 @@
             // moreButton1
             // 
             this.moreButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton1.Location = new System.Drawing.Point(376, 197);
+            this.moreButton1.Location = new System.Drawing.Point(349, 235);
             this.moreButton1.Name = "moreButton1";
             this.moreButton1.Size = new System.Drawing.Size(61, 25);
             this.moreButton1.TabIndex = 4;
@@ -3480,7 +3480,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(12, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(931, 109);
+            this.groupBox4.Size = new System.Drawing.Size(877, 109);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "n日和筛选";
@@ -3599,7 +3599,7 @@
             this.customCalTab.Location = new System.Drawing.Point(4, 22);
             this.customCalTab.Name = "customCalTab";
             this.customCalTab.Padding = new System.Windows.Forms.Padding(3);
-            this.customCalTab.Size = new System.Drawing.Size(949, 355);
+            this.customCalTab.Size = new System.Drawing.Size(895, 393);
             this.customCalTab.TabIndex = 2;
             this.customCalTab.Text = "自定义计算";
             this.customCalTab.UseVisualStyleBackColor = true;
@@ -3612,7 +3612,7 @@
             this.groupBox7.Controls.Add(this.calResultGrid);
             this.groupBox7.Location = new System.Drawing.Point(7, 135);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(936, 214);
+            this.groupBox7.Size = new System.Drawing.Size(882, 252);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "计算结果";
@@ -3657,7 +3657,7 @@
             this.calResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.calResultGrid.RowTemplate.Height = 23;
             this.calResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.calResultGrid.Size = new System.Drawing.Size(923, 188);
+            this.calResultGrid.Size = new System.Drawing.Size(869, 226);
             this.calResultGrid.TabIndex = 1;
             this.calResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.calResultGrid_DataBindingComplete);
             // 
@@ -3681,21 +3681,21 @@
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Location = new System.Drawing.Point(6, 15);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1112, 109);
+            this.groupBox6.Size = new System.Drawing.Size(979, 109);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "比较筛选";
             // 
             // smallBox
             // 
-            this.smallBox.Location = new System.Drawing.Point(804, 76);
+            this.smallBox.Location = new System.Drawing.Point(772, 76);
             this.smallBox.Name = "smallBox";
             this.smallBox.Size = new System.Drawing.Size(58, 21);
             this.smallBox.TabIndex = 19;
             // 
             // bigBox
             // 
-            this.bigBox.Location = new System.Drawing.Point(804, 29);
+            this.bigBox.Location = new System.Drawing.Point(772, 29);
             this.bigBox.Name = "bigBox";
             this.bigBox.Size = new System.Drawing.Size(58, 21);
             this.bigBox.TabIndex = 18;
@@ -3703,7 +3703,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(781, 79);
+            this.label11.Location = new System.Drawing.Point(749, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(17, 12);
             this.label11.TabIndex = 17;
@@ -3712,7 +3712,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(781, 32);
+            this.label10.Location = new System.Drawing.Point(749, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 12);
             this.label10.TabIndex = 16;
@@ -3721,7 +3721,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(709, 55);
+            this.label9.Location = new System.Drawing.Point(701, 55);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 15;
@@ -3730,7 +3730,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(559, 55);
+            this.label8.Location = new System.Drawing.Point(550, 55);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 14;
@@ -3748,9 +3748,9 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(872, 52);
+            this.calculateButton.Location = new System.Drawing.Point(836, 50);
             this.calculateButton.Name = "calculateButton";
-            this.calculateButton.Size = new System.Drawing.Size(65, 23);
+            this.calculateButton.Size = new System.Drawing.Size(53, 23);
             this.calculateButton.TabIndex = 12;
             this.calculateButton.Text = "计算";
             this.calculateButton.UseVisualStyleBackColor = true;
@@ -3759,7 +3759,7 @@
             // compareIndexCombo
             // 
             this.compareIndexCombo.FormattingEnabled = true;
-            this.compareIndexCombo.Location = new System.Drawing.Point(630, 52);
+            this.compareIndexCombo.Location = new System.Drawing.Point(621, 50);
             this.compareIndexCombo.Name = "compareIndexCombo";
             this.compareIndexCombo.Size = new System.Drawing.Size(73, 20);
             this.compareIndexCombo.TabIndex = 11;
@@ -3769,7 +3769,7 @@
             this.compareCombo.FormattingEnabled = true;
             this.compareCombo.Location = new System.Drawing.Point(365, 52);
             this.compareCombo.Name = "compareCombo";
-            this.compareCombo.Size = new System.Drawing.Size(188, 20);
+            this.compareCombo.Size = new System.Drawing.Size(179, 20);
             this.compareCombo.TabIndex = 9;
             this.compareCombo.SelectedIndexChanged += new System.EventHandler(this.compareCombo_SelectedIndexChanged);
             // 
@@ -3815,7 +3815,7 @@
             this.crossSectionTab.Location = new System.Drawing.Point(4, 22);
             this.crossSectionTab.Name = "crossSectionTab";
             this.crossSectionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.crossSectionTab.Size = new System.Drawing.Size(949, 355);
+            this.crossSectionTab.Size = new System.Drawing.Size(895, 393);
             this.crossSectionTab.TabIndex = 3;
             this.crossSectionTab.Text = "跨区";
             this.crossSectionTab.UseVisualStyleBackColor = true;
@@ -3831,7 +3831,7 @@
             this.groupBox9.Controls.Add(this.moreButton3);
             this.groupBox9.Location = new System.Drawing.Point(6, 77);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(937, 272);
+            this.groupBox9.Size = new System.Drawing.Size(883, 310);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "跨区结果";
@@ -3876,7 +3876,7 @@
             this.sectionResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.sectionResultGrid.RowTemplate.Height = 23;
             this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.sectionResultGrid.Size = new System.Drawing.Size(923, 215);
+            this.sectionResultGrid.Size = new System.Drawing.Size(869, 253);
             this.sectionResultGrid.TabIndex = 4;
             this.sectionResultGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.sectionResultGrid_DataBindingComplete);
             this.sectionResultGrid.Sorted += new System.EventHandler(this.sectionResultGrid_Sorted);
@@ -3885,7 +3885,7 @@
             // 
             this.pageLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pageLabel3.AutoSize = true;
-            this.pageLabel3.Location = new System.Drawing.Point(464, 247);
+            this.pageLabel3.Location = new System.Drawing.Point(437, 285);
             this.pageLabel3.Name = "pageLabel3";
             this.pageLabel3.Size = new System.Drawing.Size(23, 12);
             this.pageLabel3.TabIndex = 3;
@@ -3894,7 +3894,7 @@
             // allButton3
             // 
             this.allButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.allButton3.Location = new System.Drawing.Point(504, 241);
+            this.allButton3.Location = new System.Drawing.Point(477, 279);
             this.allButton3.Name = "allButton3";
             this.allButton3.Size = new System.Drawing.Size(62, 25);
             this.allButton3.TabIndex = 2;
@@ -3905,7 +3905,7 @@
             // moreButton3
             // 
             this.moreButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.moreButton3.Location = new System.Drawing.Point(387, 241);
+            this.moreButton3.Location = new System.Drawing.Point(360, 279);
             this.moreButton3.Name = "moreButton3";
             this.moreButton3.Size = new System.Drawing.Size(61, 25);
             this.moreButton3.TabIndex = 1;
@@ -3928,7 +3928,7 @@
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(937, 65);
+            this.groupBox8.Size = new System.Drawing.Size(883, 65);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "跨区筛选";
@@ -4058,7 +4058,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 381);
+            this.groupBox2.Size = new System.Drawing.Size(325, 419);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "拼接结果";
@@ -4066,7 +4066,7 @@
             // clearButton
             // 
             this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.clearButton.Location = new System.Drawing.Point(196, 346);
+            this.clearButton.Location = new System.Drawing.Point(170, 384);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(59, 23);
             this.clearButton.TabIndex = 2;
@@ -4077,7 +4077,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cancelButton.Location = new System.Drawing.Point(127, 346);
+            this.cancelButton.Location = new System.Drawing.Point(101, 384);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(63, 23);
             this.cancelButton.TabIndex = 1;
@@ -4098,7 +4098,7 @@
             this.combineResult.Name = "combineResult";
             this.combineResult.RowHeadersWidth = 50;
             this.combineResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.combineResult.Size = new System.Drawing.Size(364, 309);
+            this.combineResult.Size = new System.Drawing.Size(313, 347);
             this.combineResult.TabIndex = 0;
             this.combineResult.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.combineResult_DataBindingComplete);
             // 
@@ -4131,7 +4131,7 @@
             this.groupList.ItemHeight = 12;
             this.groupList.Location = new System.Drawing.Point(0, 0);
             this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(102, 381);
+            this.groupList.Size = new System.Drawing.Size(93, 419);
             this.groupList.Sorted = true;
             this.groupList.TabIndex = 3;
             // 
@@ -4154,8 +4154,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1337, 381);
-            this.splitContainer1.SplitterDistance = 957;
+            this.splitContainer1.Size = new System.Drawing.Size(1232, 419);
+            this.splitContainer1.SplitterDistance = 903;
             this.splitContainer1.TabIndex = 8;
             // 
             // splitContainer2
@@ -4173,8 +4173,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer2.Size = new System.Drawing.Size(1443, 381);
-            this.splitContainer2.SplitterDistance = 102;
+            this.splitContainer2.Size = new System.Drawing.Size(1329, 419);
+            this.splitContainer2.SplitterDistance = 93;
             this.splitContainer2.TabIndex = 9;
             // 
             // sumWorker
@@ -4226,7 +4226,7 @@
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.buttonItem1,
             this.qatCustomizeItem1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1490, 154);
+            this.ribbonControl1.Size = new System.Drawing.Size(1376, 154);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
             this.ribbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
@@ -4256,7 +4256,7 @@
             this.ribbonPanel3.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel3.Name = "ribbonPanel3";
             this.ribbonPanel3.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel3.Size = new System.Drawing.Size(1490, 101);
+            this.ribbonPanel3.Size = new System.Drawing.Size(1376, 101);
             // 
             // 
             // 
@@ -4270,6 +4270,7 @@
             // 
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
+            this.ribbonPanel3.Visible = true;
             // 
             // ribbonBar4
             // 
@@ -5149,6 +5150,60 @@
             this.我的方案.Text = "大盘动态";
             this.我的方案.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel4.Controls.Add(this.ribbonBar9);
+            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel4.Name = "ribbonPanel4";
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1490, 101);
+            // 
+            // 
+            // 
+            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel4.TabIndex = 4;
+            this.ribbonPanel4.Visible = false;
+            // 
+            // ribbonBar9
+            // 
+            this.ribbonBar9.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar9.CanCustomize = false;
+            this.ribbonBar9.ContainerControlProcessDialogKey = true;
+            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar9.DragDropSupport = true;
+            this.ribbonBar9.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar9.Name = "ribbonBar9";
+            this.ribbonBar9.Size = new System.Drawing.Size(100, 99);
+            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar9.TabIndex = 0;
+            this.ribbonBar9.Text = "ribbonBar9";
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
             // ribbonPanel5
             // 
             this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -5403,60 +5458,6 @@
             this.ribbonPanel6.TabIndex = 6;
             this.ribbonPanel6.Visible = false;
             // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel4.Controls.Add(this.ribbonBar9);
-            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1490, 101);
-            // 
-            // 
-            // 
-            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel4.TabIndex = 4;
-            this.ribbonPanel4.Visible = false;
-            // 
-            // ribbonBar9
-            // 
-            this.ribbonBar9.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar9.CanCustomize = false;
-            this.ribbonBar9.ContainerControlProcessDialogKey = true;
-            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar9.DragDropSupport = true;
-            this.ribbonBar9.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar9.Name = "ribbonBar9";
-            this.ribbonBar9.Size = new System.Drawing.Size(100, 99);
-            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar9.TabIndex = 0;
-            this.ribbonBar9.Text = "ribbonBar9";
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
             // ribbonTabItem1
             // 
             this.ribbonTabItem1.Name = "ribbonTabItem1";
@@ -5536,7 +5537,7 @@
             // 
             this.boardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.boardButton.ContextMenuStrip = this.boardMenuStrip;
-            this.boardButton.Location = new System.Drawing.Point(93, 562);
+            this.boardButton.Location = new System.Drawing.Point(89, 644);
             this.boardButton.Name = "boardButton";
             this.boardButton.Size = new System.Drawing.Size(75, 23);
             this.boardButton.TabIndex = 4;
@@ -5544,14 +5545,14 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -14245;
+            this.boardButton.WorkSizeY = -14300;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 681);
+            this.ClientSize = new System.Drawing.Size(1386, 681);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.boardButton);
@@ -5604,9 +5605,9 @@
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonPanel1.ResumeLayout(false);
+            this.ribbonPanel4.ResumeLayout(false);
             this.ribbonPanel5.ResumeLayout(false);
             this.ribbonPanel7.ResumeLayout(false);
-            this.ribbonPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

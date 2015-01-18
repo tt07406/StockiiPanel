@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1856290102FA4C9987F57828378DA712"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_189A9B4E6CBB428E9D1A607D9FEA509B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -208,19 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
-        "OwnerKey" = "8:_9B3EA64293984A018836353279A75A68"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
-        "OwnerKey" = "8:_2D1CD623D17948CE6C2CE08B67D59BC4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
-        "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
+        "OwnerKey" = "8:_6BDDE4C56E233D284CF788169B21C501"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -232,7 +226,19 @@
         "Entry"
         {
         "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
-        "OwnerKey" = "8:_6BDDE4C56E233D284CF788169B21C501"
+        "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
+        "OwnerKey" = "8:_2D1CD623D17948CE6C2CE08B67D59BC4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5AF1B46B674CC357E6B95947F97AD34"
+        "OwnerKey" = "8:_9B3EA64293984A018836353279A75A68"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -250,73 +256,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9B3EA64293984A018836353279A75A68"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_997D2C92A2E64286BDA60BB005617B10"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_25C2867412EF41A196C585BA3330A85F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_15978EE753F4716B0968657AF437C431"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_972E662070CFC7B2CD7DEA64E2053ED1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_829B1799A128C4608F25AF73534C1788"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2D1CD623D17948CE6C2CE08B67D59BC4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E87AE7571C499A87BB2D3D6B8703D3FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_546C331DEA2F97A1839BFDCD45CCDB92"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6BDDE4C56E233D284CF788169B21C501"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A2347402AA063577F5325357CB1AE7FB"
+        "OwnerKey" = "8:_BC0ABEBED090F00086216FF57B863D4F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -328,7 +268,73 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BC0ABEBED090F00086216FF57B863D4F"
+        "OwnerKey" = "8:_A2347402AA063577F5325357CB1AE7FB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6BDDE4C56E233D284CF788169B21C501"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_546C331DEA2F97A1839BFDCD45CCDB92"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E87AE7571C499A87BB2D3D6B8703D3FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2D1CD623D17948CE6C2CE08B67D59BC4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_829B1799A128C4608F25AF73534C1788"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_972E662070CFC7B2CD7DEA64E2053ED1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_15978EE753F4716B0968657AF437C431"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_25C2867412EF41A196C585BA3330A85F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_997D2C92A2E64286BDA60BB005617B10"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9B3EA64293984A018836353279A75A68"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -443,11 +449,6 @@
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_15978EE753F4716B0968657AF437C431"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
@@ -496,6 +497,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1856290102FA4C9987F57828378DA712"
+            {
+            "SourcePath" = "8:..\\StockiiPanel\\bin\\Debug\\customMaxMin.xml"
+            "TargetName" = "8:customMaxMin.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_4ACF17EC9DCB4BDC8EC070E7D5B2E549"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_189A9B4E6CBB428E9D1A607D9FEA509B"
@@ -576,11 +597,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.SuperGrid.Design, Version=12.0.0.1, Culture=neutral, PublicKeyToken=1fea3f5d8d482bff, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_2D1CD623D17948CE6C2CE08B67D59BC4"
-                    {
-                    "Name" = "8:DevComponents.SuperGrid.Design.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.SuperGrid.Design.dll"
             "TargetName" = "8:"
@@ -627,11 +643,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.Instrumentation, Version=12.0.0.1, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_546C331DEA2F97A1839BFDCD45CCDB92"
-                    {
-                    "Name" = "8:DevComponents.Instrumentation.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.Instrumentation.dll"
             "TargetName" = "8:"
@@ -658,11 +669,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar.Schedule, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6BDDE4C56E233D284CF788169B21C501"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar.Schedule.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.DotNetBar.Schedule.dll"
             "TargetName" = "8:"
@@ -769,11 +775,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.TreeGX, Version=12.0.0.1, Culture=neutral, PublicKeyToken=cfcbd7476b2389d1, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_829B1799A128C4608F25AF73534C1788"
-                    {
-                    "Name" = "8:DevComponents.TreeGX.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.TreeGX.dll"
             "TargetName" = "8:"
@@ -840,11 +841,6 @@
             "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_972E662070CFC7B2CD7DEA64E2053ED1"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MySql.Data.dll"
             "TargetName" = "8:"
@@ -933,11 +929,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar.Layout, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A2347402AA063577F5325357CB1AE7FB"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar.Layout.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.DotNetBar.Layout.dll"
             "TargetName" = "8:"
@@ -1004,11 +995,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar.Keyboard, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BC0ABEBED090F00086216FF57B863D4F"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar.Keyboard.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.DotNetBar.Keyboard.dll"
             "TargetName" = "8:"
@@ -1075,11 +1061,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar.SuperGrid, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E87AE7571C499A87BB2D3D6B8703D3FD"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar.SuperGrid.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.DotNetBar.SuperGrid.dll"
             "TargetName" = "8:"
@@ -1126,11 +1107,6 @@
             "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar2, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F5AF1B46B674CC357E6B95947F97AD34"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar2.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DevComponents.DotNetBar2.dll"
             "TargetName" = "8:"
