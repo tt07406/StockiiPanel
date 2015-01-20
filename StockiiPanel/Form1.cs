@@ -14,6 +14,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using DevComponents.DotNetBar;
 
+
 namespace StockiiPanel
 {
     public partial class Form1 : RibbonForm
@@ -919,7 +920,6 @@ namespace StockiiPanel
 
             }
         }
-
     }    
 
 }

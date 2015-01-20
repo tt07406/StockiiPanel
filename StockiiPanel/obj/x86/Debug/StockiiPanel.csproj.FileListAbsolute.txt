@@ -65,12 +65,6 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\StockiiPan
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\bin\Debug\Newtonsoft.Json.dll
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.DotNetBar.Keyboard.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.DotNetBar.Layout.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.DotNetBar.Schedule.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.DotNetBar.SuperGrid.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.DotNetBar2.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.Instrumentation.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.SuperGrid.Design.dll
-E:\file\GitHub\StockiiPanel\StockiiPanel\bin\Debug\DevComponents.TreeGX.dll
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomGrid.resources
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SaveActionDialog.resources

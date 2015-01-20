@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,9 +41,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -474,6 +474,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dumpCurPage = new System.Windows.Forms.ToolStripMenuItem();
             this.dumpCurSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveActions = new System.Windows.Forms.ToolStripMenuItem();
             this.groupList = new System.Windows.Forms.ListBox();
             this.bkWorker = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -484,95 +485,68 @@
             this.styleManagerAmbient1 = new DevComponents.DotNetBar.StyleManagerAmbient(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
+            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
+            this.helpButton = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonPanel7 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
+            this.itemContainer25 = new DevComponents.DotNetBar.ItemContainer();
+            this.labelItem19 = new DevComponents.DotNetBar.LabelItem();
+            this.itemContainer26 = new DevComponents.DotNetBar.ItemContainer();
+            this.labelItem20 = new DevComponents.DotNetBar.LabelItem();
+            this.itemContainer28 = new DevComponents.DotNetBar.ItemContainer();
+            this.labelItem22 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer13 = new DevComponents.DotNetBar.ItemContainer();
-            this.areaItem = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem4 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer12 = new DevComponents.DotNetBar.ItemContainer();
-            this.industryItem = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.upContainer = new DevComponents.DotNetBar.ItemContainer();
-            this.upItem = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.downContainer = new DevComponents.DotNetBar.ItemContainer();
-            this.downItem = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer17 = new DevComponents.DotNetBar.ItemContainer();
-            this.addGroup = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer16 = new DevComponents.DotNetBar.ItemContainer();
-            this.myGroups = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem10 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer18 = new DevComponents.DotNetBar.ItemContainer();
-            this.manageGroups = new DevComponents.DotNetBar.ButtonItem();
-            this.editGroup = new DevComponents.DotNetBar.ButtonItem();
-            this.deleteGroup = new DevComponents.DotNetBar.ButtonItem();
             this.groupManage = new DevComponents.DotNetBar.LabelItem();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer21 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem34 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem14 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer20 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem33 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem13 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer19 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem32 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem12 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar11 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer23 = new DevComponents.DotNetBar.ItemContainer();
-            this.crossSectionCal = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem17 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer24 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem37 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem18 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar10 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer7 = new DevComponents.DotNetBar.ItemContainer();
-            this.nDaySumCal = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer9 = new DevComponents.DotNetBar.ItemContainer();
-            this.customCal = new DevComponents.DotNetBar.ButtonItem();
             this.自定义计算 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer22 = new DevComponents.DotNetBar.ItemContainer();
-            this.monthSum = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem16 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer11 = new DevComponents.DotNetBar.ItemContainer();
-            this.weekSum = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem15 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer8 = new DevComponents.DotNetBar.ItemContainer();
-            this.daySum = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer5 = new DevComponents.DotNetBar.ItemContainer();
-            this.stocksInfo = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.itemContainer6 = new DevComponents.DotNetBar.ItemContainer();
-            this.maketInfo = new DevComponents.DotNetBar.ButtonItem();
             this.我的方案 = new DevComponents.DotNetBar.LabelItem();
-            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
             this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
-            this.setColumn = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
-            this.ribbonPanel7 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
-            this.itemContainer25 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem38 = new DevComponents.DotNetBar.ButtonItem();
-            this.labelItem19 = new DevComponents.DotNetBar.LabelItem();
-            this.itemContainer26 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem39 = new DevComponents.DotNetBar.ButtonItem();
-            this.labelItem20 = new DevComponents.DotNetBar.LabelItem();
-            this.itemContainer28 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem41 = new DevComponents.DotNetBar.ButtonItem();
-            this.labelItem22 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonPanel6 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonTabItem1 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem3 = new DevComponents.DotNetBar.RibbonTabItem();
@@ -583,8 +557,36 @@
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.itemContainer27 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem40 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem21 = new DevComponents.DotNetBar.LabelItem();
+            this.buttonItem38 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem39 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem41 = new DevComponents.DotNetBar.ButtonItem();
+            this.areaItem = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem4 = new DevComponents.DotNetBar.ButtonItem();
+            this.industryItem = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
+            this.upItem = new DevComponents.DotNetBar.ButtonItem();
+            this.downItem = new DevComponents.DotNetBar.ButtonItem();
+            this.addGroup = new DevComponents.DotNetBar.ButtonItem();
+            this.myGroups = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
+            this.manageGroups = new DevComponents.DotNetBar.ButtonItem();
+            this.editGroup = new DevComponents.DotNetBar.ButtonItem();
+            this.deleteGroup = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem34 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem33 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem32 = new DevComponents.DotNetBar.ButtonItem();
+            this.crossSectionCal = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem37 = new DevComponents.DotNetBar.ButtonItem();
+            this.nDaySumCal = new DevComponents.DotNetBar.ButtonItem();
+            this.customCal = new DevComponents.DotNetBar.ButtonItem();
+            this.monthSum = new DevComponents.DotNetBar.ButtonItem();
+            this.weekSum = new DevComponents.DotNetBar.ButtonItem();
+            this.daySum = new DevComponents.DotNetBar.ButtonItem();
+            this.stocksInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.maketInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.setColumn = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem40 = new DevComponents.DotNetBar.ButtonItem();
             this.boardButton = new StockiiPanel.DropButton();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -619,11 +621,11 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.ribbonControl1.SuspendLayout();
+            this.ribbonPanel4.SuspendLayout();
+            this.ribbonPanel7.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
-            this.ribbonPanel4.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
-            this.ribbonPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -3189,35 +3191,35 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.rawDataGrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rawDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rawDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.rawDataGrid.ContextMenuStrip = this.rawContextMenuStrip;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.rawDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.rawDataGrid.DefaultCellStyle = dataGridViewCellStyle14;
             this.rawDataGrid.EnableHeadersVisualStyles = false;
             this.rawDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.rawDataGrid.Location = new System.Drawing.Point(11, 21);
             this.rawDataGrid.Name = "rawDataGrid";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rawDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rawDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.rawDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.rawDataGrid.RowTemplate.Height = 23;
             this.rawDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3393,36 +3395,36 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ndayGrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ndayGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ndayGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ndayGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ndayGrid.ContextMenuStrip = this.rawContextMenuStrip;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ndayGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ndayGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.ndayGrid.EnableHeadersVisualStyles = false;
             this.ndayGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ndayGrid.Location = new System.Drawing.Point(7, 20);
             this.ndayGrid.Name = "ndayGrid";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ndayGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ndayGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ndayGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.ndayGrid.RowTemplate.Height = 23;
             this.ndayGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3624,36 +3626,36 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.calResultGrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.calResultGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.calResultGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.calResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.calResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.calResultGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.calResultGrid.DefaultCellStyle = dataGridViewCellStyle5;
             this.calResultGrid.EnableHeadersVisualStyles = false;
             this.calResultGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.calResultGrid.Location = new System.Drawing.Point(7, 20);
             this.calResultGrid.Name = "calResultGrid";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.calResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.calResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.calResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.calResultGrid.RowTemplate.Height = 23;
             this.calResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3843,36 +3845,36 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.sectionResultGrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sectionResultGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sectionResultGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.sectionResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sectionResultGrid.ContextMenuStrip = this.rawContextMenuStrip;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.sectionResultGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.sectionResultGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.sectionResultGrid.EnableHeadersVisualStyles = false;
             this.sectionResultGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.sectionResultGrid.Location = new System.Drawing.Point(8, 20);
             this.sectionResultGrid.Name = "sectionResultGrid";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sectionResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sectionResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.sectionResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.sectionResultGrid.RowTemplate.Height = 23;
             this.sectionResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3890,6 +3892,7 @@
             this.pageLabel3.Size = new System.Drawing.Size(23, 12);
             this.pageLabel3.TabIndex = 3;
             this.pageLabel3.Text = "0/0";
+            this.pageLabel3.Visible = false;
             // 
             // allButton3
             // 
@@ -3900,6 +3903,7 @@
             this.allButton3.TabIndex = 2;
             this.allButton3.Text = "显示全部";
             this.allButton3.UseVisualStyleBackColor = true;
+            this.allButton3.Visible = false;
             this.allButton3.Click += new System.EventHandler(this.allButton_Click);
             // 
             // moreButton3
@@ -3911,6 +3915,7 @@
             this.moreButton3.TabIndex = 1;
             this.moreButton3.Text = "显示更多";
             this.moreButton3.UseVisualStyleBackColor = true;
+            this.moreButton3.Visible = false;
             this.moreButton3.Click += new System.EventHandler(this.moreButton_Click);
             // 
             // groupBox8
@@ -4106,9 +4111,10 @@
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dumpCurPage,
-            this.dumpCurSelected});
+            this.dumpCurSelected,
+            this.SaveActions});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 70);
             // 
             // dumpCurPage
             // 
@@ -4123,6 +4129,13 @@
             this.dumpCurSelected.Size = new System.Drawing.Size(124, 22);
             this.dumpCurSelected.Text = "导出所选";
             this.dumpCurSelected.Click += new System.EventHandler(this.dumpCurSelected_Click);
+            // 
+            // SaveActions
+            // 
+            this.SaveActions.Name = "SaveActions";
+            this.SaveActions.Size = new System.Drawing.Size(124, 22);
+            this.SaveActions.Text = "保存操作";
+            this.SaveActions.Click += new System.EventHandler(this.SaveActions_Click);
             // 
             // groupList
             // 
@@ -4206,10 +4219,10 @@
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel7);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.ForeColor = System.Drawing.Color.Black;
@@ -4247,6 +4260,193 @@
             this.ribbonControl1.TabIndex = 10;
             this.ribbonControl1.Text = "ribbonControl1";
             // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel4.Controls.Add(this.ribbonBar9);
+            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel4.Name = "ribbonPanel4";
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1376, 101);
+            // 
+            // 
+            // 
+            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel4.TabIndex = 4;
+            this.ribbonPanel4.Visible = false;
+            // 
+            // ribbonBar9
+            // 
+            this.ribbonBar9.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar9.CanCustomize = false;
+            this.ribbonBar9.ContainerControlProcessDialogKey = true;
+            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar9.DragDropSupport = true;
+            this.ribbonBar9.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.helpButton});
+            this.ribbonBar9.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar9.Name = "ribbonBar9";
+            this.ribbonBar9.Size = new System.Drawing.Size(100, 99);
+            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar9.TabIndex = 0;
+            this.ribbonBar9.Text = "ribbonBar9";
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // helpButton
+            // 
+            this.helpButton.Name = "helpButton";
+            this.helpButton.SubItemsExpandWidth = 14;
+            this.helpButton.Text = "使用说明";
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
+            // ribbonPanel7
+            // 
+            this.ribbonPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel7.Controls.Add(this.ribbonBar8);
+            this.ribbonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel7.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel7.Name = "ribbonPanel7";
+            this.ribbonPanel7.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
+            this.ribbonPanel7.Size = new System.Drawing.Size(1376, 101);
+            // 
+            // 
+            // 
+            this.ribbonPanel7.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel7.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel7.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel7.TabIndex = 7;
+            this.ribbonPanel7.Visible = false;
+            // 
+            // ribbonBar8
+            // 
+            this.ribbonBar8.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar8.CanCustomize = false;
+            this.ribbonBar8.ContainerControlProcessDialogKey = true;
+            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar8.DragDropSupport = true;
+            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.itemContainer25,
+            this.itemContainer26,
+            this.itemContainer28});
+            this.ribbonBar8.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar8.Name = "ribbonBar8";
+            this.ribbonBar8.Size = new System.Drawing.Size(223, 99);
+            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar8.TabIndex = 0;
+            this.ribbonBar8.Text = "利好预警";
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // itemContainer25
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer25.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer25.Name = "itemContainer25";
+            this.itemContainer25.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem38,
+            this.labelItem19});
+            // 
+            // 
+            // 
+            this.itemContainer25.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // labelItem19
+            // 
+            this.labelItem19.Name = "labelItem19";
+            this.labelItem19.Text = "停牌";
+            this.labelItem19.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // itemContainer26
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer26.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer26.Name = "itemContainer26";
+            this.itemContainer26.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem39,
+            this.labelItem20});
+            // 
+            // 
+            // 
+            this.itemContainer26.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // labelItem20
+            // 
+            this.labelItem20.Name = "labelItem20";
+            this.labelItem20.Text = "退市";
+            this.labelItem20.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // itemContainer28
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer28.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer28.Name = "itemContainer28";
+            this.itemContainer28.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem41,
+            this.labelItem22});
+            // 
+            // 
+            // 
+            this.itemContainer28.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // labelItem22
+            // 
+            this.labelItem22.Name = "labelItem22";
+            this.labelItem22.Text = "重组";
+            this.labelItem22.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // ribbonPanel3
             // 
             this.ribbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -4270,7 +4470,6 @@
             // 
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
-            this.ribbonPanel3.Visible = true;
             // 
             // ribbonBar4
             // 
@@ -4324,22 +4523,6 @@
             // 
             this.itemContainer13.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // areaItem
-            // 
-            this.areaItem.Image = global::StockiiPanel.Properties.Resources.icon_flag;
-            this.areaItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.areaItem.Name = "areaItem";
-            this.areaItem.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem4});
-            this.areaItem.Text = "buttonItem16";
-            this.areaItem.Click += new System.EventHandler(this.boardButton_Click);
-            this.areaItem.ExpandChange += new System.EventHandler(this.boardButton_Click);
-            // 
-            // buttonItem4
-            // 
-            this.buttonItem4.Name = "buttonItem4";
-            this.buttonItem4.Text = "buttonItem4";
-            // 
             // labelItem2
             // 
             this.labelItem2.Name = "labelItem2";
@@ -4361,22 +4544,6 @@
             // 
             // 
             this.itemContainer12.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // industryItem
-            // 
-            this.industryItem.Image = ((System.Drawing.Image)(resources.GetObject("industryItem.Image")));
-            this.industryItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.industryItem.Name = "industryItem";
-            this.industryItem.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem3});
-            this.industryItem.Text = "buttonItem16";
-            this.industryItem.Click += new System.EventHandler(this.boardButton_Click);
-            this.industryItem.ExpandChange += new System.EventHandler(this.boardButton_Click);
-            // 
-            // buttonItem3
-            // 
-            this.buttonItem3.Name = "buttonItem3";
-            this.buttonItem3.Text = "buttonItem3";
             // 
             // labelItem6
             // 
@@ -4400,14 +4567,6 @@
             // 
             this.upContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // upItem
-            // 
-            this.upItem.Image = global::StockiiPanel.Properties.Resources.icon_upload;
-            this.upItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.upItem.Name = "upItem";
-            this.upItem.Text = "buttonItem16";
-            this.upItem.Click += new System.EventHandler(this.upItem_MouseDown);
-            // 
             // labelItem7
             // 
             this.labelItem7.Name = "labelItem7";
@@ -4429,14 +4588,6 @@
             // 
             // 
             this.downContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // downItem
-            // 
-            this.downItem.Image = global::StockiiPanel.Properties.Resources.icon_download;
-            this.downItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.downItem.Name = "downItem";
-            this.downItem.Text = "buttonItem16";
-            this.downItem.Click += new System.EventHandler(this.downItem_MouseDown);
             // 
             // labelItem9
             // 
@@ -4495,14 +4646,6 @@
             // 
             this.itemContainer17.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // addGroup
-            // 
-            this.addGroup.Image = global::StockiiPanel.Properties.Resources.icon_add_group;
-            this.addGroup.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.addGroup.Name = "addGroup";
-            this.addGroup.Text = "buttonItem16";
-            this.addGroup.Click += new System.EventHandler(this.buttonItem30_Click);
-            // 
             // labelItem11
             // 
             this.labelItem11.Name = "labelItem11";
@@ -4525,22 +4668,6 @@
             // 
             this.itemContainer16.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // myGroups
-            // 
-            this.myGroups.Image = global::StockiiPanel.Properties.Resources.icon_user;
-            this.myGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.myGroups.Name = "myGroups";
-            this.myGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem2});
-            this.myGroups.Text = "buttonItem16";
-            this.myGroups.Click += new System.EventHandler(this.myGroups_Click);
-            this.myGroups.ExpandChange += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonItem2
-            // 
-            this.buttonItem2.Name = "buttonItem2";
-            this.buttonItem2.Text = "buttonItem2";
-            // 
             // labelItem10
             // 
             this.labelItem10.Name = "labelItem10";
@@ -4562,30 +4689,6 @@
             // 
             // 
             this.itemContainer18.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // manageGroups
-            // 
-            this.manageGroups.Image = global::StockiiPanel.Properties.Resources.icon_edit;
-            this.manageGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.manageGroups.Name = "manageGroups";
-            this.manageGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.editGroup,
-            this.deleteGroup});
-            this.manageGroups.Text = "buttonItem16";
-            this.manageGroups.Click += new System.EventHandler(this.button1_Click);
-            this.manageGroups.ExpandChange += new System.EventHandler(this.button1_Click);
-            // 
-            // editGroup
-            // 
-            this.editGroup.Name = "editGroup";
-            this.editGroup.Text = "编辑分组";
-            this.editGroup.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteGroup
-            // 
-            this.deleteGroup.Name = "deleteGroup";
-            this.deleteGroup.Text = "删除分组";
-            this.deleteGroup.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // groupManage
             // 
@@ -4672,13 +4775,6 @@
             // 
             this.itemContainer21.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // buttonItem34
-            // 
-            this.buttonItem34.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem34.Image")));
-            this.buttonItem34.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem34.Name = "buttonItem34";
-            this.buttonItem34.Text = "buttonItem16";
-            // 
             // labelItem14
             // 
             this.labelItem14.Name = "labelItem14";
@@ -4701,13 +4797,6 @@
             // 
             this.itemContainer20.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // buttonItem33
-            // 
-            this.buttonItem33.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem33.Image")));
-            this.buttonItem33.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem33.Name = "buttonItem33";
-            this.buttonItem33.Text = "buttonItem16";
-            // 
             // labelItem13
             // 
             this.labelItem13.Name = "labelItem13";
@@ -4729,13 +4818,6 @@
             // 
             // 
             this.itemContainer19.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // buttonItem32
-            // 
-            this.buttonItem32.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem32.Image")));
-            this.buttonItem32.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem32.Name = "buttonItem32";
-            this.buttonItem32.Text = "buttonItem16";
             // 
             // labelItem12
             // 
@@ -4793,14 +4875,6 @@
             // 
             this.itemContainer23.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // crossSectionCal
-            // 
-            this.crossSectionCal.Image = ((System.Drawing.Image)(resources.GetObject("crossSectionCal.Image")));
-            this.crossSectionCal.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.crossSectionCal.Name = "crossSectionCal";
-            this.crossSectionCal.Text = "buttonItem16";
-            this.crossSectionCal.Click += new System.EventHandler(this.crossSectionCal_Click);
-            // 
             // labelItem17
             // 
             this.labelItem17.Name = "labelItem17";
@@ -4822,13 +4896,6 @@
             // 
             // 
             this.itemContainer24.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // buttonItem37
-            // 
-            this.buttonItem37.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem37.Image")));
-            this.buttonItem37.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem37.Name = "buttonItem37";
-            this.buttonItem37.Text = "buttonItem16";
             // 
             // labelItem18
             // 
@@ -4886,14 +4953,6 @@
             // 
             this.itemContainer7.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // nDaySumCal
-            // 
-            this.nDaySumCal.Image = ((System.Drawing.Image)(resources.GetObject("nDaySumCal.Image")));
-            this.nDaySumCal.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.nDaySumCal.Name = "nDaySumCal";
-            this.nDaySumCal.Text = "buttonItem16";
-            this.nDaySumCal.Click += new System.EventHandler(this.nDaySumCal_Click);
-            // 
             // labelItem3
             // 
             this.labelItem3.Name = "labelItem3";
@@ -4915,14 +4974,6 @@
             // 
             // 
             this.itemContainer9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // customCal
-            // 
-            this.customCal.Image = ((System.Drawing.Image)(resources.GetObject("customCal.Image")));
-            this.customCal.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.customCal.Name = "customCal";
-            this.customCal.Text = "buttonItem16";
-            this.customCal.Click += new System.EventHandler(this.customCal_Click);
             // 
             // 自定义计算
             // 
@@ -4981,14 +5032,6 @@
             // 
             this.itemContainer22.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // monthSum
-            // 
-            this.monthSum.Image = ((System.Drawing.Image)(resources.GetObject("monthSum.Image")));
-            this.monthSum.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.monthSum.Name = "monthSum";
-            this.monthSum.Text = "buttonItem16";
-            this.monthSum.Click += new System.EventHandler(this.monthSum_Click);
-            // 
             // labelItem16
             // 
             this.labelItem16.Name = "labelItem16";
@@ -5011,14 +5054,6 @@
             // 
             this.itemContainer11.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // weekSum
-            // 
-            this.weekSum.Image = ((System.Drawing.Image)(resources.GetObject("weekSum.Image")));
-            this.weekSum.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.weekSum.Name = "weekSum";
-            this.weekSum.Text = "buttonItem16";
-            this.weekSum.Click += new System.EventHandler(this.weekSum_Click);
-            // 
             // labelItem15
             // 
             this.labelItem15.Name = "labelItem15";
@@ -5040,14 +5075,6 @@
             // 
             // 
             this.itemContainer8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // daySum
-            // 
-            this.daySum.Image = ((System.Drawing.Image)(resources.GetObject("daySum.Image")));
-            this.daySum.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.daySum.Name = "daySum";
-            this.daySum.Text = "buttonItem16";
-            this.daySum.Click += new System.EventHandler(this.daySum_Click);
             // 
             // labelItem4
             // 
@@ -5106,14 +5133,6 @@
             // 
             this.itemContainer5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // stocksInfo
-            // 
-            this.stocksInfo.Image = ((System.Drawing.Image)(resources.GetObject("stocksInfo.Image")));
-            this.stocksInfo.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.stocksInfo.Name = "stocksInfo";
-            this.stocksInfo.Text = "buttonItem16";
-            this.stocksInfo.Click += new System.EventHandler(this.stocksInfo_Click);
-            // 
             // labelItem1
             // 
             this.labelItem1.Name = "labelItem1";
@@ -5136,83 +5155,21 @@
             // 
             this.itemContainer6.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // maketInfo
-            // 
-            this.maketInfo.Image = ((System.Drawing.Image)(resources.GetObject("maketInfo.Image")));
-            this.maketInfo.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.maketInfo.Name = "maketInfo";
-            this.maketInfo.Text = "buttonItem16";
-            this.maketInfo.Click += new System.EventHandler(this.maketInfo_Click);
-            // 
             // 我的方案
             // 
             this.我的方案.Name = "我的方案";
             this.我的方案.Text = "大盘动态";
             this.我的方案.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel4.Controls.Add(this.ribbonBar9);
-            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1490, 101);
-            // 
-            // 
-            // 
-            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel4.TabIndex = 4;
-            this.ribbonPanel4.Visible = false;
-            // 
-            // ribbonBar9
-            // 
-            this.ribbonBar9.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar9.CanCustomize = false;
-            this.ribbonBar9.ContainerControlProcessDialogKey = true;
-            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar9.DragDropSupport = true;
-            this.ribbonBar9.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar9.Name = "ribbonBar9";
-            this.ribbonBar9.Size = new System.Drawing.Size(100, 99);
-            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar9.TabIndex = 0;
-            this.ribbonBar9.Text = "ribbonBar9";
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
             // ribbonPanel5
             // 
             this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonPanel5.Controls.Add(this.ribbonBar2);
             this.ribbonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel5.Location = new System.Drawing.Point(0, 0);
+            this.ribbonPanel5.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel5.Name = "ribbonPanel5";
             this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel5.Size = new System.Drawing.Size(1490, 154);
+            this.ribbonPanel5.Size = new System.Drawing.Size(1376, 101);
             // 
             // 
             // 
@@ -5247,7 +5204,7 @@
             this.itemContainer1});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(176, 152);
+            this.ribbonBar2.Size = new System.Drawing.Size(176, 99);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 0;
             // 
@@ -5275,165 +5232,11 @@
             // 
             this.itemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // setColumn
-            // 
-            this.setColumn.Image = ((System.Drawing.Image)(resources.GetObject("setColumn.Image")));
-            this.setColumn.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.setColumn.Name = "setColumn";
-            this.setColumn.SubItemsExpandWidth = 14;
-            this.setColumn.Text = "设置列";
-            this.setColumn.Click += new System.EventHandler(this.setColToolStripMenuItem_Click);
-            // 
             // labelItem5
             // 
             this.labelItem5.Name = "labelItem5";
             this.labelItem5.Text = "设置列";
             this.labelItem5.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // ribbonPanel7
-            // 
-            this.ribbonPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel7.Controls.Add(this.ribbonBar8);
-            this.ribbonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel7.Location = new System.Drawing.Point(0, 0);
-            this.ribbonPanel7.Name = "ribbonPanel7";
-            this.ribbonPanel7.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel7.Size = new System.Drawing.Size(1490, 154);
-            // 
-            // 
-            // 
-            this.ribbonPanel7.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel7.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel7.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel7.TabIndex = 7;
-            this.ribbonPanel7.Visible = false;
-            // 
-            // ribbonBar8
-            // 
-            this.ribbonBar8.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar8.CanCustomize = false;
-            this.ribbonBar8.ContainerControlProcessDialogKey = true;
-            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar8.DragDropSupport = true;
-            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer25,
-            this.itemContainer26,
-            this.itemContainer28});
-            this.ribbonBar8.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar8.Name = "ribbonBar8";
-            this.ribbonBar8.Size = new System.Drawing.Size(223, 152);
-            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar8.TabIndex = 0;
-            this.ribbonBar8.Text = "利好预警";
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // itemContainer25
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer25.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer25.Name = "itemContainer25";
-            this.itemContainer25.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem38,
-            this.labelItem19});
-            // 
-            // 
-            // 
-            this.itemContainer25.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // buttonItem38
-            // 
-            this.buttonItem38.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem38.Image")));
-            this.buttonItem38.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem38.Name = "buttonItem38";
-            this.buttonItem38.Text = "buttonItem16";
-            // 
-            // labelItem19
-            // 
-            this.labelItem19.Name = "labelItem19";
-            this.labelItem19.Text = "停牌";
-            this.labelItem19.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // itemContainer26
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer26.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer26.Name = "itemContainer26";
-            this.itemContainer26.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem39,
-            this.labelItem20});
-            // 
-            // 
-            // 
-            this.itemContainer26.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // buttonItem39
-            // 
-            this.buttonItem39.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem39.Image")));
-            this.buttonItem39.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem39.Name = "buttonItem39";
-            this.buttonItem39.Text = "buttonItem16";
-            // 
-            // labelItem20
-            // 
-            this.labelItem20.Name = "labelItem20";
-            this.labelItem20.Text = "退市";
-            this.labelItem20.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // itemContainer28
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer28.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer28.Name = "itemContainer28";
-            this.itemContainer28.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem41,
-            this.labelItem22});
-            // 
-            // 
-            // 
-            this.itemContainer28.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // buttonItem41
-            // 
-            this.buttonItem41.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem41.Image")));
-            this.buttonItem41.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.buttonItem41.Name = "buttonItem41";
-            this.buttonItem41.Text = "buttonItem16";
-            // 
-            // labelItem22
-            // 
-            this.labelItem22.Name = "labelItem22";
-            this.labelItem22.Text = "重组";
-            this.labelItem22.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // ribbonPanel6
             // 
@@ -5521,17 +5324,235 @@
             // 
             this.itemContainer27.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // labelItem21
+            // 
+            this.labelItem21.Name = "labelItem21";
+            this.labelItem21.Text = "日和";
+            // 
+            // buttonItem38
+            // 
+            this.buttonItem38.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem38.Image")));
+            this.buttonItem38.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem38.Name = "buttonItem38";
+            this.buttonItem38.Text = "buttonItem16";
+            // 
+            // buttonItem39
+            // 
+            this.buttonItem39.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem39.Image")));
+            this.buttonItem39.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem39.Name = "buttonItem39";
+            this.buttonItem39.Text = "buttonItem16";
+            // 
+            // buttonItem41
+            // 
+            this.buttonItem41.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem41.Image")));
+            this.buttonItem41.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem41.Name = "buttonItem41";
+            this.buttonItem41.Text = "buttonItem16";
+            // 
+            // areaItem
+            // 
+            this.areaItem.Image = global::StockiiPanel.Properties.Resources.icon_flag;
+            this.areaItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.areaItem.Name = "areaItem";
+            this.areaItem.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem4});
+            this.areaItem.Text = "buttonItem16";
+            this.areaItem.Click += new System.EventHandler(this.boardButton_Click);
+            this.areaItem.ExpandChange += new System.EventHandler(this.boardButton_Click);
+            // 
+            // buttonItem4
+            // 
+            this.buttonItem4.Name = "buttonItem4";
+            this.buttonItem4.Text = "buttonItem4";
+            // 
+            // industryItem
+            // 
+            this.industryItem.Image = ((System.Drawing.Image)(resources.GetObject("industryItem.Image")));
+            this.industryItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.industryItem.Name = "industryItem";
+            this.industryItem.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem3});
+            this.industryItem.Text = "buttonItem16";
+            this.industryItem.Click += new System.EventHandler(this.boardButton_Click);
+            this.industryItem.ExpandChange += new System.EventHandler(this.boardButton_Click);
+            // 
+            // buttonItem3
+            // 
+            this.buttonItem3.Name = "buttonItem3";
+            this.buttonItem3.Text = "buttonItem3";
+            // 
+            // upItem
+            // 
+            this.upItem.Image = global::StockiiPanel.Properties.Resources.icon_upload;
+            this.upItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.upItem.Name = "upItem";
+            this.upItem.Text = "buttonItem16";
+            this.upItem.Click += new System.EventHandler(this.upItem_MouseDown);
+            // 
+            // downItem
+            // 
+            this.downItem.Image = global::StockiiPanel.Properties.Resources.icon_download;
+            this.downItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.downItem.Name = "downItem";
+            this.downItem.Text = "buttonItem16";
+            this.downItem.Click += new System.EventHandler(this.downItem_MouseDown);
+            // 
+            // addGroup
+            // 
+            this.addGroup.Image = global::StockiiPanel.Properties.Resources.icon_add_group;
+            this.addGroup.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.addGroup.Name = "addGroup";
+            this.addGroup.Text = "buttonItem16";
+            this.addGroup.Click += new System.EventHandler(this.buttonItem30_Click);
+            // 
+            // myGroups
+            // 
+            this.myGroups.Image = global::StockiiPanel.Properties.Resources.icon_user;
+            this.myGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.myGroups.Name = "myGroups";
+            this.myGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem2});
+            this.myGroups.Text = "buttonItem16";
+            this.myGroups.Click += new System.EventHandler(this.myGroups_Click);
+            this.myGroups.ExpandChange += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonItem2
+            // 
+            this.buttonItem2.Name = "buttonItem2";
+            this.buttonItem2.Text = "buttonItem2";
+            // 
+            // manageGroups
+            // 
+            this.manageGroups.Image = global::StockiiPanel.Properties.Resources.icon_edit;
+            this.manageGroups.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.manageGroups.Name = "manageGroups";
+            this.manageGroups.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.editGroup,
+            this.deleteGroup});
+            this.manageGroups.Text = "buttonItem16";
+            this.manageGroups.Click += new System.EventHandler(this.button1_Click);
+            this.manageGroups.ExpandChange += new System.EventHandler(this.button1_Click);
+            // 
+            // editGroup
+            // 
+            this.editGroup.Name = "editGroup";
+            this.editGroup.Text = "编辑分组";
+            this.editGroup.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteGroup
+            // 
+            this.deleteGroup.Name = "deleteGroup";
+            this.deleteGroup.Text = "删除分组";
+            this.deleteGroup.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // buttonItem34
+            // 
+            this.buttonItem34.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem34.Image")));
+            this.buttonItem34.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem34.Name = "buttonItem34";
+            this.buttonItem34.Text = "buttonItem16";
+            // 
+            // buttonItem33
+            // 
+            this.buttonItem33.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem33.Image")));
+            this.buttonItem33.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem33.Name = "buttonItem33";
+            this.buttonItem33.Text = "buttonItem16";
+            // 
+            // buttonItem32
+            // 
+            this.buttonItem32.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem32.Image")));
+            this.buttonItem32.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem32.Name = "buttonItem32";
+            this.buttonItem32.Text = "buttonItem16";
+            // 
+            // crossSectionCal
+            // 
+            this.crossSectionCal.Image = ((System.Drawing.Image)(resources.GetObject("crossSectionCal.Image")));
+            this.crossSectionCal.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.crossSectionCal.Name = "crossSectionCal";
+            this.crossSectionCal.Text = "buttonItem16";
+            this.crossSectionCal.Click += new System.EventHandler(this.crossSectionCal_Click);
+            // 
+            // buttonItem37
+            // 
+            this.buttonItem37.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem37.Image")));
+            this.buttonItem37.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.buttonItem37.Name = "buttonItem37";
+            this.buttonItem37.Text = "buttonItem16";
+            // 
+            // nDaySumCal
+            // 
+            this.nDaySumCal.Image = ((System.Drawing.Image)(resources.GetObject("nDaySumCal.Image")));
+            this.nDaySumCal.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.nDaySumCal.Name = "nDaySumCal";
+            this.nDaySumCal.Text = "buttonItem16";
+            this.nDaySumCal.Click += new System.EventHandler(this.nDaySumCal_Click);
+            // 
+            // customCal
+            // 
+            this.customCal.Image = ((System.Drawing.Image)(resources.GetObject("customCal.Image")));
+            this.customCal.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.customCal.Name = "customCal";
+            this.customCal.Text = "buttonItem16";
+            this.customCal.Click += new System.EventHandler(this.customCal_Click);
+            // 
+            // monthSum
+            // 
+            this.monthSum.Image = ((System.Drawing.Image)(resources.GetObject("monthSum.Image")));
+            this.monthSum.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.monthSum.Name = "monthSum";
+            this.monthSum.Text = "buttonItem16";
+            this.monthSum.Click += new System.EventHandler(this.monthSum_Click);
+            // 
+            // weekSum
+            // 
+            this.weekSum.Image = ((System.Drawing.Image)(resources.GetObject("weekSum.Image")));
+            this.weekSum.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.weekSum.Name = "weekSum";
+            this.weekSum.Text = "buttonItem16";
+            this.weekSum.Click += new System.EventHandler(this.weekSum_Click);
+            // 
+            // daySum
+            // 
+            this.daySum.Image = ((System.Drawing.Image)(resources.GetObject("daySum.Image")));
+            this.daySum.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.daySum.Name = "daySum";
+            this.daySum.Text = "buttonItem16";
+            this.daySum.Click += new System.EventHandler(this.daySum_Click);
+            // 
+            // stocksInfo
+            // 
+            this.stocksInfo.Image = ((System.Drawing.Image)(resources.GetObject("stocksInfo.Image")));
+            this.stocksInfo.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.stocksInfo.Name = "stocksInfo";
+            this.stocksInfo.Text = "buttonItem16";
+            this.stocksInfo.Click += new System.EventHandler(this.stocksInfo_Click);
+            // 
+            // maketInfo
+            // 
+            this.maketInfo.Image = ((System.Drawing.Image)(resources.GetObject("maketInfo.Image")));
+            this.maketInfo.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.maketInfo.Name = "maketInfo";
+            this.maketInfo.Text = "buttonItem16";
+            this.maketInfo.Click += new System.EventHandler(this.maketInfo_Click);
+            // 
+            // setColumn
+            // 
+            this.setColumn.Image = ((System.Drawing.Image)(resources.GetObject("setColumn.Image")));
+            this.setColumn.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.setColumn.Name = "setColumn";
+            this.setColumn.SubItemsExpandWidth = 14;
+            this.setColumn.Text = "设置列";
+            this.setColumn.Click += new System.EventHandler(this.setColToolStripMenuItem_Click);
+            // 
             // buttonItem40
             // 
             this.buttonItem40.Image = ((System.Drawing.Image)(resources.GetObject("buttonItem40.Image")));
             this.buttonItem40.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.buttonItem40.Name = "buttonItem40";
             this.buttonItem40.Text = "buttonItem16";
-            // 
-            // labelItem21
-            // 
-            this.labelItem21.Name = "labelItem21";
-            this.labelItem21.Text = "日和";
             // 
             // boardButton
             // 
@@ -5545,7 +5566,7 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -14300;
+            this.boardButton.WorkSizeY = -14630;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
@@ -5603,11 +5624,11 @@
             this.splitContainer2.ResumeLayout(false);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
+            this.ribbonPanel4.ResumeLayout(false);
+            this.ribbonPanel7.ResumeLayout(false);
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonPanel1.ResumeLayout(false);
-            this.ribbonPanel4.ResumeLayout(false);
             this.ribbonPanel5.ResumeLayout(false);
-            this.ribbonPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6158,6 +6179,8 @@
         private System.Windows.Forms.ToolStripMenuItem dumpCurSelected;
         private DevComponents.DotNetBar.ItemContainer itemContainer1;
         private DevComponents.DotNetBar.LabelItem labelItem5;
+        private DevComponents.DotNetBar.ButtonItem helpButton;
+        private System.Windows.Forms.ToolStripMenuItem SaveActions;
     }
 }
 

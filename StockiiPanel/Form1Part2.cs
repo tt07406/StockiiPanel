@@ -13,11 +13,15 @@ using System.IO;
 using System.Data;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 using DevComponents.DotNetBar;
+using System.Diagnostics;
 
 namespace StockiiPanel
 {
     public partial class Form1 : RibbonForm
     {
+        ArrayList combineArray = new ArrayList();//拼接的操作序列
+        ArrayList bufferArray = new ArrayList();//用于保留前一个拼接序列
+
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl.TabPages.Remove(tabControl.SelectedTab);
@@ -80,6 +84,23 @@ namespace StockiiPanel
         {
             dt = Commons.StructrueDataTable(combineResult, true);
             Commons.ExportDataGridToCSV(dt);
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(Application.StartupPath + "\\doc\\help.chm");
+        }
+
+        private void SaveActions_Click(object sender, EventArgs e)
+        {
+            if (combineArray == null || combineArray.Count == 0)
+            {
+                MessageBox.Show("空操作");
+                return;
+            }
+
+            SaveActionDialog dialog = new SaveActionDialog(combineArray);
+            dialog.ShowDialog(this);
         }
 
     }

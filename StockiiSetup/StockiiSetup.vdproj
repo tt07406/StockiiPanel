@@ -81,6 +81,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6AFAF8A0A56B4621BF0D21ABD345A8D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6BDDE4C56E233D284CF788169B21C501"
         "OwnerKey" = "8:_CAE70445BCB348FEA78A1488DDC5801E"
         "MsmSig" = "8:_UNDEFINED"
@@ -178,6 +184,12 @@
         "Entry"
         {
         "MsmKey" = "8:_CB87ABEC9B9B49D18EA9BAD8C22F38FA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0BCBDEF521E49609A9C3C6E91C3D5CA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -662,6 +674,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6AFAF8A0A56B4621BF0D21ABD345A8D0"
+            {
+            "SourcePath" = "8:..\\StockiiPanel\\bin\\Debug\\actions.xml"
+            "TargetName" = "8:actions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_4ACF17EC9DCB4BDC8EC070E7D5B2E549"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6BDDE4C56E233D284CF788169B21C501"
             {
             "AssemblyRegister" = "3:1"
@@ -1034,6 +1066,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0BCBDEF521E49609A9C3C6E91C3D5CA"
+            {
+            "SourcePath" = "8:..\\StockiiPanel\\bin\\Debug\\doc\\help.chm"
+            "TargetName" = "8:help.chm"
+            "Tag" = "8:"
+            "Folder" = "8:_543FAB70ED724141B67F34A166D3F15B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD6781B393AB4A0CB98838B499F81720"
             {
             "SourcePath" = "8:..\\StockiiPanel\\bin\\Debug\\customSeperate.xml"
@@ -1191,6 +1243,17 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_BE1C8E64F70D4B648B5E2DCA5FC7C8BB"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_543FAB70ED724141B67F34A166D3F15B"
+                    {
+                    "Name" = "8:doc"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_4C22F1F15D9E4E989DBFB180D3BA3CBD"
                         "Folders"
                         {
                         }

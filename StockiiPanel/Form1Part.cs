@@ -857,8 +857,9 @@ namespace StockiiPanel
             headText.Clear();
             for (int i = 0; i < combineResult.ColumnCount; i++)
                 headText.Add(combineResult.Columns[i].HeaderText);
+            bufferArray = (ArrayList)combineArray.Clone();
 
-            if (tabControl.SelectedTab.Name.Equals("customCalTab"))
+            if (tabControl.SelectedTab.Name.Equals("customCalTab"))//自定义计算
             {
                 combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
                 if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接
@@ -873,6 +874,15 @@ namespace StockiiPanel
                     for (int i = 0; i < calResultGrid.ColumnCount; i++)
                         combineResult.Columns[length + i].HeaderText = calResultGrid.Columns[i].HeaderText;
                 }
+                string min = smallBox.Text;
+                string max = bigBox.Text;
+                if (smallBox.Text.Equals(""))
+                    min = "0";
+                if (bigBox.Text.Equals(""))
+                    max = "0";
+                String args = "customCal," + min + "," + max + "," + compareIndexCombo.Text + "," + compareCombo.Text;
+                //保存查询参数
+                combineArray.Add(args);
             }
             else
             {
@@ -889,23 +899,30 @@ namespace StockiiPanel
                     for (int i = 0; i < sectionResultGrid.ColumnCount; i++)
                         combineResult.Columns[length + i].HeaderText = sectionResultGrid.Columns[i].HeaderText;
                 }
+                String args = "crossSection," + weighBox.Text + "," + indexCombox1.Text;
+                //保存查询参数
+                combineArray.Add(args);
             }
 
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            //两个List交换
             DataTable tmp = buffResult;
             ArrayList tmpArray = (ArrayList)headText.Clone();
+            ArrayList tmpBuffArray = (ArrayList)bufferArray.Clone();
             
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
             headText.Clear();
             for (int i = 0; i < combineResult.ColumnCount; i++)
                 headText.Add(combineResult.Columns[i].HeaderText);
+            bufferArray = (ArrayList)combineArray.Clone();
 
             combineResult.DataSource = tmp;
             for (int i = 0; i < tmpArray.Count; i++)
                 combineResult.Columns[i].HeaderText = tmpArray[i].ToString();
+            combineArray = (ArrayList)tmpBuffArray.Clone();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -914,7 +931,10 @@ namespace StockiiPanel
             headText.Clear();
             for (int i = 0; i < combineResult.ColumnCount; i++)
                 headText.Add(combineResult.Columns[i].HeaderText);
+            bufferArray = (ArrayList)combineArray.Clone();
+
             combineResult.DataSource = null;
+            combineArray.Clear();
         }
     }
 
