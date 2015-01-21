@@ -2,20 +2,11 @@
 <SerializableDictionaryOfStringArrayList>
   <SerializableDictionary>
     <key>
-      <string>custom1</string>
+      <string>woCombine</string>
     </key>
     <value>
       <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <anyType xsi:type="xsd:string">customCal,0,0,振幅,指定两天减</anyType>
-      </ArrayOfAnyType>
-    </value>
-  </SerializableDictionary>
-  <SerializableDictionary>
-    <key>
-      <string>ww</string>
-    </key>
-    <value>
-      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">crossSection,2,均价</anyType>
         <anyType xsi:type="xsd:string">customCal,0,0,振幅,指定两天减</anyType>
       </ArrayOfAnyType>
     </value>

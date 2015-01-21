@@ -321,7 +321,7 @@ namespace StockiiPanel
                 switch (errorNo)
                 {
                     case 0:
-                        MessageBox.Show("超时，不能连接到数据库");
+                        MessageBox.Show("连接超时，请检查网络");
                         break;
                     case 24:
                         MessageBox.Show("内存溢出");
@@ -333,7 +333,7 @@ namespace StockiiPanel
                         MessageBox.Show("数据库不存在");
                         break;
                     default:
-                        MessageBox.Show("连接数据库错误");
+                        MessageBox.Show("连接网络错误");
                         break;
                 }
                 return;
@@ -430,7 +430,7 @@ namespace StockiiPanel
                 switch (errorNo)
                 {
                     case 0:
-                        MessageBox.Show("超时，不能连接到数据库");
+                        MessageBox.Show("连接超时，请检查网络");
                         break;
                     case 24:
                         MessageBox.Show("内存溢出");
@@ -442,7 +442,7 @@ namespace StockiiPanel
                         MessageBox.Show("数据库不存在");
                         break;
                     default:
-                        MessageBox.Show("连接数据库错误");
+                        MessageBox.Show("连接网络错误");
                         break;
                 }
                 return;
@@ -570,7 +570,7 @@ namespace StockiiPanel
                 switch (errorNo)
                 {
                     case 0:
-                        MessageBox.Show("超时，不能连接到数据库");
+                        MessageBox.Show("连接超时，请检查网络");
                         break;
                     case 24:
                         MessageBox.Show("内存溢出");
@@ -582,7 +582,7 @@ namespace StockiiPanel
                         MessageBox.Show("数据库不存在");
                         break;
                     default:
-                        MessageBox.Show("连接数据库错误");
+                        MessageBox.Show("连接网络错误");
                         break;
                 }
                 return;

@@ -18,9 +18,11 @@ namespace StockiiPanel
     public partial class SaveActionDialog : Form
     {
         private SerializableDictionary<String, ArrayList> combineList = new SerializableDictionary<string,ArrayList>();//所有的操作
+        private SerializableDictionary<String, ArrayList> combineHeaderList = new SerializableDictionary<string, ArrayList>();//所有的表头
         ArrayList combineArray = new ArrayList();//拼接的操作序列
+        ArrayList combineHeaders = new ArrayList();//拼接的操作序列表头
 
-        public SaveActionDialog(ArrayList list)
+        public SaveActionDialog(ArrayList list,ArrayList headers)
         {
             InitializeComponent();
 
@@ -36,6 +38,7 @@ namespace StockiiPanel
             }
 
             combineArray = list;
+            combineHeaders = headers;
         }
 
         private void yes_Click(object sender, EventArgs e)
@@ -47,6 +50,7 @@ namespace StockiiPanel
             }
 
             combineList[name.Text.ToString()] = combineArray;
+            combineHeaderList[name.Text.ToString()] = combineHeaders;
 
             //保存到外部文件
             using (FileStream fileStream = new FileStream("actions.xml", FileMode.Create))
@@ -54,6 +58,15 @@ namespace StockiiPanel
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.combineList);
             }
+
+            //保存表头到外部文件
+            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Create))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                xmlFormatter.Serialize(fileStream, this.combineHeaderList);
+            }
+
+            MessageBox.Show("保存成功！");
             this.Close();
         }
 

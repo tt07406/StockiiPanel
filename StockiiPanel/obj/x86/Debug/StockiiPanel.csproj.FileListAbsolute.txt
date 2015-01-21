@@ -68,3 +68,4 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\Stocki
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.CustomGrid.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.SaveActionDialog.resources
+E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.ActionDialog.resources

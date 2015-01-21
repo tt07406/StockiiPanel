@@ -1131,9 +1131,61 @@ namespace StockiiPanel
                       dr = hostDt.Rows[j];
                       dr[hostDt.Columns.Count - 1] = clientDt.Rows[j][i];
                       dr = null;
+                 }
+              }
+           }
+         }
+
+        /// <summary>
+        /// 拼接DT
+        /// </summary>
+        /// <param name="data">要拼接的数据</param>
+        /// <param name="combineDt">原Dt</param>
+        /// <returns></returns>
+        public static DataTable CombineDt(DataSet data, DataTable combineDt)
+        {
+            DataTable tb2 = data.Tables[0];
+            if (combineDt.Rows.Count>0)
+            {
+                DataTable tb4 = new DataTable();//临时表
+                tb4 = combineDt.Copy();
+
+                ArrayList host = new ArrayList();
+                ArrayList client = new ArrayList();
+                for (int i = tb4.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dr = tb4.Rows[i];
+                    for (int j = tb2.Rows.Count - 1; j >= 0; j--)
+                    {
+                        DataRow re = tb2.Rows[j];
+                        if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
+                        {
+                            //要保留的
+                            host.Add(i);
+                            client.Add(j);
+                            break;
+                        }
+                    }
                 }
-             }
-          }
-       }
+
+                for (int i = tb4.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (!host.Contains(i))
+                        tb4.Rows.RemoveAt(i);
+                }
+                for (int i = tb2.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (!client.Contains(i))
+                        tb2.Rows.RemoveAt(i);
+                }
+
+                AppendDataTable(tb4, tb2);
+                return tb4;
+            }
+            else
+            {
+                return tb2;
+            }                
+        }
     }
 }
