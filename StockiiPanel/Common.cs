@@ -40,6 +40,13 @@ namespace StockiiPanel
         {
             
             DataSet ds = JSONHandler.GetTradeDate();
+
+            if (ds == null)
+            {
+                MessageBox.Show("获取交易日信息超时，请检查网络");
+                return;
+            }
+
             DataTable dt = ds.Tables["tradedate"];
 
             foreach (DataRow row in dt.Rows)
@@ -64,7 +71,7 @@ namespace StockiiPanel
 
             if (ds == null)
             {
-                MessageBox.Show("连接数据库超时");
+                MessageBox.Show("获取板块信息超时，请检查网络");
                 return;
             }
 
@@ -105,6 +112,12 @@ namespace StockiiPanel
         public static DataSet GetStockBasicInfo()
         {
             DataSet ds = JSONHandler.GetStockBasicInfo();
+
+            if (ds == null)
+            {
+                MessageBox.Show("获取股票基本信息超时，请检查网络");
+                return null;
+            }
 
             return ds;
         }

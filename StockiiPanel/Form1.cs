@@ -66,23 +66,25 @@ namespace StockiiPanel
         private void button1_Click(object sender, EventArgs e)
         {
             groupList.Show();
-            //this.Controls.Add(this.groupList);
-            //this.tabControl.Location = new System.Drawing.Point(157, 34);
         }
 
         private void boardButton_Click(object sender, EventArgs e)
         {
             groupList.Hide();
-            //this.Controls.Remove(this.groupList);
-            //tabControl.Location = new System.Drawing.Point(16, 34); ;
         }
 
-        public void initBeforeShow()
+        public bool initBeforeShow()
         {
             Commons.GetTradeDate();
 
             Commons.GetStockClassification(sectionToolStripMenuItem, industryToolStripMenuItem);
             stockDs = Commons.GetStockBasicInfo();
+
+            if (stockDs == null)
+            {
+                return false;
+            }
+            return true;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -198,9 +200,6 @@ namespace StockiiPanel
 
         private void initFormUI()
         {
-            //nsumTab.Hide();
-            //customCalTab.Hide();
-            //crossSectionTab.Hide();
             tabControl.TabPages.Remove(nsumTab);
             tabControl.TabPages.Remove(customCalTab);
             tabControl.TabPages.Remove(crossSectionTab);

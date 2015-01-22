@@ -21,7 +21,7 @@ namespace StockiiPanel
             // 进行自己的操作：加载组件，加载文件等等
             // 示例代码为休眠一会
             Form1 mainForm= new Form1();
-            mainForm.initBeforeShow();
+            bool success = mainForm.initBeforeShow();
             //System.Threading.Thread.Sleep(3000);
 
             // 关闭
@@ -30,6 +30,10 @@ namespace StockiiPanel
                 SplashScreen.Instance.BeginInvoke(new MethodInvoker(SplashScreen.Instance.Dispose));
                 SplashScreen.Instance = null;
             }
+
+            if (!success)
+                return;
+
             System.Threading.Thread.Sleep(500);
             Application.Run(mainForm);
         }

@@ -124,7 +124,7 @@ namespace StockiiPanel
 
             foreach (String item in dialog.CombineArray)
             {
-                if (item.StartsWith("customCal"))
+                if (item.StartsWith("customCal"))//如果包含自定义查询，则要选择分组或版块
                 {
                     if (groupList.Visible == true && groupList.Items.Count == 0)
                     {
@@ -271,7 +271,7 @@ namespace StockiiPanel
                     combineArray = (ArrayList)combineList[actionName].Clone();
                 }
             }
-            
+            stop = true;
         }
 
     }

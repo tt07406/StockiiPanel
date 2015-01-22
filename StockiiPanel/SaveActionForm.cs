@@ -32,6 +32,12 @@ namespace StockiiPanel
                 this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
 
+            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+            }
+
             if (combineList == null)
             {
                 combineList = new SerializableDictionary<string, ArrayList>();

@@ -105,7 +105,7 @@ namespace StockiiPanel
 
             foreach (String item in list)
             {
-                combineArray.Add(item + startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd"));//增加时间 
+                combineArray.Add(item + "," + startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd"));//增加时间 
             }
 
             this.Close();
