@@ -1,0 +1,14 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=help.chm
+Contents file=help.hhc
+Display compile progress=No
+Index file=help.hhk
+Language=0x804 中文(简体，中国)
+
+
+[FILES]
+index.htm
+
+[INFOTYPES]
+
