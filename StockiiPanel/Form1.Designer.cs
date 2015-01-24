@@ -589,8 +589,8 @@
             this.itemContainer27 = new DevComponents.DotNetBar.ItemContainer();
             this.buttonItem40 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem21 = new DevComponents.DotNetBar.LabelItem();
-            this.boardButton = new StockiiPanel.DropButton();
             this.combineWorker = new System.ComponentModel.BackgroundWorker();
+            this.boardButton = new StockiiPanel.DropButton();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -4223,9 +4223,9 @@
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel5);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel7);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -4676,10 +4676,10 @@
             this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonPanel5.Controls.Add(this.ribbonBar2);
             this.ribbonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel5.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel5.Location = new System.Drawing.Point(0, 0);
             this.ribbonPanel5.Name = "ribbonPanel5";
             this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 2);
-            this.ribbonPanel5.Size = new System.Drawing.Size(1376, 101);
+            this.ribbonPanel5.Size = new System.Drawing.Size(1376, 154);
             // 
             // 
             // 
@@ -4714,7 +4714,7 @@
             this.itemContainer1});
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(176, 99);
+            this.ribbonBar2.Size = new System.Drawing.Size(176, 152);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 0;
             // 
@@ -5597,6 +5597,11 @@
             this.labelItem21.Name = "labelItem21";
             this.labelItem21.Text = "日和";
             // 
+            // combineWorker
+            // 
+            this.combineWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.combineWorker_DoWork);
+            this.combineWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.combineWorker_RunWorkerCompleted);
+            // 
             // boardButton
             // 
             this.boardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -5609,13 +5614,8 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -14795;
+            this.boardButton.WorkSizeY = -14905;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
-            // 
-            // combineWorker
-            // 
-            this.combineWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.combineWorker_DoWork);
-            this.combineWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.combineWorker_RunWorkerCompleted);
             // 
             // Form1
             // 

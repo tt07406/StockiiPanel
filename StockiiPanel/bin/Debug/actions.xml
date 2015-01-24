@@ -2,11 +2,35 @@
 <SerializableDictionaryOfStringArrayList>
   <SerializableDictionary>
     <key>
-      <string>woCombine</string>
+      <string>minusCross</string>
     </key>
     <value>
       <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">customCal,0,0,振幅,指定两天减</anyType>
         <anyType xsi:type="xsd:string">crossSection,2,均价</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>beijing</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">customCal,0,0,振幅,指定两天减</anyType>
+        <anyType xsi:type="xsd:string">crossSection,2,均价</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>three</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">customCal,0,0,振幅,指定两天减</anyType>
+        <anyType xsi:type="xsd:string">crossSection,2,均价</anyType>
+        <anyType xsi:type="xsd:string">customCal,0,0,均价,指定时间段内的和</anyType>
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>

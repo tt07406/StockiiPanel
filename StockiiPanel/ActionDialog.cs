@@ -17,6 +17,7 @@ namespace StockiiPanel
     public partial class ActionDialog : Form
     {
         private SerializableDictionary<String, ArrayList> combineList = new SerializableDictionary<string, ArrayList>();//所有的操作
+        private SerializableDictionary<String, ArrayList> combineHeaderList = new SerializableDictionary<string, ArrayList>();//所有的表头
         ArrayList combineArray = new ArrayList();//拼接的操作序列
         String actionName = "";
 
@@ -40,6 +41,12 @@ namespace StockiiPanel
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+            }
+
+            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
 
             if (combineList == null)
@@ -71,12 +78,20 @@ namespace StockiiPanel
             {
                 String key = actionList.SelectedItem.ToString();
                 combineList.Remove(key);
+                combineHeaderList.Remove(key);
 
                 //保存到外部文件
                 using (FileStream fileStream = new FileStream("actions.xml", FileMode.Create))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     xmlFormatter.Serialize(fileStream, this.combineList);
+                }
+
+                //保存表头到外部文件
+                using (FileStream fileStream = new FileStream("headers.xml", FileMode.Create))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    xmlFormatter.Serialize(fileStream, this.combineHeaderList);
                 }
 
                 actionList.Items.RemoveAt(actionList.SelectedIndex);

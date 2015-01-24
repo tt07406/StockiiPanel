@@ -71,6 +71,13 @@ namespace StockiiPanel
         private void boardButton_Click(object sender, EventArgs e)
         {
             groupList.Hide();
+
+            if (record.Values.Count > 0)
+            {
+                string name = record.Values.First();
+                MessageBox.Show(name);
+            }
+            
         }
 
         public bool initBeforeShow()
