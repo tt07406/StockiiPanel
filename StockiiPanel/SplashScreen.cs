@@ -42,14 +42,14 @@ namespace StockiiPanel
             FormBorderStyle = FormBorderStyle.None;
             StartPosition = FormStartPosition.CenterScreen;
             ShowInTaskbar = false;
-            bitmap = new Bitmap(Properties.Resources.stockii);
+            bitmap = new Bitmap(Properties.Resources.lauching);
             ClientSize = bitmap.Size;
 
             using (Font font = new Font("Consoles", 8))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    g.DrawString(showInfo, font, Brushes.White, 130, 100);
+                    g.DrawString(showInfo, font, Brushes.Gray, 320, 241);
                 }
             }
 
