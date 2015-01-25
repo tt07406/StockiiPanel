@@ -138,11 +138,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Resource1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
-    </Compile>
     <Compile Include="SaveActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,10 +180,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomGrid.resx">
       <DependentUpon>CustomGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveActionForm.resx">
       <DependentUpon>SaveActionForm.cs</DependentUpon>
@@ -284,6 +275,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lauching.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_design.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
