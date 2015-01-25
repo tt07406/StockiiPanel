@@ -101,7 +101,7 @@ namespace StockiiPanel
         {
             try
             {
-                using (FileStream fileStream = new FileStream(configDir + "\\group.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);

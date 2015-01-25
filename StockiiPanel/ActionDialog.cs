@@ -38,13 +38,13 @@ namespace StockiiPanel
         {
             InitializeComponent();
 
-            using (FileStream fileStream = new FileStream(configDir+"\\actions.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
 
-            using (FileStream fileStream = new FileStream(configDir+"\\headers.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);

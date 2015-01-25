@@ -198,7 +198,7 @@ namespace StockiiPanel
                     return;
                 }
 
-                dt = Commons.(ds, dt);
+                dt = Commons.CombineDt(ds, dt);
             }
         }
 
@@ -247,7 +247,7 @@ namespace StockiiPanel
             ArrayList combineHeaders = new ArrayList();//拼接的操作序列表头
             try
             {
-                using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     SerializableDictionary<string, ArrayList> combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
@@ -263,7 +263,7 @@ namespace StockiiPanel
 
 
                 //保存查询参数
-                using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     SerializableDictionary<string, ArrayList> combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);

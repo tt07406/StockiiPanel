@@ -27,13 +27,13 @@ namespace StockiiPanel
             InitializeComponent();
             try
             {
-                using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
                 }
 
-                using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
@@ -70,14 +70,14 @@ namespace StockiiPanel
             combineHeaderList[name.Text.ToString()] = combineHeaders;
 
             //保存到外部文件
-            using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.combineList);
             }
 
             //保存表头到外部文件
-            using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.combineHeaderList);
