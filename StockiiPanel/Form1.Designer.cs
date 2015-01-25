@@ -1933,13 +1933,13 @@
             // 
             // allToolStripDownMenuItem
             // 
-            this.allToolStripDownMenuItem.Name = "allToolStripDownMenuItem";
+            this.allToolStripDownMenuItem.Name = "allToolStripMenuItem";
             this.allToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.allToolStripDownMenuItem.Text = "全部";
             // 
             // equalToolStripDownMenuItem
             // 
-            this.equalToolStripDownMenuItem.Name = "equalToolStripDownMenuItem";
+            this.equalToolStripDownMenuItem.Name = "equalToolStripMenuItem";
             this.equalToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.equalToolStripDownMenuItem.Text = "开盘＝收盘＝最高＝最低";
             // 
@@ -1948,19 +1948,19 @@
             this.amplitudeToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.amp2ToolStripDownMenuItem,
             this.amp0ToolStripDownMenuItem});
-            this.amplitudeToolStripDownMenuItem.Name = "amplitudeToolStripDownMenuItem";
+            this.amplitudeToolStripDownMenuItem.Name = "amplitudeToolStripMenuItem";
             this.amplitudeToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.amplitudeToolStripDownMenuItem.Text = "振幅分档";
             // 
             // amp2ToolStripDownMenuItem
             // 
-            this.amp2ToolStripDownMenuItem.Name = "amp2ToolStripDownMenuItem";
+            this.amp2ToolStripDownMenuItem.Name = "amp2ToolStripMenuItem";
             this.amp2ToolStripDownMenuItem.Size = new System.Drawing.Size(127, 22);
             this.amp2ToolStripDownMenuItem.Text = "振幅<2%";
             // 
             // amp0ToolStripDownMenuItem
             // 
-            this.amp0ToolStripDownMenuItem.Name = "amp0ToolStripDownMenuItem";
+            this.amp0ToolStripDownMenuItem.Name = "amp0ToolStripMenuItem";
             this.amp0ToolStripDownMenuItem.Size = new System.Drawing.Size(127, 22);
             this.amp0ToolStripDownMenuItem.Text = "振幅=0";
             // 
@@ -1969,19 +1969,19 @@
             this.riseToolStripDownMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rise49ToolStripDownMenuItem,
             this.decrease49ToolStripDownMenuItem});
-            this.riseToolStripDownMenuItem.Name = "riseToolStripDownMenuItem";
+            this.riseToolStripDownMenuItem.Name = "riseToolStripMenuItem";
             this.riseToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.riseToolStripDownMenuItem.Text = "涨幅分档";
             // 
             // rise49ToolStripDownMenuItem
             // 
-            this.rise49ToolStripDownMenuItem.Name = "rise49ToolStripDownMenuItem";
+            this.rise49ToolStripDownMenuItem.Name = "rise49ToolStripMenuItem";
             this.rise49ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.rise49ToolStripDownMenuItem.Text = "卖价=0,涨幅>4.9%";
             // 
             // decrease49ToolStripDownMenuItem
             // 
-            this.decrease49ToolStripDownMenuItem.Name = "decrease49ToolStripDownMenuItem";
+            this.decrease49ToolStripDownMenuItem.Name = "decrease49ToolStripMenuItem";
             this.decrease49ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.decrease49ToolStripDownMenuItem.Text = "买价＝0,涨幅<-4.9%";
             // 
@@ -1998,19 +1998,19 @@
             this.amount25ToolStripDownMenuItem,
             this.amount30ToolStripDownMenuItem,
             this.amount40ToolStripDownMenuItem});
-            this.amountToolStripDownMenuItem.Name = "amountToolStripDownMenuItem";
+            this.amountToolStripDownMenuItem.Name = "amountToolStripMenuItem";
             this.amountToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.amountToolStripDownMenuItem.Text = "总金额分档";
             // 
             // amount09999ToolStripDownMenuItem
             // 
-            this.amount09999ToolStripDownMenuItem.Name = "amount09999ToolStripDownMenuItem";
+            this.amount09999ToolStripDownMenuItem.Name = "amount09999ToolStripMenuItem";
             this.amount09999ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount09999ToolStripDownMenuItem.Text = "总金额<0.9999亿";
             // 
             // amount119999ToolStripDownMenuItem
             // 
-            this.amount119999ToolStripDownMenuItem.Name = "amount119999ToolStripDownMenuItem";
+            this.amount119999ToolStripDownMenuItem.Name = "amount119999ToolStripMenuItem";
             this.amount119999ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount119999ToolStripDownMenuItem.Text = "总金额1~1.9999亿";
             // 
@@ -2040,25 +2040,25 @@
             // 
             // amount20ToolStripDownMenuItem
             // 
-            this.amount20ToolStripDownMenuItem.Name = "amount20ToolStripDownMenuItem";
+            this.amount20ToolStripDownMenuItem.Name = "amount20ToolStripMenuItem";
             this.amount20ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount20ToolStripDownMenuItem.Text = "总金额>20亿";
             // 
             // amount25ToolStripDownMenuItem
             // 
-            this.amount25ToolStripDownMenuItem.Name = "amount25ToolStripDownMenuItem";
+            this.amount25ToolStripDownMenuItem.Name = "amount25ToolStripMenuItem";
             this.amount25ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount25ToolStripDownMenuItem.Text = "总金额>25亿";
             // 
             // amount30ToolStripDownMenuItem
             // 
-            this.amount30ToolStripDownMenuItem.Name = "amount30ToolStripDownMenuItem";
+            this.amount30ToolStripDownMenuItem.Name = "amount30ToolStripMenuItem";
             this.amount30ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount30ToolStripDownMenuItem.Text = "总金额>30亿";
             // 
             // amount40ToolStripDownMenuItem
             // 
-            this.amount40ToolStripDownMenuItem.Name = "amount40ToolStripDownMenuItem";
+            this.amount40ToolStripDownMenuItem.Name = "amount40ToolStripMenuItem";
             this.amount40ToolStripDownMenuItem.Size = new System.Drawing.Size(178, 22);
             this.amount40ToolStripDownMenuItem.Text = "总金额>40亿";
             // 
@@ -2080,37 +2080,37 @@
             this.turnover45ToolStripDownMenuItem,
             this.turnover50ToolStripDownMenuItem,
             this.turnover60ToolStripDownMenuItem});
-            this.turnoverToolStripDownMenuItem.Name = "turnoverToolStripDownMenuItem";
+            this.turnoverToolStripDownMenuItem.Name = "turnoverToolStripMenuItem";
             this.turnoverToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.turnoverToolStripDownMenuItem.Text = "换手率分档";
             // 
             // turnover09999ToolStripDownMenuItem
             // 
-            this.turnover09999ToolStripDownMenuItem.Name = "turnover09999ToolStripDownMenuItem";
+            this.turnover09999ToolStripDownMenuItem.Name = "turnover09999ToolStripMenuItem";
             this.turnover09999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover09999ToolStripDownMenuItem.Text = "换手率<0.9999%";
             // 
             // turnover129999ToolStripDownMenuItem
             // 
-            this.turnover129999ToolStripDownMenuItem.Name = "turnover129999ToolStripDownMenuItem";
+            this.turnover129999ToolStripDownMenuItem.Name = "turnover129999ToolStripMenuItem";
             this.turnover129999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover129999ToolStripDownMenuItem.Text = "换手率1%~2.9999%";
             // 
             // turnover349999ToolStripDownMenuItem
             // 
-            this.turnover349999ToolStripDownMenuItem.Name = "turnover349999ToolStripDownMenuItem";
+            this.turnover349999ToolStripDownMenuItem.Name = "turnover349999ToolStripMenuItem";
             this.turnover349999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover349999ToolStripDownMenuItem.Text = "换手率3%~4.9999%";
             // 
             // turnover569999ToolStripDownMenuItem
             // 
-            this.turnover569999ToolStripDownMenuItem.Name = "turnover569999ToolStripDownMenuItem";
+            this.turnover569999ToolStripDownMenuItem.Name = "turnover569999ToolStripMenuItem";
             this.turnover569999ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover569999ToolStripDownMenuItem.Text = "换手率5%~6.9999%";
             // 
             // turnover7ToolStripDownMenuItem
             // 
-            this.turnover7ToolStripDownMenuItem.Name = "turnover7ToolStripDownMenuItem";
+            this.turnover7ToolStripDownMenuItem.Name = "turnover7ToolStripMenuItem";
             this.turnover7ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover7ToolStripDownMenuItem.Text = "换手率7%~9.9999%";
             // 
@@ -2122,55 +2122,55 @@
             // 
             // turnover15ToolStripDownMenuItem
             // 
-            this.turnover15ToolStripDownMenuItem.Name = "turnover15ToolStripDownMenuItem";
+            this.turnover15ToolStripDownMenuItem.Name = "turnover15ToolStripMenuItem";
             this.turnover15ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover15ToolStripDownMenuItem.Text = "换手率>15%";
             // 
             // turnover20ToolStripDownMenuItem
             // 
-            this.turnover20ToolStripDownMenuItem.Name = "turnover20ToolStripDownMenuItem";
+            this.turnover20ToolStripDownMenuItem.Name = "turnover20ToolStripMenuItem";
             this.turnover20ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover20ToolStripDownMenuItem.Text = "换手率>20%";
             // 
             // turnover25ToolStripDownMenuItem
             // 
-            this.turnover25ToolStripDownMenuItem.Name = "turnover25ToolStripDownMenuItem";
+            this.turnover25ToolStripDownMenuItem.Name = "turnover25ToolStripMenuItem";
             this.turnover25ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover25ToolStripDownMenuItem.Text = "换手率>25%";
             // 
             // turnover30ToolStripDownMenuItem
             // 
-            this.turnover30ToolStripDownMenuItem.Name = "turnover30ToolStripDownMenuItem";
+            this.turnover30ToolStripDownMenuItem.Name = "turnover30ToolStripMenuItem";
             this.turnover30ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover30ToolStripDownMenuItem.Text = "换手率>30%";
             // 
             // turnover35ToolStripDownMenuItem
             // 
-            this.turnover35ToolStripDownMenuItem.Name = "turnover35ToolStripDownMenuItem";
+            this.turnover35ToolStripDownMenuItem.Name = "turnover35ToolStripMenuItem";
             this.turnover35ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover35ToolStripDownMenuItem.Text = "换手率>35%";
             // 
             // turnover40ToolStripDownMenuItem
             // 
-            this.turnover40ToolStripDownMenuItem.Name = "turnover40ToolStripDownMenuItem";
+            this.turnover40ToolStripDownMenuItem.Name = "turnover40ToolStripMenuItem";
             this.turnover40ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover40ToolStripDownMenuItem.Text = "换手率>40%";
             // 
             // turnover45ToolStripDownMenuItem
             // 
-            this.turnover45ToolStripDownMenuItem.Name = "turnover45ToolStripDownMenuItem";
+            this.turnover45ToolStripDownMenuItem.Name = "turnover45ToolStripMenuItem";
             this.turnover45ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover45ToolStripDownMenuItem.Text = "换手率>45%";
             // 
             // turnover50ToolStripDownMenuItem
             // 
-            this.turnover50ToolStripDownMenuItem.Name = "turnover50ToolStripDownMenuItem";
+            this.turnover50ToolStripDownMenuItem.Name = "turnover50ToolStripMenuItem";
             this.turnover50ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover50ToolStripDownMenuItem.Text = "换手率>50%";
             // 
             // turnover60ToolStripDownMenuItem
             // 
-            this.turnover60ToolStripDownMenuItem.Name = "turnover60ToolStripDownMenuItem";
+            this.turnover60ToolStripDownMenuItem.Name = "turnover60ToolStripMenuItem";
             this.turnover60ToolStripDownMenuItem.Size = new System.Drawing.Size(188, 22);
             this.turnover60ToolStripDownMenuItem.Text = "换手率>60%";
             // 
@@ -2184,7 +2184,7 @@
             this.ToolStripDownMenuItem2012,
             this.ToolStripDownMenuItem2013,
             this.ToolStripDownMenuItem2014});
-            this.timeToolStripDownMenuItem.Name = "timeToolStripDownMenuItem";
+            this.timeToolStripDownMenuItem.Name = "timeToolStripMenuItem";
             this.timeToolStripDownMenuItem.Size = new System.Drawing.Size(208, 22);
             this.timeToolStripDownMenuItem.Text = "时间分档";
             // 
@@ -4226,12 +4226,12 @@
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel5);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel7);
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel7);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel5);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.ForeColor = System.Drawing.Color.Black;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -4291,6 +4291,7 @@
             // 
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
+            this.ribbonPanel3.Visible = false;
             // 
             // ribbonBar4
             // 
@@ -5192,7 +5193,6 @@
             // 
             this.ribbonPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel6.TabIndex = 6;
-            this.ribbonPanel6.Visible = false;
             // 
             // ribbonBar6
             // 
@@ -5576,7 +5576,6 @@
             // 
             // ribbonTabItem3
             // 
-            this.ribbonTabItem3.Checked = true;
             this.ribbonTabItem3.Name = "ribbonTabItem3";
             this.ribbonTabItem3.Panel = this.ribbonPanel3;
             this.ribbonTabItem3.Text = "分组";
@@ -5589,6 +5588,7 @@
             // 
             // 方案
             // 
+            this.方案.Checked = true;
             this.方案.Name = "方案";
             this.方案.Panel = this.ribbonPanel6;
             this.方案.Text = "方案";
@@ -5666,7 +5666,7 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -15125;
+            this.boardButton.WorkSizeY = -15345;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1

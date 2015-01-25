@@ -134,15 +134,19 @@ namespace StockiiPanel
         /// <param name="pagesize">分页查询中，每页查询的数量</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        public static bool GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
 
-            ds = JSONHandler.GetStockDayInfo(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+            ds = JSONHandler.GetStockDayInfo(stockid, sortname, asc, startDate, endDate, page, pagesize, filter, out totalpage, out errorNo);
 
             if (ds == null)
             {
                 return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
             }
 
             var query = (from u in ds.Tables["stockdayinfo"].AsEnumerable()
@@ -412,7 +416,7 @@ namespace StockiiPanel
         /// <param name="pagesize">分页查询中，每页查询的数量</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetStockDayInfoBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        public static bool GetStockDayInfoBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int errorNo, out DataSet ds, out int totalpage)
         {
             string name = record.Values.First();
             ArrayList stocks = new ArrayList();
@@ -437,7 +441,7 @@ namespace StockiiPanel
                     break;
             }
 
-            return GetStockDayInfo(stocks, sortname, asc, startDate, endDate, page, pagesize,out errorNo,out ds,out totalpage);
+            return GetStockDayInfo(stocks, sortname, asc, startDate, endDate, page, pagesize, filter, out errorNo,out ds,out totalpage);
         }
 
         public static DateTime findNearDate(DateTime curDate)
@@ -463,7 +467,7 @@ namespace StockiiPanel
                 case 2:
                     delta = 7 * (delta - 1);
                     delta += Convert.ToInt32(startDate.DayOfWeek.ToString("d"));
-                    startDate = startDate.AddDays(delta);
+                    startDate = startDate.AddDays(-delta);
                     startDate = findNearDate(startDate);
                     break;
                 case 3:
@@ -492,7 +496,7 @@ namespace StockiiPanel
         /// <param name="ds">结果集</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        public static bool GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int errorNo, out DataSet ds, out int totalpage)
         {
             bool stop = false;
             totalpage = 1;
@@ -530,11 +534,15 @@ namespace StockiiPanel
                     sumtype = "all";
                     break;
             }
-            ds = JSONHandler.GetNDaysSum(stockid, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+            ds = JSONHandler.GetNDaysSum(stockid, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, filter, out totalpage, out errorNo);
 
             if (ds == null)
             {
                 return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
             }
 
             String tableName = "";
@@ -550,6 +558,7 @@ namespace StockiiPanel
                     tableName = "monthsuminfo";
                     break;
             }
+            
             int columnCount = ds.Tables[tableName].Columns.Count;
             var query = (from u in ds.Tables[tableName].AsEnumerable()
                          join r in classfiDt.AsEnumerable()
@@ -606,7 +615,7 @@ namespace StockiiPanel
         /// <param name="ds">结果集</param>
         /// <param name="totalpage">总页数</param>
         /// <returns></returns>
-        public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        public static bool GetNDaysSumBoard(Dictionary<int, string> record, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int errorNo, out DataSet ds, out int totalpage)
         {
             string name = record.Values.First();
             ArrayList stocks = new ArrayList();
@@ -631,7 +640,7 @@ namespace StockiiPanel
                     break;
             }
 
-            return GetNDaysSum(stocks, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+            return GetNDaysSum(stocks, type, num, sumname, sumtype, sortname, asc, startDate, endDate, page, pagesize, filter, out errorNo, out ds, out totalpage);
 
         }
 
@@ -718,10 +727,13 @@ namespace StockiiPanel
             {
                 return true;
             }
-
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
             String tableName = "";
             DataTable dt;
-            switch (opt)//是不是写错了，opt?
+            switch (opt)
             {
                 case "seperate":
                     tableName = "growthamp";
@@ -942,6 +954,10 @@ namespace StockiiPanel
             {
                 errorNo = 0;
                 return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
             }
 
             var query = (from u in ds.Tables["crossinfo"].AsEnumerable()

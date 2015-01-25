@@ -21,26 +21,37 @@ namespace StockiiPanel
         private SerializableDictionary<String, ArrayList> combineHeaderList = new SerializableDictionary<string, ArrayList>();//所有的表头
         ArrayList combineArray = new ArrayList();//拼接的操作序列
         ArrayList combineHeaders = new ArrayList();//拼接的操作序列表头
-
+        private String configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
         public SaveActionDialog(ArrayList list,ArrayList headers)
         {
             InitializeComponent();
-
-            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
+            try
             {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
-            }
+                using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                }
 
-            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+            
 
             if (combineList == null)
             {
                 combineList = new SerializableDictionary<string, ArrayList>();
+            }
+            if (combineList == null)
+            {
+                combineHeaderList = new SerializableDictionary<string, ArrayList>();
             }
 
             combineArray = list;
@@ -59,14 +70,14 @@ namespace StockiiPanel
             combineHeaderList[name.Text.ToString()] = combineHeaders;
 
             //保存到外部文件
-            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.combineList);
             }
 
             //保存表头到外部文件
-            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.combineHeaderList);

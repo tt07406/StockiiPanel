@@ -20,6 +20,7 @@ namespace StockiiPanel
         private SerializableDictionary<String, ArrayList> combineHeaderList = new SerializableDictionary<string, ArrayList>();//所有的表头
         ArrayList combineArray = new ArrayList();//拼接的操作序列
         String actionName = "";
+        private String configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
 
         public String ActionName
         {
@@ -37,13 +38,13 @@ namespace StockiiPanel
         {
             InitializeComponent();
 
-            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream(configDir+"\\actions.xml", FileMode.Open))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
             }
 
-            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream(configDir+"\\headers.xml", FileMode.Open))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 this.combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);

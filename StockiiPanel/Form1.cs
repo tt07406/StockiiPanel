@@ -32,6 +32,7 @@ namespace StockiiPanel
         private String curGroupName = "";
         private SerializableDictionary<String, ArrayList> pList;
         private Dictionary<int, string> record;//上次记录
+        private String configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
 
         private CustomDialog customDialog;
 
@@ -45,7 +46,10 @@ namespace StockiiPanel
             record = new Dictionary<int, string>();
             curTabName = tabControl.SelectedTab.Name;
             initTab(curTabName);
-            
+            if (!Directory.Exists(configDir))//判断是否存在
+            {
+                Directory.CreateDirectory(configDir);
+            }
         }
 
         private void initTab(string curTabName)
@@ -97,7 +101,7 @@ namespace StockiiPanel
         {
             try
             {
-                using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
+                using (FileStream fileStream = new FileStream(configDir + "\\group.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                     this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
@@ -269,17 +273,137 @@ namespace StockiiPanel
             searchTab(curTabName);
         }
 
+        private String getFilterByName(String name)
+        {
+            String ret = "";
+            switch (name)
+            {
+                case "allToolStripMenuItem":
+                    ret = "CLASS_6_0";
+                    break;
+                case "equalToolStripMenuItem":
+                    ret = "CLASS_0_0";
+                    break;
+                case "amp2ToolStripMenuItem":
+                    ret = "CLASS_1_0";
+                    break;
+                case "amp0ToolStripMenuItem":
+                    ret = "CLASS_1_1";
+                    break;
+                case "rise49ToolStripMenuItem":
+                    ret = "CLASS_2_0";
+                    break;
+                case "decrease49ToolStripMenuItem":
+                    ret = "CLASS_2_1";
+                    break;
+                case "amount09999ToolStripMenuItem":
+                    ret = "CLASS_3_0";
+                    break;
+                case "amount119999ToolStripMenuItem":
+                    ret = "CLASS_3_1";
+                    break;
+                case "amount49999ToolStripMenuItem1":
+                    ret = "CLASS_3_2";
+                    break;
+                case "amount5ToolStripMenuItem2":
+                    ret = "CLASS_3_3";
+                    break;
+                case "amount9ToolStripMenuItem3":
+                    ret = "CLASS_3_4";
+                    break;
+                case "amount15ToolStripMenuItem4":
+                    ret = "CLASS_3_5";
+                    break;
+                case "amount20ToolStripMenuItem":
+                    ret = "CLASS_3_6";
+                    break;
+                case "amount25ToolStripMenuItem":
+                    ret = "CLASS_3_7";
+                    break;
+                case "amount30ToolStripMenuItem":
+                    ret = "CLASS_3_8";
+                    break;
+                case "amount40ToolStripMenuItem":
+                    ret = "CLASS_3_9";
+                    break;
+                case "turnover09999ToolStripMenuItem":
+                    ret = "CLASS_4_0";
+                    break;
+                case "turnover129999ToolStripMenuItem":
+                    ret = "CLASS_4_1";
+                    break;
+                case "turnover349999ToolStripMenuItem":
+                    ret = "CLASS_4_2";
+                    break;
+                case "turnover569999ToolStripMenuItem":
+                    ret = "CLASS_4_3";
+                    break;
+                case "turnover7ToolStripMenuItem":
+                    ret = "CLASS_4_4";
+                    break;
+                case "turnover10ToolStripMenuItem1":
+                    ret = "CLASS_4_5";
+                    break;
+                case "turnover15ToolStripMenuItem":
+                    ret = "CLASS_4_6";
+                    break;
+                case "turnover20ToolStripMenuItem":
+                    ret = "CLASS_4_7";
+                    break;
+                case "turnover25ToolStripMenuItem":
+                    ret = "CLASS_4_8";
+                    break;
+                case "turnover30ToolStripMenuItem":
+                    ret = "CLASS_4_9";
+                    break;
+                case "turnover35ToolStripMenuItem":
+                    ret = "CLASS_4_10";
+                    break;
+                case "turnover40ToolStripMenuItem":
+                    ret = "CLASS_4_11";
+                    break;
+                case "turnover45ToolStripMenuItem":
+                    ret = "CLASS_4_12";
+                    break;
+                case "turnover50ToolStripMenuItem":
+                    ret = "CLASS_4_13";
+                    break;
+                case "turnover60ToolStripMenuItem":
+                    ret = "CLASS_4_14";
+                    break;
+                default:
+                    ret = "";
+                    break;
+            }
+            return ret;
+        }
+
         private void upItem_Click(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            record.Clear();
-            record[3] = item.Name;
+            //record.Clear();
+            if (record.Keys.Contains(4)) 
+            {
+                record.Remove(4);
+            }
+            String filter = "FLAG_UP__";
+            String subType = getFilterByName(item.Name);
+            if (subType.Length != 0)
+            {
+                filter += subType;
+            }
+            else
+            {
+                filter = "";
+            }
+            record[3] = filter;
+
 
             pagesize = 1000;
-
+            pageList[curTabName] = 1;
             searchTab(curTabName);
         }
 
@@ -289,11 +413,25 @@ namespace StockiiPanel
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            record.Clear();
-            record[4] = item.Name;
+            //record.Clear();
+            if (record.Keys.Contains(3))
+            {
+                record.Remove(3);
+            }
+            String filter = "FLAG_DOWN__";
+            String subType = getFilterByName(item.Name);
+            if (subType.Length != 0)
+            {
+                filter += subType;
+            }
+            else
+            {
+                filter = "";
+            }
+            record[4] = filter;
 
             pagesize = 1000;
-
+            pageList[curTabName] = 1;
             searchTab(curTabName);
         }
 
@@ -424,17 +562,42 @@ namespace StockiiPanel
 
             ds = new DataSet();
             int totalPages;
-            if (args.Length == 3)//自选
+            String filter = "";
+            if (record.Keys.Contains(3) || record.Keys.Contains(4))
             {
-                String name = args[2];//取选中的分组
-                ArrayList stocks = new ArrayList(pList[name]);
-                stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                if (record.Keys.Contains(3))
+                {
+                    filter = record[3];
+                    record.Remove(3);
+                } 
+                else
+                {
+                    filter = record[4];
+                    record.Remove(4);
+                }
+                
+            }
+
+            if (args.Length == 3 || record.Count == 0)//自选
+            {
+                ArrayList stocks;
+                if (args.Length == 3)
+                {
+                    String name = args[2];//取选中的分组
+                    stocks = new ArrayList(pList[name]);
+
+                }
+                else
+                {
+                    stocks = new ArrayList();
+                }
+                
+                stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
                 totalPageList[curTabName] = totalPages;
             }
             else //版块
             {
-
-                stop = Commons.GetStockDayInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetStockDayInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
                 totalPageList[curTabName] = totalPages;
             }
         }
@@ -659,17 +822,44 @@ namespace StockiiPanel
             {
                 type = 3;
             }
-            int totalPages;
-            if (args.Length == 6 )//自选
-            {
-                String name = args[2];//取选中的分组
-                ArrayList stocks = new ArrayList(pList[name]);
 
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3]), args[4], args[5], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+            String filter = "";
+            if (record.Keys.Contains(3) || record.Keys.Contains(4))
+            {
+                if (record.Keys.Contains(3))
+                {
+                    filter = record[3];
+                    record.Remove(3);
+                } 
+                else
+                {
+                    filter = record[4];
+                    record.Remove(4);
+                }
+                
+            }
+
+            int totalPages;
+            if (args.Length == 6 || record.Count == 0)//自选
+            {
+                ArrayList stocks;
+                int delta = 0;
+                if (args.Length == 6)
+                {
+                    String name = args[2];//取选中的分组
+                    stocks = new ArrayList(pList[name]);
+                    
+                }
+                else
+                {
+                    stocks = new ArrayList();
+                    delta = 1;
+                }
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3-delta]), args[4-delta], args[5-delta], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
-                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSumBoard(record, type, Convert.ToInt32(args[2]), args[3], args[4], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
             }
             totalPageList[curTabName] = totalPages;
 
@@ -772,7 +962,6 @@ namespace StockiiPanel
                 gridView.Columns[curSortIndex].HeaderCell.SortGlyphDirection = SortOrder.None;
             }
             gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
-            Console.WriteLine("sort_name: {0}", gridView.Columns[e.ColumnIndex].DataPropertyName);
             pageList[curTabName] = 1;
             searchTab(curTabName);
             //gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;

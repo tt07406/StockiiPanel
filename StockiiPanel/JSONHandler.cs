@@ -18,8 +18,8 @@ namespace StockiiPanel
     static class JSONHandler
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
-        public static string localURL = "http://192.168.1.220:8080/client/api";
-        //public static string localURL = "http://www.stockii.com:8090/client/api"; 
+        //public static string localURL = "http://192.168.1.220:8080/client/api";
+        public static string localURL = "http://www.stockii.com:8090/client/api"; 
 
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据
@@ -412,14 +412,12 @@ namespace StockiiPanel
         /// 获取股票所有详细信息，包括股票每天的各种指标值
         /// </summary>
         /// <returns></returns>
-        public static DataSet GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage,out int errorNo)
+        public static DataSet GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int totalpage,out int errorNo)
         {
             string jsonText = "";
             totalpage = 1;
             errorNo = 0;
 
-            if (stockid.Count == 0)
-                return null;
             try
             {
                 //FileStream aFile = new FileStream("stockdayinfo.txt", FileMode.OpenOrCreate);
@@ -432,11 +430,16 @@ namespace StockiiPanel
                 Dictionary<string, string> args = new Dictionary<string, string>();
                 args["command"] = "liststockdayinfo";
                 args["response"] = "json";
-
-                args["stockid"] = String.Join(",", stockid.ToArray());
+                if (stockid.Count != 0)
+                {
+                    args["stockid"] = String.Join(",", stockid.ToArray());
+                }
+                
                 args["page"] = page+"";
                 args["pagesize"] = pagesize + "";
                 args["asc"] = asc + "";
+                if (!filter.Equals(""))
+                    args["filter"] = filter;
                 if (!sortname.Equals(""))
                     args["sortname"] = sortname;
                 if (!startDate.Equals(""))
@@ -465,8 +468,7 @@ namespace StockiiPanel
 
             if (jo.First.First.Last == null)
             {
-                errorNo = 1;
-                return null;
+                return new DataSet();
             }
 
             string jsonarray = jo.First.First.Last.ToString();
@@ -477,7 +479,7 @@ namespace StockiiPanel
             return jsDs;
         }
 
-        public static DataSet GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        public static DataSet GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int totalpage, out int errorNo)
         {
             string jsonText = "";
             totalpage = 1;
@@ -521,7 +523,10 @@ namespace StockiiPanel
                         break;
                 }
                 args["response"] = "json";
-                args["stockid"] = String.Join(",", stockid.ToArray());
+                if (stockid.Count != 0)
+                {
+                    args["stockid"] = String.Join(",", stockid.ToArray());
+                }
                 args["starttime"] = startDate;
                 args["endtime"] = endDate;
                 args["sumname"] = sumname;
@@ -530,6 +535,10 @@ namespace StockiiPanel
                 {
                     args["sortname"] = sortname;
                     args["asc"] = asc.ToString();
+                }
+                if (filter.Trim().Length != 0)
+                {
+                    args["filter"] = filter;
                 }
                 args["page"] = page.ToString();
                 args["pagesize"] = pagesize.ToString();
@@ -555,8 +564,7 @@ namespace StockiiPanel
 
             if (jo.First.First.Last == null)
             {
-                errorNo = 1;
-                return null;
+                return new DataSet();
             }
 
             string jsonarray = jo.First.First.Last.ToString();
@@ -620,8 +628,7 @@ namespace StockiiPanel
 
             if (jo.First.First.Last == null)
             {
-                errorNo = 1;
-                return null;
+                return new DataSet();
             }
 
             string jsonarray = jo.First.First.Last.ToString();
@@ -670,7 +677,7 @@ namespace StockiiPanel
 
             if (jo.First.First.Last == null)
             {
-                return null;
+                return new DataSet();
             }
 
             string jsonarray = jo.First.First.Last.ToString();

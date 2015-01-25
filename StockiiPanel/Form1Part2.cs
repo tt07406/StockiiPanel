@@ -31,7 +31,7 @@ namespace StockiiPanel
 
         private void upItem_MouseDown(object sender, EventArgs e)
         {
-            groupList.Hide();
+            //groupList.Hide();
             boardMenuStrip.Show(this, ribbonBar4.Location.X + upContainer.Size.Width, boardMenuStrip.Height + upContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
@@ -42,7 +42,7 @@ namespace StockiiPanel
 
         private void downItem_MouseDown(object sender, EventArgs e)
         {
-            groupList.Hide();
+            //groupList.Hide();
             boardMenuStrip.Show(this, ribbonBar4.Location.X+ upContainer.Size.Width+ downContainer.Size.Width, boardMenuStrip.Height + downContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
@@ -198,7 +198,7 @@ namespace StockiiPanel
                     return;
                 }
 
-                dt = Commons.CombineDt(ds, dt);
+                dt = Commons.(ds, dt);
             }
         }
 
@@ -245,32 +245,39 @@ namespace StockiiPanel
 
             //设置表头
             ArrayList combineHeaders = new ArrayList();//拼接的操作序列表头
-
-            using (FileStream fileStream = new FileStream("headers.xml", FileMode.Open))
+            try
             {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                SerializableDictionary<string, ArrayList> combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
-                if (combineHeaderList != null)
+                using (FileStream fileStream = new FileStream(configDir + "\\headers.xml", FileMode.Open))
                 {
-                    combineHeaders = (ArrayList)combineHeaderList[actionName].Clone();
-                    Console.WriteLine(combineHeaders.Count + ":" + combineResult.ColumnCount);
-                    for (int i = 0; i < combineResult.ColumnCount; i++)
-                        combineResult.Columns[i].HeaderText = combineHeaders[i].ToString();
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    SerializableDictionary<string, ArrayList> combineHeaderList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                    if (combineHeaderList != null)
+                    {
+                        combineHeaders = (ArrayList)combineHeaderList[actionName].Clone();
+                        Console.WriteLine(combineHeaders.Count + ":" + combineResult.ColumnCount);
+                        for (int i = 0; i < combineResult.ColumnCount; i++)
+                            combineResult.Columns[i].HeaderText = combineHeaders[i].ToString();
+                    }
+                }
+
+
+
+                //保存查询参数
+                using (FileStream fileStream = new FileStream(configDir + "\\actions.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    SerializableDictionary<string, ArrayList> combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                    if (combineList != null)
+                    {
+                        combineArray = (ArrayList)combineList[actionName].Clone();
+                    }
                 }
             }
-
+            catch (Exception)
+            {
+                
+            }
             
-
-            //保存查询参数
-            using (FileStream fileStream = new FileStream("actions.xml", FileMode.Open))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
-                SerializableDictionary<string, ArrayList> combineList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
-                if (combineList != null)
-                {
-                    combineArray = (ArrayList)combineList[actionName].Clone();
-                }
-            }
             stop = true;
         }
 

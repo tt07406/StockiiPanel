@@ -272,7 +272,9 @@ namespace StockiiPanel
 
         private void saveGroup()
         {
-            using (FileStream fileStream = new FileStream("group.xml", FileMode.Create))
+               
+            String filePath = configDir + "\\group.xml";
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
                 xmlFormatter.Serialize(fileStream, this.pList);
