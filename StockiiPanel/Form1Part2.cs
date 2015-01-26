@@ -31,7 +31,7 @@ namespace StockiiPanel
 
         private void upItem_MouseDown(object sender, EventArgs e)
         {
-            //groupList.Hide();
+            //groupList.Show();
             boardMenuStrip.Show(this, ribbonBar4.Location.X + upContainer.Size.Width, boardMenuStrip.Height + upContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
@@ -42,7 +42,7 @@ namespace StockiiPanel
 
         private void downItem_MouseDown(object sender, EventArgs e)
         {
-            //groupList.Hide();
+            //groupList.Show();
             boardMenuStrip.Show(this, ribbonBar4.Location.X+ upContainer.Size.Width+ downContainer.Size.Width, boardMenuStrip.Height + downContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;

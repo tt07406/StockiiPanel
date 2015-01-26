@@ -75,13 +75,6 @@ namespace StockiiPanel
         private void boardButton_Click(object sender, EventArgs e)
         {
             groupList.Hide();
-
-            if (record.Values.Count > 0)
-            {
-                string name = record.Values.First();
-                MessageBox.Show(name);
-            }
-            
         }
 
         public bool initBeforeShow()
@@ -250,6 +243,7 @@ namespace StockiiPanel
             {
                 upItem_Click(sender, e);
             }
+
         }
 
         private void sectionItem_Click(object sender, EventArgs e)
@@ -257,6 +251,13 @@ namespace StockiiPanel
             ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[1] = item.Name;
+
+            if (record.Values.Count > 0)
+            {
+                string name = record.Values.First();
+                currentBoard.Text = "当前板块：" + name;
+            }
+            
             pagesize = 1000;
             pageList[curTabName] = 1;
             searchTab(curTabName);
@@ -267,6 +268,12 @@ namespace StockiiPanel
             ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[2] = item.Name;
+
+            if (record.Values.Count > 0)
+            {
+                string name = record.Values.First();
+                currentBoard.Text = "当前板块：" + name;
+            }
 
             pagesize = 1000;
             pageList[curTabName] = 1;
@@ -279,96 +286,127 @@ namespace StockiiPanel
             switch (name)
             {
                 case "allToolStripMenuItem":
+                case "allToolStripDownMenuItem":
                     ret = "CLASS_6_0";
                     break;
                 case "equalToolStripMenuItem":
+                case "equalToolStripDownMenuItem":
                     ret = "CLASS_0_0";
                     break;
                 case "amp2ToolStripMenuItem":
+                case "amp2ToolStripDownMenuItem":
                     ret = "CLASS_1_0";
                     break;
                 case "amp0ToolStripMenuItem":
+                case "amp0ToolStripDownMenuItem":
                     ret = "CLASS_1_1";
                     break;
                 case "rise49ToolStripMenuItem":
+                case "rise49ToolStripDownMenuItem":
                     ret = "CLASS_2_0";
                     break;
                 case "decrease49ToolStripMenuItem":
+                case "decrease49ToolStripDownMenuItem":
                     ret = "CLASS_2_1";
                     break;
                 case "amount09999ToolStripMenuItem":
+                case "amount09999ToolStripDownMenuItem":
                     ret = "CLASS_3_0";
                     break;
                 case "amount119999ToolStripMenuItem":
+                case "amount119999ToolStripDownMenuItem":
                     ret = "CLASS_3_1";
                     break;
                 case "amount49999ToolStripMenuItem1":
+                case "amount49999ToolStripDownMenuItem1":
                     ret = "CLASS_3_2";
                     break;
                 case "amount5ToolStripMenuItem2":
+                case "amount5ToolStripDownMenuItem2":
                     ret = "CLASS_3_3";
                     break;
                 case "amount9ToolStripMenuItem3":
+                case "amount9ToolStripDownMenuItem3":
                     ret = "CLASS_3_4";
                     break;
                 case "amount15ToolStripMenuItem4":
+                case "amount15ToolStripDownMenuItem4":
                     ret = "CLASS_3_5";
                     break;
                 case "amount20ToolStripMenuItem":
+                case "amount20ToolStripDownMenuItem":
                     ret = "CLASS_3_6";
                     break;
                 case "amount25ToolStripMenuItem":
+                case "amount25ToolStripDownMenuItem":
                     ret = "CLASS_3_7";
                     break;
                 case "amount30ToolStripMenuItem":
+                case "amount30ToolStripDownMenuItem":
                     ret = "CLASS_3_8";
                     break;
                 case "amount40ToolStripMenuItem":
+                case "amount40ToolStripDownMenuItem":
                     ret = "CLASS_3_9";
                     break;
                 case "turnover09999ToolStripMenuItem":
+                case "turnover09999ToolStripDownMenuItem":
                     ret = "CLASS_4_0";
                     break;
                 case "turnover129999ToolStripMenuItem":
+                case "turnover129999ToolStripDownMenuItem":
                     ret = "CLASS_4_1";
                     break;
                 case "turnover349999ToolStripMenuItem":
+                case "turnover349999ToolStripDownMenuItem":
                     ret = "CLASS_4_2";
                     break;
                 case "turnover569999ToolStripMenuItem":
+                case "turnover569999ToolStripDownMenuItem":
                     ret = "CLASS_4_3";
                     break;
                 case "turnover7ToolStripMenuItem":
+                case "turnover7ToolStripDownMenuItem":
                     ret = "CLASS_4_4";
                     break;
                 case "turnover10ToolStripMenuItem1":
+                case "turnover10ToolStripDownMenuItem1":
                     ret = "CLASS_4_5";
                     break;
                 case "turnover15ToolStripMenuItem":
+                case "turnover15ToolStripDownMenuItem":
                     ret = "CLASS_4_6";
                     break;
                 case "turnover20ToolStripMenuItem":
+                case "turnover20ToolStripDownMenuItem":
                     ret = "CLASS_4_7";
                     break;
                 case "turnover25ToolStripMenuItem":
+                case "turnover25ToolStripDownMenuItem":
                     ret = "CLASS_4_8";
                     break;
                 case "turnover30ToolStripMenuItem":
+                case "turnover30ToolStripDownMenuItem":
                     ret = "CLASS_4_9";
                     break;
                 case "turnover35ToolStripMenuItem":
+                case "turnover35ToolStripDownMenuItem":
                     ret = "CLASS_4_10";
                     break;
                 case "turnover40ToolStripMenuItem":
+                case "turnover40ToolStripDownMenuItem":
                     ret = "CLASS_4_11";
                     break;
                 case "turnover45ToolStripMenuItem":
+                case "turnover45ToolStripDownMenuItem":
                     ret = "CLASS_4_12";
                     break;
                 case "turnover50ToolStripMenuItem":
+                case "turnover50ToolStripDownMenuItem":
                     ret = "CLASS_4_13";
                     break;
                 case "turnover60ToolStripMenuItem":
+                case "turnover60ToolStripDownMenuItem":
                     ret = "CLASS_4_14";
                     break;
                 default:
@@ -400,7 +438,6 @@ namespace StockiiPanel
                 filter = "";
             }
             record[3] = filter;
-
 
             pagesize = 1000;
             pageList[curTabName] = 1;
@@ -520,6 +557,8 @@ namespace StockiiPanel
             groupList.Items.Clear();
             myGroups.SubItems.Remove(selectedName);
             saveGroup();
+
+            groupStatus.Text = "自选分组";
         }
 
         private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1012,6 +1051,8 @@ namespace StockiiPanel
                 groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
             }
             curGroupName = item.Name;
+
+            groupStatus.Text = "自选分组：" + curGroupName;
         }
 
         private void myGroups_Click(object sender, EventArgs e)
