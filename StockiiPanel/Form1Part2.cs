@@ -58,6 +58,11 @@ namespace StockiiPanel
             {
                 tabControl.Controls.Add(tab);
                 tabControl.SelectTab(tab);
+                if (tabControl.TabCount == 1)
+                {
+                    curTabName = tabControl.SelectedTab.Name;
+                    initTab(curTabName);
+                }
             }
             else
             {

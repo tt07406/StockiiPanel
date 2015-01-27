@@ -248,6 +248,11 @@ namespace StockiiPanel
 
         private void sectionItem_Click(object sender, EventArgs e)
         {
+            if (curTabName.Equals(""))
+            {
+                MessageBox.Show("请打开一个指标");
+                return;
+            }
             ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[1] = item.Name;
@@ -265,6 +270,11 @@ namespace StockiiPanel
 
         private void industryItem_Click(object sender, EventArgs e)
         {
+            if (curTabName.Equals(""))
+            {
+                MessageBox.Show("请打开一个指标");
+                return;
+            }
             ButtonItem item = (ButtonItem)sender;
             record.Clear();
             record[2] = item.Name;
@@ -418,6 +428,12 @@ namespace StockiiPanel
 
         private void upItem_Click(object sender, EventArgs e)
         {
+            if (curTabName.Equals(""))
+            {
+                MessageBox.Show("请打开一个指标");
+                return;
+            }
+
             if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
@@ -446,6 +462,12 @@ namespace StockiiPanel
 
         private void downItem_Click(object sender, EventArgs e)
         {
+            if (curTabName.Equals(""))
+            {
+                MessageBox.Show("请打开一个指标");
+                return;
+            }
+
             if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
@@ -967,8 +989,18 @@ namespace StockiiPanel
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             //curTabName = tabControl.SelectedIndex;
-            curTabName = tabControl.SelectedTab.Name;
+
+            if (tabControl.TabCount > 0)
+            {
+                curTabName = tabControl.SelectedTab.Name;
+            }
+            else
+            {
+                curTabName = "";
+            }
+
             initTab(curTabName);
+            
         }
 
         private void rawDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

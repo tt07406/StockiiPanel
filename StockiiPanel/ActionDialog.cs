@@ -111,6 +111,12 @@ namespace StockiiPanel
                 return;
             }
 
+            if (startDatePicker.Value.CompareTo(endDatePicker.Value) > 0)
+            {
+                MessageBox.Show("开始时间大于结束时间");
+                return;
+            }
+
             if (!Commons.isTradeDay(startDatePicker.Value) || !Commons.isTradeDay(endDatePicker.Value))
             {
                 MessageBox.Show("非交易日");
