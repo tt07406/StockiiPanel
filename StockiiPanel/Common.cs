@@ -53,7 +53,7 @@ namespace StockiiPanel
             {
                 String dateStr = (String)row["listdate"];
                 DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat; 
-                DateTime dateTime = DateTime.ParseExact(dateStr, "yyyy-MM-ddThh:mm:ss+08:00", dtfi, DateTimeStyles.None);
+                DateTime dateTime = DateTime.ParseExact(dateStr, "yyyy-MM-ddThh:mm:sszzz", dtfi, DateTimeStyles.None);
                 tradeDates.Add(dateTime);
             }
 
@@ -396,7 +396,7 @@ namespace StockiiPanel
         /// <returns></returns>
         public static bool isTradeDay(DateTime date)
         {
-            DateTime riqi = Convert.ToDateTime(date.ToShortDateString() + "T00:00:00+0800");
+            DateTime riqi = Convert.ToDateTime(date.ToShortDateString() + "T00:00:00" + date.ToString("zzz"));
             if (tradeDates.Contains(riqi))
             {
                 return true;
@@ -455,7 +455,7 @@ namespace StockiiPanel
         public static DateTime calcStartDate(String curDateStr, int delta, int type)
         {
             DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
-            DateTime startDate = DateTime.ParseExact(curDateStr, "yyyy-MM-ddThh:mm:ss+08:00", dtfi, DateTimeStyles.None);
+            DateTime startDate = DateTime.ParseExact(curDateStr, "yyyy-MM-ddThh:mm:sszzz", dtfi, DateTimeStyles.None);
             switch (type)
             {
                 case 1:
