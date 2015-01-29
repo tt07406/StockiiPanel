@@ -162,6 +162,7 @@ namespace StockiiPanel
                     }
                     combinePageToolStripMenuItem.Visible = false;
                     combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
                     break;
                 case "nsumTab":
                     if (ndayGrid.RowCount > 0)
@@ -176,6 +177,7 @@ namespace StockiiPanel
                     }
                     combinePageToolStripMenuItem.Visible = false;
                     combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
                     break;
                 case "customCalTab":
                     if (calResultGrid.RowCount > 0)

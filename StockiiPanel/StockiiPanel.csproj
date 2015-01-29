@@ -135,6 +135,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupDialog.Designer.cs">
+      <DependentUpon>GroupDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="JSONHandler.cs" />
     <Compile Include="MyProgressBar.cs">
       <SubType>Form</SubType>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupDialog.resx">
+      <DependentUpon>GroupDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyProgressBar.resx">
       <DependentUpon>MyProgressBar.cs</DependentUpon>

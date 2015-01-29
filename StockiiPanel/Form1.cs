@@ -550,7 +550,7 @@ namespace StockiiPanel
                 return;
             }
             string selectedName = curGroupName.ToString();
-            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs);
+            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs , false);
             dialog.ShowDialog(this);
 
             if (!dialog.IsSuccess)
@@ -575,12 +575,22 @@ namespace StockiiPanel
                 return;
             }
             string selectedName = curGroupName.ToString();
-            pList.Remove(selectedName);
-            groupList.Items.Clear();
-            myGroups.SubItems.Remove(selectedName);
-            saveGroup();
+            DialogResult dr = MessageBox.Show("是否删除分组：" + selectedName + "？", "删除操作", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
 
-            groupStatus.Text = "自选分组";
+            if (dr == DialogResult.Yes)
+            {
+                pList.Remove(selectedName);
+                groupList.Items.Clear();
+                myGroups.SubItems.Remove(selectedName);
+                saveGroup();
+
+                groupStatus.Text = "自选分组";
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
         private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1163,31 +1173,6 @@ namespace StockiiPanel
         public const int WEEK_SUM = 0002;
         public const int DAY_SUM = 0003;
 
-        private void sectionResultGrid_Sorted(object sender, EventArgs e)
-        {
-            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
-            //自动整理序列号
-            int coun = sectionResultGrid.RowCount;
-            for (int i = 0; i < coun; i++)
-            {
-                int j = i + 1;
-                sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
-
-                if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "positive")
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
-                }
-                else if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "negative")
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
-                }
-                else
-                {
-                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
-                }
-
-            }
-        }
 
     }    
 

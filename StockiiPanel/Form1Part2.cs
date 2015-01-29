@@ -286,5 +286,112 @@ namespace StockiiPanel
             stop = true;
         }
 
+
+        private void newGroupItem_Click(object sender, EventArgs e)
+        {
+            if (calResultGrid.SelectedRows.Count == 0 && sectionResultGrid.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("请选择股票");
+                return;
+            }
+            Random ro = new Random();
+            string newName = curGroupName.ToString()+ ro.Next();
+
+            //名字不重复
+            while (pList.ContainsKey(newName))
+            {
+                newName = curGroupName.ToString() + ro.Next();
+            }
+
+            ArrayList stocks = new ArrayList();
+            if (tabControl.SelectedTab.Name.Equals("customCalTab"))
+            {
+                for (int i = 0; i < calResultGrid.SelectedRows.Count; ++i)
+                {
+                    stocks.Add(calResultGrid.SelectedRows[i].Cells["stock_id"].Value.ToString());
+                }
+            }
+            else
+            {
+                for (int i = 0; i < sectionResultGrid.SelectedRows.Count; ++i)
+                {
+                    stocks.Add(sectionResultGrid.SelectedRows[i].Cells["stock_id"].Value.ToString());
+                }
+            }
+            pList.Add(newName, stocks);
+
+            SNListDialog dialog = new SNListDialog(pList, newName, stockDs);
+            dialog.ShowDialog(this);
+
+            pList.Remove(newName);
+            if (!dialog.IsSuccess)
+            {              
+                return;
+            }
+
+            string name = dialog.GroupName;
+            stocks = new ArrayList(dialog.SelectStocks);
+            addNewGroupButton(name);
+            pList[name] = stocks;
+
+            saveGroup();
+        }
+
+
+        private void sectionResultGrid_Sorted(object sender, EventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
+            int coun = sectionResultGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                sectionResultGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+                if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "positive")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if (sectionResultGrid.Rows[i].Cells["cross_type"].Value.ToString() == "negative")
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Lime;
+                }
+                else
+                {
+                    sectionResultGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+
+            }
+        }
+
+        private void manageGroup_Click(object sender, EventArgs e)
+        {
+            groupList.Show();
+
+            GroupDialog dialog = new GroupDialog(pList, stockDs);
+            dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                using (FileStream fileStream = new FileStream("group.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, ArrayList>));
+                    this.pList = (SerializableDictionary<string, ArrayList>)xmlFormatter.Deserialize(fileStream);
+                }
+                return;
+            }
+           
+            string name = dialog.GroupName;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
+            pList[name] = stocks;
+
+            //更新界面
+            initGroupsButton();
+
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
+            saveGroup();
+        }
+
     }
 }

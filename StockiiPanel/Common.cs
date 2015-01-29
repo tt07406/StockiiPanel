@@ -971,8 +971,8 @@ namespace StockiiPanel
                              end_date = u.Field<string>("enddate").Substring(0, 10),
                              start_value = u.Field<string>("startvalue"),
                              end_value = u.Field<string>("endvalue"),
-                             start_list_date = u.Field<string>("startlistdate").Substring(0, 10),
-                             end_list_date = u.Field<string>("endlistdate").Substring(0, 10),
+                             start_list_date = u.Field<string>("startlistdate"),
+                             end_list_date = u.Field<string>("endlistdate"),
                              cross_type = u.Field<string>("crosstype"),
                              avg = u.Field<string>("avg"),
                              difference = u.Field<string>("difference"),
@@ -1055,7 +1055,7 @@ namespace StockiiPanel
         /// </summary>
         /// <param name="dataGridView">要拼接的</param>
         /// <param name="isSelect">是否选中行</param>
-        public static DataTable Combine(DataGridView dataGridView, DataGridView combineGridView, bool isSelect)
+        public static DataTable Combine(DevComponents.DotNetBar.Controls.DataGridViewX dataGridView, DevComponents.DotNetBar.Controls.DataGridViewX combineGridView, bool isSelect)
         {
             DataTable tb1 = ((DataSet)dataGridView.DataSource).Tables[0];
             DataTable tb2 = new DataTable();//临时表

@@ -12,19 +12,29 @@ using System.Xml.Serialization;
 
 namespace StockiiPanel
 {
-    public partial class SNListDialog  : Form
+    public partial class GroupDialog : Form
     {
-        /// <summary>
-        /// 初始化函数
-        /// </summary>
-        /// <param name="list">已有的分组</param>
-        /// <param name="name">空表示添加分组，否则为要编辑分组的名字</param>
-        /// <param name="ds">股票信息</param>
-        public SNListDialog(Dictionary<String, System.Collections.ArrayList> list,string name,DataSet ds, bool isEdited = true)
+        private DataTable dt;
+        private ArrayList selectStocks;
+
+        public ArrayList SelectStocks
+        {
+            get { return selectStocks; }
+            set { selectStocks = value; }
+        }
+        private string groupName;
+
+        public string GroupName
+        {
+            get { return groupName; }
+            set { groupName = value; }
+        }
+
+        public GroupDialog(Dictionary<String, System.Collections.ArrayList> list, DataSet ds)
         {
             pList = list;
             InitializeComponent();
-
+          
             stockInfoList.DataSource = ds;
             stockInfoList.DataMember = "stock_basic_info";
 
@@ -43,45 +53,24 @@ namespace StockiiPanel
             for (int i = 2; i < stockInfoList.Columns.Count; ++i)
                 stockInfoList.Columns[i].Visible = false;
 
-
-            if (name.Equals(""))
+            if (pList.Keys.Count == 0)
             {
-                selectStocks = new System.Collections.ArrayList();
-                groupName = "";
+                MessageBox.Show("无分组，请新增分组");
+                this.Close();
             }
             else
             {
-                groupNameBox.Text = name;
-                groupName = name;
-                selectStocks = new System.Collections.ArrayList(pList[name]);//传引用
-                int k = selectStocks.Count;
-
-                selectedList.BeginUpdate();
-                for (int i = 0; i < k; ++i)
+                foreach (var item in pList)
                 {
-                    ListViewItem lvi = new ListViewItem();
-
-                    lvi.Text = selectStocks[i].ToString();
-
-                    DataRow[] drs = dt.Select("stock_id = '" + lvi.Text + "'");
-
-                    lvi.SubItems.Add(drs[0]["stock_name"].ToString());
-
-                    lvi.Name = lvi.Text;
-                    if (!selectedList.Items.ContainsKey(lvi.Text))
-                    {
-                        this.selectedList.Items.Add(lvi);
-                    }
-
+                    groupCombox.Items.Add(item.Key.ToString());
+                    
                 }
-                selectedList.EndUpdate();               
-                clearButton.Enabled = true;
+                groupCombox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                groupCombox.SelectedIndex = 0;
             }
 
-            groupNameBox.Enabled = isEdited;
+            
         }
-
-        private DataTable dt;
 
         private void stockInfoList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -92,7 +81,7 @@ namespace StockiiPanel
             {
                 int j = i + 1;
                 stockInfoList.Rows[i].HeaderCell.Value = j.ToString();
-            } 
+            }
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -100,7 +89,7 @@ namespace StockiiPanel
             int k = stockInfoList.SelectedRows.Count;
 
             selectedList.BeginUpdate();
-            for (int i = k -1; i >= 0; i--)
+            for (int i = k - 1; i >= 0; i--)
             {
                 ListViewItem lvi = new ListViewItem();
 
@@ -113,7 +102,7 @@ namespace StockiiPanel
                 {
                     this.selectedList.Items.Add(lvi);
                 }
-                
+
             }
             selectedList.EndUpdate();
 
@@ -137,7 +126,7 @@ namespace StockiiPanel
                 lvi.Name = lvi.Text;
 
                 this.selectedList.Items.Add(lvi);
-            } 
+            }
 
             selectedList.EndUpdate();
 
@@ -170,7 +159,7 @@ namespace StockiiPanel
             int k = selectedList.SelectedItems.Count;
 
             selectedList.BeginUpdate();
-            for (int i = k -1; i >= 0; i--)
+            for (int i = k - 1; i >= 0; i--)
             {
                 selectedList.Items.Remove(selectedList.SelectedItems[i]);
             }
@@ -195,11 +184,15 @@ namespace StockiiPanel
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-
-
-            if (groupName.Equals("") && pList.ContainsKey(groupNameBox.Text))
+            if (groupCombox.SelectedItem == null)
             {
-                MessageBox.Show(groupNameBox.Text + "已存在");
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+
+            if (groupName.Equals("") && pList.ContainsKey(groupCombox.SelectedText))
+            {
+                MessageBox.Show(groupCombox.SelectedText + "已存在");
                 return;
             }
 
@@ -217,7 +210,8 @@ namespace StockiiPanel
             {
                 selectStocks.Add(selectedList.Items[i].Name);
             }
-            groupName = groupNameBox.Text;
+            groupName = groupCombox.SelectedItem.ToString();
+            groupCombox.Items.Remove(groupName);
             isSuccess = true;
             this.Close();
         }
@@ -229,6 +223,65 @@ namespace StockiiPanel
         {
             get { return isSuccess; }
             set { isSuccess = value; }
+        }
+
+        private void groupCombox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (groupCombox.SelectedItem == null)
+            {
+                return;
+            }
+            
+            groupName = groupCombox.SelectedItem.ToString();
+
+            selectStocks = new System.Collections.ArrayList(pList[groupName]);
+
+            selectedList.Items.Clear();
+            int k = selectStocks.Count;
+
+            selectedList.BeginUpdate();
+            for (int i = 0; i < k; ++i)
+            {
+                ListViewItem lvi = new ListViewItem();
+
+                lvi.Text = selectStocks[i].ToString();
+
+                DataRow[] drs = dt.Select("stock_id = '" + lvi.Text + "'");
+
+                lvi.SubItems.Add(drs[0]["stock_name"].ToString());
+
+                lvi.Name = lvi.Text;
+                if (!selectedList.Items.ContainsKey(lvi.Text))
+                {
+                    this.selectedList.Items.Add(lvi);
+                }
+
+            }
+            selectedList.EndUpdate();
+
+            clearButton.Enabled = true;
+        }
+
+        private void deleteGroup_Click(object sender, EventArgs e)
+        {
+            if (groupName == null || groupName.Equals(""))
+            {
+                MessageBox.Show("请选择一个分组");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("是否删除分组：" + groupName + "？", "删除操作", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+
+            if (dr == DialogResult.Yes)
+            {
+                pList.Remove(groupName);
+                selectedList.Items.Clear();
+                groupCombox.Items.Remove(groupName);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

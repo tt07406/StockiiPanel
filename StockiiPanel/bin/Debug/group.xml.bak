@@ -2,6 +2,29 @@
 <SerializableDictionaryOfStringArrayList>
   <SerializableDictionary>
     <key>
+      <string>新建分组1</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000009</anyType>
+        <anyType xsi:type="xsd:string">000010</anyType>
+        <anyType xsi:type="xsd:string">000011</anyType>
+        <anyType xsi:type="xsd:string">000012</anyType>
+        <anyType xsi:type="xsd:string">000014</anyType>
+        <anyType xsi:type="xsd:string">000016</anyType>
+        <anyType xsi:type="xsd:string">000030</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
       <string>新建分组2</string>
     </key>
     <value>
@@ -2626,6 +2649,19 @@
   </SerializableDictionary>
   <SerializableDictionary>
     <key>
+      <string>跨区分组</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">300108</anyType>
+        <anyType xsi:type="xsd:string">002171</anyType>
+        <anyType xsi:type="xsd:string">002479</anyType>
+        <anyType xsi:type="xsd:string">300074</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
       <string>自定义分组</string>
     </key>
     <value>
@@ -2637,6 +2673,29 @@
         <anyType xsi:type="xsd:string">000006</anyType>
         <anyType xsi:type="xsd:string">000007</anyType>
         <anyType xsi:type="xsd:string">000008</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string />
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000009</anyType>
+        <anyType xsi:type="xsd:string">000010</anyType>
+        <anyType xsi:type="xsd:string">000011</anyType>
+        <anyType xsi:type="xsd:string">000012</anyType>
+        <anyType xsi:type="xsd:string">000014</anyType>
+        <anyType xsi:type="xsd:string">000016</anyType>
+        <anyType xsi:type="xsd:string">000030</anyType>
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>
