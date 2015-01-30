@@ -490,6 +490,13 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
+            this.boardBar = new DevComponents.DotNetBar.RibbonBar();
+            this.upContainer = new DevComponents.DotNetBar.ItemContainer();
+            this.upItem = new DevComponents.DotNetBar.ButtonItem();
+            this.labelUP = new DevComponents.DotNetBar.LabelItem();
+            this.downContainer = new DevComponents.DotNetBar.ItemContainer();
+            this.downItem = new DevComponents.DotNetBar.ButtonItem();
+            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer13 = new DevComponents.DotNetBar.ItemContainer();
             this.areaItem = new DevComponents.DotNetBar.ButtonItem();
@@ -499,12 +506,6 @@
             this.industryItem = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
-            this.upContainer = new DevComponents.DotNetBar.ItemContainer();
-            this.upItem = new DevComponents.DotNetBar.ButtonItem();
-            this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
-            this.downContainer = new DevComponents.DotNetBar.ItemContainer();
-            this.downItem = new DevComponents.DotNetBar.ButtonItem();
-            this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.itemContainer17 = new DevComponents.DotNetBar.ItemContainer();
             this.addGroup = new DevComponents.DotNetBar.ButtonItem();
@@ -4320,6 +4321,7 @@
             // ribbonPanel3
             // 
             this.ribbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel3.Controls.Add(this.boardBar);
             this.ribbonPanel3.Controls.Add(this.ribbonBar4);
             this.ribbonPanel3.Controls.Add(this.ribbonBar3);
             this.ribbonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -4341,6 +4343,107 @@
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
             // 
+            // boardBar
+            // 
+            this.boardBar.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.boardBar.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.boardBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.boardBar.CanCustomize = false;
+            this.boardBar.ContainerControlProcessDialogKey = true;
+            this.boardBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.boardBar.DragDropSupport = true;
+            this.boardBar.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.boardBar.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.upContainer,
+            this.downContainer});
+            this.boardBar.ItemSpacing = 15;
+            this.boardBar.Location = new System.Drawing.Point(413, 0);
+            this.boardBar.Name = "boardBar";
+            this.boardBar.Size = new System.Drawing.Size(143, 99);
+            this.boardBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.boardBar.TabIndex = 1;
+            this.boardBar.Text = "板块分区";
+            // 
+            // 
+            // 
+            this.boardBar.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.boardBar.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // upContainer
+            // 
+            // 
+            // 
+            // 
+            this.upContainer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.upContainer.CanCustomize = false;
+            this.upContainer.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.upContainer.Name = "upContainer";
+            this.upContainer.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.upItem,
+            this.labelUP});
+            // 
+            // 
+            // 
+            this.upContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // upItem
+            // 
+            this.upItem.CanCustomize = false;
+            this.upItem.Image = global::StockiiPanel.Properties.Resources.icon_upload;
+            this.upItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.upItem.Name = "upItem";
+            this.upItem.Text = "buttonItem5";
+            this.upItem.Click += new System.EventHandler(this.upItem_MouseDown);
+            // 
+            // labelUP
+            // 
+            this.labelUP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelUP.Name = "labelUP";
+            this.labelUP.Text = "按向上";
+            this.labelUP.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // downContainer
+            // 
+            // 
+            // 
+            // 
+            this.downContainer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.downContainer.CanCustomize = false;
+            this.downContainer.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.downContainer.Name = "downContainer";
+            this.downContainer.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.downItem,
+            this.labelItem5});
+            // 
+            // 
+            // 
+            this.downContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // downItem
+            // 
+            this.downItem.CanCustomize = false;
+            this.downItem.Image = global::StockiiPanel.Properties.Resources.icon_download;
+            this.downItem.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.downItem.Name = "downItem";
+            this.downItem.Text = "buttonItem6";
+            this.downItem.Click += new System.EventHandler(this.downItem_MouseDown);
+            // 
+            // labelItem5
+            // 
+            this.labelItem5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelItem5.Name = "labelItem5";
+            this.labelItem5.Text = "按向下";
+            this.labelItem5.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // ribbonBar4
             // 
             this.ribbonBar4.AutoOverflowEnabled = true;
@@ -4359,13 +4462,11 @@
             this.ribbonBar4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ribbonBar4.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer13,
-            this.itemContainer12,
-            this.upContainer,
-            this.downContainer});
+            this.itemContainer12});
             this.ribbonBar4.ItemSpacing = 15;
             this.ribbonBar4.Location = new System.Drawing.Point(249, 0);
             this.ribbonBar4.Name = "ribbonBar4";
-            this.ribbonBar4.Size = new System.Drawing.Size(310, 99);
+            this.ribbonBar4.Size = new System.Drawing.Size(164, 99);
             this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar4.TabIndex = 1;
             this.ribbonBar4.Text = "默认分组";
@@ -4457,70 +4558,6 @@
             this.labelItem6.Name = "labelItem6";
             this.labelItem6.Text = "按行业";
             this.labelItem6.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // upContainer
-            // 
-            // 
-            // 
-            // 
-            this.upContainer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.upContainer.CanCustomize = false;
-            this.upContainer.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.upContainer.Name = "upContainer";
-            this.upContainer.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.upItem,
-            this.labelItem7});
-            // 
-            // 
-            // 
-            this.upContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // upItem
-            // 
-            this.upItem.Image = global::StockiiPanel.Properties.Resources.icon_upload;
-            this.upItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.upItem.Name = "upItem";
-            this.upItem.Text = "buttonItem16";
-            this.upItem.Click += new System.EventHandler(this.upItem_MouseDown);
-            // 
-            // labelItem7
-            // 
-            this.labelItem7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelItem7.Name = "labelItem7";
-            this.labelItem7.Text = "按向上";
-            this.labelItem7.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // downContainer
-            // 
-            // 
-            // 
-            // 
-            this.downContainer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.downContainer.CanCustomize = false;
-            this.downContainer.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.downContainer.Name = "downContainer";
-            this.downContainer.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.downItem,
-            this.labelItem9});
-            // 
-            // 
-            // 
-            this.downContainer.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // downItem
-            // 
-            this.downItem.Image = global::StockiiPanel.Properties.Resources.icon_download;
-            this.downItem.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.downItem.Name = "downItem";
-            this.downItem.Text = "buttonItem16";
-            this.downItem.Click += new System.EventHandler(this.downItem_MouseDown);
-            // 
-            // labelItem9
-            // 
-            this.labelItem9.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelItem9.Name = "labelItem9";
-            this.labelItem9.Text = "按向下";
-            this.labelItem9.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // ribbonBar3
             // 
@@ -5799,7 +5836,7 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -16005;
+            this.boardButton.WorkSizeY = -16445;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
@@ -6331,12 +6368,6 @@
         private DevComponents.DotNetBar.ItemContainer itemContainer12;
         private DevComponents.DotNetBar.ButtonItem industryItem;
         private DevComponents.DotNetBar.LabelItem labelItem6;
-        private DevComponents.DotNetBar.ItemContainer upContainer;
-        private DevComponents.DotNetBar.ButtonItem upItem;
-        private DevComponents.DotNetBar.LabelItem labelItem7;
-        private DevComponents.DotNetBar.ItemContainer downContainer;
-        private DevComponents.DotNetBar.ButtonItem downItem;
-        private DevComponents.DotNetBar.LabelItem labelItem9;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
         private DevComponents.DotNetBar.ItemContainer itemContainer16;
         private DevComponents.DotNetBar.LabelItem labelItem10;
@@ -6432,6 +6463,13 @@
         private System.Windows.Forms.ToolStripStatusLabel groupStatus;
         private System.Windows.Forms.ToolStripStatusLabel currentBoard;
         private System.Windows.Forms.ToolStripMenuItem newGroupItem;
+        private DevComponents.DotNetBar.RibbonBar boardBar;
+        private DevComponents.DotNetBar.ItemContainer upContainer;
+        private DevComponents.DotNetBar.ButtonItem upItem;
+        private DevComponents.DotNetBar.LabelItem labelUP;
+        private DevComponents.DotNetBar.ItemContainer downContainer;
+        private DevComponents.DotNetBar.ButtonItem downItem;
+        private DevComponents.DotNetBar.LabelItem labelItem5;
     }
 }
 

@@ -439,7 +439,7 @@ namespace StockiiPanel
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             //record.Clear();
-            if (record.Keys.Contains(4)) 
+            if (record.Keys.Contains(4))
             {
                 record.Remove(4);
             }
@@ -1172,7 +1172,6 @@ namespace StockiiPanel
         public const int MONTH_SUM = 0001;
         public const int WEEK_SUM = 0002;
         public const int DAY_SUM = 0003;
-
 
     }    
 
