@@ -550,7 +550,7 @@ namespace StockiiPanel
                 return;
             }
             string selectedName = curGroupName.ToString();
-            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs , false);
+            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs , true);
             dialog.ShowDialog(this);
 
             if (!dialog.IsSuccess)
@@ -558,9 +558,13 @@ namespace StockiiPanel
                 return;
             }
 
+            pList.Remove(selectedName);
             string name = dialog.GroupName;
             ArrayList stocks = new ArrayList(dialog.SelectStocks);
             pList[name] = stocks;
+
+            //更新界面
+            initGroupsButton();
 
             ButtonItem item = new ButtonItem(name);
             groupButtonItemClicked(item, e);
@@ -1062,6 +1066,9 @@ namespace StockiiPanel
             pList.Add(name, stocks);
 
             addNewGroupButton(name);
+
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
             saveGroup();
             //groupList.Items.Add(name);
         }
