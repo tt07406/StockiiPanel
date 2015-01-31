@@ -93,3 +93,4 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\Stocki
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Resources.Resource1.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.GroupDialog.resources
+C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.GroupDialog.resources

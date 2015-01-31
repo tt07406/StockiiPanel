@@ -67,7 +67,7 @@ namespace StockiiPanel
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void manageGroupButton_Click(object sender, EventArgs e)
         {
             groupList.Show();
         }
@@ -1047,24 +1047,6 @@ namespace StockiiPanel
             searchTab(curTabName);
             //gridView.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
         }
-        private void buttonItem30_Click(object sender, EventArgs e)
-        {
-            SNListDialog dialog = new SNListDialog(pList, "", stockDs);
-            dialog.ShowDialog(this);
-
-            if (!dialog.IsSuccess)
-            {
-                return;
-            }
-
-            string name = dialog.GroupName;
-            ArrayList stocks = new ArrayList(dialog.SelectStocks);
-            pList.Add(name, stocks);
-
-            addNewGroupButton(name);
-            saveGroup();
-            //groupList.Items.Add(name);
-        }
 
         private void addNewGroupButton(string name)
         {
@@ -1172,6 +1154,25 @@ namespace StockiiPanel
         public const int MONTH_SUM = 0001;
         public const int WEEK_SUM = 0002;
         public const int DAY_SUM = 0003;
+
+        private void addGroup_Click(object sender, EventArgs e)
+        {
+            SNListDialog dialog = new SNListDialog(pList, "", stockDs);
+            dialog.ShowDialog(this);
+
+            if (!dialog.IsSuccess)
+            {
+                return;
+            }
+
+            string name = dialog.GroupName;
+            ArrayList stocks = new ArrayList(dialog.SelectStocks);
+            pList.Add(name, stocks);
+
+            addNewGroupButton(name);
+            saveGroup();
+            //groupList.Items.Add(name);
+        }
 
     }    
 
