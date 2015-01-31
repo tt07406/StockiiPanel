@@ -44,3 +44,5 @@ C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\Stoc
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.ActionDialog.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.Resources.Resource1.resources
 E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.GroupDialog.resources
+C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.csprojResolveAssemblyReference.cache
+C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Release\StockiiPanel.GroupDialog.resources
