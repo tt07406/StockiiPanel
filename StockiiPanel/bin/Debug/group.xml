@@ -2637,6 +2637,59 @@
         <anyType xsi:type="xsd:string">000006</anyType>
         <anyType xsi:type="xsd:string">000007</anyType>
         <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000012</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>新建分组1qw</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000009</anyType>
+        <anyType xsi:type="xsd:string">000010</anyType>
+        <anyType xsi:type="xsd:string">000011</anyType>
+        <anyType xsi:type="xsd:string">000012</anyType>
+        <anyType xsi:type="xsd:string">000014</anyType>
+        <anyType xsi:type="xsd:string">000016</anyType>
+        <anyType xsi:type="xsd:string">000017</anyType>
+        <anyType xsi:type="xsd:string">600649</anyType>
+        <anyType xsi:type="xsd:string">600650</anyType>
+        <anyType xsi:type="xsd:string">600651</anyType>
+        <anyType xsi:type="xsd:string">600652</anyType>
+      </ArrayOfAnyType>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>test</string>
+    </key>
+    <value>
+      <ArrayOfAnyType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <anyType xsi:type="xsd:string">000001</anyType>
+        <anyType xsi:type="xsd:string">000002</anyType>
+        <anyType xsi:type="xsd:string">000004</anyType>
+        <anyType xsi:type="xsd:string">000005</anyType>
+        <anyType xsi:type="xsd:string">000006</anyType>
+        <anyType xsi:type="xsd:string">000007</anyType>
+        <anyType xsi:type="xsd:string">000008</anyType>
+        <anyType xsi:type="xsd:string">000010</anyType>
+        <anyType xsi:type="xsd:string">000011</anyType>
+        <anyType xsi:type="xsd:string">000012</anyType>
+        <anyType xsi:type="xsd:string">000014</anyType>
+        <anyType xsi:type="xsd:string">000016</anyType>
+        <anyType xsi:type="xsd:string">000017</anyType>
+        <anyType xsi:type="xsd:string">000031</anyType>
+        <anyType xsi:type="xsd:string">000032</anyType>
+        <anyType xsi:type="xsd:string">000033</anyType>
+        <anyType xsi:type="xsd:string">000034</anyType>
       </ArrayOfAnyType>
     </value>
   </SerializableDictionary>

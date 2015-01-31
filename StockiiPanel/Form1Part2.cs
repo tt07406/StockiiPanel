@@ -31,23 +31,25 @@ namespace StockiiPanel
 
         private void upItem_MouseDown(object sender, EventArgs e)
         {
-            //groupList.Show();          
+            //groupList.Show();     
+            boardMenuStrip.Show(this, boardBar.Location.X - upContainer.Size.Width - downContainer.Size.Width, upContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
             upToolStripMenuItem.Visible = false;
             downToolStripMenuItem.Visible = false;
-            boardMenuStrip.Show(this, boardBar.Location.X - upContainer.Size.Width - downContainer.Size.Width, upContainer.Size.Height + ribbonPanel3.Location.Y);
+            
             upToolStripMenuItem.ShowDropDown();
         }
 
         private void downItem_MouseDown(object sender, EventArgs e)
         {
             //groupList.Show();
+            boardMenuStrip.Show(this, boardBar.Location.X - downContainer.Size.Width, downContainer.Size.Height + ribbonPanel3.Location.Y);
             sectionToolStripMenuItem.Visible = false;
             industryToolStripMenuItem.Visible = false;
             upToolStripMenuItem.Visible = false;
             downToolStripMenuItem.Visible = false;
-            boardMenuStrip.Show(this, boardBar.Location.X - downContainer.Size.Width, downContainer.Size.Height + ribbonPanel3.Location.Y);
+            
             downToolStripMenuItem.ShowDropDown();
         }
 

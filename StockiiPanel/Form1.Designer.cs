@@ -602,6 +602,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentBoard = new System.Windows.Forms.ToolStripStatusLabel();
+            this.balloonTip1 = new DevComponents.DotNetBar.BalloonTip();
             this.boardButton = new StockiiPanel.DropButton();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
@@ -3994,6 +3995,8 @@
             // 
             // button2
             // 
+            this.balloonTip1.SetBalloonCaption(this.button2, "提示");
+            this.balloonTip1.SetBalloonText(this.button2, "只能查询三十天以上的跨区");
             this.button2.Location = new System.Drawing.Point(664, 24);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -4012,6 +4015,8 @@
             // 
             // endDatePicker3
             // 
+            this.balloonTip1.SetBalloonCaption(this.endDatePicker3, "提示");
+            this.balloonTip1.SetBalloonText(this.endDatePicker3, "只能查询三十天以上的跨区");
             this.endDatePicker3.Location = new System.Drawing.Point(205, 25);
             this.endDatePicker3.Name = "endDatePicker3";
             this.endDatePicker3.Size = new System.Drawing.Size(104, 21);
@@ -4029,6 +4034,8 @@
             // 
             // startDatePicker3
             // 
+            this.balloonTip1.SetBalloonCaption(this.startDatePicker3, "提示");
+            this.balloonTip1.SetBalloonText(this.startDatePicker3, "只能查询三十天以上的跨区");
             this.startDatePicker3.Location = new System.Drawing.Point(66, 25);
             this.startDatePicker3.Name = "startDatePicker3";
             this.startDatePicker3.Size = new System.Drawing.Size(104, 21);
@@ -4276,8 +4283,8 @@
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Controls.Add(this.ribbonPanel7);
@@ -4342,6 +4349,7 @@
             // 
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
+            this.ribbonPanel3.Visible = false;
             // 
             // boardBar
             // 
@@ -4741,7 +4749,6 @@
             // 
             this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel1.TabIndex = 1;
-            this.ribbonPanel1.Visible = false;
             // 
             // ribbonBar12
             // 
@@ -5722,13 +5729,13 @@
             // 
             // ribbonTabItem3
             // 
-            this.ribbonTabItem3.Checked = true;
             this.ribbonTabItem3.Name = "ribbonTabItem3";
             this.ribbonTabItem3.Panel = this.ribbonPanel3;
             this.ribbonTabItem3.Text = "分组";
             // 
             // ribbonTabItem1
             // 
+            this.ribbonTabItem1.Checked = true;
             this.ribbonTabItem1.Name = "ribbonTabItem1";
             this.ribbonTabItem1.Panel = this.ribbonPanel1;
             this.ribbonTabItem1.Text = "数据";
@@ -5835,7 +5842,7 @@
             this.boardButton.UseVisualStyleBackColor = true;
             this.boardButton.Visible = false;
             this.boardButton.WorkSizeX = 0;
-            this.boardButton.WorkSizeY = -16610;
+            this.boardButton.WorkSizeY = -16720;
             this.boardButton.Click += new System.EventHandler(this.boardButton_Click);
             // 
             // Form1
@@ -6469,6 +6476,7 @@
         private DevComponents.DotNetBar.ItemContainer downContainer;
         private DevComponents.DotNetBar.ButtonItem downItem;
         private DevComponents.DotNetBar.LabelItem labelItem5;
+        private DevComponents.DotNetBar.BalloonTip balloonTip1;
     }
 }
 
