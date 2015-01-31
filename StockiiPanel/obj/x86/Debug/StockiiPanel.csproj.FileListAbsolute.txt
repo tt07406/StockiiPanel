@@ -90,10 +90,4 @@ C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.exe
 C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.pdb
 C:\WorkSpace\git\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.csprojResolveAssemblyReference.cache
 C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Resources.Resource1.resources
-E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.Resources.Resource1.resources
-E:\file\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.GroupDialog.resources
-<<<<<<< HEAD
 C:\Users\Vincent\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.GroupDialog.resources
-=======
-C:\Users\stockii\Documents\GitHub\StockiiPanel\StockiiPanel\obj\x86\Debug\StockiiPanel.GroupDialog.resources
->>>>>>> 24e179ad6b6162b60fb4379567592344c52e6566
