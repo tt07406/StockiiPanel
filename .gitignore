@@ -42,3 +42,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 StockiiPanel/bin/DevComponents.DotNetBar2.dll
+StockiiPanel/bin/*
+StockiiPanel/bin/Debug/group.xml
