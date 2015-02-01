@@ -88,6 +88,8 @@ namespace StockiiPanel
             {
                 return false;
             }
+
+            stockDs.Tables.Add(Commons.classfiDt);
             return true;
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -190,6 +192,12 @@ namespace StockiiPanel
             // these code are only available after data initialization
             initGroupsButton();
 
+            if (pList.Count > 0)
+            {
+                String name = pList.Keys.First();
+                ButtonItem item = new ButtonItem(name);
+                groupButtonItemClicked(item, e);
+            }
         }
 
         private void initGroupsButton()
@@ -1174,6 +1182,9 @@ namespace StockiiPanel
             pList.Add(name, stocks);
 
             addNewGroupButton(name);
+
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
             saveGroup();
             //groupList.Items.Add(name);
         }

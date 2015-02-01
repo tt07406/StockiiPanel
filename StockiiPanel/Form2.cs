@@ -25,10 +25,13 @@ namespace StockiiPanel
             pList = list;
             InitializeComponent();
 
-            stockInfoList.DataSource = ds;
-            stockInfoList.DataMember = "stock_basic_info";
+            //stockInfoList.DataSource = ds;
+            //stockInfoList.DataMember = "stock_basic_info";
 
             dt = (DataTable)ds.Tables["stock_basic_info"];
+            dv = new DataView(dt);
+
+            stockInfoList.DataSource = dv;
 
             //改变DataGridView的表头
             stockInfoList.Columns[0].HeaderText = "代码";
@@ -79,9 +82,29 @@ namespace StockiiPanel
             }
 
             groupNameBox.Enabled = isEdited;
+            dt = ds.Tables[1];
+            DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true, new string[] { "areaname" }));//distinct
+
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                if (rvMain["areaname"].ToString().Equals(""))
+                    continue;
+
+                areaCombo.Items.Add(rvMain["areaname"].ToString());
+            }
+            dvMenuOptions = new DataView(dt.DefaultView.ToTable(true, new string[] { "industryname" }));
+
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                if (rvMain["industryname"].ToString().Equals(""))
+                    continue;
+
+                industryCombox.Items.Add(rvMain["industryname"].ToString());
+            }
         }
 
         private DataTable dt;
+        private DataView dv;
 
         private void stockInfoList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -122,7 +145,7 @@ namespace StockiiPanel
 
         private void allAddButton_Click(object sender, EventArgs e)
         {
-            selectedList.Items.Clear();
+            //selectedList.Items.Clear();
             selectedList.BeginUpdate();
 
             int coun = stockInfoList.RowCount;
@@ -136,7 +159,10 @@ namespace StockiiPanel
 
                 lvi.Name = lvi.Text;
 
-                this.selectedList.Items.Add(lvi);
+                if (!selectedList.Items.ContainsKey(lvi.Text))
+                {
+                    this.selectedList.Items.Add(lvi);
+                }
             } 
 
             selectedList.EndUpdate();
@@ -229,6 +255,48 @@ namespace StockiiPanel
         {
             get { return isSuccess; }
             set { isSuccess = value; }
+        }
+
+        private void KeyWord_TextChanged(object sender, EventArgs e)
+        {
+            if (this.KeyWord.Text.Equals(""))
+            {
+                return;
+            }
+
+            dv.RowFilter = "stock_id like '%" + this.KeyWord.Text + "%' or stock_name like '%" + this.KeyWord.Text + "%'";
+        }
+
+        private void areaCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder sql = new StringBuilder("stock_id in (");
+            DataRow[] rows = dt.Select("areaname = '" + areaCombo.Text + "'");
+
+            foreach (DataRow row in rows)
+            {
+                sql.Append("'" + row["stockid"] + "',");
+            }
+
+            sql.Remove(sql.Length - 1, 1);
+            sql.Append(")");
+
+            dv.RowFilter = sql.ToString();
+        }
+
+        private void industryCombox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder sql = new StringBuilder("stock_id in (");
+            DataRow[] rows = dt.Select("industryname = '" + industryCombox.Text + "'");
+
+            foreach (DataRow row in rows)
+            {
+                sql.Append("'" + row["stockid"] + "',");
+            }
+
+            sql.Remove(sql.Length - 1, 1);
+            sql.Append(")");
+
+            dv.RowFilter = sql.ToString();
         }
     }
 }

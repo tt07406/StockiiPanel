@@ -44,6 +44,12 @@ namespace StockiiPanel
             this.clearButton = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.areaCombo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.industryCombox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.KeyWord = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,12 +68,14 @@ namespace StockiiPanel
             // 
             this.groupNameBox.Location = new System.Drawing.Point(60, 9);
             this.groupNameBox.Name = "groupNameBox";
-            this.groupNameBox.Size = new System.Drawing.Size(569, 21);
+            this.groupNameBox.Size = new System.Drawing.Size(236, 21);
             this.groupNameBox.TabIndex = 1;
             this.groupNameBox.Text = "新建分组1";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.KeyWord);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.stockInfoList);
             this.groupBox1.Location = new System.Drawing.Point(12, 47);
             this.groupBox1.Name = "groupBox1";
@@ -81,13 +89,13 @@ namespace StockiiPanel
             this.stockInfoList.AllowUserToAddRows = false;
             this.stockInfoList.AllowUserToDeleteRows = false;
             this.stockInfoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.stockInfoList.Location = new System.Drawing.Point(6, 21);
+            this.stockInfoList.Location = new System.Drawing.Point(6, 52);
             this.stockInfoList.Name = "stockInfoList";
             this.stockInfoList.ReadOnly = true;
             this.stockInfoList.RowHeadersWidth = 62;
             this.stockInfoList.RowTemplate.Height = 23;
             this.stockInfoList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.stockInfoList.Size = new System.Drawing.Size(272, 358);
+            this.stockInfoList.Size = new System.Drawing.Size(272, 327);
             this.stockInfoList.TabIndex = 0;
             this.stockInfoList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.stockInfoList_DataBindingComplete);
             // 
@@ -190,11 +198,68 @@ namespace StockiiPanel
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(316, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "地区：";
+            // 
+            // areaCombo
+            // 
+            this.areaCombo.FormattingEnabled = true;
+            this.areaCombo.Location = new System.Drawing.Point(364, 12);
+            this.areaCombo.Name = "areaCombo";
+            this.areaCombo.Size = new System.Drawing.Size(98, 20);
+            this.areaCombo.TabIndex = 11;
+            this.areaCombo.SelectedIndexChanged += new System.EventHandler(this.areaCombo_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(498, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "行业：";
+            // 
+            // industryCombox
+            // 
+            this.industryCombox.FormattingEnabled = true;
+            this.industryCombox.Location = new System.Drawing.Point(545, 13);
+            this.industryCombox.Name = "industryCombox";
+            this.industryCombox.Size = new System.Drawing.Size(121, 20);
+            this.industryCombox.TabIndex = 13;
+            this.industryCombox.SelectedIndexChanged += new System.EventHandler(this.industryCombox_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "代码/名称：";
+            // 
+            // KeyWord
+            // 
+            this.KeyWord.Location = new System.Drawing.Point(85, 21);
+            this.KeyWord.Name = "KeyWord";
+            this.KeyWord.Size = new System.Drawing.Size(193, 21);
+            this.KeyWord.TabIndex = 2;
+            this.KeyWord.TextChanged += new System.EventHandler(this.KeyWord_TextChanged);
+            // 
             // SNListDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 514);
+            this.Controls.Add(this.industryCombox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.areaCombo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.confirmButton);
@@ -208,6 +273,7 @@ namespace StockiiPanel
             this.Name = "SNListDialog";
             this.Text = "新建分组";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -239,6 +305,12 @@ namespace StockiiPanel
             set { selectStocks = value; }
         }
         private string groupName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox areaCombo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox industryCombox;
+        private System.Windows.Forms.TextBox KeyWord;
+        private System.Windows.Forms.Label label4;
 
         public string GroupName
         {

@@ -14,7 +14,6 @@ namespace StockiiPanel
 {
     public partial class GroupDialog : Form
     {
-        private DataTable dt;
         private ArrayList selectStocks;
 
         public ArrayList SelectStocks
@@ -34,20 +33,23 @@ namespace StockiiPanel
         {
             pList = list;
             InitializeComponent();
-          
-            stockInfoList.DataSource = ds;
-            stockInfoList.DataMember = "stock_basic_info";
 
-            dt = (DataTable)ds.Tables["stock_basic_info"];
+            //stockInfoList.DataSource = ds;
+            //stockInfoList.DataMember = "stock_basic_info";
+
+            infoDt = (DataTable)ds.Tables["stock_basic_info"];
+            dv = new DataView(infoDt);
+
+            stockInfoList.DataSource = dv;
 
             //改变DataGridView的表头
             stockInfoList.Columns[0].HeaderText = "代码";
             //设置该列宽度
-            stockInfoList.Columns[0].Width = 50;
+            stockInfoList.Columns[0].Width = 60;
             stockInfoList.Columns[0].DataPropertyName = ds.Tables[0].Columns["stock_id"].ToString();
 
             stockInfoList.Columns[1].HeaderText = "名称";
-            stockInfoList.Columns[1].Width = 128;
+            stockInfoList.Columns[1].Width = 130;
             stockInfoList.Columns[1].DataPropertyName = ds.Tables[0].Columns["stock_name"].ToString();
 
             for (int i = 2; i < stockInfoList.Columns.Count; ++i)
@@ -68,9 +70,30 @@ namespace StockiiPanel
                 groupCombox.AutoCompleteSource = AutoCompleteSource.ListItems;
                 groupCombox.SelectedIndex = 0;
             }
+            dt = ds.Tables[1];
+            DataView dvMenuOptions = new DataView(dt.DefaultView.ToTable(true, new string[] { "areaname" }));//distinct
 
-            
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                if (rvMain["areaname"].ToString().Equals(""))
+                    continue;
+
+                areaCombo.Items.Add(rvMain["areaname"].ToString());
+            }
+            dvMenuOptions = new DataView(dt.DefaultView.ToTable(true, new string[] { "industryname" }));
+
+            foreach (DataRowView rvMain in dvMenuOptions)//循环得到主菜单
+            {
+                if (rvMain["industryname"].ToString().Equals(""))
+                    continue;
+
+                industryCombox.Items.Add(rvMain["industryname"].ToString());
+            }
         }
+
+        private DataTable dt;
+        private DataTable infoDt;
+        private DataView dv;
 
         private void stockInfoList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -111,7 +134,7 @@ namespace StockiiPanel
 
         private void allAddButton_Click(object sender, EventArgs e)
         {
-            selectedList.Items.Clear();
+            //selectedList.Items.Clear();
             selectedList.BeginUpdate();
 
             int coun = stockInfoList.RowCount;
@@ -125,7 +148,10 @@ namespace StockiiPanel
 
                 lvi.Name = lvi.Text;
 
-                this.selectedList.Items.Add(lvi);
+                if (!selectedList.Items.ContainsKey(lvi.Text))
+                {
+                    this.selectedList.Items.Add(lvi);
+                }
             }
 
             selectedList.EndUpdate();
@@ -231,7 +257,6 @@ namespace StockiiPanel
             {
                 return;
             }
-            
             groupName = groupCombox.SelectedItem.ToString();
 
             selectStocks = new System.Collections.ArrayList(pList[groupName]);
@@ -246,7 +271,7 @@ namespace StockiiPanel
 
                 lvi.Text = selectStocks[i].ToString();
 
-                DataRow[] drs = dt.Select("stock_id = '" + lvi.Text + "'");
+                DataRow[] drs = infoDt.Select("stock_id = '" + lvi.Text + "'");
 
                 lvi.SubItems.Add(drs[0]["stock_name"].ToString());
 
@@ -282,6 +307,60 @@ namespace StockiiPanel
             {
                 return;
             }
+        }
+
+        private void KeyWord_TextChanged(object sender, EventArgs e)
+        {
+            if (this.KeyWord.Text.Equals(""))
+            {
+                return;
+            }
+
+            dv.RowFilter = "stock_id like '%" + this.KeyWord.Text + "%' or stock_name like '%" + this.KeyWord.Text + "%'";
+        }
+
+        private void areaCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder sql = new StringBuilder("stock_id in (");
+            DataRow[] rows = dt.Select("areaname = '" + areaCombo.Text + "'");
+
+            foreach (DataRow row in rows)
+            {
+                sql.Append("'" + row["stockid"] + "',");
+            }
+
+            sql.Remove(sql.Length - 1, 1);
+            sql.Append(")");
+
+            dv.RowFilter = sql.ToString();
+        }
+
+        private void industryCombox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder sql = new StringBuilder("stock_id in (");
+            DataRow[] rows = dt.Select("industryname = '" + industryCombox.Text + "'");
+
+            foreach (DataRow row in rows)
+            {
+                sql.Append("'" + row["stockid"] + "',");
+            }
+
+            sql.Remove(sql.Length - 1, 1);
+            sql.Append(")");
+
+            dv.RowFilter = sql.ToString();
+        }
+
+        private void stockInfoList_DataBindingComplete_1(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
+            int coun = stockInfoList.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                stockInfoList.Rows[i].HeaderCell.Value = j.ToString();
+            } 
         }
     }
 }
