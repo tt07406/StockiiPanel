@@ -215,6 +215,8 @@ namespace StockiiPanel
             tabControl.TabPages.Remove(nsumTab);
             tabControl.TabPages.Remove(customCalTab);
             tabControl.TabPages.Remove(crossSectionTab);
+            tabControl.TabPages.Remove(raisingLimitInfoTab);
+            tabControl.TabPages.Remove(raisingLimitTab);
         }
 
         private void timeItem_Click(object sender, EventArgs e)
@@ -1147,11 +1149,6 @@ namespace StockiiPanel
             initNDaySumTab(DAY_SUM);
         }
 
-        private void nDaySumCal_Click(object sender, EventArgs e)
-        {
-            showThisTab(nsumTab);
-        }
-
         private void customCal_Click(object sender, EventArgs e)
         {
             showThisTab(customCalTab);
@@ -1187,6 +1184,15 @@ namespace StockiiPanel
             groupButtonItemClicked(item, e);
             saveGroup();
             //groupList.Items.Add(name);
+        }
+		private void raisingLimitInfoCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(raisingLimitInfoTab);
+        }
+
+        private void raisingLimitCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(raisingLimitTab);
         }
 
     }    

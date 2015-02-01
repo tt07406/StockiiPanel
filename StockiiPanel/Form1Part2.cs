@@ -395,5 +395,152 @@ namespace StockiiPanel
             saveGroup();
         }
 
+        private void raisingWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String argStr = e.Argument.ToString();
+            String[] args = argStr.Split(',');
+            String type = args[0];
+            String startDate = args[1];
+            String endDate = args[2];
+
+            ds = new DataSet();
+            int totalPages;
+
+            if (type.Equals("raisingLimitTab"))
+            {
+                stop = Commons.GetRaisingLimitDay(startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabName] = totalPages;
+                return;
+            }
+
+            if (args.Length == 4)//自选
+            {
+                ArrayList stocks;
+                String name = args[3];//取选中的分组
+                stocks = new ArrayList(pList[name]);
+
+                stop = Commons.GetRaisingLimitInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+            }
+            else //版块
+            {
+                stop = Commons.GetRaisingLimitInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                totalPageList[curTabName] = totalPages;
+            }
+        }
+
+        private void raisingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            myBar.Close();
+            if (stop)//因异常停止
+            {
+                switch (errorNo)
+                {
+                    case 0:
+                        MessageBox.Show("连接超时，请检查网络");
+                        break;
+                    case 24:
+                        MessageBox.Show("内存溢出");
+                        break;
+                    case 1045:
+                        MessageBox.Show("无效的用户名密码");
+                        break;
+                    case 1049:
+                        MessageBox.Show("数据库不存在");
+                        break;
+                    default:
+                        MessageBox.Show("连接网络错误");
+                        break;
+                }
+                return;
+            }
+            String tableName = "";
+            String translateFile = "";
+            DataGridView thisView = null;
+            switch (curTabName)
+            {
+                case "raisingLimitInfoTab":
+                    tableName = "raising_limit_info";
+                    translateFile = "raisingLimitInfo.xml";
+                    thisView = dataGridViewX1;
+                    break;
+                case "raisingLimitTab":
+                    tableName = "raising_limit_info_day";
+                    translateFile = "raisingLimitInfoday.xml";
+                    thisView = dataGridViewX2;
+                    break;
+                default:
+                    stop = true;
+                    MessageBox.Show("无查询结果");
+                    return;
+            }
+
+            dt = (DataTable)ds.Tables[tableName];
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                stop = true;
+                MessageBox.Show("无查询结果");
+                return;
+            }
+            DataSet orgDs = (DataSet)thisView.DataSource;
+            if (orgDs != null && orgDs.Tables[tableName] != null && pageList[curTabName] != 1)
+            {
+                orgDs.Tables[tableName].Merge(dt);
+            }
+            else
+            {
+                thisView.DataSource = ds;
+                thisView.DataMember = tableName;
+            }
+            pageLabel.Text = pageList[curTabName] + "/" + (int)totalPageList[curTabName];
+
+            thisView.AllowUserToAddRows = false;//不显示最后空白行
+            thisView.EnableHeadersVisualStyles = false;
+            int k = 0;
+            int sortIndex = 0;
+            SerializableDictionary<string, string> raisingLimitInfoDict = new SerializableDictionary<string, string>();
+            using (FileStream fileStream = new FileStream(translateFile, FileMode.Open))
+            {
+                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
+                raisingLimitInfoDict = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fileStream);
+            }
+            foreach (var item in raisingLimitInfoDict)
+            {
+                thisView.Columns[k].HeaderText = item.Value;
+                thisView.Columns[k].Width = 60 + item.Value.Length * 10;
+                thisView.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
+                thisView.Columns[k].SortMode = DataGridViewColumnSortMode.Programmatic;
+                if (sortColumnList[curTabName] == thisView.Columns[k].DataPropertyName)
+                {
+                    sortIndex = k;
+                }
+                k++;
+            }
+
+            thisView.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
+
+            stop = true;
+        }
+        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
+
+            int coun = dataGridViewX1.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                dataGridViewX1.Rows[i].HeaderCell.Value = j.ToString();
+
+                //隔行显示不同的颜色
+                if (IsOdd(i))
+                {
+                    dataGridViewX1.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+                }
+                dataGridViewX1.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                dataGridViewX1.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+            }
+        }
     }
 }

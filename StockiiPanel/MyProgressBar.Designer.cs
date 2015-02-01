@@ -50,6 +50,7 @@
             this.Controls.Add(this.circularProgressBarEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MyProgressBar";
+            this.ShowInTaskbar = false;
             this.Text = "MyProgressBar";
             this.TransparencyKey = System.Drawing.Color.White;
             this.ResumeLayout(false);

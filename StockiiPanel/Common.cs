@@ -1216,5 +1216,98 @@ namespace StockiiPanel
                 return tb2;
             }                
         }
+        public static bool GetRaisingLimitInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            bool stop = false;
+
+            ds = JSONHandler.GetRaisingLimitInfo(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
+
+            var query = (from u in ds.Tables["raisinglimitinfo"].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             created = u.Field<string>("created"),
+                             growth_ratio = u.Field<string>("growth_ratio"),
+                             ytd_end_price = u.Field<string>("ytd_end_price"),
+                             current_price = u.Field<string>("current_price"),
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "raising_limit_info");
+
+            ds.Tables.Remove("raisinglimitinfo");
+            ds.Tables.Add(dt);
+
+            return stop;
+        }
+        public static bool GetRaisingLimitInfoBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return GetRaisingLimitInfo(stocks, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+        }
+        public static bool GetRaisingLimitDay(String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            bool stop = false;
+
+            ds = JSONHandler.GetRaisingLimitDay(startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
+
+            var query = (from u in ds.Tables["raisinglimitinfoday"].AsEnumerable()
+                         select new
+                         {
+                             created = u.Field<string>("created"),
+                             count = u.Field<string>("count"),
+                             limit = u.Field<string>("limit"),
+                             percent = u.Field<string>("percent"),
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "raising_limit_info_day");
+
+            ds.Tables.Remove("raisinglimitinfoday");
+            ds.Tables.Add(dt);
+
+            return stop;
+        }
     }
 }

@@ -214,6 +214,8 @@ namespace StockiiPanel
             startDatePicker1.Value = startDatePicker.Value;
             startDatePicker2.Value = startDatePicker.Value;
             startDatePicker3.Value = startDatePicker.Value;
+            startDatePicker4.Value = startDatePicker.Value;
+            startDatePicker5.Value = startDatePicker.Value;
         }
 
         private void endDatePicker_ValueChanged(object sender, EventArgs e)
@@ -221,6 +223,8 @@ namespace StockiiPanel
             endDatePicker1.Value = endDatePicker.Value;
             endDatePicker2.Value = endDatePicker.Value;
             endDatePicker3.Value = endDatePicker.Value;
+            endDatePicker4.Value = endDatePicker.Value;
+            endDatePicker5.Value = endDatePicker.Value;
         }
 
         private void startDatePicker1_ValueChanged(object sender, EventArgs e)
@@ -228,6 +232,8 @@ namespace StockiiPanel
             startDatePicker.Value = startDatePicker1.Value;
             startDatePicker2.Value = startDatePicker1.Value;
             startDatePicker3.Value = startDatePicker1.Value;
+            startDatePicker4.Value = startDatePicker1.Value;
+            startDatePicker5.Value = startDatePicker1.Value;
         }
 
         private void endDatePicker1_ValueChanged(object sender, EventArgs e)
@@ -235,35 +241,79 @@ namespace StockiiPanel
             endDatePicker.Value = endDatePicker1.Value;
             endDatePicker2.Value = endDatePicker1.Value;
             endDatePicker3.Value = endDatePicker1.Value;
+            endDatePicker4.Value = endDatePicker1.Value;
+            endDatePicker5.Value = endDatePicker1.Value;
         }
 
         private void startDatePicker2_ValueChanged(object sender, EventArgs e)
         {
+            startDatePicker.Value =  startDatePicker2.Value;
             startDatePicker1.Value = startDatePicker2.Value;
-            startDatePicker.Value = startDatePicker2.Value;
             startDatePicker3.Value = startDatePicker2.Value;
+            startDatePicker4.Value = startDatePicker2.Value;
+            startDatePicker5.Value = startDatePicker2.Value;
         }
 
         private void startDatePicker3_ValueChanged(object sender, EventArgs e)
         {
+            startDatePicker.Value = startDatePicker3.Value;
             startDatePicker1.Value = startDatePicker3.Value;
             startDatePicker2.Value = startDatePicker3.Value;
-            startDatePicker.Value = startDatePicker3.Value;
+            startDatePicker4.Value = startDatePicker3.Value;
+            startDatePicker5.Value = startDatePicker3.Value;
         }
 
         private void endDatePicker3_ValueChanged(object sender, EventArgs e)
         {
+            endDatePicker.Value  = endDatePicker3.Value;
             endDatePicker1.Value = endDatePicker3.Value;
-            endDatePicker2.Value = endDatePicker3.Value;
-            endDatePicker.Value = endDatePicker3.Value;
+            endDatePicker3.Value = endDatePicker3.Value;
+            endDatePicker4.Value = endDatePicker3.Value;
+            endDatePicker5.Value = endDatePicker3.Value;
         }
 
 
         private void endDatePicker2_ValueChanged(object sender, EventArgs e)
         {
+            endDatePicker.Value  = endDatePicker2.Value;
             endDatePicker1.Value = endDatePicker2.Value;
-            endDatePicker.Value = endDatePicker2.Value;
-            endDatePicker3.Value = endDatePicker2.Value;
+            endDatePicker2.Value = endDatePicker2.Value;
+            endDatePicker4.Value = endDatePicker2.Value;
+            endDatePicker5.Value = endDatePicker2.Value;
+        }
+        private void startDatePicker4_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker1.Value = startDatePicker4.Value;
+            startDatePicker2.Value = startDatePicker4.Value;
+            startDatePicker3.Value = startDatePicker4.Value;
+            startDatePicker5.Value = startDatePicker4.Value;
+            startDatePicker.Value = startDatePicker4.Value;
+        }
+
+        private void endDatePicker4_ValueChanged(object sender, EventArgs e)
+            {
+            endDatePicker1.Value = endDatePicker4.Value;
+            endDatePicker2.Value = endDatePicker4.Value;
+            endDatePicker3.Value = endDatePicker4.Value;
+            endDatePicker5.Value = endDatePicker4.Value;
+            endDatePicker.Value = endDatePicker4.Value;
+        }
+        private void startDatePicker5_ValueChanged(object sender, EventArgs e)
+        {
+            startDatePicker1.Value = startDatePicker5.Value;
+            startDatePicker2.Value = startDatePicker5.Value;
+            startDatePicker3.Value = startDatePicker5.Value;
+            startDatePicker4.Value = startDatePicker5.Value;
+            startDatePicker.Value = startDatePicker5.Value;
+        }
+
+        private void endDatePicker5_ValueChanged(object sender, EventArgs e)
+        {
+            endDatePicker1.Value = endDatePicker5.Value;
+            endDatePicker2.Value = endDatePicker5.Value;
+            endDatePicker3.Value = endDatePicker5.Value;
+            endDatePicker4.Value = endDatePicker5.Value;
+            endDatePicker.Value = endDatePicker5.Value;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -764,11 +814,14 @@ namespace StockiiPanel
             startDatePicker1.Value = TimeControl.GetFirstDayOfMonth(startDate);
             startDatePicker2.Value = TimeControl.GetFirstDayOfMonth(startDate);
             startDatePicker3.Value = TimeControl.GetFirstDayOfMonth(startDate);
-
+            startDatePicker4.Value = TimeControl.GetFirstDayOfMonth(startDate);
+            startDatePicker5.Value = TimeControl.GetFirstDayOfMonth(startDate);
             endDatePicker.Value = TimeControl.GetLastDayOfMonth(endDate);
             endDatePicker1.Value = TimeControl.GetLastDayOfMonth(endDate);
             endDatePicker2.Value = TimeControl.GetLastDayOfMonth(endDate);
             endDatePicker3.Value = TimeControl.GetLastDayOfMonth(endDate);
+            endDatePicker4.Value = TimeControl.GetLastDayOfMonth(endDate);
+            endDatePicker5.Value = TimeControl.GetLastDayOfMonth(endDate);
         }
 
         private void searchTab(String type)
@@ -785,7 +838,7 @@ namespace StockiiPanel
                 return;
             }
 
-            if (!type.Equals("crossSectionTab") && groupList.Visible == true && groupList.Items.Count == 0)
+            if (!type.Equals("crossSectionTab") && !type.Equals("raisingLimitTab") && groupList.Visible == true && groupList.Items.Count == 0)
             {
                 MessageBox.Show("请选择一个分组");
                 return;
@@ -842,6 +895,11 @@ namespace StockiiPanel
                     break;
                 case "crossSectionTab":
                     crossWorker.RunWorkerAsync(startDatePicker.Value.ToString("yyyy-MM-dd") + "," + endDatePicker.Value.ToString("yyyy-MM-dd") + "," + weighBox.Text + "," + indexCombox1.Text);
+                    pageLabel3.Text = "0/0";
+                    break;
+                case "raisingLimitInfoTab":
+                case "raisingLimitTab":
+                    raisingWorker.RunWorkerAsync(type + "," + args);
                     pageLabel3.Text = "0/0";
                     break;
                 default:

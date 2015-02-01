@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<SerializableDictionaryOfStringString>
+  <SerializableDictionary>
+    <key>
+      <string>created</string>
+    </key>
+    <value>
+      <string>日期</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>count</string>
+    </key>
+    <value>
+      <string>股票总数</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>limit</string>
+    </key>
+    <value>
+      <string>涨停总数</string>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>percent</string>
+    </key>
+    <value>
+      <string>涨停比例</string>
+    </value>
+  </SerializableDictionary>
+</SerializableDictionaryOfStringString>

@@ -18,8 +18,8 @@ namespace StockiiPanel
     static class JSONHandler
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
-        //public static string localURL = "http://192.168.1.220:8080/client/api";
-        public static string localURL = "http://www.stockii.com:8090/client/api"; 
+        public static string localURL = "http://192.168.1.220:8080/client/api";
+        //public static string localURL = "http://www.stockii.com:8090/client/api"; 
 
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据
@@ -685,6 +685,103 @@ namespace StockiiPanel
 
             return jsDs;
         }
+        public static DataSet GetRaisingLimitInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
 
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listraisinglimitinfo";
+                args["response"] = "json";
+                if (stockid.Count != 0)
+                {
+                    args["stockid"] = String.Join(",", stockid.ToArray());
+                }
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                if (sortname.Trim().Length != 0)
+                {
+                    args["sortname"] = sortname;
+                    args["asc"] = asc.ToString();
+                }
+                jsonText = WebService.Post(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return new DataSet();
+            }
+
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(num) / pagesize + 1;
+
+            return jsDs;
+        }
+        public static DataSet GetRaisingLimitDay(String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listraisinglimitinfoday";
+                args["response"] = "json";
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+
+                jsonText = WebService.Post(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return new DataSet();
+            }
+
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(num) / pagesize + 1;
+
+            return jsDs;
+        }
     }
 }
