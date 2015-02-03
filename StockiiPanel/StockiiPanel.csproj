@@ -108,6 +108,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Common.cs" />
+    <Compile Include="Common2.cs" />
     <Compile Include="CostomClass.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -39,6 +39,13 @@ namespace StockiiPanel
         public Form1()
         {
             InitializeComponent();
+
+            //绘制的方式OwnerDrawFixed表示由窗体绘制大小也一样 
+            this.tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.tabControl.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE);
+            this.tabControl.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
+            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
+
             pList = new SerializableDictionary<string, ArrayList>();
             InitialCombo();
             customDialog = new CustomDialog();
@@ -67,14 +74,25 @@ namespace StockiiPanel
             }
         }
 
-        private void manageGroupButton_Click(object sender, EventArgs e)
-        {
-            groupList.Show();
-        }
-
         private void boardButton_Click(object sender, EventArgs e)
         {
-            groupList.Hide();
+            //groupList.Show();
+            groupList.Items.Clear();
+
+            int k = boardStocks.Count;
+
+            dt = Commons.classfiDt;
+            for (int i = 0; i < k; ++i)
+            {
+                String id = boardStocks[i].ToString();
+
+                DataRow[] drs = dt.Select("stockid = '" + id + "'");
+
+                groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
+            }
+
+            isCustom = false;
+            groupLabel.Text = "板块股票：";
         }
 
         public bool initBeforeShow()
@@ -115,13 +133,13 @@ namespace StockiiPanel
             }
             catch (Exception)
             {
-                
+
             }
             //反序列化载入分组列表
-            
 
-
-            
+            timeCombox.Items.Add("最近7天");
+            timeCombox.Items.Add("最近3天");
+            splitContainer1.Panel2Collapsed = false;
 
             areaItem.SubItems.Clear();
             industryItem.SubItems.Clear();
@@ -225,7 +243,7 @@ namespace StockiiPanel
             String name = item.Name;
 
             int headEnd = name.IndexOf("Tool");
-            int tailStart = name.IndexOf("Item")+4;
+            int tailStart = name.IndexOf("Item") + 4;
             int length = 1;
             String arg = null;
             String year = null;
@@ -271,8 +289,15 @@ namespace StockiiPanel
             {
                 string name = record.Values.First();
                 currentBoard.Text = "当前板块：" + name;
+                boardStocks.Clear();
+                DataRow[] rows = Commons.classfiDt.Select("areaname = '" + name + "'");
+                foreach (DataRow row in rows)
+                {
+                    boardStocks.Add(row["stockid"]);
+                }
+                boardButton_Click(sender, e);
             }
-            
+
             pagesize = 1000;
             pageList[curTabName] = 1;
             searchTab(curTabName);
@@ -293,6 +318,13 @@ namespace StockiiPanel
             {
                 string name = record.Values.First();
                 currentBoard.Text = "当前板块：" + name;
+                boardStocks.Clear();
+                DataRow[] rows = Commons.classfiDt.Select("industryname = '" + name + "'");
+                foreach (DataRow row in rows)
+                {
+                    boardStocks.Add(row["stockid"]);
+                }
+                boardButton_Click(sender, e);
             }
 
             pagesize = 1000;
@@ -523,7 +555,7 @@ namespace StockiiPanel
 
         private void 添加分组ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SNListDialog dialog = new SNListDialog(pList,"",stockDs);
+            SNListDialog dialog = new SNListDialog(pList, "", stockDs);
             dialog.ShowDialog(this);
 
             if (!dialog.IsSuccess)
@@ -554,13 +586,19 @@ namespace StockiiPanel
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (isCustom == false)
+            {
+                MessageBox.Show("当前是默认分组，请选择自选分组");
+                return;
+            }
+
             if (curGroupName == null || curGroupName.Equals(""))
             {
                 MessageBox.Show("请选择一个分组");
                 return;
             }
             string selectedName = curGroupName.ToString();
-            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs , true);
+            SNListDialog dialog = new SNListDialog(pList, selectedName, stockDs, true);
             dialog.ShowDialog(this);
 
             if (!dialog.IsSuccess)
@@ -583,6 +621,12 @@ namespace StockiiPanel
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (isCustom == false)
+            {
+                MessageBox.Show("当前是默认分组，请选择自选分组");
+                return;
+            }
+
             if (curGroupName == null || curGroupName.Equals(""))
             {
                 MessageBox.Show("请选择一个分组");
@@ -604,7 +648,7 @@ namespace StockiiPanel
             {
                 return;
             }
-            
+
         }
 
         private void compareCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,13 +667,13 @@ namespace StockiiPanel
         {
             DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
             //自动整理序列号
-            
+
             int coun = rawDataGrid.RowCount;
             for (int i = 0; i < coun; i++)
             {
                 int j = i + 1;
                 rawDataGrid.Rows[i].HeaderCell.Value = j.ToString();
-                
+
                 //隔行显示不同的颜色
                 if (IsOdd(i))
                 {
@@ -654,13 +698,13 @@ namespace StockiiPanel
                 {
                     filter = record[3];
                     record.Remove(3);
-                } 
+                }
                 else
                 {
                     filter = record[4];
                     record.Remove(4);
                 }
-                
+
             }
 
             if (args.Length == 3 || record.Count == 0)//自选
@@ -676,7 +720,7 @@ namespace StockiiPanel
                 {
                     stocks = new ArrayList();
                 }
-                
+
                 stop = Commons.GetStockDayInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
                 totalPageList[curTabName] = totalPages;
             }
@@ -718,7 +762,7 @@ namespace StockiiPanel
             if (dt == null || dt.Rows.Count == 0)
             {
                 stop = true;
-                MessageBox.Show("无查询结果");               
+                MessageBox.Show("无查询结果");
                 return;
             }
             DataSet orgDs = (DataSet)rawDataGrid.DataSource;
@@ -726,7 +770,7 @@ namespace StockiiPanel
             {
                 orgDs.Tables["stock_day_info"].Merge(dt);
             }
-            else 
+            else
             {
                 rawDataGrid.DataSource = ds;
                 rawDataGrid.DataMember = "stock_day_info";
@@ -773,7 +817,7 @@ namespace StockiiPanel
             }
             rawDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             rawDataGrid.AutoResizeColumns();
-            
+
             Commons.colNum = rawDict.Count;
 
             SetColumns();
@@ -782,7 +826,7 @@ namespace StockiiPanel
 
         private void bkWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            
+
         }
 
         private void setColToolStripMenuItem_Click(object sender, EventArgs e)
@@ -797,9 +841,9 @@ namespace StockiiPanel
             {
                 MessageBox.Show("查询结果为空，请先查询");
             }
-               
+
         }
-        
+
         /// <summary>
         /// 设置列
         /// </summary>
@@ -808,7 +852,7 @@ namespace StockiiPanel
             string[] cols = customDialog.StrCollected.Split(',');
 
             //选中的列可见
-            for (int i = 2; i < Commons.colNum ; ++i)
+            for (int i = 2; i < Commons.colNum; ++i)
             {
                 rawDataGrid.Columns[i].Visible = false;
             }
@@ -858,10 +902,10 @@ namespace StockiiPanel
                     else
                         rawDataGrid.Rows[i].Cells[j].Style.BackColor = rawDataGrid.Rows[i].DefaultCellStyle.BackColor;
                 }
-            } 
+            }
         }
 
-       
+
 
         private void moreButton_Click(object sender, EventArgs e)
         {
@@ -915,13 +959,13 @@ namespace StockiiPanel
                 {
                     filter = record[3];
                     record.Remove(3);
-                } 
+                }
                 else
                 {
                     filter = record[4];
                     record.Remove(4);
                 }
-                
+
             }
 
             int totalPages;
@@ -933,14 +977,14 @@ namespace StockiiPanel
                 {
                     String name = args[2];//取选中的分组
                     stocks = new ArrayList(pList[name]);
-                    
+
                 }
                 else
                 {
                     stocks = new ArrayList();
                     delta = 1;
                 }
-                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3-delta]), args[4-delta], args[5-delta], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
+                stop = Commons.GetNDaysSum(stocks, type, Convert.ToInt32(args[3 - delta]), args[4 - delta], args[5 - delta], sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, filter, out errorNo, out ds, out totalPages);
             }
             else //版块
             {
@@ -958,7 +1002,7 @@ namespace StockiiPanel
             String endDate = args[1];
 
             ds = new DataSet();
-            
+
             if (args.Length == 7)//自选
             {
                 String name = args[2];//取选中的分组
@@ -990,7 +1034,7 @@ namespace StockiiPanel
         {
             intervalCombo.Items.Clear();
             for (int i = 3; i <= 31; i++)
-                intervalCombo.Items.Add(i+"");
+                intervalCombo.Items.Add(i + "");
             intervalCombo.SelectedIndex = 0;
         }
 
@@ -1024,13 +1068,16 @@ namespace StockiiPanel
             }
 
             initTab(curTabName);
-            
+            if (curTabName.Equals("rawDataTab") || curTabName.Equals("nsumTab"))//向上版块和向下版块只针对原始数据和n日和有效
+                boardBar.Visible = true;
+            else
+                boardBar.Visible = false;
         }
 
         private void rawDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
-            DataGridView gridView  = (DataGridView)sender;
+
+            DataGridView gridView = (DataGridView)sender;
             int curSortIndex = 0;
             for (int i = 0; i < gridView.Columns.Count; i++)
             {
@@ -1089,13 +1136,20 @@ namespace StockiiPanel
                 groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
             }
             curGroupName = item.Name;
-
+            isCustom = true;
+            groupLabel.Text = "自选股票：";
             groupStatus.Text = "自选分组：" + curGroupName;
         }
 
         private void myGroups_Click(object sender, EventArgs e)
         {
-            groupList.Show();
+            //groupList.Show();
+            isCustom = true;
+            groupLabel.Text = "自选股票：";
+            string name = curGroupName.ToString();
+
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
         }
 
         private void initNDaySumTab(int code)
@@ -1173,7 +1227,8 @@ namespace StockiiPanel
             {
                 return;
             }
-
+            isCustom = true;
+            groupLabel.Text = "自选股票：";
             string name = dialog.GroupName;
             ArrayList stocks = new ArrayList(dialog.SelectStocks);
             pList.Add(name, stocks);
@@ -1185,7 +1240,7 @@ namespace StockiiPanel
             saveGroup();
             //groupList.Items.Add(name);
         }
-		private void raisingLimitInfoCal_Click(object sender, EventArgs e)
+        private void raisingLimitInfoCal_Click(object sender, EventArgs e)
         {
             showThisTab(raisingLimitInfoTab);
         }
@@ -1195,6 +1250,5 @@ namespace StockiiPanel
             showThisTab(raisingLimitTab);
         }
 
-    }    
-
+    }
 }
