@@ -806,7 +806,7 @@ namespace StockiiPanel
 
         private void Combine(bool isSelect)
         {
-            splitContainer1.Panel2Collapsed = true;
+            splitContainer1.Panel2Collapsed = false;
 
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
             headText.Clear();

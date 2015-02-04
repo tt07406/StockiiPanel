@@ -246,39 +246,43 @@ namespace StockiiPanel
                 }
             }
 
-            //原有的表和选定的表中ID相同的项按列拼接
-            if (combineGridView.RowCount > 0)
-            {
-                DataTable tb3 = (DataTable)combineGridView.DataSource;
-                DataTable tb4 = new DataTable();//临时表
-                tb4 = tb3.Copy();
+            ////原有的表和选定的表中ID相同的项按列拼接
+            //if (combineGridView.RowCount > 0)
+            //{
+            //    DataTable tb3 = (DataTable)combineGridView.DataSource;
+            //    DataTable tb4 = new DataTable();//临时表
+            //    tb4 = tb3.Copy();
 
-                ArrayList host = new ArrayList();
-                ArrayList client = new ArrayList();
-                for (int i = tb4.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow dr = tb4.Rows[i];
-                    for (int j = tb2.Rows.Count - 1; j >= 0; j--)
-                    {
-                        DataRow re = tb2.Rows[j];
-                        if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
-                        {
-                            //要保留的
-                            host.Add(i);
-                            client.Add(j);
-                            break;
-                        }
-                    }
-                }
+            //    ArrayList host = new ArrayList();
+            //    ArrayList client = new ArrayList();
+            //    for (int i = tb4.Rows.Count - 1; i >= 0; i--)
+            //    {
+            //        DataRow dr = tb4.Rows[i];
+            //        for (int j = tb2.Rows.Count - 1; j >= 0; j--)
+            //        {
+            //            DataRow re = tb2.Rows[j];
+            //            if (re[0].ToString() == dr[0].ToString())//相同ID则拼接
+            //            {
+            //                //要保留的
+            //                host.Add(i);
+            //                client.Add(j);
+            //                break;
+            //            }
+            //        }
+            //    }
 
-                Intersaction(ref tb2, ref tb4, host, client);
+            //    Intersaction(ref tb2, ref tb4, host, client);
 
-                return tb4;
-            }
-            else
-            {
-                return tb2;
-            }
+            //    return tb4;
+            //}
+            //else
+            //{
+            //    return tb2;
+            //}
+             DataTable tb3 = (DataTable)combineGridView.DataSource;
+             DataSet data = new DataSet();
+             data.Tables.Add(tb2);
+             return CombineDt(data, tb3);
 
         }
 

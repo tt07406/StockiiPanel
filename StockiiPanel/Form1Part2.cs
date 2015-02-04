@@ -134,7 +134,7 @@ namespace StockiiPanel
             }
 
             actionName = dialog.ActionName;
-            splitContainer1.Panel2Collapsed = true;
+            splitContainer1.Panel2Collapsed = false;
             foreach (String item in dialog.CombineArray)
             {
                 if (item.StartsWith("customCal"))//如果包含自定义查询，则要选择分组或版块

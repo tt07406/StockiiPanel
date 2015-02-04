@@ -42,7 +42,7 @@ namespace StockiiPanel
 
             //绘制的方式OwnerDrawFixed表示由窗体绘制大小也一样 
             this.tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE);
+            this.tabControl.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE/2);
             this.tabControl.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
             this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
 
@@ -139,7 +139,7 @@ namespace StockiiPanel
 
             timeCombox.Items.Add("最近7天");
             timeCombox.Items.Add("最近3天");
-            splitContainer1.Panel2Collapsed = false;
+       
 
             areaItem.SubItems.Clear();
             industryItem.SubItems.Clear();

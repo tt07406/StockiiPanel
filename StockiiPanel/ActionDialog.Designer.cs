@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.actionList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,17 +36,8 @@
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.actionList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // actionList
-            // 
-            this.actionList.FormattingEnabled = true;
-            this.actionList.ItemHeight = 12;
-            this.actionList.Location = new System.Drawing.Point(13, 31);
-            this.actionList.Name = "actionList";
-            this.actionList.Size = new System.Drawing.Size(167, 292);
-            this.actionList.TabIndex = 0;
-            this.actionList.SelectedIndexChanged += new System.EventHandler(this.actionList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -119,6 +109,16 @@
             this.endDatePicker.Size = new System.Drawing.Size(127, 21);
             this.endDatePicker.TabIndex = 8;
             // 
+            // actionList
+            // 
+            this.actionList.FormattingEnabled = true;
+            this.actionList.ItemHeight = 12;
+            this.actionList.Location = new System.Drawing.Point(13, 31);
+            this.actionList.Name = "actionList";
+            this.actionList.Size = new System.Drawing.Size(167, 280);
+            this.actionList.TabIndex = 0;
+            this.actionList.SelectedIndexChanged += new System.EventHandler(this.actionList_SelectedIndexChanged);
+            // 
             // ActionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -142,7 +142,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox actionList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label numLabel;
         private System.Windows.Forms.Label label2;
@@ -151,5 +150,6 @@
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker endDatePicker;
+        private System.Windows.Forms.ListBox actionList;
     }
 }
