@@ -19,9 +19,9 @@ namespace StockiiPanel
     partial class  Commons
     {
         public static int colNum = 57;
-        public static int sumNum = 5;
-        public static int customNum = 7;
-        public static int crossNum = 11; 
+        //public static int sumNum = 5;
+        //public static int customNum = 7;
+        //public static int crossNum = 11; 
         public static DataTable classfiDt = new DataTable();
         public static List<DateTime> tradeDates = new List<DateTime>();
         //版块分类
@@ -842,7 +842,7 @@ namespace StockiiPanel
                          {
                              stock_id = u.Field<string>("stockid"),
                              stock_name = r.Field<string>("stockname"),
-                             created = u.Field<string>("created"),
+                             created = u.Field<string>("created").Substring(0, 10),
                              growth_ratio = u.Field<string>("growth_ratio"),
                              ytd_end_price = u.Field<string>("ytd_end_price"),
                              current_price = u.Field<string>("current_price"),
@@ -900,7 +900,7 @@ namespace StockiiPanel
             var query = (from u in ds.Tables["raisinglimitinfoday"].AsEnumerable()
                          select new
                          {
-                             created = u.Field<string>("created"),
+                             created = u.Field<string>("created").Substring(0, 10),
                              count = u.Field<string>("count"),
                              limit = u.Field<string>("limit"),
                              percent = u.Field<string>("percent"),

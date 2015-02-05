@@ -637,6 +637,7 @@ namespace StockiiPanel
 
             if (dr == DialogResult.Yes)
             {
+                curGroupName = "";
                 pList.Remove(selectedName);
                 groupList.Items.Clear();
                 myGroups.SubItems.Remove(selectedName);
@@ -1123,18 +1124,23 @@ namespace StockiiPanel
             groupList.Items.Clear();
 
             ButtonItem item = (ButtonItem)sender;
-            ArrayList selectStocks = pList[item.Name];
-            int k = selectStocks.Count;
 
-            dt = Commons.classfiDt;
-            for (int i = 0; i < k; ++i)
+            if (pList.Keys.Contains(item.Name))
             {
-                String id = selectStocks[i].ToString();
+                ArrayList selectStocks = pList[item.Name];
+                int k = selectStocks.Count;
 
-                DataRow[] drs = dt.Select("stockid = '" + id + "'");
+                dt = Commons.classfiDt;
+                for (int i = 0; i < k; ++i)
+                {
+                    String id = selectStocks[i].ToString();
 
-                groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
+                    DataRow[] drs = dt.Select("stockid = '" + id + "'");
+
+                    groupList.Items.Add(id + " : " + drs[0]["stockname"].ToString());
+                }
             }
+            
             curGroupName = item.Name;
             isCustom = true;
             groupLabel.Text = "自选股票：";

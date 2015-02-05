@@ -18,8 +18,8 @@ namespace StockiiPanel
     static class JSONHandler
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
-        public static string localURL = "http://192.168.1.220:8080/client/api";
-        //public static string localURL = "http://www.stockii.com:8090/client/api"; 
+        //public static string localURL = "http://192.168.1.220:8080/client/api";
+        public static string localURL = "http://www.stockii.com:8090/client/api"; 
 
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据

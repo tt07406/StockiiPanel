@@ -43,6 +43,7 @@ namespace StockiiPanel
 
             // Create the web request
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Timeout = 60000;
 
             // Get response
             try
@@ -84,6 +85,7 @@ namespace StockiiPanel
             // Set type to POST
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
+            request.Timeout = 60000;
 
             // Create the data we want to send
             StringBuilder data = new StringBuilder();

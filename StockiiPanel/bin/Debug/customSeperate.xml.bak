@@ -53,7 +53,7 @@
       <string>g0</string>
     </key>
     <value>
-      <string>涨幅小于-9个数(%)</string>
+      <string>涨幅小于-9个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -61,7 +61,7 @@
       <string>g1</string>
     </key>
     <value>
-      <string>涨幅[-9~-8)个数(%)</string>
+      <string>涨幅[-9~-8)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -69,7 +69,7 @@
       <string>g2</string>
     </key>
     <value>
-      <string>涨幅[-8~-7)个数(%)</string>
+      <string>涨幅[-8~-7)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -77,7 +77,7 @@
       <string>g3</string>
     </key>
     <value>
-      <string>涨幅[-7~-6)个数(%)</string>
+      <string>涨幅[-7~-6)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -85,7 +85,7 @@
       <string>g4</string>
     </key>
     <value>
-      <string>涨幅[-6~-5)个数(%)</string>
+      <string>涨幅[-6~-5)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -93,7 +93,7 @@
       <string>g5</string>
     </key>
     <value>
-      <string>涨幅[-5~-4)个数(%)</string>
+      <string>涨幅[-5~-4)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -101,7 +101,7 @@
       <string>g6</string>
     </key>
     <value>
-      <string>涨幅[-4~-3)个数(%)</string>
+      <string>涨幅[-4~-3)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -109,7 +109,7 @@
       <string>g7</string>
     </key>
     <value>
-      <string>涨幅[-3~-2)个数(%)</string>
+      <string>涨幅[-3~-2)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -117,7 +117,7 @@
       <string>g8</string>
     </key>
     <value>
-      <string>涨幅[-2~-1)个数(%)</string>
+      <string>涨幅[-2~-1)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -125,7 +125,7 @@
       <string>g9</string>
     </key>
     <value>
-      <string>涨幅[-1~0)个数(%)</string>
+      <string>涨幅[-1~0)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -133,7 +133,7 @@
       <string>g10</string>
     </key>
     <value>
-      <string>涨幅[0~1)个数(%)</string>
+      <string>涨幅[0~1)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -141,7 +141,7 @@
       <string>g11</string>
     </key>
     <value>
-      <string>涨幅[1~2)个数(%)</string>
+      <string>涨幅[1~2)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -149,7 +149,7 @@
       <string>g12</string>
     </key>
     <value>
-      <string>涨幅[2~3)个数(%)</string>
+      <string>涨幅[2~3)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -157,7 +157,7 @@
       <string>g13</string>
     </key>
     <value>
-      <string>涨幅[3~4)个数(%)</string>
+      <string>涨幅[3~4)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -165,7 +165,7 @@
       <string>g14</string>
     </key>
     <value>
-      <string>涨幅[4~5)个数(%)</string>
+      <string>涨幅[4~5)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -173,7 +173,7 @@
       <string>g15</string>
     </key>
     <value>
-      <string>涨幅[5~6)个数(%)</string>
+      <string>涨幅[5~6)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -181,7 +181,7 @@
       <string>g16</string>
     </key>
     <value>
-      <string>涨幅[6~7)个数(%)</string>
+      <string>涨幅[6~7)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -189,7 +189,7 @@
       <string>g17</string>
     </key>
     <value>
-      <string>涨幅[7~8)个数(%)</string>
+      <string>涨幅[7~8)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -197,7 +197,7 @@
       <string>g18</string>
     </key>
     <value>
-      <string>涨幅[8~9)个数(%)</string>
+      <string>涨幅[8~9)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -205,7 +205,7 @@
       <string>g19</string>
     </key>
     <value>
-      <string>涨幅大于9个数(%)</string>
+      <string>涨幅大于9个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -213,7 +213,7 @@
       <string>a0</string>
     </key>
     <value>
-      <string>振幅[0~1)个数(%)</string>
+      <string>振幅[0~1)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -221,7 +221,7 @@
       <string>a1</string>
     </key>
     <value>
-      <string>振幅[1~2)个数(%)</string>
+      <string>振幅[1~2)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -229,7 +229,7 @@
       <string>a2</string>
     </key>
     <value>
-      <string>振幅[2~3)个数(%)</string>
+      <string>振幅[2~3)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -237,7 +237,7 @@
       <string>a3</string>
     </key>
     <value>
-      <string>振幅[3~4)个数(%)</string>
+      <string>振幅[3~4)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -245,7 +245,7 @@
       <string>a4</string>
     </key>
     <value>
-      <string>振幅[4~5)个数(%)</string>
+      <string>振幅[4~5)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -253,7 +253,7 @@
       <string>a5</string>
     </key>
     <value>
-      <string>振幅[5~6)个数(%)</string>
+      <string>振幅[5~6)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -261,7 +261,7 @@
       <string>a6</string>
     </key>
     <value>
-      <string>振幅[6~7)个数(%)</string>
+      <string>振幅[6~7)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -269,7 +269,7 @@
       <string>a7</string>
     </key>
     <value>
-      <string>振幅[7~8)个数(%)</string>
+      <string>振幅[7~8)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -277,7 +277,7 @@
       <string>a8</string>
     </key>
     <value>
-      <string>振幅[8~9)个数(%)</string>
+      <string>振幅[8~9)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -285,7 +285,7 @@
       <string>a9</string>
     </key>
     <value>
-      <string>振幅[9~10)个数(%)</string>
+      <string>振幅[9~10)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -293,7 +293,7 @@
       <string>a10</string>
     </key>
     <value>
-      <string>振幅[10~11)个数(%)</string>
+      <string>振幅[10~11)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -301,7 +301,7 @@
       <string>a11</string>
     </key>
     <value>
-      <string>振幅[11~12)个数(%)</string>
+      <string>振幅[11~12)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -309,7 +309,7 @@
       <string>a12</string>
     </key>
     <value>
-      <string>振幅[12~13)个数(%)</string>
+      <string>振幅[12~13)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -317,7 +317,7 @@
       <string>a13</string>
     </key>
     <value>
-      <string>振幅[13~14)个数(%)</string>
+      <string>振幅[13~14)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -325,7 +325,7 @@
       <string>a14</string>
     </key>
     <value>
-      <string>振幅[14~15)个数(%)</string>
+      <string>振幅[14~15)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -333,7 +333,7 @@
       <string>a15</string>
     </key>
     <value>
-      <string>振幅[15~16)个数(%)</string>
+      <string>振幅[15~16)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -341,7 +341,7 @@
       <string>a16</string>
     </key>
     <value>
-      <string>振幅[16~17)个数(%)</string>
+      <string>振幅[16~17)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -349,7 +349,7 @@
       <string>a17</string>
     </key>
     <value>
-      <string>振幅[17~18)个数(%)</string>
+      <string>振幅[17~18)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -357,7 +357,7 @@
       <string>a18</string>
     </key>
     <value>
-      <string>振幅[18~19)个数(%)</string>
+      <string>振幅[18~19)个数,%</string>
     </value>
   </SerializableDictionary>
   <SerializableDictionary>
@@ -365,7 +365,7 @@
       <string>a19</string>
     </key>
     <value>
-      <string>振幅大于19个数(%)</string>
+      <string>振幅大于19个数,%</string>
     </value>
   </SerializableDictionary>
 </SerializableDictionaryOfStringString>

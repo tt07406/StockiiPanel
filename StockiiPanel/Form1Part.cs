@@ -203,6 +203,36 @@ namespace StockiiPanel
                             rawContextMenuStrip.Items[i].Visible = false;
                     }
                     break;
+                case "raisingLimitInfoTab":
+                    if (raisingLimitInfoGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
+                    break;
+                case "raisingLimitTab":
+                    if (raisingLimitGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
+                    break;
                 default:
                     break;
             }
@@ -241,6 +271,12 @@ namespace StockiiPanel
                     break;
                 case "crossSectionTab":
                     dt = Commons.StructrueDataTable(sectionResultGrid, isSelected);
+                    break;
+                case "raisingLimitInfoTab":
+                    dt = Commons.StructrueDataTable(raisingLimitInfoGrid, isSelected);
+                    break;
+                case "raisingLimitTab":
+                    dt = Commons.StructrueDataTable(raisingLimitGrid, isSelected);
                     break;
                 default:
                     break;
@@ -364,7 +400,7 @@ namespace StockiiPanel
             ndayGrid.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
             ndayGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ndayGrid.AutoResizeColumns();
-            Commons.sumNum = sumDict.Count;
+            //Commons.sumNum = sumDict.Count;
 
             stop = true;
         }
@@ -495,7 +531,7 @@ namespace StockiiPanel
                 }
                 k++;
             }
-            Commons.customNum = customDict.Count;
+            //Commons.customNum = customDict.Count;
 
             //除了涨幅、振幅分段的计算是冻结6列之外，别的计算都是冻结2列
             if (compareCombo.Text == "两个时间段时涨幅依据分段")
@@ -575,7 +611,7 @@ namespace StockiiPanel
                 }
                 k++;
             }
-            Commons.crossNum = crossDict.Count;
+            //Commons.crossNum = crossDict.Count;
 
             stop = true;
         }

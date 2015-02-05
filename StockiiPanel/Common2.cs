@@ -279,10 +279,17 @@ namespace StockiiPanel
             //{
             //    return tb2;
             //}
-             DataTable tb3 = (DataTable)combineGridView.DataSource;
-             DataSet data = new DataSet();
-             data.Tables.Add(tb2);
-             return CombineDt(data, tb3);
+            if (combineGridView.RowCount > 0)
+            {
+                DataTable tb3 = (DataTable)combineGridView.DataSource;
+                DataSet data = new DataSet();
+                data.Tables.Add(tb2);
+                return CombineDt(data, tb3);
+            }
+            else
+            {
+                return tb2;
+            }
 
         }
 
@@ -318,7 +325,8 @@ namespace StockiiPanel
                     }
                 }
 
-                Intersaction(ref tb2,ref tb4, host, client);
+                //Intersaction(ref tb2,ref tb4, host, client);
+                Union(ref tb2, ref tb4, host, client);
                
                 return tb4;
             }
@@ -410,8 +418,8 @@ namespace StockiiPanel
             #region 从dataGridView中选取行并放到一个新表中，然后再绑定到dataGridView中
             DataTable dataTable = new DataTable();
 
-            int length = 0;
-
+            int length = dataGridView.Columns.Count;
+            /*
             switch (dataGridView.Name)
             {
                 case "rawDataGrid":
@@ -427,9 +435,8 @@ namespace StockiiPanel
                     length = crossNum;
                     break;
                 default:
-                    length = dataGridView.Columns.Count;
                     break;
-            }
+            }*/
 
             //添加表头
             for (int col = 0; col < length; col++)

@@ -342,6 +342,10 @@ namespace StockiiPanel
             addNewGroupButton(name);
             pList[name] = stocks;
 
+            isCustom = true;
+            groupLabel.Text = "自选股票：";
+            ButtonItem item = new ButtonItem(name);
+            groupButtonItemClicked(item, e);
             saveGroup();
         }
 
@@ -469,12 +473,12 @@ namespace StockiiPanel
                 case "raisingLimitInfoTab":
                     tableName = "raising_limit_info";
                     translateFile = "raisingLimitInfo.xml";
-                    thisView = dataGridViewX1;
+                    thisView = raisingLimitInfoGrid;
                     break;
                 case "raisingLimitTab":
                     tableName = "raising_limit_info_day";
                     translateFile = "raisingLimitInfoday.xml";
-                    thisView = dataGridViewX2;
+                    thisView = raisingLimitGrid;
                     break;
                 default:
                     stop = true;
@@ -534,22 +538,45 @@ namespace StockiiPanel
             DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
             //自动整理序列号
 
-            int coun = dataGridViewX1.RowCount;
+            int coun = raisingLimitInfoGrid.RowCount;
             for (int i = 0; i < coun; i++)
             {
                 int j = i + 1;
-                dataGridViewX1.Rows[i].HeaderCell.Value = j.ToString();
+                raisingLimitInfoGrid.Rows[i].HeaderCell.Value = j.ToString();
 
                 //隔行显示不同的颜色
                 if (IsOdd(i))
                 {
-                    dataGridViewX1.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+                    raisingLimitInfoGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
 
                 }
-                dataGridViewX1.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                dataGridViewX1.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+                raisingLimitInfoGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                raisingLimitInfoGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
             }
         }
+
+
+        private void raisingLimitGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
+
+            int coun = raisingLimitGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                raisingLimitGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+                //隔行显示不同的颜色
+                if (IsOdd(i))
+                {
+                    raisingLimitGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+                }
+
+            }
+        }
+
 
         const int CLOSE_SIZE = 15;
         //tabPage标签图片 
