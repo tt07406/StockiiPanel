@@ -41,17 +41,17 @@ namespace StockiiPanel
             InitializeComponent();
 
             //绘制的方式OwnerDrawFixed表示由窗体绘制大小也一样 
-            this.tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE/2);
-            this.tabControl.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
-            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
+            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE/2);
+            this.tabControl1.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
+            this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
 
             pList = new SerializableDictionary<string, ArrayList>();
             InitialCombo();
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
             record = new Dictionary<int, string>();
-            curTabName = tabControl.SelectedTab.Name;
+            curTabName = tabControl1.SelectedTab.Name;
             initTab(curTabName);
             if (!Directory.Exists(configDir))//判断是否存在
             {
@@ -230,11 +230,13 @@ namespace StockiiPanel
 
         private void initFormUI()
         {
-            tabControl.TabPages.Remove(nsumTab);
-            tabControl.TabPages.Remove(customCalTab);
-            tabControl.TabPages.Remove(crossSectionTab);
-            tabControl.TabPages.Remove(raisingLimitInfoTab);
-            tabControl.TabPages.Remove(raisingLimitTab);
+            tabControl1.TabPages.Remove(nsumTab);
+            tabControl1.TabPages.Remove(customCalTab);
+            tabControl1.TabPages.Remove(crossSectionTab);
+            tabControl1.TabPages.Remove(raisingLimitInfoTab);
+            tabControl1.TabPages.Remove(raisingLimitTab);
+            tabControl1.TabPages.Remove(raisingLimitIntervalTab);
+            tabControl1.TabPages.Remove(stockStopTab);
         }
 
         private void timeItem_Click(object sender, EventArgs e)
@@ -476,7 +478,7 @@ namespace StockiiPanel
                 return;
             }
 
-            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl1.SelectedTab.Name.Equals("customCalTab") || tabControl1.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -510,7 +512,7 @@ namespace StockiiPanel
                 return;
             }
 
-            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl1.SelectedTab.Name.Equals("customCalTab") || tabControl1.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -1059,9 +1061,9 @@ namespace StockiiPanel
         {
             //curTabName = tabControl.SelectedIndex;
 
-            if (tabControl.TabCount > 0)
+            if (tabControl1.TabCount > 0)
             {
-                curTabName = tabControl.SelectedTab.Name;
+                curTabName = tabControl1.SelectedTab.Name;
             }
             else
             {
@@ -1255,6 +1257,18 @@ namespace StockiiPanel
         {
             showThisTab(raisingLimitTab);
         }
+
+        private void raisingLimitIntervalCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(raisingLimitIntervalTab);
+        }
+
+        private void stockStopCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(stockStopTab);
+        }
+
+        
 
     }
 }

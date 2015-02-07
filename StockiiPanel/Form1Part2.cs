@@ -27,7 +27,7 @@ namespace StockiiPanel
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl.TabPages.Remove(tabControl.SelectedTab);
+            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
         }
 
 
@@ -58,13 +58,13 @@ namespace StockiiPanel
 
         private void showThisTab(TabPage tab)
         {
-            if (!tabControl.Controls.Contains(tab))
+            if (!tabControl1.Controls.Contains(tab))
             {
-                tabControl.Controls.Add(tab);
-                tabControl.SelectTab(tab);
-                if (tabControl.TabCount == 1)
+                tabControl1.Controls.Add(tab);
+                tabControl1.SelectTab(tab);
+                if (tabControl1.TabCount == 1)
                 {
-                    curTabName = tabControl.SelectedTab.Name;
+                    curTabName = tabControl1.SelectedTab.Name;
                     initTab(curTabName);
                     if (curTabName.Equals("rawDataTab") || curTabName.Equals("nsumTab"))//向上版块和向下版块只针对原始数据和n日和有效
                         boardBar.Visible = true;
@@ -74,7 +74,7 @@ namespace StockiiPanel
             }
             else
             {
-                tabControl.SelectTab(tab);
+                tabControl1.SelectTab(tab);
             }
 
         }
@@ -312,7 +312,7 @@ namespace StockiiPanel
             }
 
             ArrayList stocks = new ArrayList();
-            if (tabControl.SelectedTab.Name.Equals("customCalTab"))
+            if (tabControl1.SelectedTab.Name.Equals("customCalTab"))
             {
                 for (int i = 0; i < calResultGrid.SelectedRows.Count; ++i)
                 {
@@ -416,7 +416,7 @@ namespace StockiiPanel
             String endDate = args[2];
 
             ds = new DataSet();
-            int totalPages;
+            int totalPages = 0;
 
             if (type.Equals("raisingLimitTab"))
             {
@@ -430,14 +430,40 @@ namespace StockiiPanel
                 ArrayList stocks;
                 String name = args[3];//取选中的分组
                 stocks = new ArrayList(pList[name]);
-
-                stop = Commons.GetRaisingLimitInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                switch (type)
+                {
+                    case "raisingLimitInfoTab":
+                        stop = Commons.GetRaisingLimitInfo(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    case "raisingLimitIntervalTab":
+                        stop = Commons.GetRaisingLimitInterval(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    case "stockStopTab":
+                        stop = Commons.GetStockStop(stocks, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    default:
+                        break;
+                }
             }
             else //版块
             {
-                stop = Commons.GetRaisingLimitInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
-                totalPageList[curTabName] = totalPages;
+                switch (type)
+                {
+                    case "raisingLimitInfoTab":
+                        stop = Commons.GetRaisingLimitInfoBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    case "raisingLimitIntervalTab":
+                        stop = Commons.GetRaisingLimitIntervalBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    case "stockStopTab":
+                        stop = Commons.GetStockStopBoard(record, sortColumnList[curTabName], sortTypeList[curTabName], startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                        break;
+                    default:
+                        break;
+                }
+                
             }
+            totalPageList[curTabName] = totalPages;
         }
 
         private void raisingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -468,6 +494,7 @@ namespace StockiiPanel
             String tableName = "";
             String translateFile = "";
             DataGridView thisView = null;
+            bool customSort = true;
             switch (curTabName)
             {
                 case "raisingLimitInfoTab":
@@ -479,6 +506,18 @@ namespace StockiiPanel
                     tableName = "raising_limit_info_day";
                     translateFile = "raisingLimitInfoday.xml";
                     thisView = raisingLimitGrid;
+                    customSort = false;
+                    break;
+                case "raisingLimitIntervalTab":
+                    tableName = "raising_limit_info_interval";
+                    translateFile = "raisingLimitInfoInterval.xml";
+                    thisView = raisingLimitIntervalGrid;
+                    customSort = false;
+                    break;
+                case "stockStopTab":
+                    tableName = "stock_stop";
+                    translateFile = "stockStop.xml";
+                    thisView = stockStopGrid;
                     break;
                 default:
                     stop = true;
@@ -521,15 +560,30 @@ namespace StockiiPanel
                 thisView.Columns[k].HeaderText = item.Value;
                 thisView.Columns[k].Width = 60 + item.Value.Length * 10;
                 thisView.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
-                thisView.Columns[k].SortMode = DataGridViewColumnSortMode.Programmatic;
+                switch (item.Key)
+                {
+                    case "stock_id":
+                    case "stock_name":
+                        thisView.Columns[k].Frozen = true;
+                        break;
+                    default:
+                        break;
+                }
+                if (customSort)
+                {
+                    thisView.Columns[k].SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                
                 if (sortColumnList[curTabName] == thisView.Columns[k].DataPropertyName)
                 {
                     sortIndex = k;
                 }
                 k++;
             }
-
-            thisView.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
+            if (customSort)
+            {
+                thisView.Columns[sortIndex].HeaderCell.SortGlyphDirection = sortTypeList[curTabName] ? SortOrder.Ascending : SortOrder.Descending;
+            }
 
             stop = true;
         }
@@ -550,6 +604,7 @@ namespace StockiiPanel
                     raisingLimitInfoGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
 
                 }
+
                 raisingLimitInfoGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
                 raisingLimitInfoGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
             }
@@ -573,11 +628,54 @@ namespace StockiiPanel
                     raisingLimitGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
 
                 }
+                raisingLimitGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                raisingLimitGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+            }
+        }
+        private void raisingLimitIntervalGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
 
+            int coun = raisingLimitIntervalGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                raisingLimitIntervalGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+                //隔行显示不同的颜色
+                if (IsOdd(i))
+                {
+                    raisingLimitIntervalGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+                }
+                raisingLimitIntervalGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                raisingLimitIntervalGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
             }
         }
 
+        private void stockStopGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+            //自动整理序列号
 
+            int coun = stockStopGrid.RowCount;
+            for (int i = 0; i < coun; i++)
+            {
+                int j = i + 1;
+                stockStopGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+                //隔行显示不同的颜色
+                if (IsOdd(i))
+                {
+                    stockStopGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+                }
+                stockStopGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                stockStopGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+
+            }
+        }
         const int CLOSE_SIZE = 15;
         //tabPage标签图片 
         //Bitmap image = new Bitmap("E:\\ico_close.gif");
@@ -587,10 +685,10 @@ namespace StockiiPanel
         {
             try
             {
-                Rectangle myTabRect = this.tabControl.GetTabRect(e.Index);
+                Rectangle myTabRect = this.tabControl1.GetTabRect(e.Index);
 
                 //先添加TabPage属性    
-                e.Graphics.DrawString(this.tabControl.TabPages[e.Index].Text, this.Font, SystemBrushes.ControlText, myTabRect.X + 2, myTabRect.Y + 2);
+                e.Graphics.DrawString(this.tabControl1.TabPages[e.Index].Text, this.Font, SystemBrushes.ControlText, myTabRect.X + 2, myTabRect.Y + 2);
 
                 //再画一个矩形框 
                 using (Pen p = new Pen(Color.White))
@@ -642,7 +740,7 @@ namespace StockiiPanel
             {
                 int x = e.X, y = e.Y;
                 //计算关闭区域    
-                Rectangle myTabRect = this.tabControl.GetTabRect(this.tabControl.SelectedIndex);
+                Rectangle myTabRect = this.tabControl1.GetTabRect(this.tabControl1.SelectedIndex);
 
                 myTabRect.Offset(myTabRect.Width - (CLOSE_SIZE + 3), 2);
                 myTabRect.Width = CLOSE_SIZE;
@@ -652,7 +750,7 @@ namespace StockiiPanel
                 bool isClose = x > myTabRect.X && x < myTabRect.Right && y > myTabRect.Y && y < myTabRect.Bottom;
                 if (isClose == true)
                 {
-                    this.tabControl.TabPages.Remove(this.tabControl.SelectedTab);
+                    this.tabControl1.TabPages.Remove(this.tabControl1.SelectedTab);
                 }
             }
         }

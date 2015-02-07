@@ -783,5 +783,111 @@ namespace StockiiPanel
 
             return jsDs;
         }
+        public static DataSet GetRaisingLimitInterval(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listraisinglimitinfointerval";
+                args["response"] = "json";
+                if (stockid.Count != 0)
+                {
+                    args["stockid"] = String.Join(",", stockid.ToArray());
+                }
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                if (sortname.Trim().Length != 0)
+                {
+                    args["sortname"] = sortname;
+                    args["asc"] = asc.ToString();
+                }
+                jsonText = WebService.Post(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return new DataSet();
+            }
+
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(num) / pagesize + 1;
+
+            return jsDs;
+        }
+        public static DataSet GetStockStop(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "liststockstop";
+                args["response"] = "json";
+                if (stockid.Count != 0)
+                {
+                    args["stockid"] = String.Join(",", stockid.ToArray());
+                }
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                if (sortname.Trim().Length != 0)
+                {
+                    args["sortname"] = sortname;
+                    args["asc"] = asc.ToString();
+                }
+                jsonText = WebService.Post(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return new DataSet();
+            }
+
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+            totalpage = Convert.ToInt32(num) / pagesize + 1;
+
+            return jsDs;
+        }
     }
 }

@@ -903,7 +903,8 @@ namespace StockiiPanel
                              created = u.Field<string>("created").Substring(0, 10),
                              count = u.Field<string>("count"),
                              limit = u.Field<string>("limit"),
-                             percent = u.Field<string>("percent"),
+                             percent = Math.Round(Convert.ToDouble(u.Field<string>("percent")), 4),
+                             
                          });
 
             DataTable dt = ToDataTable(query.ToList(), "raising_limit_info_day");

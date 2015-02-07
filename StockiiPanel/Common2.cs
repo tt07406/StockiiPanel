@@ -481,6 +481,134 @@ namespace StockiiPanel
             return dataTable;
             #endregion
         }
+        public static bool GetRaisingLimitInterval(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            bool stop = false;
 
+            ds = JSONHandler.GetRaisingLimitInterval(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
+
+            var query = (from u in ds.Tables["raisinglimitinfointerval"].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             created = u.Field<string>("created").Substring(0, 10),
+                             jgtime = u.Field<string>("jgtime"),
+                             jgtimemax = u.Field<string>("jgtimemax"),
+                             jgtimemin = u.Field<string>("jgtimemin"),
+                             jgtimeave = u.Field<string>("jgtimeave"),
+                             count = u.Field<string>("count"),
+                             trade = u.Field<string>("trade"),
+                             per = Math.Round(Convert.ToDouble(u.Field<string>("per")), 4),
+
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "raising_limit_info_interval");
+
+            ds.Tables.Remove("raisinglimitinfointerval");
+            ds.Tables.Add(dt);
+
+            return stop;
+        }
+        public static bool GetRaisingLimitIntervalBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return GetRaisingLimitInterval(stocks, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+        }
+        public static bool GetStockStop(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            bool stop = false;
+
+            ds = JSONHandler.GetStockStop(stockid, sortname, asc, startDate, endDate, page, pagesize, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
+
+            var query = (from u in ds.Tables["stockstop"].AsEnumerable()
+                         join r in classfiDt.AsEnumerable()
+                         on u.Field<string>("stockid") equals r.Field<string>("stockid")
+                         select new
+                         {
+                             stock_id = u.Field<string>("stockid"),
+                             stock_name = r.Field<string>("stockname"),
+                             start_date = u.Field<string>("startdate").Substring(0, 10),
+                             end_date = u.Field<string>("enddate").Substring(0, 10),
+                             diff = u.Field<string>("diff"),
+                             state = u.Field<string>("state").Equals("stop")?"停牌":"退市",
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "stock_stop");
+
+            ds.Tables.Remove("stockstop");
+            ds.Tables.Add(dt);
+
+            return stop;
+        }
+        public static bool GetStockStopBoard(Dictionary<int, string> record, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            string name = record.Values.First();
+            ArrayList stocks = new ArrayList();
+            DataRow[] rows;
+            switch (record.Keys.First())
+            {
+                case (int)Board.Section:
+                    rows = classfiDt.Select("areaname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                case (int)Board.Industry:
+                    rows = classfiDt.Select("industryname = '" + name + "'");
+                    foreach (DataRow row in rows)
+                    {
+                        stocks.Add(row["stockid"]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return GetStockStop(stocks, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+        }
     }
 }

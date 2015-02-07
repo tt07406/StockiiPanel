@@ -147,7 +147,7 @@ namespace StockiiPanel
 
         private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            switch (tabControl.SelectedTab.Name)
+            switch (tabControl1.SelectedTab.Name)
             {
                 case "rawDataTab":
                     if (rawDataGrid.RowCount > 0)
@@ -258,7 +258,7 @@ namespace StockiiPanel
 
         private void SaveGrid(bool isSelected)
         {
-            switch (tabControl.SelectedTab.Name)
+            switch (tabControl1.SelectedTab.Name)
             {
                 case "rawDataTab":
                     dt = Commons.StructrueDataTable(rawDataGrid, isSelected);
@@ -820,6 +820,8 @@ namespace StockiiPanel
                     break;
                 case "raisingLimitInfoTab":
                 case "raisingLimitTab":
+                case "raisingLimitIntervalTab":
+                case "stockStopTab":
                     raisingWorker.RunWorkerAsync(type + "," + args);
                     pageLabel3.Text = "0/0";
                     break;
@@ -850,7 +852,7 @@ namespace StockiiPanel
                 headText.Add(combineResult.Columns[i].HeaderText);
             bufferArray = (ArrayList)combineArray.Clone();
 
-            if (tabControl.SelectedTab.Name.Equals("customCalTab"))//自定义计算
+            if (tabControl1.SelectedTab.Name.Equals("customCalTab"))//自定义计算
             {
                 combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
                 if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接
