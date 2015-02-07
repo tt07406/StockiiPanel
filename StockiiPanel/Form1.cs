@@ -230,13 +230,17 @@ namespace StockiiPanel
 
         private void initFormUI()
         {
-            tabControl1.TabPages.Remove(nsumTab);
-            tabControl1.TabPages.Remove(customCalTab);
-            tabControl1.TabPages.Remove(crossSectionTab);
-            tabControl1.TabPages.Remove(raisingLimitInfoTab);
-            tabControl1.TabPages.Remove(raisingLimitTab);
-            tabControl1.TabPages.Remove(raisingLimitIntervalTab);
-            tabControl1.TabPages.Remove(stockStopTab);
+            for (int i = tabControl1.TabPages.Count - 1; i > 0; i--)
+            {
+                tabControl1.TabPages.RemoveAt(i);
+            }
+            //tabControl1.TabPages.Remove(nsumTab);
+            //tabControl1.TabPages.Remove(customCalTab);
+            //tabControl1.TabPages.Remove(crossSectionTab);
+            //tabControl1.TabPages.Remove(raisingLimitInfoTab);
+            //tabControl1.TabPages.Remove(raisingLimitTab);
+            //tabControl1.TabPages.Remove(raisingLimitIntervalTab);
+            //tabControl1.TabPages.Remove(stockStopTab);
         }
 
         private void timeItem_Click(object sender, EventArgs e)
@@ -1270,6 +1274,11 @@ namespace StockiiPanel
         private void stockStopCal_Click(object sender, EventArgs e)
         {
             showThisTab(stockStopTab);
+        }
+
+        private void growthBoardCal_Click(object sender, EventArgs e)
+        {
+            showThisTab(growthBoardTab);
         }
 
     }
