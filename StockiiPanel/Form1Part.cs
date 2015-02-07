@@ -263,6 +263,21 @@ namespace StockiiPanel
                     combineSelectToolStripMenuItem.Visible = false;
                     newGroupItem.Visible = false;
                     break;
+                case "growthBoardTab":
+                    if (growthBoardGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
+                    break;
                 default:
                     break;
             }
@@ -313,6 +328,9 @@ namespace StockiiPanel
                     break;
                 case "stockStopTab":
                     dt = Commons.StructrueDataTable(stockStopGrid, isSelected);
+                    break;
+                case "growthBoardTab":
+                    dt = Commons.StructrueDataTable(growthBoardGrid, isSelected);
                     break;
                 default:
                     break;
@@ -811,6 +829,11 @@ namespace StockiiPanel
                 MessageBox.Show("请输入权重");
                 return;
             }
+            if (type.Equals("growthBoardTab") && growthBoardWeightText.Text.Equals(""))
+            {
+                MessageBox.Show("请输入权重");
+                return;
+            }
 
             // 启动Loading线程
             System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadFun));
@@ -820,7 +843,7 @@ namespace StockiiPanel
             stop = false;
 
             String args;
-            if (isCustom && !type.Equals("crossSectionTab"))//自选
+            if (isCustom && !type.Equals("crossSectionTab") && !type.Equals("growthBoardTab"))//自选
             {
                 args = startDateTimePicker.Value.ToString("yyyy-MM-dd") + "," + endDateTimePicker.Value.ToString("yyyy-MM-dd") + "," + curGroupName.ToString();
             }
@@ -859,6 +882,10 @@ namespace StockiiPanel
                 case "raisingLimitIntervalTab":
                 case "stockStopTab":
                     raisingWorker.RunWorkerAsync(type + "," + args);
+                    pageLabel3.Text = "0/0";
+                    break;
+                case "growthBoardTab":
+                    raisingWorker.RunWorkerAsync(type + "," + args + "," + growthBoardWeightText.Text);
                     pageLabel3.Text = "0/0";
                     break;
                 default:

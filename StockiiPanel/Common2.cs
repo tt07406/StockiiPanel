@@ -510,7 +510,7 @@ namespace StockiiPanel
                              jgtimeave = u.Field<string>("jgtimeave"),
                              count = u.Field<string>("count"),
                              trade = u.Field<string>("trade"),
-                             per = Math.Round(Convert.ToDouble(u.Field<string>("per")), 4),
+                             per = Math.Round(Convert.ToDouble(u.Field<string>("per")), 4).ToString(),
 
                          });
 
@@ -609,6 +609,57 @@ namespace StockiiPanel
             }
 
             return GetStockStop(stocks, sortname, asc, startDate, endDate, page, pagesize, out errorNo, out ds, out totalpage);
+        }
+        public static bool GetGrowthBoard(String startDate, String endDate, int weight, out int errorNo, out DataSet ds, out int totalpage)
+        {
+            bool stop = false;
+
+            ds = JSONHandler.GetGrowthBoard(startDate, endDate, weight, out totalpage, out errorNo);
+
+            if (ds == null)
+            {
+                return true;
+            }
+            if (ds.Tables.Count == 0)
+            {
+                return false;
+            }
+
+            var query = (from u in ds.Tables["growthboard"].AsEnumerable()
+                         select new
+                         {
+                             created = u.Field<string>("created").Substring(0, 10),
+                             growthsz = u.Field<string>("growthsz"),
+                             countsz = u.Field<string>("countsz"),
+                             persz = Math.Round(Convert.ToDouble(u.Field<string>("persz")), 4).ToString(),
+                             growthsme = u.Field<string>("growthsme"),
+                             countsme = u.Field<string>("countsme"),
+                             persme = Math.Round(Convert.ToDouble(u.Field<string>("persme")), 4).ToString(),
+                             growthgem = u.Field<string>("growthgem"),
+                             countgem = u.Field<string>("countgem"),
+                             pergem = Math.Round(Convert.ToDouble(u.Field<string>("pergem")), 4).ToString(),
+                             growthsh = u.Field<string>("growthsh"),
+                             countsh = u.Field<string>("countsh"),
+                             persh = Math.Round(Convert.ToDouble(u.Field<string>("persh")), 4).ToString(),
+                             totalnum = u.Field<string>("totalnum"),
+                             growthnum = u.Field<string>("growthnum"),
+                             pertotalgrowth = Math.Round(Convert.ToDouble(u.Field<string>("pertotalgrowth")), 4).ToString(),
+                             pertotalsz = Math.Round(Convert.ToDouble(u.Field<string>("pertotalsz")), 4).ToString(),
+                             pertotalsme = Math.Round(Convert.ToDouble(u.Field<string>("pertotalsme")), 4).ToString(),
+                             pertotalgem = Math.Round(Convert.ToDouble(u.Field<string>("pertotalgem")), 4).ToString(),
+                             pertotalsh = Math.Round(Convert.ToDouble(u.Field<string>("pertotalsh")), 4).ToString(),
+                             pergrowthsz = Math.Round(Convert.ToDouble(u.Field<string>("pergrowthsz")), 4).ToString(),
+                             pergrowthsme = Math.Round(Convert.ToDouble(u.Field<string>("pergrowthsme")), 4).ToString(),
+                             pergrwothgem = Math.Round(Convert.ToDouble(u.Field<string>("pergrwothgem")), 4).ToString(),
+                             pergrowthsh = Math.Round(Convert.ToDouble(u.Field<string>("pergrowthsh")), 4).ToString(),
+                         });
+
+            DataTable dt = ToDataTable(query.ToList(), "growth_board");
+
+            ds.Tables.Remove("growthboard");
+            ds.Tables.Add(dt);
+
+            return stop;
         }
     }
 }

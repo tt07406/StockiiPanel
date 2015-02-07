@@ -903,7 +903,7 @@ namespace StockiiPanel
                              created = u.Field<string>("created").Substring(0, 10),
                              count = u.Field<string>("count"),
                              limit = u.Field<string>("limit"),
-                             percent = Math.Round(Convert.ToDouble(u.Field<string>("percent")), 4),
+                             percent = Math.Round(Convert.ToDouble(u.Field<string>("percent")), 4).ToString(),
                              
                          });
 

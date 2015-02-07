@@ -86,7 +86,7 @@ namespace StockiiPanel
 
         private void maketInfo_Click(object sender, EventArgs e)
         {
-            showThisTab(marketTab);
+            //showThisTab(marketTab);
         }
 
         private void dumpCurPage_Click(object sender, EventArgs e)
@@ -418,12 +418,19 @@ namespace StockiiPanel
             ds = new DataSet();
             int totalPages = 0;
 
-            if (type.Equals("raisingLimitTab"))
-            {
-                stop = Commons.GetRaisingLimitDay(startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
-                totalPageList[curTabName] = totalPages;
-                return;
-            }
+            switch (type)
+	        {
+                case "raisingLimitTab":
+                    stop = Commons.GetRaisingLimitDay(startDate, endDate, pageList[curTabName], pagesize, out errorNo, out ds, out totalPages);
+                    totalPageList[curTabName] = totalPages;
+                    return;
+                case "growthBoardTab":
+                    stop = Commons.GetGrowthBoard(startDate, endDate, Convert.ToInt32(args[3]), out errorNo, out ds, out totalPages);
+                    totalPageList[curTabName] = totalPages;
+                    return;
+		        default:
+                    break;
+	        }
 
             if (args.Length == 4)//自选
             {
@@ -519,6 +526,11 @@ namespace StockiiPanel
                     translateFile = "stockStop.xml";
                     thisView = stockStopGrid;
                     break;
+                case "growthBoardTab":
+                    tableName = "growth_board";
+                    translateFile = "growthboard.xml";
+                    thisView = growthBoardGrid;
+                    break;
                 default:
                     stop = true;
                     MessageBox.Show("无查询结果");
@@ -592,90 +604,99 @@ namespace StockiiPanel
             DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
             //自动整理序列号
 
-            int coun = raisingLimitInfoGrid.RowCount;
+            DataGridView gridView = (DataGridView)sender;
+            int coun = gridView.RowCount;
             for (int i = 0; i < coun; i++)
             {
                 int j = i + 1;
-                raisingLimitInfoGrid.Rows[i].HeaderCell.Value = j.ToString();
+                gridView.Rows[i].HeaderCell.Value = j.ToString();
 
                 //隔行显示不同的颜色
                 if (IsOdd(i))
                 {
-                    raisingLimitInfoGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+                    gridView.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
 
                 }
-
-                raisingLimitInfoGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                raisingLimitInfoGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
-            }
-        }
-
-
-        private void raisingLimitGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
-            //自动整理序列号
-
-            int coun = raisingLimitGrid.RowCount;
-            for (int i = 0; i < coun; i++)
-            {
-                int j = i + 1;
-                raisingLimitGrid.Rows[i].HeaderCell.Value = j.ToString();
-
-                //隔行显示不同的颜色
-                if (IsOdd(i))
+                switch (curTabName)
                 {
-                    raisingLimitGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
-
+                    case "raisingLimitTab":
+                    case "growthBoardTab":
+                        break;
+                    default:
+                        gridView.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+                        gridView.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+                        break;
                 }
-                raisingLimitGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                raisingLimitGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
-            }
-        }
-        private void raisingLimitIntervalGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
-            //自动整理序列号
-
-            int coun = raisingLimitIntervalGrid.RowCount;
-            for (int i = 0; i < coun; i++)
-            {
-                int j = i + 1;
-                raisingLimitIntervalGrid.Rows[i].HeaderCell.Value = j.ToString();
-
-                //隔行显示不同的颜色
-                if (IsOdd(i))
-                {
-                    raisingLimitIntervalGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
-
-                }
-                raisingLimitIntervalGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                raisingLimitIntervalGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+                
             }
         }
 
-        private void stockStopGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
-            //自动整理序列号
 
-            int coun = stockStopGrid.RowCount;
-            for (int i = 0; i < coun; i++)
-            {
-                int j = i + 1;
-                stockStopGrid.Rows[i].HeaderCell.Value = j.ToString();
+        //private void raisingLimitGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+        //    //自动整理序列号
 
-                //隔行显示不同的颜色
-                if (IsOdd(i))
-                {
-                    stockStopGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+        //    int coun = raisingLimitGrid.RowCount;
+        //    for (int i = 0; i < coun; i++)
+        //    {
+        //        int j = i + 1;
+        //        raisingLimitGrid.Rows[i].HeaderCell.Value = j.ToString();
 
-                }
-                stockStopGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
-                stockStopGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+        //        //隔行显示不同的颜色
+        //        if (IsOdd(i))
+        //        {
+        //            raisingLimitGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
 
-            }
-        }
+        //        }
+        //        raisingLimitGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+        //        raisingLimitGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+        //    }
+        //}
+        //private void raisingLimitIntervalGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+        //    //自动整理序列号
+
+        //    int coun = raisingLimitIntervalGrid.RowCount;
+        //    for (int i = 0; i < coun; i++)
+        //    {
+        //        int j = i + 1;
+        //        raisingLimitIntervalGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+        //        //隔行显示不同的颜色
+        //        if (IsOdd(i))
+        //        {
+        //            raisingLimitIntervalGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+        //        }
+        //        raisingLimitIntervalGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+        //        raisingLimitIntervalGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+        //    }
+        //}
+
+        //private void stockStopGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    DataGridViewTextBoxColumn dgv_Text = new DataGridViewTextBoxColumn();
+        //    //自动整理序列号
+
+        //    int coun = stockStopGrid.RowCount;
+        //    for (int i = 0; i < coun; i++)
+        //    {
+        //        int j = i + 1;
+        //        stockStopGrid.Rows[i].HeaderCell.Value = j.ToString();
+
+        //        //隔行显示不同的颜色
+        //        if (IsOdd(i))
+        //        {
+        //            stockStopGrid.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+
+        //        }
+        //        stockStopGrid.Rows[i].Cells[0].Style.BackColor = Color.Lime;
+        //        stockStopGrid.Rows[i].Cells[1].Style.BackColor = Color.Lime;
+
+        //    }
+        //}
         const int CLOSE_SIZE = 15;
         //tabPage标签图片 
         //Bitmap image = new Bitmap("E:\\ico_close.gif");

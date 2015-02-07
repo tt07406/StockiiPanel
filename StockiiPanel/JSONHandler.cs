@@ -889,5 +889,49 @@ namespace StockiiPanel
 
             return jsDs;
         }
+        public static DataSet GetGrowthBoard(String startDate, String endDate, int weight, out int totalpage, out int errorNo)
+        {
+            string jsonText = "";
+            totalpage = 1;
+            errorNo = 0;
+
+            try
+            {
+                string url = localURL;
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args["command"] = "listgrowthboard";
+                args["response"] = "json";
+                args["starttime"] = startDate;
+                args["endtime"] = endDate;
+                args["weight"] = weight.ToString();
+                jsonText = WebService.Post(url, args);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("An IOException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return null;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("An WebException has been thrown!");
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+
+            JObject jo = JObject.Parse(jsonText);
+
+            if (jo.First.First.Last == null)
+            {
+                return new DataSet();
+            }
+
+            string jsonarray = jo.First.First.Last.ToString();
+            string num = jo.First.First.First.First.ToString();
+            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
+
+            return jsDs;
+        }
     }
 }
