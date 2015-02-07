@@ -308,6 +308,12 @@ namespace StockiiPanel
                 case "raisingLimitTab":
                     dt = Commons.StructrueDataTable(raisingLimitGrid, isSelected);
                     break;
+                case "raisingLimitIntervalTab":
+                    dt = Commons.StructrueDataTable(raisingLimitIntervalGrid, isSelected);
+                    break;
+                case "stockStopTab":
+                    dt = Commons.StructrueDataTable(stockStopGrid, isSelected);
+                    break;
                 default:
                     break;
             }
