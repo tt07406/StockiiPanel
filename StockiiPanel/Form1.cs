@@ -1089,7 +1089,11 @@ namespace StockiiPanel
                     curSortIndex = i;
                 }
             }
-
+            if (gridView.Columns[e.ColumnIndex].DataPropertyName.Equals("stock_name"))
+            {
+                MessageBox.Show("名称无法排序");
+                return;
+            }
             sortColumnList[curTabName] = gridView.Columns[e.ColumnIndex].DataPropertyName;
             if (curSortIndex == e.ColumnIndex)
             {
@@ -1267,8 +1271,6 @@ namespace StockiiPanel
         {
             showThisTab(stockStopTab);
         }
-
-        
 
     }
 }

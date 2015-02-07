@@ -636,6 +636,8 @@
             this.currentBoard = new System.Windows.Forms.ToolStripStatusLabel();
             this.balloonTip1 = new DevComponents.DotNetBar.BalloonTip();
             this.raisingWorker = new System.ComponentModel.BackgroundWorker();
+            this.ribbonBar7 = new DevComponents.DotNetBar.RibbonBar();
+            this.itemContainer14 = new DevComponents.DotNetBar.ItemContainer();
             this.contextMenuStrip1.SuspendLayout();
             this.boardMenuStrip.SuspendLayout();
             this.tabStrip.SuspendLayout();
@@ -4681,6 +4683,7 @@
             // ribbonPanel1
             // 
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel1.Controls.Add(this.ribbonBar7);
             this.ribbonPanel1.Controls.Add(this.ribbonBar12);
             this.ribbonPanel1.Controls.Add(this.ribbonBar11);
             this.ribbonPanel1.Controls.Add(this.ribbonBar10);
@@ -6254,6 +6257,50 @@
             this.raisingWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.raisingWorker_DoWork);
             this.raisingWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.raisingWorker_RunWorkerCompleted);
             // 
+            // ribbonBar7
+            // 
+            this.ribbonBar7.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar7.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar7.ContainerControlProcessDialogKey = true;
+            this.ribbonBar7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar7.DragDropSupport = true;
+            this.ribbonBar7.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.itemContainer14});
+            this.ribbonBar7.Location = new System.Drawing.Point(1027, 0);
+            this.ribbonBar7.Name = "ribbonBar7";
+            this.ribbonBar7.Size = new System.Drawing.Size(183, 99);
+            this.ribbonBar7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar7.TabIndex = 5;
+            this.ribbonBar7.Text = "ribbonBar7";
+            // 
+            // 
+            // 
+            this.ribbonBar7.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar7.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // itemContainer14
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer14.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer14.Name = "itemContainer14";
+            // 
+            // 
+            // 
+            this.itemContainer14.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -6921,6 +6968,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button8;
+        private DevComponents.DotNetBar.RibbonBar ribbonBar7;
+        private DevComponents.DotNetBar.ItemContainer itemContainer14;
     }
 }
 

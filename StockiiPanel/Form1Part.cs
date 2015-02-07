@@ -233,6 +233,36 @@ namespace StockiiPanel
                     combineSelectToolStripMenuItem.Visible = false;
                     newGroupItem.Visible = false;
                     break;
+                case "raisingLimitIntervalTab":
+                    if (raisingLimitIntervalGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
+                    break;
+                case "stockStopTab":
+                    if (stockStopGrid.RowCount > 0)
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < rawContextMenuStrip.Items.Count; ++i)
+                            rawContextMenuStrip.Items[i].Visible = false;
+                    }
+                    combinePageToolStripMenuItem.Visible = false;
+                    combineSelectToolStripMenuItem.Visible = false;
+                    newGroupItem.Visible = false;
+                    break;
                 default:
                     break;
             }

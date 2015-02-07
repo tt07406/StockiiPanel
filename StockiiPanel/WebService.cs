@@ -24,6 +24,10 @@ namespace StockiiPanel
         {
             if (args.ContainsKey("sortname") && args["sortname"].Equals("stock_id"))
                 args["sortname"] = "stockId";
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("start_date"))
+                args["sortname"] = "startdate";
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("end_date"))
+                args["sortname"] = "enddate";
 
             StringBuilder data = new StringBuilder();
             int i = 0;
@@ -75,7 +79,10 @@ namespace StockiiPanel
         {
             if (args.ContainsKey("sortname") && args["sortname"].Equals("stock_id"))
                 args["sortname"] = "stockId";
-
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("start_date"))
+                args["sortname"] = "startdate";
+            if (args.ContainsKey("sortname") && args["sortname"].Equals("end_date"))
+                args["sortname"] = "enddate";
             //Console.WriteLine(url);
             Uri address = new Uri(url);
 
