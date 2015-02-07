@@ -66,13 +66,37 @@ namespace StockiiPanel
             if (actionList.SelectedItem == null)
                 return;
 
-            int number = combineList[actionList.SelectedItem.ToString()].Count;// 操作里拼接的个数
+            actionName = actionList.SelectedItem.ToString();
+            ArrayList list = combineList[actionName];//拼接序列
+            int number = list.Count;// 操作里拼接的个数
 
             numLabel.Text = "拼接个数：" + number;
+            actions.Items.Clear();
+
+            foreach (var item in list)
+            {
+                String[] args = item.ToString().Split(',');//解析参数
+
+                if (args[0].Equals("crossSection"))
+                {
+                    actions.Items.Add("跨区：权重（%）－>" + args[1] + "||指标－>" + args[2]);
+                }
+                else
+                {
+                    actions.Items.Add("自定义计算：最小值－>" + args[1] + "||最大值－>" + args[2] + "||比较指标－>" + args[3] + "||比较方法－>" + args[4]);
+                }
+            }
+            
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (actionList.SelectedItem == null || actionList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择一项");
+                return;
+            }
+
             DialogResult dr = MessageBox.Show("确认删除？", "删除操作", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
 
             if (dr == DialogResult.Yes)

@@ -430,7 +430,7 @@
             this.groupList = new System.Windows.Forms.ListBox();
             this.bkWorker = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.rawDataTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rawDataGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -652,7 +652,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.rawDataTab.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rawDataGrid)).BeginInit();
@@ -3412,7 +3412,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel1.Controls.Add(this.tabControl);
             // 
             // splitContainer1.Panel2
             // 
@@ -3422,25 +3422,25 @@
             this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 8;
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.rawDataTab);
-            this.tabControl1.Controls.Add(this.nsumTab);
-            this.tabControl1.Controls.Add(this.customCalTab);
-            this.tabControl1.Controls.Add(this.crossSectionTab);
-            this.tabControl1.Controls.Add(this.raisingLimitInfoTab);
-            this.tabControl1.Controls.Add(this.raisingLimitTab);
-            this.tabControl1.Controls.Add(this.raisingLimitIntervalTab);
-            this.tabControl1.Controls.Add(this.stockStopTab);
-            this.tabControl1.Controls.Add(this.growthBoardTab);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1126, 419);
-            this.tabControl1.TabIndex = 5;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            this.tabControl.Controls.Add(this.rawDataTab);
+            this.tabControl.Controls.Add(this.nsumTab);
+            this.tabControl.Controls.Add(this.customCalTab);
+            this.tabControl.Controls.Add(this.crossSectionTab);
+            this.tabControl.Controls.Add(this.raisingLimitInfoTab);
+            this.tabControl.Controls.Add(this.raisingLimitTab);
+            this.tabControl.Controls.Add(this.raisingLimitIntervalTab);
+            this.tabControl.Controls.Add(this.stockStopTab);
+            this.tabControl.Controls.Add(this.growthBoardTab);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Multiline = true;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1126, 419);
+            this.tabControl.TabIndex = 5;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // rawDataTab
             // 
@@ -4133,6 +4133,7 @@
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.raisingLimitInfoGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.raisingLimitInfoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raisingLimitInfoGrid.ContextMenuStrip = this.rawContextMenuStrip;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
@@ -4235,6 +4236,7 @@
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.raisingLimitGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.raisingLimitGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raisingLimitGrid.ContextMenuStrip = this.rawContextMenuStrip;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
@@ -4338,6 +4340,7 @@
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.raisingLimitIntervalGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.raisingLimitIntervalGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raisingLimitIntervalGrid.ContextMenuStrip = this.rawContextMenuStrip;
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
@@ -4441,6 +4444,7 @@
             dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.stockStopGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            this.stockStopGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.stockStopGrid.ContextMenuStrip = this.rawContextMenuStrip;
             dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
@@ -4546,6 +4550,7 @@
             dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.growthBoardGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.growthBoardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.growthBoardGrid.ContextMenuStrip = this.rawContextMenuStrip;
             dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle29.BackColor = System.Drawing.Color.White;
@@ -4773,9 +4778,9 @@
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
+            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel7);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
@@ -6222,13 +6227,13 @@
             // 
             // ribbonTabItem3
             // 
+            this.ribbonTabItem3.Checked = true;
             this.ribbonTabItem3.Name = "ribbonTabItem3";
             this.ribbonTabItem3.Panel = this.ribbonPanel3;
             this.ribbonTabItem3.Text = "分组";
             // 
             // ribbonTabItem1
             // 
-            this.ribbonTabItem1.Checked = true;
             this.ribbonTabItem1.Name = "ribbonTabItem1";
             this.ribbonTabItem1.Panel = this.ribbonPanel1;
             this.ribbonTabItem1.Text = "指标";
@@ -6354,7 +6359,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.rawDataTab.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -6914,7 +6919,7 @@
         private System.Windows.Forms.DateTimePicker startDateTimePicker;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button queryButton;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage rawDataTab;
         private System.Windows.Forms.GroupBox groupBox3;
         private DevComponents.DotNetBar.Controls.DataGridViewX rawDataGrid;

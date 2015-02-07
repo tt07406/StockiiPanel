@@ -37,6 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.actionList = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.actions = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -115,15 +117,36 @@
             this.actionList.ItemHeight = 12;
             this.actionList.Location = new System.Drawing.Point(13, 31);
             this.actionList.Name = "actionList";
-            this.actionList.Size = new System.Drawing.Size(167, 280);
+            this.actionList.Size = new System.Drawing.Size(206, 136);
             this.actionList.TabIndex = 0;
             this.actionList.SelectedIndexChanged += new System.EventHandler(this.actionList_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 174);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "具体拼接";
+            // 
+            // actions
+            // 
+            this.actions.FormattingEnabled = true;
+            this.actions.HorizontalScrollbar = true;
+            this.actions.ItemHeight = 12;
+            this.actions.Location = new System.Drawing.Point(13, 190);
+            this.actions.Name = "actions";
+            this.actions.Size = new System.Drawing.Size(206, 136);
+            this.actions.TabIndex = 10;
             // 
             // ActionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 332);
+            this.ClientSize = new System.Drawing.Size(387, 344);
+            this.Controls.Add(this.actions);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.endDatePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.startDatePicker);
@@ -151,5 +174,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker endDatePicker;
         private System.Windows.Forms.ListBox actionList;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox actions;
     }
 }

@@ -33,6 +33,8 @@ namespace StockiiPanel
             this.label1 = new System.Windows.Forms.Label();
             this.groupNameBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.KeyWord = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.stockInfoList = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.selectedList = new System.Windows.Forms.ListView();
@@ -48,8 +50,7 @@ namespace StockiiPanel
             this.areaCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.industryCombox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.KeyWord = new System.Windows.Forms.TextBox();
+            this.Reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -74,6 +75,7 @@ namespace StockiiPanel
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Reset);
             this.groupBox1.Controls.Add(this.KeyWord);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.stockInfoList);
@@ -83,6 +85,23 @@ namespace StockiiPanel
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "可选列表";
+            // 
+            // KeyWord
+            // 
+            this.KeyWord.Location = new System.Drawing.Point(85, 21);
+            this.KeyWord.Name = "KeyWord";
+            this.KeyWord.Size = new System.Drawing.Size(132, 21);
+            this.KeyWord.TabIndex = 2;
+            this.KeyWord.TextChanged += new System.EventHandler(this.KeyWord_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "代码/名称：";
             // 
             // stockInfoList
             // 
@@ -234,22 +253,15 @@ namespace StockiiPanel
             this.industryCombox.TabIndex = 13;
             this.industryCombox.SelectedIndexChanged += new System.EventHandler(this.industryCombox_SelectedIndexChanged);
             // 
-            // label4
+            // Reset
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 12);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "代码/名称：";
-            // 
-            // KeyWord
-            // 
-            this.KeyWord.Location = new System.Drawing.Point(85, 21);
-            this.KeyWord.Name = "KeyWord";
-            this.KeyWord.Size = new System.Drawing.Size(193, 21);
-            this.KeyWord.TabIndex = 2;
-            this.KeyWord.TextChanged += new System.EventHandler(this.KeyWord_TextChanged);
+            this.Reset.Location = new System.Drawing.Point(223, 21);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(55, 23);
+            this.Reset.TabIndex = 3;
+            this.Reset.Text = "重置";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // SNListDialog
             // 
@@ -311,6 +323,7 @@ namespace StockiiPanel
         private System.Windows.Forms.ComboBox industryCombox;
         private System.Windows.Forms.TextBox KeyWord;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Reset;
 
         public string GroupName
         {

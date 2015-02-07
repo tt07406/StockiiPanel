@@ -362,5 +362,10 @@ namespace StockiiPanel
                 stockInfoList.Rows[i].HeaderCell.Value = j.ToString();
             } 
         }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            dv.RowFilter = "";
+        }
     }
 }

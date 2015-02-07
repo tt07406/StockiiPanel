@@ -35,23 +35,43 @@ namespace StockiiPanel
         private String configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
 
         private CustomDialog customDialog;
+        ContextMenuStrip upMenuStrip = new ContextMenuStrip();
+        ContextMenuStrip downMenuStrip = new ContextMenuStrip();
 
         public Form1()
         {
             InitializeComponent();
 
+            this.upMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allToolStripMenuItem,
+            this.equalToolStripMenuItem,
+            this.amplitudeToolStripMenuItem,
+            this.riseToolStripMenuItem,
+            this.amountToolStripMenuItem,
+            this.turnoverToolStripMenuItem,
+            this.timeToolStripMenuItem});
+
+            this.downMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allToolStripDownMenuItem,
+            this.equalToolStripDownMenuItem,
+            this.amplitudeToolStripDownMenuItem,
+            this.riseToolStripDownMenuItem,
+            this.amountToolStripDownMenuItem,
+            this.turnoverToolStripDownMenuItem,
+            this.timeToolStripDownMenuItem});
+
             //绘制的方式OwnerDrawFixed表示由窗体绘制大小也一样 
-            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE/2);
-            this.tabControl1.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
-            this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
+            this.tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.tabControl.Padding = new System.Drawing.Point(CLOSE_SIZE, CLOSE_SIZE/2);
+            this.tabControl.DrawItem += new DrawItemEventHandler(this.MainTabControl_DrawItem);
+            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTabControl_MouseDown);
 
             pList = new SerializableDictionary<string, ArrayList>();
             InitialCombo();
             customDialog = new CustomDialog();
             customDialog.StartPosition = FormStartPosition.CenterScreen;
             record = new Dictionary<int, string>();
-            curTabName = tabControl1.SelectedTab.Name;
+            curTabName = tabControl.SelectedTab.Name;
             initTab(curTabName);
             if (!Directory.Exists(configDir))//判断是否存在
             {
@@ -164,7 +184,7 @@ namespace StockiiPanel
                 industryItem.SubItems.Add(item);
             }
 
-            foreach (ToolStripMenuItem c in upToolStripMenuItem.DropDownItems)
+            foreach (ToolStripMenuItem c in upMenuStrip.Items)
             {
                 if (!c.HasDropDownItems)
                     c.Click += new EventHandler(upItem_Click);
@@ -185,7 +205,7 @@ namespace StockiiPanel
                 }
             }
 
-            foreach (ToolStripMenuItem c in downToolStripMenuItem.DropDownItems)
+            foreach (ToolStripMenuItem c in downMenuStrip.Items)
             {
                 if (!c.HasDropDownItems)
                     c.Click += new EventHandler(downItem_Click);
@@ -230,9 +250,9 @@ namespace StockiiPanel
 
         private void initFormUI()
         {
-            for (int i = tabControl1.TabPages.Count - 1; i > 0; i--)
+            for (int i = tabControl.TabPages.Count - 1; i > 0; i--)
             {
-                tabControl1.TabPages.RemoveAt(i);
+                tabControl.TabPages.RemoveAt(i);
             }
             //tabControl1.TabPages.Remove(nsumTab);
             //tabControl1.TabPages.Remove(customCalTab);
@@ -482,7 +502,7 @@ namespace StockiiPanel
                 return;
             }
 
-            if (tabControl1.SelectedTab.Name.Equals("customCalTab") || tabControl1.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -516,7 +536,7 @@ namespace StockiiPanel
                 return;
             }
 
-            if (tabControl1.SelectedTab.Name.Equals("customCalTab") || tabControl1.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
+            if (tabControl.SelectedTab.Name.Equals("customCalTab") || tabControl.SelectedTab.Name.Equals("crossSectionTab"))//向上版块和向下版块只针对原始数据和n日和有效
                 return;
 
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -1065,9 +1085,9 @@ namespace StockiiPanel
         {
             //curTabName = tabControl.SelectedIndex;
 
-            if (tabControl1.TabCount > 0)
+            if (tabControl.TabCount > 0)
             {
-                curTabName = tabControl1.SelectedTab.Name;
+                curTabName = tabControl.SelectedTab.Name;
             }
             else
             {

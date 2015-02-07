@@ -49,6 +49,7 @@
             this.KeyWord = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.stockInfoList = new System.Windows.Forms.DataGridView();
+            this.Reset = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInfoList)).BeginInit();
@@ -221,6 +222,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Reset);
             this.groupBox1.Controls.Add(this.KeyWord);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.stockInfoList);
@@ -235,7 +237,7 @@
             // 
             this.KeyWord.Location = new System.Drawing.Point(85, 21);
             this.KeyWord.Name = "KeyWord";
-            this.KeyWord.Size = new System.Drawing.Size(193, 21);
+            this.KeyWord.Size = new System.Drawing.Size(125, 21);
             this.KeyWord.TabIndex = 2;
             this.KeyWord.TextChanged += new System.EventHandler(this.KeyWord_TextChanged);
             // 
@@ -262,6 +264,16 @@
             this.stockInfoList.Size = new System.Drawing.Size(272, 327);
             this.stockInfoList.TabIndex = 0;
             this.stockInfoList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.stockInfoList_DataBindingComplete_1);
+            // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(223, 20);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(55, 23);
+            this.Reset.TabIndex = 4;
+            this.Reset.Text = "重置";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // GroupDialog
             // 
@@ -317,5 +329,6 @@
         private System.Windows.Forms.TextBox KeyWord;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView stockInfoList;
+        private System.Windows.Forms.Button Reset;
     }
 }

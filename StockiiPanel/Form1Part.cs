@@ -147,7 +147,7 @@ namespace StockiiPanel
 
         private void rawContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            switch (tabControl1.SelectedTab.Name)
+            switch (tabControl.SelectedTab.Name)
             {
                 case "rawDataTab":
                     if (rawDataGrid.RowCount > 0)
@@ -303,7 +303,7 @@ namespace StockiiPanel
 
         private void SaveGrid(bool isSelected)
         {
-            switch (tabControl1.SelectedTab.Name)
+            switch (tabControl.SelectedTab.Name)
             {
                 case "rawDataTab":
                     dt = Commons.StructrueDataTable(rawDataGrid, isSelected);
@@ -801,6 +801,12 @@ namespace StockiiPanel
 
         private void searchTab(String type)
         {
+            if (tabControl.TabCount == 0)
+            {
+                MessageBox.Show("请选择一个指标");
+                return;
+            }
+
             if (startDateTimePicker.Value.CompareTo(endDateTimePicker.Value) > 0)
             {
                 MessageBox.Show("开始时间大于结束时间");
@@ -907,7 +913,7 @@ namespace StockiiPanel
 
         private void Combine(bool isSelect)
         {
-            splitContainer1.Panel2Collapsed = false;
+            this.splitContainer1.SplitterDistance = 25;
 
             buffResult = (DataTable)combineResult.DataSource;//保存上一个
             headText.Clear();
@@ -915,7 +921,7 @@ namespace StockiiPanel
                 headText.Add(combineResult.Columns[i].HeaderText);
             bufferArray = (ArrayList)combineArray.Clone();
 
-            if (tabControl1.SelectedTab.Name.Equals("customCalTab"))//自定义计算
+            if (tabControl.SelectedTab.Name.Equals("customCalTab"))//自定义计算
             {
                 combineResult.DataSource = Commons.Combine(calResultGrid, combineResult, isSelect);
                 if (combineResult.ColumnCount == calResultGrid.ColumnCount)//第一次拼接

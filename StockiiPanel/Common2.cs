@@ -53,7 +53,7 @@ namespace StockiiPanel
                     {
                         for (int j = 0; j < dt.Columns.Count; j++)
                         {
-                            if (j == 0)
+                            if (dt.Columns[j].ColumnName.Contains("stock_id"))//代码列
                             {
                                 streamWriter.Write("=\"" + dt.Rows[i][j] + "\"");
                             }
@@ -345,16 +345,27 @@ namespace StockiiPanel
         /// <param name="client">tb2相同的ID索引</param>
         public static void Intersaction(ref DataTable tb2,ref DataTable tb4, ArrayList host, ArrayList client)
         {
+            DataTable tb1 = tb4.Clone();//包含tb4中与tb2不同的ID的数据项
+            DataTable tb3 = tb2.Clone();//包含tb2中与tb4不同的ID的数据项
             for (int i = tb4.Rows.Count - 1; i >= 0; i--)
             {
-                if (!host.Contains(i))
-                    tb4.Rows.RemoveAt(i);
+                if (host.Contains(i))
+                    tb1.ImportRow(tb4.Rows[i]);
             }
             for (int i = tb2.Rows.Count - 1; i >= 0; i--)
             {
-                if (!client.Contains(i))
-                    tb2.Rows.RemoveAt(i);
+                if (client.Contains(i))
+                    tb3.ImportRow(tb2.Rows[i]);
             }
+
+            DataView dv = tb1.DefaultView;
+            dv.Sort = "stock_id";
+            tb4.Clear();
+            tb4 = dv.ToTable();
+            dv = tb3.DefaultView;
+            dv.Sort = "stock_id";
+            tb2.Clear();
+            tb2 = dv.ToTable();
 
             AppendDataTable(tb4, tb2);
         }
@@ -376,6 +387,8 @@ namespace StockiiPanel
                 {
                     tb1.ImportRow(tb4.Rows[i]);                  
                     DataRow drq = tb3.NewRow();
+                    drq[0] = tb4.Rows[i][0];
+                    drq[1] = tb4.Rows[i][1];
                     tb3.Rows.Add(drq);
 
                     tb4.Rows.RemoveAt(i);
@@ -388,12 +401,24 @@ namespace StockiiPanel
                 {
                     tb3.ImportRow(tb2.Rows[i]);
                     DataRow drq = tb1.NewRow();
+                    drq[0] = tb2.Rows[i][0];
+                    drq[1] = tb2.Rows[i][1];
                     tb1.Rows.Add(drq);
    
                     tb2.Rows.RemoveAt(i);
                 }
                     
             }
+
+            DataTable dtSourceCopy = null;
+            dtSourceCopy = tb4.Copy();
+            dtSourceCopy.DefaultView.Sort = "stock_id";
+            tb4.Clear();
+            tb4 = dtSourceCopy.DefaultView.ToTable();
+            dtSourceCopy = tb2.Copy();
+            dtSourceCopy.DefaultView.Sort = "stock_id";
+            tb2.Clear();
+            tb2 = dtSourceCopy.DefaultView.ToTable();
 
             AppendDataTable(tb4, tb2);
             AppendDataTable(tb1, tb3);

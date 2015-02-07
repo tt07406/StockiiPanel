@@ -298,5 +298,10 @@ namespace StockiiPanel
 
             dv.RowFilter = sql.ToString();
         }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            dv.RowFilter = "";
+        }
     }
 }

@@ -27,44 +27,47 @@ namespace StockiiPanel
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+            tabControl.TabPages.Remove(tabControl.SelectedTab);
         }
 
 
         private void upItem_MouseDown(object sender, EventArgs e)
         {
             //groupList.Show();     
-            boardMenuStrip.Show(this, boardBar.Location.X - upContainer.Size.Width - downContainer.Size.Width, upContainer.Size.Height + ribbonPanel3.Location.Y);
-            sectionToolStripMenuItem.Visible = false;
-            industryToolStripMenuItem.Visible = false;
-            upToolStripMenuItem.Visible = false;
-            downToolStripMenuItem.Visible = false;
+            //boardMenuStrip.Show(this, boardBar.Location.X - upContainer.Size.Width - downContainer.Size.Width, upContainer.Size.Height + ribbonPanel3.Location.Y);
+            //sectionToolStripMenuItem.Visible = false;
+            //industryToolStripMenuItem.Visible = false;
+            //upToolStripMenuItem.Visible = false;
+            //downToolStripMenuItem.Visible = false;
             
-            upToolStripMenuItem.ShowDropDown();
+            //upToolStripMenuItem.ShowDropDown();
+            upMenuStrip.Show(this, boardBar.Location.X - upContainer.Size.Width - downContainer.Size.Width, upContainer.Size.Height + ribbonPanel3.Location.Y);
+
         }
 
         private void downItem_MouseDown(object sender, EventArgs e)
         {
             //groupList.Show();
-            boardMenuStrip.Show(this, boardBar.Location.X - downContainer.Size.Width, downContainer.Size.Height + ribbonPanel3.Location.Y);
-            sectionToolStripMenuItem.Visible = false;
-            industryToolStripMenuItem.Visible = false;
-            upToolStripMenuItem.Visible = false;
-            downToolStripMenuItem.Visible = false;
+            //boardMenuStrip.Show(this, boardBar.Location.X - downContainer.Size.Width, downContainer.Size.Height + ribbonPanel3.Location.Y);
+            //sectionToolStripMenuItem.Visible = false;
+            //industryToolStripMenuItem.Visible = false;
+            //upToolStripMenuItem.Visible = false;
+            //downToolStripMenuItem.Visible = false;
             
-            downToolStripMenuItem.ShowDropDown();
+            //downToolStripMenuItem.ShowDropDown();
+            downMenuStrip.Show(this, boardBar.Location.X - downContainer.Size.Width, downContainer.Size.Height + ribbonPanel3.Location.Y);
         }
 
 
         private void showThisTab(TabPage tab)
         {
-            if (!tabControl1.Controls.Contains(tab))
+            if (!tabControl.Controls.Contains(tab))
             {
-                tabControl1.Controls.Add(tab);
-                tabControl1.SelectTab(tab);
-                if (tabControl1.TabCount == 1)
+                tabControl.Controls.Add(tab);
+                tabControl.SelectTab(tab);
+                if (tabControl.TabCount == 1)
                 {
-                    curTabName = tabControl1.SelectedTab.Name;
+                    curTabName = tabControl.SelectedTab.Name;
                     initTab(curTabName);
                     if (curTabName.Equals("rawDataTab") || curTabName.Equals("nsumTab"))//向上版块和向下版块只针对原始数据和n日和有效
                         boardBar.Visible = true;
@@ -74,7 +77,7 @@ namespace StockiiPanel
             }
             else
             {
-                tabControl1.SelectTab(tab);
+                tabControl.SelectTab(tab);
             }
 
         }
@@ -134,7 +137,7 @@ namespace StockiiPanel
             }
 
             actionName = dialog.ActionName;
-            splitContainer1.Panel2Collapsed = false;
+            this.splitContainer1.SplitterDistance = 25;
             foreach (String item in dialog.CombineArray)
             {
                 if (item.StartsWith("customCal"))//如果包含自定义查询，则要选择分组或版块
@@ -312,7 +315,7 @@ namespace StockiiPanel
             }
 
             ArrayList stocks = new ArrayList();
-            if (tabControl1.SelectedTab.Name.Equals("customCalTab"))
+            if (tabControl.SelectedTab.Name.Equals("customCalTab"))
             {
                 for (int i = 0; i < calResultGrid.SelectedRows.Count; ++i)
                 {
@@ -570,7 +573,7 @@ namespace StockiiPanel
             foreach (var item in raisingLimitInfoDict)
             {
                 thisView.Columns[k].HeaderText = item.Value;
-                thisView.Columns[k].Width = 60 + item.Value.Length * 10;
+                thisView.Columns[k].Width = 100;// 60 + item.Value.Length * 10;
                 thisView.Columns[k].DataPropertyName = ds.Tables[0].Columns[item.Key].ToString();
                 switch (item.Key)
                 {
@@ -706,47 +709,50 @@ namespace StockiiPanel
         {
             try
             {
-                Rectangle myTabRect = this.tabControl1.GetTabRect(e.Index);
+                Rectangle myTabRect = this.tabControl.GetTabRect(e.Index);
 
                 //先添加TabPage属性    
-                e.Graphics.DrawString(this.tabControl1.TabPages[e.Index].Text, this.Font, SystemBrushes.ControlText, myTabRect.X + 2, myTabRect.Y + 2);
-
-                //再画一个矩形框 
-                using (Pen p = new Pen(Color.White))
-                {
-                    myTabRect.Offset(myTabRect.Width - (CLOSE_SIZE + 3), 2);
-                    myTabRect.Width = CLOSE_SIZE;
-                    myTabRect.Height = CLOSE_SIZE;
-                    e.Graphics.DrawRectangle(p, myTabRect);
-                }
-
-                //填充矩形框 
-                Color recColor = e.State == DrawItemState.Selected ? Color.White : Color.White;
-                using (Brush b = new SolidBrush(recColor))
-                {
-                    e.Graphics.FillRectangle(b, myTabRect);
-                }
+                e.Graphics.DrawString(this.tabControl.TabPages[e.Index].Text, this.Font, SystemBrushes.ControlText, myTabRect.X + 2, myTabRect.Y + 2);                             
 
                 //画关闭符号 
-                using (Pen objpen = new Pen(Color.Black))
+                if (e.State == DrawItemState.Selected)
                 {
-                    //============================================= 
-                    //自己画X 
-                    //"\"线 
-                    Point p1 = new Point(myTabRect.X + 3, myTabRect.Y + 3); 
-                    Point p2 = new Point(myTabRect.X + myTabRect.Width - 3, myTabRect.Y + myTabRect.Height - 3); 
-                    e.Graphics.DrawLine(objpen, p1, p2); 
-                    //"/"线 
-                    Point p3 = new Point(myTabRect.X + 3, myTabRect.Y + myTabRect.Height - 3); 
-                    Point p4 = new Point(myTabRect.X + myTabRect.Width - 3, myTabRect.Y + 3); 
-                    e.Graphics.DrawLine(objpen, p3, p4); 
+                    //再画一个矩形框 
+                    using (Pen p = new Pen(Color.White))
+                    {
+                        myTabRect.Offset(myTabRect.Width - (CLOSE_SIZE + 3), 2);
+                        myTabRect.Width = CLOSE_SIZE;
+                        myTabRect.Height = CLOSE_SIZE;
+                        e.Graphics.DrawRectangle(p, myTabRect);
+                    }
 
-                    ////============================================= 
-                    //使用图片 
-                    //Bitmap bt = new Bitmap(image);
-                    //Point p5 = new Point(myTabRect.X, 4);
-                    //e.Graphics.DrawImage(bt, p5);
-                    //e.Graphics.DrawString(this.MainTabControl.TabPages[e.Index].Text, this.Font, objpen.Brush, p5); 
+                    //填充矩形框 
+                    Color recColor = e.State == DrawItemState.Selected ? Color.White : Color.LightGray;
+
+                    using (Brush b = new SolidBrush(recColor))
+                    {
+                        e.Graphics.FillRectangle(b, myTabRect);
+                    }
+                    using (Pen objpen = new Pen(Color.Black))
+                    {
+                        //============================================= 
+                        //自己画X 
+                        //"\"线 
+                        Point p1 = new Point(myTabRect.X + 3, myTabRect.Y + 3);
+                        Point p2 = new Point(myTabRect.X + myTabRect.Width - 3, myTabRect.Y + myTabRect.Height - 3);
+                        e.Graphics.DrawLine(objpen, p1, p2);
+                        //"/"线 
+                        Point p3 = new Point(myTabRect.X + 3, myTabRect.Y + myTabRect.Height - 3);
+                        Point p4 = new Point(myTabRect.X + myTabRect.Width - 3, myTabRect.Y + 3);
+                        e.Graphics.DrawLine(objpen, p3, p4);
+
+                        ////============================================= 
+                        //使用图片 
+                        //Bitmap bt = new Bitmap(image);
+                        //Point p5 = new Point(myTabRect.X, 4);
+                        //e.Graphics.DrawImage(bt, p5);
+                        //e.Graphics.DrawString(this.MainTabControl.TabPages[e.Index].Text, this.Font, objpen.Brush, p5); 
+                    }
                 }
                 e.Graphics.Dispose();
             }
@@ -761,7 +767,7 @@ namespace StockiiPanel
             {
                 int x = e.X, y = e.Y;
                 //计算关闭区域    
-                Rectangle myTabRect = this.tabControl1.GetTabRect(this.tabControl1.SelectedIndex);
+                Rectangle myTabRect = this.tabControl.GetTabRect(this.tabControl.SelectedIndex);
 
                 myTabRect.Offset(myTabRect.Width - (CLOSE_SIZE + 3), 2);
                 myTabRect.Width = CLOSE_SIZE;
@@ -771,7 +777,7 @@ namespace StockiiPanel
                 bool isClose = x > myTabRect.X && x < myTabRect.Right && y > myTabRect.Y && y < myTabRect.Bottom;
                 if (isClose == true)
                 {
-                    this.tabControl1.TabPages.Remove(this.tabControl1.SelectedTab);
+                    this.tabControl.TabPages.Remove(this.tabControl.SelectedTab);
                 }
             }
         }
